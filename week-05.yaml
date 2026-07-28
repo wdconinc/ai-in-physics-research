@@ -1,0 +1,177 @@
+week: 5
+phase: "Phase 1: The Common Baseline"
+title: "GenAI in Theoretical Physics"
+
+meetings:
+  - meeting: 1
+    title: "What Makes a Strong GenAI Research Proposal in Physics?"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Explain how symbolic regression has been used to discover physical laws from data,
+        focusing on the AI Feynman project (Udrescu & Tegmark 2020, arXiv:1905.11172) and
+        the PySR library (Cranmer 2023, arXiv:2305.01582). Cover: (1) what symbolic regression
+        is and how it differs from neural-network regression; (2) one concrete example of a
+        physical equation rediscovered from noisy data; (3) whether these methods discover
+        genuinely new physics or recapitulate known laws. Your presentation should connect
+        directly to this week's central question: what would a well-formed GenAI research
+        question in theoretical physics look like?
+      format: "8-minute paper presentation"
+      guiding_questions:
+        - "Did the AI Feynman system discover new physics, or did it rediscover equations
+          already in the Feynman symbolic regression benchmark? What is the difference,
+          and why does it matter for how we evaluate AI-assisted discovery claims?"
+        - "What would a falsifiable version of 'AI can discover new physics laws' look
+          like as a research question? What dataset, method, and success criterion would
+          you need to specify?"
+        - "Where does symbolic regression fail, and what does that failure mode reveal
+          about the limits of current GenAI tools for theoretical physics?"
+
+    active_engagement:
+      format: "Collaborative whiteboard"
+      description: |
+        Students collectively build a shared map on the whiteboard of what constitutes a
+        strong GenAI research question in theoretical physics. The instructor writes the
+        central node "A strong research question" and asks: "What connects to this?"
+
+        Step 1 (5 min): Each student silently writes one ingredient of a good research
+        question on a sticky note or directly on the whiteboard (e.g., "names a specific
+        dataset," "states how you will know if it worked," "uses a specific AI tool").
+
+        Step 2 (15 min): Students take turns adding their ingredients as nodes, connecting
+        them to related nodes already on the board. When two students disagree about whether
+        an ingredient is necessary or sufficient, the class votes and the disagreement is
+        recorded as an open edge with a question mark.
+
+        Step 3 (15 min): The instructor selects three student proposal ideas (shared
+        informally before class, or hypothetical examples) and asks the class to evaluate
+        each against the map. For each idea: Is the research question specific enough? Is
+        the dataset named and accessible? Is the AI/MCP method appropriate? The class
+        annotates the whiteboard with strengths and gaps for each example.
+
+        Step 4 (10 min): Each student takes 90 seconds to revise their own proposal's
+        research question sentence based on the map criteria, writing it on a notecard.
+        Cards are collected and returned with written instructor feedback before Meeting 2.
+
+        Debrief (5 min): Instructor photographs the whiteboard and posts it to the course
+        repository. Names the 2–3 most commonly missing ingredients across the class's
+        notecards (without identifying individual students).
+      facilitation_notes: |
+        Post the whiteboard photo to the course repository within 24 hours so students
+        can reference it while finalizing their proposals. Before the session, ask students
+        to email you a one-sentence draft of their research question — this lets you select
+        3 representative examples (strong, adequate, and weak) to evaluate anonymously in
+        Step 3 without embarrassing anyone. If the class converges too quickly and the map
+        seems complete, push back: "Is every ingredient here actually necessary? Can you
+        construct a bad research question that has all of these?" This forces students to
+        test the map rather than just build it. Call on quiet students directly during
+        Step 2 — do not rely on volunteers.
+      estimated_duration: "45 minutes"
+      materials_needed: "Whiteboard and markers; sticky notes (optional); notecards for Step 4; camera or phone to photograph whiteboard"
+
+  - meeting: 2
+    title: "Proposal Pitch Session"
+    student_introduction:
+      assigned_to: "N/A – all students present this meeting"
+      topic_prompt: |
+        There is no assigned student introduction for this meeting. The entire session is
+        structured as back-to-back 5-minute proposal pitches, one per student, with 2 minutes
+        of structured peer Q&A after each pitch, facilitated by the instructor. Students
+        should arrive having submitted their written proposal PDF and slides before class
+        begins. The instructor opens with a 3-minute orientation: reviewing the feedback
+        form, setting the timer protocol, and modeling the kind of question peers should ask.
+      format: "5-minute pitch presentation (max 5 slides) per student"
+      guiding_questions:
+        - "What specific physics question will your project answer?"
+        - "What AI/MCP method will you use, and why is it appropriate for this question?"
+        - "What dataset will you use, and how will you evaluate success?"
+
+    active_engagement:
+      format: "Structured peer critique"
+      description: |
+        Each student presents for 5 minutes, then receives 2 minutes of structured peer
+        questions using a feedback form distributed at the start of class. The instructor
+        facilitates and models constructive critique for the first pitch by demonstrating
+        how to complete the feedback form aloud before peers respond.
+
+        Session structure:
+        - Opening (3 min): Instructor reviews the feedback form, sets timer protocol,
+          and reminds the class that critique is a form of intellectual generosity.
+        - Pitches (50 min): 10 students × 7 min each (5 min pitch + 2 min Q&A).
+          A visible countdown timer is used. The instructor cuts off at 5 minutes
+          without apology. After each Q&A, peers silently complete the feedback form
+          for that presenter; forms are collected and given to the presenter at the
+          end of class.
+        - Group discussion (7 min): After all pitches, instructor leads a 7-minute
+          discussion: "What themes did you notice across proposals? What gaps appeared
+          most frequently? Which proposals seemed most feasible, and why?" This is
+          conducted without singling out individuals.
+
+        Note: If the class has fewer than 10 students, the saved time should be used to
+        extend the group discussion or allow a second round of questions for proposals
+        that generated the most peer interest.
+      facilitation_notes: |
+        Distribute the structured feedback form before pitches begin — either printed or
+        shared digitally. The form has exactly three fields: (1) one specific strength of
+        the proposed research question or method; (2) one specific question about
+        feasibility, dataset access, or methodology that the presenter should address in
+        their project; (3) one concrete suggestion for improving the scope or clarity of
+        the research question. Keep the form to one page so peers can complete it in
+        under 90 seconds. For the first pitch, complete the form aloud yourself before
+        opening to peer questions — this calibrates the class's expectations. Do not
+        allow general praise without specificity during the Q&A; redirect with "What
+        specifically impressed you, and why does it matter for the project?" Collect
+        all feedback forms at the end of class and return them to the corresponding
+        presenters (digitally or physically) within 24 hours.
+      estimated_duration: "50 minutes (5 min × 10 students = 50 min; adjust Q&A if time is short)"
+      materials_needed: "Printed or shared feedback forms; projector for slides; visible countdown timer; instructor evaluation sheet for pitch delivery grading"
+
+homework:
+  week: 5
+  title: "Project Proposal"
+  phase: "Phase 1: The Common Baseline"
+  assessment_category: "Project Proposal & Pitch"
+  background: |
+    Your project proposal is your public commitment to a research direction for the remaining
+    nine weeks of the course. It is not a wish list — it is a contract with your peers and
+    instructor that you have identified a specific, tractable question and confirmed that the
+    tools and data you need are accessible. Writing a good proposal is also a communication
+    exercise: you must convince a skeptical reader that your question is worth pursuing and
+    that you have a credible plan to answer it within the available time and computational
+    resources.
+  instructions:
+    - step: 1
+      text: "Write a 2-page project proposal in RevTeX (article class, 11pt font, standard margins). Use the following section structure: Abstract (100 words max), Research Question, Proposed Method, Dataset and Evaluation Criteria, Timeline (Weeks 6-14), References."
+    - step: 2
+      text: "In the Research Question section, state one specific, falsifiable question your project will answer. The question must name the physical system or dataset, the AI/MCP method you will use, and how you will know if the method succeeded."
+    - step: 3
+      text: "In the Proposed Method section, name the specific tools and libraries you will use (e.g., 'I will build an MCP server using the mcp Python SDK to query the Materials Project REST API, then use Claude claude-3-5-sonnet to synthesize property trends for perovskite oxides')."
+    - step: 4
+      text: "In the Dataset section, identify a specific, accessible dataset (with URL or DOI) and state its size, format, and any preprocessing required."
+    - step: 5
+      text: "Prepare a 5-slide pitch deck (PDF) matching the proposal structure: one slide per section (skip references). Practice delivering it in exactly 5 minutes."
+  deliverables:
+    - "A RevTeX source file named proposal_<lastname>.tex"
+    - "A compiled PDF named proposal_<lastname>.pdf"
+    - "A 5-slide pitch deck as proposal_slides_<lastname>.pdf"
+  grading_criteria:
+    - criterion: "Research question clarity"
+      weight: "35%"
+      description: "The question is specific, falsifiable, names the dataset and method, and is clearly stated in one sentence."
+    - criterion: "Feasibility"
+      weight: "30%"
+      description: "The proposed scope is achievable in 8 weeks using named, available tools and datasets; resource gaps are acknowledged."
+    - criterion: "Pitch delivery"
+      weight: "20%"
+      description: "The live pitch is clear, confident, within the 5-minute limit, and addresses all three guiding questions."
+    - criterion: "Written proposal quality"
+      weight: "15%"
+      description: "The document is formatted in RevTeX, is 2 full pages, and all required sections are present and coherent."
+  estimated_time: "5-8 hours (proposal writing + pitch preparation)"
+  due: "Proposal PDF and slides submitted before Meeting 2 of Week 5; live pitch delivered in Meeting 2"
+  tools_and_resources:
+    - "RevTeX 4.2 (install via TeX Live or MikTeX)"
+    - "Overleaf (free online LaTeX editor) as an alternative"
+    - "APS Physical Review author guide for RevTeX formatting"
+    - "PySR (symbolic regression library) as one example AI tool to explore"
+    - "SymPy for symbolic computation examples"

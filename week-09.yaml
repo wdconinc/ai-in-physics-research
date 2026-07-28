@@ -1,0 +1,97 @@
+week: 9
+phase: "Phase 3: Project Execution & Polish"
+title: "Debugging Agentic Workflows"
+
+meetings:
+  - meeting: 1
+    title: "Structured Debugging and Observability for Agentic Pipelines"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: structured debugging of AI pipelines — the OODA loop (Observe, Orient, Decide, Act) applied to agentic failures; how to add structured logging with Python's logging module and JSON log formatting; how to use LangSmith or a simple trace dictionary to capture tool call sequences. Read the LangSmith tracing documentation and the python-json-logger README before class. Student should demonstrate adding structured logging to a short agentic script (20–40 lines) and show how to replay a failure from the resulting logs alone. Your presentation must connect directly to Learning Objective 2: adding logging sufficient to reproduce any failure from the logs alone. 3–5 sentences of spoken context, then a live terminal demo.
+      format: "10-minute live demo"
+      guiding_questions:
+        - "What information must a log entry contain to allow a failure to be reproduced from the log alone?"
+        - "How do you distinguish a model hallucination from a tool failure in a log trace?"
+        - "What is prompt drift and how would you detect it in a long agentic conversation?"
+    active_engagement:
+      format: "Pair debugging"
+      description: |
+        Instructor pre-loads a broken 60-line agentic pipeline script (agentic_bug_hunt.py, shared via the course repo) with three planted failures:
+        (1) a tool call that silently returns an empty list instead of raising an error when the API returns 0 results,
+        (2) a prompt that accumulates context across iterations causing a token limit overflow on iteration 4,
+        (3) a missing random seed causing non-reproducible results between runs.
+
+        Pairs have 30 minutes to find all three bugs using only the script and its logs. They must write a bug_report.md naming the line number, the failure mode category (from the week's taxonomy), and the fix applied. Last 10 minutes: each pair shares their most interesting bug; class votes on best fix.
+      facilitation_notes: |
+        Run the script yourself before class to confirm all three bugs trigger reliably. Share the script 10 minutes before class starts so pairs can read it cold. If pairs finish early, give them a bonus challenge: add structured JSON logging to the fixed script. Debrief by revealing the bugs one at a time, asking each pair whether they found it and what threw them off.
+      estimated_duration: "45 minutes"
+      materials_needed: "agentic_bug_hunt.py pre-loaded in course GitHub repo; pairs need laptops with Python environment"
+
+  - meeting: 2
+    title: "Reproducibility in Agentic Workflows"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: reproducibility for agentic workflows — how to record tool call sequences (storing inputs/outputs as a JSON trace), how to set and propagate random seeds through a pipeline that uses both numpy and an LLM (temperature=0 for determinism), and how to use pytest-recording or vcr.py to mock API calls in tests. Read Pineau et al. 2021 'Improving Reproducibility in ML Research' (arXiv:2011.09961) before class, focusing on their reproducibility checklist. Your chalk talk must explain why temperature=0 is necessary but not sufficient for full pipeline reproducibility, and connect to Learning Objective 2. No notes allowed — draw the key ideas at the whiteboard from memory in 8 minutes.
+      format: "8-minute chalk talk"
+      guiding_questions:
+        - "What does it mean for an agentic pipeline to be 'reproducible' if the LLM is stochastic?"
+        - "What is the minimum information that must be logged to allow another researcher to reproduce your result?"
+        - "How do vcr.py cassettes help make agentic tests deterministic?"
+    active_engagement:
+      format: "Socratic seminar"
+      description: |
+        Instructor poses the central question: "Can an agentic AI pipeline ever be fully reproducible in the scientific sense?"
+
+        Round 1 (10 min): Each student writes one sentence answering the question on a notecard. Instructor collects and reads 3-4 aloud without attribution.
+        Round 2 (15 min): Open discussion with structured cold-calling. Instructor probes: "What would you accept as evidence that a pipeline IS reproducible?" and "If you can't reproduce an LLM's exact token sequence, does that invalidate the result?"
+        Round 3 (10 min): Students revise their notecard answer and share whether their view changed and why.
+        Debrief (10 min): Instructor synthesizes the key practical consensus — what students should actually do in their own projects.
+      facilitation_notes: |
+        Prepare 3 controversial claims to inject if discussion stalls: (1) "Setting temperature=0 is sufficient for reproducibility." (2) "You should log every token the LLM generates." (3) "A result is reproducible if I can get the same conclusion even if not the same exact numbers." Have the Pineau et al. checklist ready to project as a concrete reference.
+      estimated_duration: "45 minutes"
+      materials_needed: "Index cards for Round 1; projector for Pineau et al. checklist"
+
+homework:
+  week: 9
+  title: "Adding Observability and Reproducibility to Your Project Pipeline"
+  phase: "Phase 3: Project Execution & Polish"
+  assessment_category: "Final Project Codebase & Paper"
+  background: |
+    A pipeline that cannot be debugged from its logs is not a scientific instrument — it is a black box. This week you will instrument your project pipeline with structured logging and commit at least one reproducible result to your GitHub repository, establishing the observability standards your final codebase must meet.
+  instructions:
+    - step: 1
+      text: "Add structured JSON logging to every tool call in your project pipeline using Python's logging module configured with a JSONFormatter (pip install python-json-logger). Each log entry must include: timestamp, tool name, input arguments (sanitized to remove API keys), output summary (first 200 characters or a structured dict), elapsed time in milliseconds, and success/failure status."
+    - step: 2
+      text: "Set and document all random seeds in your pipeline. For numpy operations, call numpy.random.seed(42) at the top of your main script. For LLM calls, set temperature=0 (or the lowest deterministic setting available). Add a REPRODUCIBILITY.md file listing every source of randomness in your pipeline and how it is controlled."
+    - step: 3
+      text: "Find and fix at least one bug in your own pipeline this week. Document it in a BUG_LOG.md file with: the bug description, the failure mode category (from class taxonomy: silent failure, hallucination, context overflow, loop, non-reproducibility), the line(s) of code affected, and the fix applied."
+    - step: 4
+      text: "Commit at least one key analysis result to your GitHub repository. The commit must include: the result itself (a figure or table), the exact command to reproduce it (in the README or a Makefile target), and the log file from the run that produced it."
+  deliverables:
+    - "Updated project repository on GitHub with JSON logging added to all tool calls"
+    - "REPRODUCIBILITY.md documenting all random seeds and non-deterministic components"
+    - "BUG_LOG.md documenting at least one bug found and fixed with the required fields"
+    - "At least one committed analysis result (figure or table) with a reproduction command in the README"
+  grading_criteria:
+    - criterion: "Logging completeness"
+      weight: "35%"
+      description: "Every tool call produces a structured JSON log entry with all required fields; a reviewer can trace the full execution from the log without running the code."
+    - criterion: "Reproducibility controls"
+      weight: "30%"
+      description: "REPRODUCIBILITY.md is complete; all random seeds are set and documented; running the pipeline twice produces identical output."
+    - criterion: "Bug documentation"
+      weight: "20%"
+      description: "BUG_LOG.md identifies the bug with line numbers, classifies it using the week's taxonomy, and describes the fix clearly enough to understand without running the code."
+    - criterion: "Committed result"
+      weight: "15%"
+      description: "A figure or table is committed to the repository with a one-command reproduction instruction that works from a fresh clone."
+  estimated_time: "5-7 hours"
+  due: "Before the first class meeting of Week 10"
+  tools_and_resources:
+    - "python-json-logger (pip install python-json-logger)"
+    - "tenacity for retry logging"
+    - "vcr.py or pytest-recording for mocking API calls in tests"
+    - "Pineau et al. 2021 'Improving Reproducibility in ML Research' (arXiv:2011.09961)"
+    - "GNU Make for defining reproduction commands as Makefile targets"

@@ -1,0 +1,182 @@
+{
+  "grading_templates": [
+    {
+      "assessment_category": "Standard Curriculum Mini-Assignments",
+      "weight_pct": 20,
+      "weeks": [1, 2, 3, 4],
+      "assignment_level_criteria": [
+        {
+          "criterion": "Methodology correctness",
+          "typical_weight_within_assignment": "30%",
+          "excellent_description": "Uses the correct GenAI or MCP pattern for the task with no fundamental errors; tool calls, prompt structures, and API usage are appropriate for the stated physics objective.",
+          "adequate_description": "Minor misapplication of one concept (e.g., uses zero-shot prompting where few-shot would clearly improve results, or queries the wrong API endpoint but recovers); core approach is sound.",
+          "inadequate_description": "Wrong tool or approach used for the task (e.g., fine-tuning attempted when RAG is specified, or MCP server built incorrectly such that the LLM cannot invoke it)."
+        },
+        {
+          "criterion": "Reproducibility",
+          "typical_weight_within_assignment": "25%",
+          "excellent_description": "Any graduate student can re-run the notebook from scratch with the provided instructions; environment file or requirements.txt is present, random seeds are set, and all API keys are loaded from environment variables (not hardcoded).",
+          "adequate_description": "Runs with minor manual fixes (e.g., one missing import that is easy to identify, or a relative path that requires a small adjustment); instructions are mostly complete.",
+          "inadequate_description": "Cannot reproduce without significant assistance; missing environment file, hardcoded absolute paths, or cells must be run in an undocumented non-sequential order."
+        },
+        {
+          "criterion": "Physical plausibility",
+          "typical_weight_within_assignment": "25%",
+          "excellent_description": "AI outputs are explicitly checked against known physical constraints; student documents at least one sanity check (e.g., verifies units, order-of-magnitude estimate, or comparison to a known result from the literature).",
+          "adequate_description": "Partial sanity check present; student notes that the output looks reasonable but does not perform a quantitative verification.",
+          "inadequate_description": "No physical validation attempted; AI-generated numbers or statements are reported without any cross-check against physical expectations."
+        },
+        {
+          "criterion": "Code clarity",
+          "typical_weight_within_assignment": "20%",
+          "excellent_description": "Well-commented and logically organized; functions are named descriptively, each code cell or function has a single clear purpose, and the notebook reads as a coherent document.",
+          "adequate_description": "Functional but hard to follow in places; variable names are cryptic, cells are long and multipurpose, or comments are sparse but not absent.",
+          "inadequate_description": "Unreadable or uncommented; no docstrings, single-letter variable names throughout, or code is copied verbatim from an AI without any annotation of what it does."
+        }
+      ],
+      "submission_conventions": "Submitted as a GitHub repository link or zip file. Repository must contain a Jupyter notebook named week0N_<lastname>.ipynb, a requirements.txt or environment.yml, and a README.md with one-paragraph instructions for reproducing the results. All API keys must be loaded from a .env file (not committed to the repository).",
+      "late_policy_note": "Late work loses 10% per calendar day. Submissions more than 5 days late will not be accepted. Extensions granted only for documented emergencies requested before the due date."
+    },
+    {
+      "assessment_category": "Project Proposal & Pitch",
+      "weight_pct": 15,
+      "weeks": [5],
+      "assignment_level_criteria": [
+        {
+          "criterion": "Research question clarity",
+          "typical_weight_within_assignment": "35%",
+          "excellent_description": "The proposal states a specific, falsifiable research question with a named dataset and a named AI method; a reader can tell exactly what the student will measure, compute, or predict and what a successful result would look like.",
+          "adequate_description": "A research question is present but vague on method or dataset; the reader understands the general topic but cannot determine the specific computational approach.",
+          "inadequate_description": "The proposal contains a topic statement or motivation but not a research question; it is unclear what the student will actually do or how success will be assessed."
+        },
+        {
+          "criterion": "Feasibility",
+          "typical_weight_within_assignment": "30%",
+          "excellent_description": "The proposed scope is achievable in 8 weeks; the student names specific tools (libraries, APIs, models) and has confirmed data availability; the proposal acknowledges at least one risk and proposes a fallback.",
+          "adequate_description": "The project is plausibly achievable but leaves resource gaps unaddressed (e.g., assumes access to a dataset without confirming it, or proposes a model without checking computational requirements).",
+          "inadequate_description": "The scope is unrealistic for an 8-week solo project (e.g., proposes training a physics foundation model from scratch, or relies on proprietary data with no confirmed access)."
+        },
+        {
+          "criterion": "Pitch delivery",
+          "typical_weight_within_assignment": "20%",
+          "excellent_description": "The pitch is clear and confident, delivered within the 5-minute limit, with a logical flow from motivation to question to proposed method; the student responds coherently to at least one question from the room.",
+          "adequate_description": "The pitch is coherent but unclear at one or more points (e.g., the connection between the AI method and the physics question is not explained); delivery is within time.",
+          "inadequate_description": "The pitch significantly exceeds the time limit, or the argument is incoherent such that listeners cannot determine the proposed research question after listening."
+        },
+        {
+          "criterion": "Written proposal quality",
+          "typical_weight_within_assignment": "15%",
+          "excellent_description": "Formatted in RevTeX, 2 full pages (not counting references), with clearly separated sections (motivation, research question, data, methods, timeline, risks); prose is publication-ready.",
+          "adequate_description": "Meets the 2-page length requirement with minor formatting issues (e.g., wrong document class, inconsistent citation style); all required sections are present.",
+          "inadequate_description": "Under 1 page, unformatted (plain text or Word), or missing one or more required sections."
+        }
+      ],
+      "submission_conventions": "Written proposal submitted as a PDF compiled from RevTeX source; source .tex file also submitted. Pitch delivered live in class during Week 5 meetings. No late submissions accepted for the live pitch; written proposal may be submitted up to 24 hours after the pitch with a 10% penalty.",
+      "late_policy_note": "The live pitch cannot be made up. Late written proposals lose 10% per calendar day."
+    },
+    {
+      "assessment_category": "Peer Review & Participation",
+      "weight_pct": 15,
+      "weeks": [10, 11, 12],
+      "assignment_level_criteria": [
+        {
+          "criterion": "Depth of technical feedback",
+          "typical_weight_within_assignment": "40%",
+          "excellent_description": "Identifies specific bugs, inefficiencies, or reproducibility gaps with line-level comments in the GitHub pull request review; at least 3 substantive comments that reference specific lines or functions; at least one comment addresses physical plausibility of the code's output.",
+          "adequate_description": "Provides general feedback with some specific examples (e.g., 'the function on line 45 could be simplified') but does not provide line-level comments throughout; misses at least one significant issue.",
+          "inadequate_description": "Surface-level feedback only (e.g., 'looks good' or 'nice work') or praise without any identification of issues; fewer than 2 substantive comments."
+        },
+        {
+          "criterion": "Constructive tone",
+          "typical_weight_within_assignment": "30%",
+          "excellent_description": "All feedback is actionable and respectful; every identified problem is accompanied by a specific suggestion for improvement; no dismissive or condescending language.",
+          "adequate_description": "Mostly constructive; occasional phrasing that is blunt but not hostile; most issues include suggestions, but some are stated as problems without proposed fixes.",
+          "inadequate_description": "Feedback is negative or unhelpful; problems are stated without suggested fixes, or the tone is sarcastic or condescending."
+        },
+        {
+          "criterion": "Discussion engagement",
+          "typical_weight_within_assignment": "30%",
+          "excellent_description": "Contributes at least two substantive new points in the reading group or class discussion that advance the conversation (not just agreement or repetition); demonstrates having read the assigned paper or reviewed the assigned code before class.",
+          "adequate_description": "Responds to others' points with relevant observations; present and attentive but does not independently introduce new angles.",
+          "inadequate_description": "Silent or off-topic during discussion; or contributes only social responses ('I agree with what was said') without intellectual content."
+        }
+      ],
+      "submission_conventions": "Peer code reviews submitted as GitHub pull request reviews (not email or separate documents). Reading group participation is assessed in class; students should bring a printed or digital copy of the paper to class with at least 3 annotations. Instructor grades participation based on in-class observation and post-class self-assessment forms submitted within 24 hours of each meeting.",
+      "late_policy_note": "Peer code reviews submitted after the class meeting in which they are due lose 10% per calendar day. In-class participation cannot be made up."
+    },
+    {
+      "assessment_category": "Final Project Codebase & Paper",
+      "weight_pct": 25,
+      "weeks": [14],
+      "assignment_level_criteria": [
+        {
+          "criterion": "Reproducibility",
+          "typical_weight_within_assignment": "30%",
+          "excellent_description": "The repository runs end-to-end from a fresh clone with a single documented command (e.g., 'make all' or 'bash run.sh'); environment is fully specified via a locked requirements file or Docker image; all intermediate outputs that take more than 5 minutes to generate are cached.",
+          "adequate_description": "Runs with documented manual steps; the README describes the steps clearly enough that an informed reader can reproduce the key results, but the process is not automated.",
+          "inadequate_description": "Cannot reproduce from the submitted repository; missing data, broken imports, or undocumented dependencies that prevent execution."
+        },
+        {
+          "criterion": "Physical interpretation",
+          "typical_weight_within_assignment": "30%",
+          "excellent_description": "Every AI-generated output is explicitly interpreted in terms of physical quantities; units are stated, uncertainties are propagated and reported, and at least one result is compared to a known theoretical prediction or experimental measurement from the literature.",
+          "adequate_description": "Results are stated with correct units but not fully interpreted; uncertainties are reported but not propagated through the full analysis pipeline; comparison to literature is absent or superficial.",
+          "inadequate_description": "AI outputs are reported as numbers without physical context; units missing, no uncertainty estimates, and no connection to physical expectations or prior results."
+        },
+        {
+          "criterion": "Academic writing quality",
+          "typical_weight_within_assignment": "25%",
+          "excellent_description": "Publication-ready RevTeX document with a clear abstract (problem, method, key result, significance), methods section sufficient for an expert to reproduce the analysis, results section with captioned figures, and a discussion that addresses limitations.",
+          "adequate_description": "All required sections are present but unpolished; abstract is incomplete, figures lack captions, or the discussion does not address limitations.",
+          "inadequate_description": "One or more major sections are missing (e.g., no methods section or no discussion), or the document is not formatted in RevTeX and is not of a professional standard."
+        },
+        {
+          "criterion": "Code documentation",
+          "typical_weight_within_assignment": "15%",
+          "excellent_description": "Every function and class has a NumPy-style or Google-style docstring; a README.md describes the repository structure, dependencies, and how to reproduce each figure in the paper; inline comments explain non-obvious algorithmic choices.",
+          "adequate_description": "README.md is present and describes how to run the code; some functions have docstrings but coverage is incomplete; inline comments present for the most complex sections.",
+          "inadequate_description": "No README, no docstrings, and no inline comments; the code cannot be understood without running it and observing outputs."
+        }
+      ],
+      "submission_conventions": "GitHub repository link submitted via course management system. Repository must include: source code, a locked environment file, a README.md, and the compiled PDF of the paper with its .tex source. Submit by 11:59 PM on the last day of Week 14. The repository must be public or the instructor must be added as a collaborator before the deadline.",
+      "late_policy_note": "Late submissions lose 10% per calendar day. Given the showcase presentation occurs in Week 14, no extensions are possible beyond 48 hours after the showcase date."
+    },
+    {
+      "assessment_category": "Departmental Showcase Presentation",
+      "weight_pct": 25,
+      "weeks": [14],
+      "assignment_level_criteria": [
+        {
+          "criterion": "Clarity of narrative",
+          "typical_weight_within_assignment": "30%",
+          "excellent_description": "A non-specialist physicist can follow the story from motivation through method to conclusion; the problem statement, the AI approach, and the key finding are each stated once, clearly, and in plain language before any technical detail is introduced.",
+          "adequate_description": "The narrative is followable for someone in the field but dense for a general physics audience; the motivation is clear but the connection between AI method and physics result requires prior knowledge to follow.",
+          "inadequate_description": "Assumes too much background; a general physics audience would not be able to determine what the student did or why it matters from the presentation alone."
+        },
+        {
+          "criterion": "Defensibility of AI claims",
+          "typical_weight_within_assignment": "35%",
+          "excellent_description": "Every AI-generated output shown in the presentation is explicitly validated against a physical ground truth, a baseline computation, or a known experimental result; the student proactively states the limitations of the AI method before being asked.",
+          "adequate_description": "Most AI claims are validated; at least one claim is presented without explicit validation but the student can provide validation when prompted during Q&A.",
+          "inadequate_description": "AI outputs are presented as ground truth without validation; the student cannot provide a physical argument for why the AI result should be trusted when asked."
+        },
+        {
+          "criterion": "Q&A handling",
+          "typical_weight_within_assignment": "25%",
+          "excellent_description": "Confidently and accurately answers adversarial questions about methodology and physical interpretation; when uncertain, clearly states the limits of their knowledge and proposes a specific follow-up experiment or analysis that would resolve the question.",
+          "adequate_description": "Handles familiar questions about the project well but struggles with questions that probe assumptions or ask about failure modes; answers are not wrong but lack depth.",
+          "inadequate_description": "Cannot address basic critiques of the methodology or physical interpretation; either deflects without engaging the substance of the question or gives an incorrect answer without acknowledging uncertainty."
+        },
+        {
+          "criterion": "Visual presentation",
+          "typical_weight_within_assignment": "10%",
+          "excellent_description": "Clean, readable slides; every figure has a caption that states the take-away in one sentence; font sizes are readable from the back of the room; color choices are accessible; slides could stand alone as a reference document.",
+          "adequate_description": "Functional slides that convey the information but are cluttered (too much text per slide, small fonts in figures, or inconsistent formatting).",
+          "inadequate_description": "Slides are hard to read due to small text, low-contrast color choices, or missing labels on figures; the audience cannot extract key information without the presenter's narration."
+        }
+      ],
+      "submission_conventions": "Slide deck (PDF) submitted to the course repository before the showcase begins. Presentation delivered live at the departmental showcase in Week 14. Presentation time is 12 minutes plus 5 minutes of Q&A; the session chair will cut off at 12 minutes.",
+      "late_policy_note": "The live presentation cannot be made up. The slide PDF must be submitted before the showcase session begins; late PDF submissions (after the session starts) lose 5% but do not affect the presentation grade."
+    }
+  ]
+}

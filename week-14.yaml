@@ -1,0 +1,97 @@
+week: 14
+phase: "Phase 3: Project Execution & Polish"
+title: "Showcase & Wrap-Up"
+
+meetings:
+  - meeting: 1
+    title: "Final Submission and Adversarial Q&A Rehearsal"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Reflect on the 14-week course arc: what has changed in AI capabilities for physics research since the course began? Find one AI-in-physics development from the past month (preprint, tool release, or policy change) and present it as a "course update" — what would we cover differently if the course started today? 3-5 sentences. This is a forward-looking synthesis, not a recap.
+      format: "8-minute chalk talk"
+      guiding_questions:
+        - "What is the single most important thing you learned about AI's role in physics research that you did not know at the start of the course?"
+        - "What capability or tool released in the last month would have changed how you designed your project?"
+        - "What question about AI in physics research do you now have that you did not know to ask in Week 1?"
+    active_engagement:
+      format: "Socratic seminar"
+      description: |
+        Adversarial Q&A rehearsal. Each student has 5 minutes total: 2 minutes to state their project's main result in plain language (no slides), then 3 minutes of adversarial questions from the instructor and class playing the role of a skeptical physics faculty audience.
+
+        Instructor prepares a question bank before class — one tailored question per student targeting their most vulnerable methodological choice (e.g., "Why did you trust the LLM's output here rather than computing it directly?", "Your baseline is linear regression — why not a physics-informed neural network?", "How do you know this result isn't a hallucination that happens to match your test set?").
+
+        After all 10 students have gone (50 min), 10-minute debrief: what questions surprised you? What answers felt strongest? Instructor previews what faculty will likely ask at the showcase.
+      facilitation_notes: |
+        Prepare the tailored question bank by reading all paper drafts before this meeting. The goal is not to embarrass students but to surface real vulnerabilities they can address before the showcase. Give students 48 hours notice that this format will be adversarial so they can prepare. After class, email each student their tailored question and a suggested response approach.
+      estimated_duration: "55 minutes"
+      materials_needed: "Instructor question bank (one tailored question per student, prepared from paper drafts); no slides needed from students"
+
+  - meeting: 2
+    title: "Departmental Showcase"
+    student_introduction:
+      assigned_to: "N/A — all students present"
+      topic_prompt: |
+        Each student delivers a 10-minute showcase presentation to a departmental audience (faculty, other graduate students, and invited guests), followed by 5 minutes of open Q&A. Your presentation must cover: motivation and research question (2 min), methods including AI tools and MCP server (3 min), results with evaluation against baseline (3 min), conclusions and limitations (2 min). Every quantitative result must appear on a slide with its uncertainty and a brief statement of how it was validated. Prepare for adversarial questions about your AI methodology — reviewers will probe whether results could be hallucinations or artifacts.
+      format: "10-minute showcase presentation (≤12 slides) + 5-minute Q&A per student"
+      guiding_questions:
+        - "Can you explain your main result and its significance in two sentences to a physicist who has never used an LLM?"
+        - "What is the strongest evidence that your AI output is correct and not a plausible-looking hallucination?"
+        - "If you had one more month, what would you do to strengthen your main claim?"
+    active_engagement:
+      format: "Structured debate"
+      description: |
+        Showcase presentations (50 min for 10 students at 10+5 min each; may be extended if the showcase is held in a larger venue with more Q&A time).
+
+        After all presentations (final 10 min): Course retrospective. Instructor asks three questions in sequence; students respond popcorn-style (anyone can speak, no repeating what was said):
+        (1) "What is the one AI tool or technique from this course you will still be using in your research five years from now?"
+        (2) "What is the one thing about AI in physics research that turned out to be much harder than you expected?"
+        (3) "What would you tell a first-year graduate student who is considering this course next year?"
+
+        Instructor closes with a brief reflection on how AI capabilities have evolved even over the 14 weeks of the course, and what that means for physics research going forward.
+      facilitation_notes: |
+        Coordinate with the department to secure a larger room and invite faculty at least two weeks in advance. Assign a student timekeeper with a visible 2-minute warning signal. After the retrospective, take a group photo. Collect all showcase slide decks and post them to the course repository with student permission. Send a thank-you email to faculty attendees with links to students' GitHub repositories.
+      estimated_duration: "50 minutes presentations + 10 minutes retrospective = 60 minutes (or more if extended)"
+      materials_needed: "Departmental presentation room; projector; student slide decks submitted 24 hours in advance; visible timer; faculty invited 2 weeks in advance"
+
+homework:
+  week: 14
+  title: "Final Project Codebase, Paper, and Showcase Presentation"
+  phase: "Phase 3: Project Execution & Polish"
+  assessment_category: "Final Project Codebase & Paper (25%) and Departmental Showcase Presentation (25%)"
+  background: |
+    Week 14 has no new assignment — the semester's work culminates in two final deliverables that together constitute 50% of your course grade. The final codebase and paper represent the scientific contribution; the showcase presentation is your public defense of that contribution. Both are due before Meeting 1 of Week 14.
+  instructions:
+    - step: 1
+      text: "Submit your final paper as a compiled PDF (paper_final_<lastname>.pdf) via the course submission portal or by emailing the instructor. The paper must be 4-6 pages in RevTeX, include all six sections (Abstract, Introduction, Methods, Results, Discussion, Conclusion), report at least one evaluation metric with uncertainty, and include an AI Tools & Ethics statement. The paper must compile from source using 'pdflatex paper_final_<lastname>.tex' with no errors."
+    - step: 2
+      text: "Tag your final GitHub repository with the version tag v1.0-final using 'git tag v1.0-final && git push origin v1.0-final'. The tagged commit must include: all analysis notebooks, data_pipeline_<lastname>.py, provenance.json, REPRODUCIBILITY.md, BUG_LOG.md, claim_trace_<lastname>.md, a complete README with a one-command reproduction instruction, requirements.txt or environment.yml, and the compiled paper PDF."
+    - step: 3
+      text: "Submit your showcase slide deck (slides_final_<lastname>.pdf, ≤12 slides) at least 24 hours before Meeting 2. Slides must include: a title slide with your research question, at least one figure showing your key result vs. the baseline with uncertainty bars, and a final slide stating your main conclusion and one open question."
+    - step: 4
+      text: "Deliver your 10-minute showcase presentation in Meeting 2. Speak to the slides you submitted; do not read from them. Be prepared to answer adversarial questions about your AI methodology. After the Q&A, submit a one-page self-assessment (self_assessment_<lastname>.md) within 48 hours of the showcase: state your strongest result, your biggest methodological limitation, and one specific thing you would do differently."
+  deliverables:
+    - "paper_final_<lastname>.pdf — final 4-6 page RevTeX paper"
+    - "GitHub repository tagged v1.0-final with all required files"
+    - "slides_final_<lastname>.pdf — showcase slide deck (≤12 slides, submitted 24 hr before showcase)"
+    - "self_assessment_<lastname>.md — one-page self-assessment submitted within 48 hours of the showcase"
+  grading_criteria:
+    - criterion: "Reproducibility (Codebase & Paper — 25%)"
+      weight: "30%"
+      description: "Running 'git clone && pip install -r requirements.txt && make reproduce' from a fresh environment produces the main result figure and matches the value reported in the paper within stated uncertainty."
+    - criterion: "Physical interpretation (Codebase & Paper — 25%)"
+      weight: "30%"
+      description: "Every AI-generated quantity in the paper is explicitly interpreted in physical terms with units and uncertainty; at least one result is compared quantitatively to a non-AI baseline or literature value."
+    - criterion: "Clarity of narrative (Showcase — 25%)"
+      weight: "20%"
+      description: "A physics faculty member unfamiliar with the student's subfield can follow the talk from motivation to conclusion without prior briefing; the research question is stated in the first 2 minutes."
+    - criterion: "Defensibility of AI claims (Showcase — 25%)"
+      weight: "20%"
+      description: "The student answers at least two adversarial questions about their AI methodology with specific evidence (citing evaluation metric, baseline comparison, or reproducibility controls) rather than general assurances."
+  estimated_time: "No new work this week — all deliverables assembled from previous weeks"
+  due: "Final paper and repository tag due before Meeting 1 of Week 14; slides due 24 hours before Meeting 2"
+  tools_and_resources:
+    - "git tag and git push origin for creating the final repository release"
+    - "pdflatex or Overleaf for compiling the final paper"
+    - "GNU Make for the one-command reproduction target"
+    - "GitHub Releases page to verify the v1.0-final tag is publicly visible"

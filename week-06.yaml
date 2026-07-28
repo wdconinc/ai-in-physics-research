@@ -1,0 +1,190 @@
+week: 6
+phase: "Phase 2: Project Ideation & Deep Dives"
+title: "Building MCP Servers"
+
+meetings:
+  - meeting: 1
+    title: "MCP Server Internals: Transport, Schemas, and Capability Negotiation"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: MCP server internals — the JSON-RPC 2.0 transport layer, the tool schema
+        (inputSchema expressed as a JSON Schema object), and how the MCP host and server
+        negotiate capabilities during the initialization handshake. Read the MCP specification
+        at modelcontextprotocol.io/specification (focus on the "Transports", "Tools", and
+        "Lifecycle" sections) and browse the mcp Python SDK source on GitHub
+        (modelcontextprotocol/python-sdk), paying close attention to how @mcp.tool() decorators
+        map to JSON Schema entries. Prepare up to 6 slides that walk through a single tool
+        call from the LLM client to the server and back, annotating each JSON-RPC message at
+        each stage. Your presentation must address the guiding questions below and connect to
+        this week's learning objective: students will implement their own tool endpoints, so
+        they need to understand exactly what the runtime expects to receive and return.
+      format: "10-minute slide presentation (max 6 slides)"
+      guiding_questions:
+        - "What fields are required in a JSON Schema inputSchema object for an MCP tool, and what happens when a required field is absent from a client call?"
+        - "How does the MCP initialization handshake let a server advertise which capabilities (tools, resources, prompts, sampling) it supports, and why does this matter for client compatibility?"
+
+    active_engagement:
+      format: "Live coding exercise"
+      description: |
+        The instructor pre-loads a skeleton MCP server (skeleton_mcp_server.py) into the
+        shared course repository. The skeleton exposes one working tool endpoint —
+        unit_convert(value: float, from_unit: str, to_unit: str) — that converts between
+        SI units using the pint library, with basic error handling already in place.
+
+        Step 1 (5 min): Students clone or pull the repository and confirm the skeleton runs
+        locally by calling the unit_convert tool from the mcp CLI or a simple test script.
+        Instructor circulates to resolve environment issues.
+
+        Step 2 (15 min): Each student adds a second tool endpoint relevant to their own
+        research project domain. Examples: a tool that queries the arXiv API for recent
+        papers given a physics keyword; a tool that reads a ROOT or HDF5 file path and
+        returns summary statistics; a tool that calls the Materials Project REST API for a
+        given material formula. Students use Copilot or Claude to scaffold the tool handler,
+        then verify the JSON Schema that the MCP SDK emits by inspecting the server's
+        capabilities response.
+
+        Step 3 (15 min): Students add an error handling branch to their new tool — at minimum,
+        catching an API timeout or a missing/invalid input parameter and returning a structured
+        error object (not a Python exception). They verify that an intentionally bad call
+        (wrong type, missing key) returns a readable error message rather than a 500-level crash.
+
+        Step 4 (10 min — debrief): Each student shares their tool's inputSchema and one error
+        case they handled. The instructor asks the room: "Does this schema capture all the
+        constraints a client would need to call this tool correctly?" and records suggested
+        improvements on the whiteboard for students to incorporate in their homework.
+      facilitation_notes: |
+        Pre-test the skeleton in the same Python environment students will use (Python 3.11+,
+        pip install mcp pint). Confirm pint and the mcp CLI are available in the shared
+        environment before class. If any student does not yet have a project domain, have them
+        implement a tool that wraps the NIST WebBook API for thermodynamic property lookup —
+        this is a safe default with clear schemas.
+
+        During Step 2, resist solving errors directly. Ask "What does the SDK's capability
+        response look like?" and point students to the mcp.server.Server.list_tools() output.
+        If students finish early, ask them to add a third tool and think about what resource
+        endpoints (not just tool endpoints) would complement it.
+
+        Watch for students who hard-code API keys in their tool handler — interrupt gently and
+        require them to load from os.environ before proceeding.
+      estimated_duration: "45 minutes"
+      materials_needed: "skeleton_mcp_server.py in course repository; Python 3.11+ with mcp, pint, requests, pytest installed; students' own API keys loaded into .env files"
+
+  - meeting: 2
+    title: "Physics MCP Servers in the Wild: Design Reviews and Project Demos"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: a real-world physics MCP server example — specifically, wrap either the
+        Materials Project REST API (mp-api Python client) or the SIMBAD/VizieR astronomical
+        database (astroquery) as a functioning MCP server with at least two tool endpoints.
+        Build a minimal but working prototype in a Jupyter notebook or Python script and
+        run it live during your introduction. Demonstrate: (1) the server starting and
+        advertising its tool list, (2) a successful tool call returning real data, and
+        (3) what happens when you send a malformed request. Read the mp-api quickstart
+        (materialsproject.org/api) or the astroquery documentation (astroquery.readthedocs.io)
+        as your primary resource. Your demo must address the guiding questions below and
+        connect to this week's learning objective: students should see a complete, running
+        example before they demo their own servers later in this meeting.
+      format: "10-minute live demo"
+      guiding_questions:
+        - "What design choices did you make when mapping the external API's query parameters to MCP tool inputSchema fields, and what were the trade-offs?"
+        - "How did you handle rate limiting or authentication so the MCP server can be used by multiple students without credential leaks?"
+
+    active_engagement:
+      format: "Collaborative whiteboard"
+      description: |
+        The whiteboard session has two phases: individual sketching and collective critique.
+
+        Phase 1 — Individual architecture sketches (15 min): Each student goes to the
+        whiteboard (or a labeled section of it) and draws the architecture of their own
+        project's MCP server. The diagram must show: the LLM client at the top, the MCP
+        server in the middle (with named tool and resource endpoints), and the external data
+        source or API at the bottom, with arrows labeled with the data types flowing in each
+        direction. Students should annotate each tool endpoint with its inputSchema summary
+        (just the key fields) and its return type.
+
+        Phase 2 — Peer critique (20 min): The instructor assigns each student to critique
+        the diagram immediately to their right. The critic must identify: (a) one data flow
+        arrow that is ambiguous or missing, (b) one error case the diagram does not account
+        for, and (c) one alternative design the author has not considered. Critics state their
+        observations aloud; the author may respond but not yet edit the diagram. The instructor
+        records the most-disputed design decisions on a shared section of the whiteboard.
+
+        Phase 3 — Live prototype demos (10 min): Any student who has a running prototype
+        (from the Meeting 1 homework or early work) demonstrates it live — one successful
+        call and one error case. The class asks one clarifying question per demo.
+
+        Debrief (5 min, instructor): The instructor photographs all diagrams and posts them
+        to the course repository. Highlight the two or three design decisions that generated
+        the most disagreement — these are the questions students should address explicitly
+        in their homework design documents.
+      facilitation_notes: |
+        Assign whiteboard sections before students arrive so time is not lost negotiating
+        space. For a 10-person seminar, use a large whiteboard divided into 10 labeled zones,
+        or provide each student a large sheet of paper if whiteboard space is limited.
+
+        During Phase 2 critique, call on quieter students first. If a student's critique is
+        too surface-level ("the arrows look fine"), push with "What happens if the external
+        API is down — does this diagram tell you where the error surfaces?" 
+
+        If no students have a working prototype for Phase 3, use the student introducer's
+        demo from the start of class as the shared example. Ask the class to critique that
+        server's design instead.
+
+        Photograph all diagrams before students leave. Post to the course repository within
+        one hour; students will reference these when writing their homework design documents.
+      estimated_duration: "45 minutes"
+      materials_needed: "Large whiteboard with markers (or large-format paper sheets), camera or phone for photographing diagrams, course repository access for posting photos"
+
+homework:
+  week: 6
+  title: "Project MCP Server Prototype"
+  phase: "Phase 2: Project Ideation & Deep Dives"
+  assessment_category: "Final Project Codebase & Paper"
+  background: |
+    This week you build the core tool infrastructure for your own research project: a working
+    MCP server that exposes at least two tool endpoints wrapping a physics-relevant external
+    API or dataset. The server you submit this week is not a throwaway exercise — it will
+    become a committed component of your final project codebase, and the design decisions you
+    make now (schema choices, error handling strategy, authentication approach) will carry
+    forward into Weeks 7–14. Treat this assignment as the first real engineering deliverable
+    of your project, not as a tutorial exercise.
+  instructions:
+    - step: 1
+      text: "Design the tool schema for your project-specific MCP server. Write a design document (1 page, any format) listing: (a) the two tool endpoints you will implement, (b) each tool's inputSchema (as a JSON Schema object), (c) the expected output format, and (d) the external API or data source each tool will call."
+    - step: 2
+      text: "Implement the MCP server in Python using the mcp SDK. Each tool must handle at least one error case (e.g., API timeout, missing parameter, invalid input) and return a structured error message rather than crashing."
+    - step: 3
+      text: "Write a test script (test_mcp_server.py) that calls each tool endpoint with both valid and invalid inputs and verifies the outputs match the expected schema."
+    - step: 4
+      text: "Document the server in a README.md: include installation instructions, environment variables required, example tool calls with expected outputs, and a brief description of known failure modes."
+    - step: 5
+      text: "Demonstrate the server in class during Meeting 2 by running it live and showing a successful LLM-client tool call."
+  deliverables:
+    - "Python module mcp_server_<lastname>.py containing the MCP server implementation"
+    - "Test script test_mcp_server_<lastname>.py with at least 4 test cases (2 valid, 2 error)"
+    - "README.md with installation and usage instructions"
+    - "Design document design_<lastname>.md or design_<lastname>.pdf"
+  grading_criteria:
+    - criterion: "Tool functionality"
+      weight: "40%"
+      description: "Both tool endpoints return correct, schema-conforming outputs for valid inputs and structured errors for invalid inputs."
+    - criterion: "Reproducibility"
+      weight: "30%"
+      description: "The server can be installed and run from scratch using only the README instructions and a fresh Python environment."
+    - criterion: "Code documentation"
+      weight: "20%"
+      description: "README is complete, tool schemas are documented with examples, and error cases are described."
+    - criterion: "Design clarity"
+      weight: "10%"
+      description: "The design document clearly states the tool's purpose, schema, and the external data source it wraps."
+  estimated_time: "5-8 hours"
+  due: "Before the first class meeting of Week 7"
+  tools_and_resources:
+    - "mcp Python SDK (pip install mcp)"
+    - "MCP specification: modelcontextprotocol.io/specification"
+    - "astroquery (for SIMBAD, VizieR, NASA ADS)"
+    - "mp-api (for Materials Project access)"
+    - "arxiv Python library"
+    - "pytest for test script"

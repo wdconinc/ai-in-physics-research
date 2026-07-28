@@ -1,0 +1,261 @@
+week: 3
+phase: "Phase 1: The Common Baseline"
+title: "RAG & Knowledge Platforms"
+
+meetings:
+  - meeting: 1
+    title: "Embeddings, Vector Stores, and the RAG Pipeline"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Explain the end-to-end architecture of a retrieval-augmented generation (RAG) pipeline,
+        focusing on how text is converted to dense vector embeddings, stored in a vector database,
+        and retrieved via approximate nearest-neighbor search. Cover cosine similarity as the
+        retrieval metric, common chunking strategies (fixed-size vs. sentence-boundary), and how
+        FAISS or ChromaDB implement the index. Draw the full pipeline from a physics query string
+        to a grounded LLM answer. Engage with the foundational paper "FAISS: A Library for
+        Efficient Similarity Search" (Johnson et al., arXiv:1702.08734) and the sentence-transformers
+        library documentation for all-MiniLM-L6-v2. Your presentation must connect directly to
+        this week's objective: implementing a RAG pipeline over arXiv physics abstracts.
+      format: "8-minute chalk talk"
+      guiding_questions:
+        - "Why does cosine similarity work better than Euclidean distance for comparing sentence
+          embeddings, and what geometrical property of normalized vectors makes this so?"
+        - "If your physics paper corpus has abstracts of very different lengths, what chunking
+          strategy would you choose and why might uniform chunking hurt retrieval precision?"
+        - "At what point in the RAG pipeline does the LLM first see text from the retrieved
+          documents, and what would happen if retrieval fails silently?"
+
+    active_engagement:
+      format: "Live coding exercise"
+      description: |
+        Students build a minimal RAG pipeline over a small corpus of arXiv abstracts in real time.
+
+        Step 1 (5 min): Instructor shares a skeleton Jupyter notebook pre-loaded in the course
+        repository. The notebook has cells for imports (arxiv, sentence_transformers, faiss-cpu,
+        openai or anthropic) and empty function stubs: fetch_abstracts(), embed_texts(),
+        build_index(), retrieve(), and answer_with_rag(). Students clone the repo or open it in
+        their cloud environment.
+
+        Step 2 (10 min): Students complete fetch_abstracts() using the arxiv Python library to
+        pull 30 abstracts for a query relevant to their subfield (e.g., "dark matter direct
+        detection" or "quantum error correction surface codes"). They print the first abstract
+        to verify the fetch works.
+
+        Step 3 (10 min): Students complete embed_texts() using SentenceTransformer('all-MiniLM-L6-v2')
+        to produce a (30, 384) NumPy array of embeddings. They check the shape and verify that
+        two thematically similar abstracts have cosine similarity > 0.7.
+
+        Step 4 (10 min): Students build a flat FAISS index (faiss.IndexFlatIP after L2-normalizing
+        embeddings), add the embeddings, and complete retrieve() to return the top-3 abstracts
+        for a given query string. They print the titles and cosine similarities for one test query.
+
+        Step 5 (5 min): Students wire retrieve() into answer_with_rag(): the retrieved abstract
+        text is prepended as context in the LLM system prompt. They run one physics question with
+        and without RAG and observe whether the grounded answer cites a real paper.
+
+        Debrief (5 min): Each student or pair shares one result — did RAG change the answer? Was
+        the retrieved abstract actually relevant? Instructor collects observations on the whiteboard.
+      facilitation_notes: |
+        Pre-test the skeleton notebook in the exact Python environment students will use; confirm
+        that pip install arxiv sentence-transformers faiss-cpu works without conflicts.
+        Have a fallback set of 30 pre-fetched abstracts as a JSON file in the repo in case the
+        arXiv API is slow or rate-limited during class.
+        If students finish Steps 1-4 early, extend: "Now query with a deliberately vague question
+        like 'what is energy?' and note which abstracts come back — is the retrieval still
+        sensible?"
+        For students whose subfield queries return fewer than 30 results, suggest broadening
+        the arXiv category filter (e.g., cs.LG AND physics.ins-det).
+        Do not debug for students — ask "what does the shape of your embedding matrix print out?"
+        to guide them to the source of shape mismatches.
+      estimated_duration: "45 minutes"
+      materials_needed: "Course GitHub repository with skeleton notebook week03_rag_skeleton.ipynb;
+        pre-fetched fallback corpus week03_fallback_corpus.json; Python environment with arxiv,
+        sentence-transformers, faiss-cpu, and either openai or anthropic installed;
+        projector for instructor to display one working solution during debrief"
+
+  - meeting: 2
+    title: "Evaluating Retrieval Quality for Scientific Queries"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Present the standard information-retrieval metrics — precision@k, recall@k, and
+        Mean Reciprocal Rank (MRR) — and explain why they must be adapted for scientific queries
+        where relevance is not binary. Specifically, discuss how TREC-style relevance judgments
+        work and why a physics abstract may be "partially relevant" to a query. Reference the
+        BEIR benchmark paper (Thakur et al., 2021, arXiv:2104.08663), which evaluates retrieval
+        models on domain-specific corpora including scientific text, and note which embedding
+        models perform best on biomedical and scientific subsets. Connect this to today's
+        objective: measuring whether your Week 3 RAG pipeline retrieves the right abstracts
+        for known physics questions, and identifying the failure modes — keyword mismatch,
+        concept drift, and embedding space collapse — that degrade scientific retrieval.
+      format: "10-minute slide presentation (max 6 slides)"
+      guiding_questions:
+        - "If your RAG pipeline returns the top-3 abstracts for a question about 'Cooper pair
+          condensation' but none of them use that exact phrase, how would you decide whether
+          the retrieval succeeded or failed?"
+        - "The BEIR benchmark shows that BM25 (a sparse keyword method) outperforms dense
+          embeddings on some scientific datasets. What property of physics literature might
+          explain this counter-intuitive result?"
+        - "When would high precision@3 but low recall be acceptable for a physics research
+          assistant, and when would it be dangerous?"
+
+    active_engagement:
+      format: "Socratic seminar"
+      description: |
+        The seminar addresses the question: "Is retrieval-augmented generation reliable enough
+        to trust as a literature source in a physics methods section?"
+
+        Step 1 (3 min): Instructor writes the central question on the whiteboard. Students
+        spend 2 minutes writing a one-sentence position statement (yes/no/it depends, with
+        a one-line justification) on a notecard — these are collected and read aloud anonymously
+        to reveal the distribution of initial views without anchoring discussion.
+
+        Step 2 (15 min) — First round: Instructor cold-calls each student once to give their
+        initial response to the question. Students may not repeat a point already made; they
+        must either extend, qualify, or counter what has been said. Instructor tracks key claims
+        on the whiteboard without editorializing.
+
+        Step 3 (15 min) — Second round (peer responses): Students now respond directly to each
+        other's claims, not to the instructor. Instructor intervenes only with probes:
+        (a) "Can you give a concrete physics example where that claim would break down?"
+        (b) "What would a skeptical referee say about using RAG-retrieved citations in a paper?"
+        (c) "If you had to specify a retrieval precision threshold before trusting an RAG answer,
+            what number would you choose and why?"
+
+        Step 4 (7 min) — Evidence round: Students are now allowed to open laptops and pull up
+        one piece of evidence (from their Week 3 notebook results, the BEIR paper, or the arXiv
+        API documentation) that supports or refutes the most contested claim on the whiteboard.
+        Each student who found evidence has 60 seconds to present it.
+
+        Debrief (5 min): Instructor summarizes the 2-3 core disagreements that were not resolved
+        — e.g., whether semantic embedding beats keyword search for niche subfields, or whether
+        the risk of hallucinated citations outweighs the benefit of grounding. These become
+        optional discussion prompts in the Week 3 homework.
+      facilitation_notes: |
+        Prepare three follow-up probes in case discussion stalls: (1) "Name a physics question
+        where you are confident RAG would retrieve the right abstract every time — what makes
+        that query easy?" (2) "Name a physics question where you are confident RAG would fail —
+        what makes it hard?" (3) "If the LLM answer is correct but the retrieved abstracts are
+        wrong, is that a success or a failure of RAG?"
+        Cold-call students in an order that pairs confident and quiet students alternately so the
+        seminar does not become dominated by two or three voices.
+        The anonymous notecard step is important: it prevents anchoring and gives the instructor
+        a quantitative read on the room's priors before discussion begins.
+        Do not express a personal view during the seminar. During the debrief, the instructor
+        may share what the literature says, but should frame it as evidence rather than verdict.
+      estimated_duration: "45 minutes"
+      materials_needed: "Whiteboard and markers; one notecard per student for anonymous position
+        statements; student laptops with Week 3 RAG notebooks accessible; printed or digital
+        copy of BEIR benchmark paper (arXiv:2104.08663) for the evidence round"
+
+homework:
+  week: 3
+  title: "Building and Evaluating a RAG Pipeline over Physics Abstracts"
+  phase: "Phase 1: The Common Baseline"
+  assessment_category: "Standard Curriculum Mini-Assignments"
+  background: |
+    Retrieval-augmented generation (RAG) grounds LLM answers in a retrieved document corpus,
+    reducing hallucination and making claims traceable to specific sources. For physics research,
+    this means an LLM can in principle cite real papers rather than fabricate citations. However,
+    retrieval quality depends heavily on the embedding model, the chunking strategy, and the
+    specificity of the physics query — failures are common and often silent. In this assignment
+    you build a minimal but complete RAG pipeline over a set of arXiv abstracts from your
+    subfield, measure its retrieval precision on questions with known correct sources, and compare
+    LLM answer quality with and without RAG context.
+  instructions:
+    - step: 1
+      text: "Fetch abstracts: Use the arxiv Python library to retrieve between 30 and 50 abstracts
+        for a physics query relevant to your research subfield (e.g., 'quantum computing error
+        correction', 'dark matter direct detection', 'gravitational wave parameter estimation',
+        or 'lattice QCD thermodynamics'). Store each abstract as a dictionary with keys: id,
+        title, authors, abstract, url. Save the corpus to a JSON file named corpus.json so it
+        can be reloaded without re-fetching. Print the number of results retrieved and the title
+        of the first abstract to confirm the fetch succeeded."
+    - step: 2
+      text: "Embed and index: Embed each abstract text using SentenceTransformer('all-MiniLM-L6-v2').
+        L2-normalize the resulting embedding matrix, then build a FAISS IndexFlatIP index and
+        add all embeddings. Save the index to disk as corpus.faiss using faiss.write_index().
+        Report the embedding matrix shape and confirm that the cosine similarity between two
+        abstracts you judge to be thematically related is greater than 0.6. Set a random seed
+        (numpy.random.seed(42)) before any stochastic operations."
+    - step: 3
+      text: "Design your evaluation set: Write exactly 5 physics questions whose correct answers
+        can be verified from the retrieved corpus. For at least 3 of these questions, identify
+        in advance which specific abstract(s) from your corpus contain the answer (record the
+        arXiv ID). These are your 'gold' retrievals. For the remaining questions, you will
+        assess relevance qualitatively. Store the questions and gold IDs in a structured list
+        in your notebook."
+    - step: 4
+      text: "Query and evaluate retrieval: For each of the 5 questions, embed the question,
+        query the FAISS index for the top-3 abstracts, and record the retrieved arXiv IDs and
+        cosine similarity scores. For the 3 questions with gold IDs, compute precision@3
+        (fraction of the top-3 retrievals that match a gold ID). For all 5 questions, write a
+        one-sentence qualitative judgment of whether the retrieval was relevant. Report the
+        mean precision@3 across the 3 gold questions."
+    - step: 5
+      text: "Compare RAG vs. no-RAG answers: For each of the 5 questions, call an LLM (OpenAI
+        GPT-4o-mini or Anthropic Claude Haiku) twice: once with no additional context (baseline),
+        and once with the top-3 retrieved abstract texts prepended to the system prompt as
+        context (RAG). Record both answers. For the 3 gold questions, judge each answer pair as:
+        'RAG better', 'Baseline better', or 'Equivalent', and write a one-sentence justification.
+        Discuss in a Markdown cell: under what conditions did RAG improve accuracy, and when did
+        it fail or make no difference? Load your API key from a .env file using python-dotenv —
+        do not hardcode it."
+  deliverables:
+    - "A Jupyter notebook named week03_<lastname>.ipynb containing all five steps above, with
+      Markdown cells explaining each step and a final summary cell discussing retrieval quality
+      and RAG improvement for your subfield query."
+    - "A corpus.json file containing the fetched abstracts (committed to the repository or
+      included in the zip submission)."
+    - "A requirements.txt or environment.yml listing all dependencies with pinned versions,
+      and a README.md with a single paragraph explaining how to reproduce the results from
+      a fresh clone (including how to supply the API key via a .env file)."
+    - "A .env.example file (not .env) showing the required environment variable names with
+      placeholder values (e.g., OPENAI_API_KEY=your-key-here)."
+  grading_criteria:
+    - criterion: "Methodology correctness"
+      weight: "30%"
+      description: "The RAG pipeline follows the correct sequence: fetch → embed → index →
+        retrieve → generate. FAISS index is built from L2-normalized embeddings using
+        IndexFlatIP (inner product = cosine similarity). Precision@3 is computed correctly
+        for the gold questions. LLM calls use retrieved context in the system prompt for the
+        RAG condition and no retrieval context for the baseline. API key is loaded from
+        environment variables, not hardcoded."
+    - criterion: "Reproducibility"
+      weight: "25%"
+      description: "Any graduate student can re-run the notebook from scratch using only the
+        README instructions: corpus.json is present so no re-fetching is required, the FAISS
+        index is rebuilt deterministically from the corpus, a random seed is set, all
+        dependencies are listed in requirements.txt or environment.yml with pinned versions,
+        and the API key is loaded from a .env file whose required variable names are documented
+        in .env.example."
+    - criterion: "Physical plausibility"
+      weight: "25%"
+      description: "The student explicitly checks that retrieved abstracts are physically
+        relevant to the posed questions — not just lexically similar. For at least 2 of the 5
+        questions, the student compares the RAG-grounded LLM answer against a known result
+        (a textbook value, a known experimental bound, or a claim in one of the retrieved
+        abstracts) and notes whether the LLM answer is consistent with that ground truth.
+        The discussion cell identifies at least one failure mode observed in the pipeline."
+    - criterion: "Code clarity"
+      weight: "20%"
+      description: "The notebook reads as a coherent scientific document: each of the five
+        steps is introduced with a Markdown cell stating its purpose, functions are named
+        descriptively (e.g., fetch_abstracts, embed_corpus, build_faiss_index), code cells
+        have a single clear purpose, and the final summary cell synthesizes the precision@3
+        results and RAG vs. baseline comparison in plain prose that a physicist unfamiliar with
+        RAG could follow."
+  estimated_time: "4-5 hours"
+  due: "Before the first class meeting of Week 4"
+  tools_and_resources:
+    - "arxiv (Python library): https://pypi.org/project/arxiv/ — for fetching abstracts"
+    - "sentence-transformers (PyPI): SentenceTransformer('all-MiniLM-L6-v2') for embedding"
+    - "faiss-cpu (PyPI): faiss.IndexFlatIP for vector indexing and retrieval"
+    - "python-dotenv (PyPI): for loading API keys from a .env file"
+    - "OpenAI Python SDK or Anthropic Python SDK: for LLM answer generation"
+    - "langchain or llama-index (optional): may be used to wire retrieval and generation,
+      but the notebook must also show the raw FAISS retrieval step explicitly"
+    - "BEIR benchmark paper (Thakur et al., 2021, arXiv:2104.08663): for context on
+      evaluating retrieval models on scientific corpora"
+    - "Course repository skeleton notebook week03_rag_skeleton.ipynb as a starting point"

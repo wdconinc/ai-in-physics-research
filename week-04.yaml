@@ -1,0 +1,193 @@
+week: 4
+phase: "Phase 1: The Common Baseline"
+title: "Tool Use & Agents"
+
+meetings:
+  - meeting: 1
+    title: "MCP Specification and Connecting LLMs to External Tools"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Explain the Model Context Protocol (MCP) specification, focusing on its JSON-RPC 2.0
+        transport layer, the distinction between resources (static data exposed to the LLM) and
+        tools (callable functions the LLM can invoke), and how tool schemas are defined using
+        JSON Schema. Walk through a minimal MCP server–client handshake: how does the client
+        discover available tools, and how does the server return a structured result? Reference
+        the official MCP specification at modelcontextprotocol.io and the Anthropic blog post
+        "Introducing the Model Context Protocol" (November 2024). Your presentation must address:
+        (1) Why does MCP use JSON-RPC rather than a custom protocol? (2) How do tool input
+        schemas constrain what an LLM can pass as arguments? (3) How does this architecture
+        differ from a plain function-calling API (e.g., OpenAI function calling)?
+        This topic grounds the live coding exercise that follows, where students will implement
+        their own MCP server wrapping a real physics database.
+      format: "10-minute live demo"
+      guiding_questions:
+        - "What is the difference between a 'resource' and a 'tool' in the MCP specification, and when would you expose a physics dataset as one versus the other?"
+        - "If an LLM receives a JSON Schema describing a tool's input parameters, how does that schema influence the reliability of the LLM's tool calls?"
+        - "What happens when an MCP server returns an error — how does the protocol signal failure back to the LLM client, and how should the client recover?"
+
+    active_engagement:
+      format: "Live Coding Exercise"
+      description: |
+        Students implement a minimal MCP server that wraps two physics database queries.
+        A skeleton repository is pre-loaded with stub functions and a requirements file.
+
+        Step 1 (5 min): Instructor shows the skeleton structure — a Python file using the
+        mcp SDK with two empty @server.tool() stubs: query_simbad() and search_arxiv().
+        Students clone the skeleton or open it in the shared environment.
+
+        Step 2 (15 min): Students implement query_simbad(object_name: str) -> dict using
+        astroquery.simbad to retrieve the object type, spectral type, and parallax for a
+        named star. The tool schema (input type, description, required fields) must be
+        declared correctly so the LLM can call it without guidance. AI coding assistants
+        (Copilot, Claude) are encouraged; students narrate what they are prompting and why.
+
+        Step 3 (15 min): Students implement search_arxiv(keyword: str, max_results: int) -> list
+        using the arxiv Python library, returning a list of dicts with title, authors, and
+        abstract for the top results. Students test each tool in isolation using the MCP
+        inspector or a direct JSON-RPC call before connecting to an LLM client.
+
+        Step 4 (5 min): Students run the server and invoke both tools via a minimal LLM client
+        script (pre-provided) that asks "What is the spectral type of Betelgeuse and what are
+        the 3 most recent arXiv papers about it?" Verify that the LLM correctly chains both
+        tool calls and returns a coherent answer.
+
+        Debrief (5 min): Each student shares one unexpected error they encountered and how
+        they resolved it. Instructor notes which errors were protocol-level vs. API-level vs.
+        physical-plausibility issues.
+      facilitation_notes: |
+        Pre-test the skeleton in the exact environment students will use — astroquery SIMBAD
+        queries can fail silently if the TAP service is unavailable; have a cached fallback
+        JSON response ready. Set a concrete, checkable goal visible on the projector: "Your
+        server should return spectral type 'M1-2Ia-Iab' for Betelgeuse." Circulate and resist
+        solving problems directly — ask "What does the JSON-RPC error code tell you?" If
+        students finish early, extend: "Now add rate-limit handling — what happens if you call
+        search_arxiv 10 times in 5 seconds?" For pairs who struggle with the MCP SDK, direct
+        them to the mcp.types module to see the ToolResult and CallToolResult schemas.
+      estimated_duration: "45 minutes"
+      materials_needed: "Skeleton repository with requirements.txt (mcp, astroquery, arxiv, anthropic or openai SDK); pre-tested MCP client script; projector showing expected output for Betelgeuse query; backup cached API responses for network failures"
+
+  - meeting: 2
+    title: "Agentic Workflows: Multi-Step Reasoning, Tool Chaining, and Failure Recovery"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Explain how LLMs execute multi-step agentic workflows using iterative tool-call loops:
+        the model receives a user query, emits a tool_use block, receives a tool_result, and
+        decides whether to call another tool or synthesize a final answer. Discuss two prompt
+        engineering patterns for reliable tool use: (1) the ReAct (Reason + Act) pattern
+        (Yao et al., arXiv:2210.03629) where the model interleaves reasoning steps with tool
+        calls, and (2) structured output constraints that prevent the model from fabricating
+        tool arguments. Address the failure modes that arise in agentic loops: infinite
+        looping when tool calls do not converge, cascading errors when an upstream tool
+        returns bad data, and safety issues from unbounded API calls. Your presentation must
+        address: (1) What terminates an agentic loop — when does the model decide it has
+        enough information? (2) How do you bound the number of tool calls to prevent runaway
+        API costs? (3) What is the tradeoff between giving the model autonomy to choose tools
+        versus prescribing the exact tool-call sequence?
+        This sets up the collaborative architecture design session that follows.
+      format: "10-minute slide presentation (max 6 slides)"
+      guiding_questions:
+        - "In a ReAct-style agentic loop, what information must be preserved across tool-call iterations so the model maintains coherent reasoning?"
+        - "If a tool returns an error or an implausible value (e.g., a negative stellar mass), should the agentic loop retry, skip, or halt — and who decides?"
+        - "How would you design a rate-limit safeguard for an agentic workflow that might call the arXiv API dozens of times for a single user query?"
+
+    active_engagement:
+      format: "Collaborative Whiteboard"
+      description: |
+        Students collectively design an end-to-end agentic pipeline architecture for a
+        concrete physics task on the whiteboard.
+
+        Step 1 (3 min): Instructor writes the central node on the whiteboard: "Agentic Pipeline:
+        'Characterize a newly observed transient source.'" and asks "What does this pipeline
+        need?" Students call out components; instructor writes them as nodes without organizing.
+
+        Step 2 (12 min): Students take turns at the whiteboard adding directional edges between
+        nodes. Required nodes to surface (instructor prompts if missing): user query parser,
+        LLM reasoning loop, SIMBAD tool, arXiv tool, error handler, rate limiter, output
+        formatter, physical plausibility checker. Students must label each edge with the data
+        type flowing across it (e.g., "object_name: str", "tool_result: JSON", "final_report: str").
+
+        Step 3 (10 min): Instructor poses three stress-test scenarios and asks students to
+        trace the failure path on the diagram: (a) SIMBAD returns no match for the source
+        name; (b) the LLM calls search_arxiv with an empty keyword string; (c) the pipeline
+        has been running for 60 seconds and has made 20 tool calls without producing a final
+        answer. Students draw recovery edges or add new nodes to handle each case.
+
+        Step 4 (10 min): Students negotiate and reorganize the diagram — "Does this arrow make
+        sense? Should the rate limiter be before or after the LLM reasoning loop?" Instructor
+        prompts quiet students directly: "Where would you add a sanity check on the output?"
+
+        Step 5 (5 min): Instructor photographs the final whiteboard, assigns one student to
+        post it to the course repository before next class, and highlights two design decisions
+        the class will revisit when evaluating their Week 4 homework pipelines.
+
+        Debrief (5 min): Each student names one node or edge they would change if the pipeline
+        needed to run unsupervised overnight versus interactively with a human in the loop.
+      facilitation_notes: |
+        Resist organizing the whiteboard yourself for the first 15 minutes — let it be messy.
+        The act of students reorganizing it is where the learning happens. Keep a mental list
+        of nodes that must appear (rate limiter, error handler, physical plausibility checker)
+        and surface them with questions rather than additions: "What happens when this tool
+        gets called 50 times? Is there a node for that?" For 10 students, ensure every student
+        adds at least one node or edge — cold-call quieter students with "Can you draw the
+        connection between the rate limiter and the LLM loop?" The stress-test scenarios in
+        Step 3 reliably generate productive disagreement; let disagreements run for 2 minutes
+        before asking the room to vote on a resolution.
+      estimated_duration: "45 minutes"
+      materials_needed: "Whiteboard with multiple colors of markers; camera or phone for photographing final diagram; projector showing the three stress-test scenarios during Step 3; course repository access to post the diagram photograph"
+
+homework:
+  week: 4
+  title: "Building a Tool-Augmented Physics Agent with MCP"
+  phase: "Phase 1: The Common Baseline"
+  assessment_category: "Standard Curriculum Mini-Assignments"
+  background: |
+    The Model Context Protocol enables LLMs to call external tools reliably by standardizing
+    how tool schemas, inputs, and results are communicated between a language model client and
+    a server exposing domain-specific capabilities. In this assignment you will build a minimal
+    MCP server that exposes two physics database queries as LLM-callable tools, then wire it
+    into a short agentic loop that uses both tools to answer a compound physics question.
+    The goal is not just a working pipeline but a documented understanding of where and how
+    it fails — reliability analysis is as important as functionality in production AI systems.
+  instructions:
+    - step: 1
+      text: "Install the required libraries (mcp, astroquery, arxiv, and either anthropic or openai) and create a Python module named mcp_server_week04_<lastname>.py. Implement two MCP tools using the @server.tool() decorator: (1) query_simbad(object_name: str) -> dict, which queries the SIMBAD TAP service via astroquery.simbad and returns at minimum the object type, spectral type, parallax, and radial velocity for the named object; and (2) search_arxiv(keyword: str, max_results: int) -> list, which returns a list of dicts with title, authors, abstract, and arXiv ID for the most recent papers matching the keyword. Each tool's JSON Schema (description, parameter types, required fields) must be complete enough that an LLM can invoke it correctly without additional guidance. Include a requirements.txt and load all API keys from a .env file."
+    - step: 2
+      text: "Write a Jupyter notebook named week04_<lastname>.ipynb that starts the MCP server as a subprocess and connects to it with an LLM client (Anthropic or OpenAI SDK). Send the following compound query to the LLM: 'What is the spectral type and parallax of Betelgeuse, and what are the 3 most recent arXiv papers whose abstracts mention Betelgeuse? Summarize what the papers suggest about its current evolutionary status.' Log every tool call the LLM makes (tool name, input arguments, and returned result) so the full reasoning chain is visible in the notebook output."
+    - step: 3
+      text: "Run the same agentic query for a second astronomical object of your choice (a star, galaxy, or nebula) and verify the SIMBAD output against the SIMBAD web interface manually. Document whether the LLM's summary of the arXiv papers is consistent with the abstracts it received — flag any factual discrepancies between the summary and the raw abstracts. This is your physical plausibility check."
+    - step: 4
+      text: "Deliberately trigger at least two distinct failure modes in your pipeline and document them in a markdown file named week04_failures_<lastname>.md. Suggested failure modes to attempt: (a) pass an invalid or misspelled object name to query_simbad and observe whether the LLM recovers or halts; (b) call search_arxiv with max_results=0 or a nonsensical keyword; (c) introduce a deliberate rate-limit scenario by calling your server in a tight loop. For each failure mode, record: the input that triggered it, the error or incorrect output produced, whether the agentic loop recovered or required manual intervention, and one sentence describing how you would fix it in a production system."
+    - step: 5
+      text: "Add a README.md to your submission repository with one paragraph explaining how to reproduce your results from scratch (including starting the MCP server), the Python version and key library versions used, and a note on which LLM model you used and any relevant model-version caveats (e.g., tool-calling behavior differs between model versions). Ensure all API keys are loaded from a .env file and that your .env file is listed in .gitignore. Submit a GitHub repository link (or zip file) containing all of the above."
+  deliverables:
+    - "A Python module named mcp_server_week04_<lastname>.py containing a working MCP server with two tools (query_simbad and search_arxiv) with complete JSON Schema declarations."
+    - "A Jupyter notebook named week04_<lastname>.ipynb demonstrating the full agentic loop for Betelgeuse and a second object of your choice, with all tool calls and results logged and a physical plausibility check documented."
+    - "A markdown file named week04_failures_<lastname>.md documenting at least two failure modes: the triggering input, the erroneous output, the recovery behavior, and a proposed fix for each."
+  grading_criteria:
+    - criterion: "Methodology correctness"
+      weight: "30%"
+      description: "The MCP server correctly implements the JSON-RPC protocol using the mcp SDK; both tools have complete JSON Schema declarations (description, parameter types, required fields) such that the LLM can invoke them without additional prompting; the agentic loop correctly chains both tool calls and produces a coherent synthesized answer. Minor issues (e.g., a redundant tool call or an overly verbose schema description) do not penalize; fundamental errors (e.g., a tool the LLM cannot invoke, or a server that never returns a result) do."
+    - criterion: "Reproducibility"
+      weight: "25%"
+      description: "Any graduate student can reproduce the full pipeline from a fresh clone using only the README instructions; requirements.txt or environment.yml is present; all API keys are loaded from a .env file (not hardcoded); the MCP server starts without manual path edits; the notebook runs top-to-bottom without errors on the first attempt in the described environment."
+    - criterion: "Physical plausibility"
+      weight: "25%"
+      description: "The SIMBAD output for at least one object is cross-checked against the SIMBAD web interface and the comparison is documented in the notebook; the LLM's summary of arXiv papers is compared against the raw abstracts and any factual discrepancies are flagged; at least one sanity check on a physical quantity (spectral type, parallax order of magnitude, or paper publication date) is explicitly stated."
+    - criterion: "Code clarity"
+      weight: "20%"
+      description: "The MCP server module has docstrings for each tool function explaining what it queries, what it returns, and what errors it may raise; the notebook is organized with Markdown cells separating each logical step (server startup, tool test, agentic query, plausibility check, failure analysis); variable names are descriptive; the failure modes markdown is structured with clear headings for each failure case."
+  estimated_time: "4-6 hours"
+  due: "Before the first class meeting of Week 5"
+  tools_and_resources:
+    - "mcp Python SDK (pip install mcp)"
+    - "astroquery for SIMBAD access (pip install astroquery)"
+    - "arxiv Python library (pip install arxiv)"
+    - "anthropic or openai Python SDK for the LLM client"
+    - "python-dotenv for .env file loading (pip install python-dotenv)"
+    - "MCP specification: modelcontextprotocol.io"
+    - "Anthropic blog post: 'Introducing the Model Context Protocol' (November 2024)"
+    - "ReAct paper: Yao et al., arXiv:2210.03629"
+    - "SIMBAD web interface for manual cross-checking: simbad.u-strasbg.fr"
+    - "arXiv API documentation: arxiv.org/help/api"

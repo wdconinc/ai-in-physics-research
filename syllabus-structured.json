@@ -1,0 +1,353 @@
+{
+  "course": {
+    "title": "AI in Physics Research \u2013 Generative AI & Knowledge Platforms",
+    "duration_weeks": 14,
+    "meetings_per_week": 2,
+    "meeting_duration_minutes": 60,
+    "max_students": 10,
+    "model": "seminar/workshop"
+  },
+  "assessment": [
+    {
+      "category": "Standard Curriculum Mini-Assignments",
+      "weight_pct": 20,
+      "description": "Weekly hands-on coding assignments in Weeks 1\u20134 covering foundational GenAI and MCP techniques applied to physics problems. Graded on methodology correctness, reproducibility, physical plausibility, and code clarity.",
+      "primary_weeks": [1, 2, 3, 4]
+    },
+    {
+      "category": "Project Proposal & Pitch",
+      "weight_pct": 15,
+      "description": "A written proposal (RevTeX, 2 pages) and a live pitch delivered in Week 5 defining the student\u2019s independent research project. Graded on clarity of research question, feasibility, pitch delivery, and written quality.",
+      "primary_weeks": [5]
+    },
+    {
+      "category": "Peer Review & Participation",
+      "weight_pct": 15,
+      "description": "Structured peer code review and reading-group participation in Weeks 10\u201312. Graded on depth of technical feedback, constructive tone, and discussion engagement.",
+      "primary_weeks": [10, 11, 12]
+    },
+    {
+      "category": "Final Project Codebase & Paper",
+      "weight_pct": 25,
+      "description": "A complete, reproducible codebase (GitHub repository) and an academic paper (RevTeX) submitted in Week 14. Graded on reproducibility, physical interpretation, academic writing quality, and code documentation.",
+      "primary_weeks": [14]
+    },
+    {
+      "category": "Departmental Showcase Presentation",
+      "weight_pct": 25,
+      "description": "A public presentation of project results delivered at a departmental showcase in Week 14. Graded on clarity of narrative, defensibility of AI claims, Q&A handling, and visual presentation.",
+      "primary_weeks": [14]
+    }
+  ],
+  "phases": [
+    {
+      "name": "Phase 1: The Common Baseline",
+      "weeks": [1, 2, 3, 4, 5]
+    },
+    {
+      "name": "Phase 2: Project Ideation & Deep Dives",
+      "weeks": [6, 7]
+    },
+    {
+      "name": "Phase 3: Project Execution & Polish",
+      "weeks": [8, 9, 10, 11, 12, 13, 14]
+    }
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "phase": "Phase 1: The Common Baseline",
+      "title": "GenAI Underpinnings",
+      "topics": [
+        "Course overview and expectations",
+        "What is a large language model: tokens, attention, and next-token prediction",
+        "Capabilities and hard limits of current generative AI in scientific contexts",
+        "Responsible use: attribution, hallucination risk, and reproducibility expectations",
+        "Setting up a reproducible AI-assisted research environment"
+      ],
+      "learning_objectives": [
+        "Identify the core architectural ideas behind transformer-based LLMs and why they matter for physics researchers",
+        "Distinguish between appropriate and inappropriate uses of AI-generated outputs in scientific work",
+        "Set up a working Python environment with LLM API access and version control"
+      ],
+      "milestones": [
+        "Environment setup complete (Python, Jupyter, API keys, GitHub account)",
+        "Mini-assignment 1 distributed"
+      ],
+      "grading_notes": "Mini-assignment 1 due before first class of Week 2. Graded under Standard Curriculum Mini-Assignments (20%)."
+    },
+    {
+      "week": 2,
+      "phase": "Phase 1: The Common Baseline",
+      "title": "Vibe-Coding & Pitfalls",
+      "topics": [
+        "AI-assisted coding workflows: GitHub Copilot, Claude, ChatGPT for code generation",
+        "Prompt patterns for code generation: specification-first, test-driven, iterative refinement",
+        "Common failure modes: hallucinated APIs, off-by-one errors, plausible-but-wrong physics",
+        "Detecting and documenting AI coding errors in a physics context"
+      ],
+      "learning_objectives": [
+        "Use an AI coding assistant to generate, debug, and refine a physics analysis script",
+        "Identify and document at least three distinct AI coding failure modes in a provided codebase",
+        "Apply a test-driven prompting strategy to improve AI code reliability"
+      ],
+      "milestones": [
+        "Mini-assignment 2 distributed"
+      ],
+      "grading_notes": "Mini-assignment 2 due before first class of Week 3. Graded under Standard Curriculum Mini-Assignments (20%)."
+    },
+    {
+      "week": 3,
+      "phase": "Phase 1: The Common Baseline",
+      "title": "RAG & Knowledge Platforms",
+      "topics": [
+        "Retrieval-augmented generation (RAG): embeddings, vector stores, retrieval, generation",
+        "Semantic search over physics literature: arXiv, INSPIRE-HEP, NASA ADS",
+        "Building a local RAG pipeline for a physics subdomain",
+        "Evaluating retrieval quality: precision, recall, and relevance for scientific queries"
+      ],
+      "learning_objectives": [
+        "Implement a RAG pipeline that retrieves relevant arXiv abstracts and grounds LLM answers in the literature",
+        "Evaluate retrieval precision on a set of physics questions with known correct sources",
+        "Identify when RAG improves LLM accuracy and when it fails for scientific queries"
+      ],
+      "milestones": [
+        "Mini-assignment 3 distributed"
+      ],
+      "grading_notes": "Mini-assignment 3 due before first class of Week 4. Graded under Standard Curriculum Mini-Assignments (20%)."
+    },
+    {
+      "week": 4,
+      "phase": "Phase 1: The Common Baseline",
+      "title": "Tool Use & Agents",
+      "topics": [
+        "Model Context Protocol (MCP): specification, servers, clients, and tool calling",
+        "Connecting LLMs to external scientific databases and APIs (SIMBAD, Materials Project, arXiv API)",
+        "Agentic workflows: multi-step reasoning, tool chaining, and error recovery",
+        "Safety and rate-limit considerations when integrating external APIs"
+      ],
+      "learning_objectives": [
+        "Build a minimal MCP server that exposes a physics database query as an LLM-callable tool",
+        "Implement a multi-step agentic workflow that retrieves data and produces a physics-relevant report",
+        "Evaluate the reliability and failure modes of a tool-augmented LLM pipeline"
+      ],
+      "milestones": [
+        "Mini-assignment 4 distributed",
+        "Students begin identifying potential project topics"
+      ],
+      "grading_notes": "Mini-assignment 4 due before first class of Week 5. Graded under Standard Curriculum Mini-Assignments (20%)."
+    },
+    {
+      "week": 5,
+      "phase": "Phase 1: The Common Baseline",
+      "title": "GenAI in Theoretical Physics",
+      "topics": [
+        "Applications of generative AI to theoretical physics: symbolic computation, equation discovery, literature synthesis",
+        "LLMs as research assistants: drafting derivations, checking dimensional analysis, generating counterexamples",
+        "Formulating a falsifiable AI-assisted research question in a physics subdomain",
+        "Structuring a research proposal and delivering a live pitch"
+      ],
+      "learning_objectives": [
+        "Articulate a specific, feasible research question that uses GenAI or MCP as a core method",
+        "Identify the dataset, tools, and evaluation criteria for the proposed project",
+        "Deliver a clear, time-bounded oral pitch and receive peer critique"
+      ],
+      "milestones": [
+        "Written project proposal submitted (RevTeX, 2 pages)",
+        "Live proposal pitch delivered in class",
+        "Project approved by instructor"
+      ],
+      "grading_notes": "Graded under Project Proposal & Pitch (15%). Written proposal and live pitch together."
+    },
+    {
+      "week": 6,
+      "phase": "Phase 2: Project Ideation & Deep Dives",
+      "title": "Building MCP Servers",
+      "topics": [
+        "MCP server architecture in depth: resources, tools, prompts, and sampling",
+        "Designing MCP servers for specific physics use cases (simulation output inspection, database aggregation, unit conversion)",
+        "Authentication, error handling, and rate limiting in production MCP servers",
+        "Integrating MCP servers into student projects"
+      ],
+      "learning_objectives": [
+        "Design and implement a project-relevant MCP server with at least two distinct tool endpoints",
+        "Demonstrate that the MCP server is callable from an LLM client with verifiable outputs",
+        "Document the server\u2019s tools, expected inputs, and failure modes"
+      ],
+      "milestones": [
+        "Students identify the primary model or method for their project",
+        "MCP server prototype demonstrated in class"
+      ],
+      "grading_notes": null
+    },
+    {
+      "week": 7,
+      "phase": "Phase 2: Project Ideation & Deep Dives",
+      "title": "Evaluating AI in Physics",
+      "topics": [
+        "Evaluation frameworks for AI in scientific contexts: accuracy, calibration, reproducibility",
+        "Benchmarking AI outputs against physical ground truth and experimental data",
+        "Uncertainty quantification for AI-generated quantities",
+        "Critical reading of AI-in-physics papers: identifying overclaiming and undisclosed failure modes"
+      ],
+      "learning_objectives": [
+        "Design an evaluation protocol for an AI component in their project with explicit success criteria",
+        "Apply at least one quantitative evaluation metric to an AI-generated output and compare to a baseline",
+        "Critique an AI-in-physics paper for evaluation completeness and reproducibility"
+      ],
+      "milestones": [
+        "Project architecture diagram submitted",
+        "Annotated bibliography of 3 relevant papers submitted"
+      ],
+      "grading_notes": null
+    },
+    {
+      "week": 8,
+      "phase": "Phase 3: Project Execution & Polish",
+      "title": "Advanced Platform Integration",
+      "topics": [
+        "Integrating multiple knowledge platforms into a unified AI pipeline (SIMBAD + arXiv + Materials Project)",
+        "Data wrangling and normalization across heterogeneous scientific databases",
+        "Handling API failures, partial results, and stale data in long-running agentic pipelines",
+        "Project data pipeline implementation and testing"
+      ],
+      "learning_objectives": [
+        "Implement the data ingestion layer of their project pipeline, integrating at least two external data sources",
+        "Handle and log at least two distinct API failure modes gracefully in their pipeline",
+        "Produce a data provenance record documenting the source and transformation of each dataset used"
+      ],
+      "milestones": [
+        "Project data pipeline complete and tested on real data",
+        "Initial analysis results documented in a lab notebook"
+      ],
+      "grading_notes": null
+    },
+    {
+      "week": 9,
+      "phase": "Phase 3: Project Execution & Polish",
+      "title": "Debugging Agentic Workflows",
+      "topics": [
+        "Systematic debugging of agentic pipelines: tracing tool calls, inspecting intermediate outputs, reproducing failures",
+        "Common agentic failure modes: prompt drift, tool hallucination, infinite loops, context overflow",
+        "Logging and observability for multi-step AI pipelines",
+        "Reproducibility for agentic workflows: recording tool call sequences and random seeds"
+      ],
+      "learning_objectives": [
+        "Apply a structured debugging protocol to an agentic workflow with a planted failure",
+        "Add logging to their project pipeline sufficient to reproduce any failure from the logs alone",
+        "Document at least one bug found and fixed in their own project pipeline during the week"
+      ],
+      "milestones": [
+        "Project repository set up on GitHub with README and environment file",
+        "At least one key analysis result produced and committed to the repository"
+      ],
+      "grading_notes": null
+    },
+    {
+      "week": 10,
+      "phase": "Phase 3: Project Execution & Polish",
+      "title": "Ethics & Reproducibility",
+      "topics": [
+        "Ethics of AI-assisted research: attribution, transparency, and disclosure of AI tool use",
+        "Reproducibility standards for AI-assisted physics papers: what must be shared and how",
+        "Structured peer code review: reading code against a physics-specific rubric",
+        "Writing actionable, constructive code review comments"
+      ],
+      "learning_objectives": [
+        "Apply a structured rubric to review a peer\u2019s AI-generated analysis code with line-level comments",
+        "Write a limitations and ethics statement for their own project describing AI tool use",
+        "Identify at least one reproducibility gap in a peer\u2019s codebase and propose a specific fix"
+      ],
+      "milestones": [
+        "First round of peer code reviews completed",
+        "Each student receives written feedback on their project codebase"
+      ],
+      "grading_notes": "Peer code review quality graded under Peer Review & Participation (15%)."
+    },
+    {
+      "week": 11,
+      "phase": "Phase 3: Project Execution & Polish",
+      "title": "Seminar/Reading Group Part 1",
+      "topics": [
+        "Student-selected paper reading groups on project-relevant AI methods in physics",
+        "Communicating AI results to a physics audience: framing, caveats, and validation",
+        "Structuring a results section for a physics paper that uses AI methods",
+        "Responding to skeptical reviewer questions about AI methodology"
+      ],
+      "learning_objectives": [
+        "Lead or contribute substantively to a reading group discussion on a paper relevant to their project",
+        "Draft a results section that interprets AI outputs in physical terms with uncertainty estimates",
+        "Formulate a defensible response to a skeptical reviewer question about their AI methodology"
+      ],
+      "milestones": [
+        "Reading group discussions held; summaries posted to course repository",
+        "Draft results section submitted for peer comment"
+      ],
+      "grading_notes": "Reading group participation graded under Peer Review & Participation (15%)."
+    },
+    {
+      "week": 12,
+      "phase": "Phase 3: Project Execution & Polish",
+      "title": "Seminar/Reading Group Part 2",
+      "topics": [
+        "Second student-led reading group session on advanced or cross-cutting AI-in-physics topics",
+        "Second round of structured peer code review with focus on reproducibility and documentation",
+        "Addressing review feedback: resolving comments and documenting decisions",
+        "Preparing code and documentation for public release"
+      ],
+      "learning_objectives": [
+        "Provide and receive a second round of peer review focused on reproducibility gaps and documentation completeness",
+        "Resolve all blocking code review comments and document decisions in commit messages",
+        "Write a limitations section that honestly characterizes the AI methods and their failure modes"
+      ],
+      "milestones": [
+        "Second round of peer code reviews completed",
+        "All blocking review comments resolved in the project repository"
+      ],
+      "grading_notes": "Peer code review and reading group participation graded under Peer Review & Participation (15%)."
+    },
+    {
+      "week": 13,
+      "phase": "Phase 3: Project Execution & Polish",
+      "title": "Scientific Communication",
+      "topics": [
+        "RevTeX document structure: abstract, introduction, methods, results, discussion, conclusion",
+        "AI-assisted writing: using LLMs to improve clarity and concision without distorting meaning",
+        "Linking code to paper claims: ensuring every quantitative result is traceable to a notebook cell",
+        "Preparing publication-quality figures and tables"
+      ],
+      "learning_objectives": [
+        "Assemble a complete draft paper in RevTeX with all required sections",
+        "Use an LLM to improve prose clarity while preserving scientific accuracy",
+        "Ensure every quantitative claim in the paper is traceable to a specific code cell or figure"
+      ],
+      "milestones": [
+        "Complete paper draft submitted for instructor review",
+        "Final codebase tagged and repository prepared for submission"
+      ],
+      "grading_notes": null
+    },
+    {
+      "week": 14,
+      "phase": "Phase 3: Project Execution & Polish",
+      "title": "Showcase & Wrap-Up",
+      "topics": [
+        "Final project codebase and paper submission",
+        "Departmental showcase presentations to faculty and peers",
+        "Q&A and defense of AI-assisted methodology under adversarial questioning",
+        "Course retrospective: what worked, what did not, future directions for AI in physics research"
+      ],
+      "learning_objectives": [
+        "Present a complete AI-assisted physics research project to a departmental audience",
+        "Defend methodological choices and AI outputs under adversarial questioning",
+        "Reflect critically on the role of AI tools in the research process"
+      ],
+      "milestones": [
+        "Final codebase and paper submitted (GitHub repository + PDF)",
+        "Showcase presentation delivered to departmental audience",
+        "Course retrospective discussion completed"
+      ],
+      "grading_notes": "Final Codebase & Paper (25%) and Departmental Showcase Presentation (25%) both due this week."
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+week: 11
+phase: "Phase 3: Project Execution & Polish"
+title: "Seminar / Reading Group Part 1"
+
+meetings:
+  - meeting: 1
+    title: "Reading Group Session A"
+    student_introduction:
+      assigned_to: "one student (first paper discussion leader)"
+      topic_prompt: |
+        You will lead a 15-minute discussion of a paper directly relevant to your project. Select a paper published in the last 3 years that uses an AI or ML method central to your research question. Prepare a structured presentation covering: (1) the physical problem being solved; (2) the AI method used and why it was chosen; (3) the evaluation approach and its adequacy; (4) one specific finding you will apply or adapt in your own project; (5) one weakness or open question in the paper. Prepare 3 discussion questions for the class. You do not need slides — a whiteboard outline is sufficient.
+      format: "15-minute paper discussion (whiteboard outline, no slides required)"
+      guiding_questions:
+        - "What physical problem does this paper solve, and how does the AI method address it?"
+        - "Is the evaluation rigorous enough to trust the paper's main claim?"
+        - "What would you do differently, and how does this paper inform your own project?"
+    active_engagement:
+      format: "Socratic seminar"
+      description: |
+        The hour is structured as follows:
+        Minutes 0-15: First student leads their paper discussion using their prepared outline and 3 questions.
+        Minutes 15-30: Second student leads their paper discussion (same format).
+        Minutes 30-50: Structured synthesis discussion. Instructor asks: "What evaluation patterns appeared in both papers? What would a skeptical Physical Review referee ask about either paper?" Students respond in structured rounds — no one speaks twice until everyone has spoken once.
+        Minutes 50-60: Each student writes one sentence on a notecard: "The one thing I will change about my own evaluation approach based on today's discussion is ___." Cards are collected and anonymized summaries shared next class.
+      facilitation_notes: |
+        Assign the two paper leaders at least one week in advance. Ask them to share their paper with the class 48 hours before the meeting. During the synthesis discussion, keep a running list on the whiteboard of "evaluation patterns" and "open referee questions" — this serves as a study guide for the showcase. If discussion stalls, project a specific figure from one of the papers and ask "How would you reproduce this figure from a fresh clone of the code?"
+      estimated_duration: "55 minutes"
+      materials_needed: "Whiteboard; papers shared digitally 48 hours in advance; index cards for synthesis round"
+
+  - meeting: 2
+    title: "Reading Group Session B"
+    student_introduction:
+      assigned_to: "one student (third paper discussion leader)"
+      topic_prompt: |
+        You will lead a 15-minute discussion of a paper directly relevant to your project. Select a paper that uses a different AI method than the Week 11 Meeting 1 papers (to maximize class exposure to diverse approaches). Prepare the same structured outline as Meeting 1 leaders: physical problem, AI method, evaluation, what you will adapt, one weakness, and 3 discussion questions. Post your paper to the course repo 48 hours in advance.
+      format: "15-minute paper discussion (whiteboard outline)"
+      guiding_questions:
+        - "How does this paper's AI method differ from those discussed in Meeting 1, and when would you choose one over the other?"
+        - "What caveats would you add to the abstract if you were a co-author?"
+        - "What single experiment would most strengthen this paper's main claim?"
+    active_engagement:
+      format: "Structured debate"
+      description: |
+        Minutes 0-15: Third student leads their paper discussion.
+        Minutes 15-30: Fourth student leads their paper discussion.
+        Minutes 30-55: Structured debate on the motion: "The results section of an AI-in-physics paper should always include a comparison to a non-AI baseline, even if the baseline is trivially worse."
+
+        Setup (3 min): Instructor assigns 5 students FOR, 5 AGAINST (not the paper leaders for this round).
+        Opening statements (6 min): 3 min per side.
+        Rebuttals (8 min): 4 min per side.
+        Open floor (8 min): Free discussion; instructor injects: "What if the baseline is 100× more expensive to compute than the AI method?"
+        Vote and debrief (5 min): Reveal actual Physical Review Data guidelines on baselines.
+      facilitation_notes: |
+        The debate motion is intentionally provocative — most students will initially vote FOR. The AGAINST side often argues for computational cost exceptions, which is a genuine research tradeoff. Prepare the Physical Review Data author guidelines (journals.aps.org/prd/authors) as the authoritative reference for the debrief. Assign sides before class to ensure balance.
+      estimated_duration: "55 minutes"
+      materials_needed: "Papers shared 48 hours in advance; PRD author guidelines bookmarked"
+
+homework:
+  week: 11
+  title: "Draft Results Section and Reading Group Summary"
+  phase: "Phase 3: Project Execution & Polish"
+  assessment_category: "Peer Review & Participation"
+  background: |
+    Writing a results section for AI-assisted physics research requires translating stochastic model outputs into physical claims with appropriate uncertainty. This week you will produce a draft results section that will receive peer feedback before the final paper deadline, and you will document the reading group discussion to help the class build a shared knowledge base.
+  instructions:
+    - step: 1
+      text: "Write a draft results section (600-900 words) for your project paper in RevTeX format (results_draft_<lastname>.tex). The section must: (a) report your primary evaluation metric with a numeric value and uncertainty estimate (e.g., 'MAE = 0.08 ± 0.02 eV, compared to the DFT baseline of 0.31 ± 0.05 eV'); (b) include at least one figure (saved as results_fig1_<lastname>.pdf) showing the AI output vs. baseline or ground truth; (c) state explicitly what each AI-generated quantity represents physically; (d) note at least one result that was unexpected or inconsistent with prior work."
+    - step: 2
+      text: "Write a 300-word reading group summary (reading_group_summary_<lastname>.md) covering the two papers discussed in the meeting you attended. For each paper: state the main claim in one sentence, identify the strongest and weakest aspect of the evaluation, and write one question you would ask the authors. Commit the summary to the course repository before the next class."
+    - step: 3
+      text: "Formulate written responses to two skeptical reviewer questions about your AI methodology. Write these as you would in a rebuttal letter (reviewer_response_<lastname>.md): quote the hypothetical reviewer comment, then write a 100-150 word response citing your evaluation protocol, baseline comparison, and reproducibility controls. Use questions from the class discussion if possible."
+  deliverables:
+    - "results_draft_<lastname>.tex — draft results section in RevTeX"
+    - "results_fig1_<lastname>.pdf — figure showing AI output vs. baseline or ground truth"
+    - "reading_group_summary_<lastname>.md — 300-word summary of two papers (committed to course repo)"
+    - "reviewer_response_<lastname>.md — responses to two hypothetical skeptical reviewer questions"
+  grading_criteria:
+    - criterion: "Discussion engagement"
+      weight: "30%"
+      description: "Student contributes at least two substantive new points during the reading group (not just agreeing or restating); paper leaders receive full credit for leading their discussion with the required structure."
+    - criterion: "Results section quality"
+      weight: "40%"
+      description: "The draft results section reports the evaluation metric with uncertainty, includes a figure comparing AI to baseline, and explicitly interprets each quantity in physical terms."
+    - criterion: "Reading group summary"
+      weight: "15%"
+      description: "The summary addresses all required points for both papers and is committed to the course repo before the next class."
+    - criterion: "Reviewer response quality"
+      weight: "15%"
+      description: "Each response is 100-150 words, cites specific evidence from the project (evaluation metric, baseline comparison, reproducibility controls), and directly addresses the hypothetical concern."
+  estimated_time: "5-7 hours"
+  due: "Before the first class meeting of Week 12"
+  tools_and_resources:
+    - "RevTeX 4.2 (or Overleaf for online editing)"
+    - "matplotlib with publication-quality defaults (plt.rcParams update)"
+    - "Semantic Scholar or Google Scholar for paper discovery"
+    - "APS Physical Review Data author guidelines (journals.aps.org/prd/authors)"

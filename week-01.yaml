@@ -1,0 +1,208 @@
+week: 1
+phase: "Phase 1: The Common Baseline"
+title: "GenAI Underpinnings"
+
+meetings:
+  - meeting: 1
+    title: "How Transformers Work: Attention, Tokens, and Next-Token Prediction"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Prepare an 8-minute chalk talk explaining the key-query-value attention mechanism at
+        the core of transformer models. Focus on why attention enables parallelism across
+        sequence positions (unlike RNNs), how multi-head attention allows the model to attend
+        to different aspects of the input simultaneously, and what "next-token prediction" as
+        a training objective means for a physics researcher who will be querying the model.
+        Start from the original "Attention Is All You Need" paper (Vaswani et al., 2017,
+        arXiv:1706.03762) and the blog post "The Illustrated Transformer" by Jay Alammar.
+        You will draw the attention computation from memory at the whiteboard — no slides or
+        notes. Connect your explanation to Learning Objective 1: why does knowing this
+        architecture help a physicist decide when to trust or distrust model outputs?
+      format: "8-minute chalk talk"
+      guiding_questions:
+        - "Why does next-token prediction make transformers prone to confident-sounding but factually wrong outputs, and what does that imply for using them in physics calculations?"
+        - "How does the attention mechanism decide which earlier tokens to weight heavily when generating the next token — and what happens when relevant context is far away in the prompt?"
+        - "What architectural property of transformers makes it impossible for them to reliably perform exact symbolic computation, such as solving a differential equation analytically?"
+
+    active_engagement:
+      format: "Live coding exercise"
+      description: |
+        The instructor pre-loads a skeleton Jupyter notebook into the course GitHub repository
+        (path: exercises/week01/meeting1_token_explorer.ipynb). Students clone the repository
+        and open the notebook in their local Jupyter environment before class.
+
+        Step 1 (5 min): Instructor introduces the notebook. It contains three skeleton cells:
+          (a) a cell that uses the `tiktoken` library to tokenize a physics sentence and print
+              token IDs and decoded tokens side-by-side;
+          (b) a cell stub for a function `count_tokens(prompt: str, model: str) -> int` that
+              students must complete using `tiktoken.encoding_for_model`;
+          (c) a cell that calls the OpenAI chat completions API (`openai>=1.0`) with a
+              short physics prompt and prints the response, but has a bug: the model name is
+              misspelled and the temperature is set to 2.0.
+
+        Step 2 (10 min): Students complete cell (b) — implement `count_tokens`. They may use
+        GitHub Copilot or the OpenAI SDK docs. Instructor circulates and asks "What does the
+        function return for an empty string?" to prompt edge-case thinking.
+
+        Step 3 (10 min): Students diagnose and fix the two bugs in cell (c). The misspelled
+        model name will raise an `openai.NotFoundError`; temperature > 1.0 will either raise
+        a validation error or produce incoherent output. Students document each fix with a
+        markdown cell explaining what was wrong and why.
+
+        Step 4 (10 min): Students run the fixed cell with the prompt: "What is the binding
+        energy per nucleon for iron-56, and why is it the peak of the curve?" They record the
+        model's answer, then look up the known value (8.79 MeV) and note whether the model's
+        number matches. If it hallucinates a value, they note that too.
+
+        Step 5 (5 min, debrief): Each student or pair shares: (1) which bug took longer to
+        find and why, (2) whether the model's binding energy answer was numerically correct.
+        Instructor asks: "Does a wrong number in a fluent sentence look different from a right
+        number?" Use this to foreshadow the responsible-use discussion in Meeting 2.
+      facilitation_notes: |
+        Common stumbling point: students without API keys set up. Require key setup as
+        pre-class homework (announced in the syllabus). Have a fallback: the `litellm` library
+        can route to a free-tier model (e.g., Groq-hosted llama3) if OpenAI keys are
+        unavailable. Keep the fallback URL in the course README.
+
+        Early finishers: ask them to extend step 4 by trying two different temperatures
+        (0.0 and 0.7) and comparing outputs for the same physics question. Does lower
+        temperature produce a more physically accurate answer? Why or why not?
+
+        Debrief approach: do not correct wrong answers immediately — ask the room first.
+        The goal is to surface that numerical plausibility requires external verification,
+        not just reading the model's output.
+      estimated_duration: "45 minutes"
+      materials_needed: "Course GitHub repository with skeleton notebook; OpenAI API keys (or Groq/litellm fallback); Jupyter installed in student environments; tiktoken and openai Python packages"
+
+  - meeting: 2
+    title: "Responsible Use, Attribution, and Setting Up a Reproducible Research Environment"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Prepare a 10-minute live demo showing how a reproducible Python research environment
+        is constructed from scratch. In your Jupyter notebook (or terminal), walk through:
+        (1) creating a conda environment with a pinned Python version; (2) installing
+        `openai`, `anthropic`, `litellm`, `numpy`, `matplotlib`, and `jupyter`; (3) exporting
+        an `environment.yml`; (4) loading an API key from a `.env` file using `python-dotenv`
+        so the key never appears in the notebook; and (5) committing the environment file to
+        a GitHub repository while confirming that `.env` is in `.gitignore`. Reference the
+        OpenAI Python SDK quickstart (https://platform.openai.com/docs/quickstart) and
+        the Anthropic Python SDK docs (https://docs.anthropic.com/en/api/getting-started).
+        Connect to Learning Objective 3: a reproducible environment is a prerequisite for
+        any AI-assisted finding to be trusted or replicated by a collaborator.
+      format: "10-minute live demo"
+      guiding_questions:
+        - "What is the minimal set of steps a collaborator needs to follow to reproduce your AI-assisted experiment from a fresh machine — and which step is most commonly forgotten?"
+        - "Why is loading an API key from an environment variable (rather than hardcoding it) both a security practice and a reproducibility practice?"
+        - "If you use an AI to generate code, what do you need to document so that your published paper's methods section is accurate and complete?"
+
+    active_engagement:
+      format: "Socratic seminar"
+      description: |
+        The instructor poses a single contested question written on the whiteboard before
+        students arrive: "An AI model drafted 40% of the methods code in a published physics
+        paper. The paper does not mention this. Is that a problem, and if so, for whom?"
+
+        Step 1 (3 min): Students read two short excerpts (pre-printed, one page total):
+          (a) the APS guidelines on AI-assisted writing (2023);
+          (b) one paragraph from a retracted preprint where an LLM hallucinated a citation.
+        No laptops during this step.
+
+        Step 2 (10 min, first round): Instructor calls on each student in turn (not volunteers)
+        to give a one-sentence answer to the central question. Students may not repeat what
+        a previous speaker said — they must add something new or explicitly refine a prior
+        point. Instructor writes key claims on the whiteboard as students speak.
+
+        Step 3 (15 min, second round): Instructor poses three follow-up probes in sequence,
+        pausing for 3–4 minutes of open discussion after each:
+          Probe A (counterexample): "Suppose the AI-generated code is provably correct and
+            the physical results are validated. Does the omission still matter?"
+          Probe B (provocation): "A first-author PhD student and their advisor disagree on
+            whether to disclose. What does each stand to lose by disclosing vs. not disclosing?"
+          Probe C (redirection): "What would a skeptical referee specifically need to know
+            about the AI's role to evaluate the paper's reproducibility?"
+
+        Step 4 (12 min): Students individually write three bullet points (in their notebook
+        or on paper): (1) a specific disclosure practice they will adopt for their own work
+        this semester; (2) one situation where AI use in physics research is clearly
+        appropriate; (3) one situation where it is clearly inappropriate. Pairs share and
+        compare their lists.
+
+        Step 5 (5 min, debrief): Instructor summarizes the 2–3 key disagreements that were
+        not resolved. These are written on the whiteboard and photographed. Instructor
+        explicitly connects unresolved disagreements to the homework: "Your mini-assignment
+        asks you to document your AI use — these disagreements are why that documentation
+        matters."
+      facilitation_notes: |
+        This seminar works only if the instructor does not express a personal view on the
+        central question until the very end of the debrief — and even then, frame it as
+        "my current working position, open to revision." Students in STEM often want the
+        instructor to give the right answer; resist this.
+
+        Cold-calling in step 2 is essential for equity: in a 10-person seminar, voluntary
+        participation concentrates in 3–4 students. Name each student directly: "Alex, what
+        is your one-sentence answer?"
+
+        If discussion stalls after Probe A, use: "If reproducibility only requires that the
+        code runs, what is the peer reviewer actually checking?" This usually restarts
+        disagreement.
+
+        For step 4, circulate and read over students' shoulders to identify interesting
+        disagreements between pairs before the debrief. Seed the debrief by naming a
+        specific pair disagreement: "Priya said X and Jordan said Y — let's hear both."
+      estimated_duration: "45 minutes"
+      materials_needed: "Pre-printed one-page excerpt packet (APS AI guidelines excerpt + retracted preprint paragraph); whiteboard and markers; printed or projected central question; student notebooks or paper for step 4"
+
+homework:
+  week: 1
+  title: "First Contact: Querying an LLM API with a Physics Question"
+  phase: "Phase 1: The Common Baseline"
+  assessment_category: "Standard Curriculum Mini-Assignments"
+  background: |
+    Before AI-assisted methods can contribute to physics research, a researcher must be able
+    to set up a controlled, reproducible environment, query a model programmatically, and
+    critically evaluate the output against known physical results. This assignment establishes
+    that baseline: you will build the minimal infrastructure needed for all subsequent work
+    in this course and confront, for the first time, the practical problem of detecting
+    hallucinations in a domain where you have independent knowledge. The environment you
+    create here — version-controlled, with secrets managed properly, and dependencies pinned
+    — will serve as the foundation for every assignment that follows.
+  instructions:
+    - step: 1
+      text: "Create a new GitHub repository named `ai-physics-<lastname>` (public or private with the instructor added as collaborator). Initialize it with a README.md. Clone the repository locally. Create a `.gitignore` that includes `.env`, `__pycache__/`, and `*.pyc`. Commit and push."
+    - step: 2
+      text: "Set up a reproducible Python environment: run `conda create -n ai-physics python=3.11`, activate it, then install `openai>=1.0`, `anthropic`, `litellm`, `numpy`, `matplotlib`, `jupyter`, and `python-dotenv`. Export the environment with `conda env export > environment.yml` and commit it. Alternatively, use `pip` and produce a `requirements.txt` via `pip freeze > requirements.txt`. Your choice of tool must be documented in the README."
+    - step: 3
+      text: "Create a `.env` file (not committed) containing your API key as `OPENAI_API_KEY=sk-...` (or `ANTHROPIC_API_KEY` if using the Anthropic SDK, or a `GROQ_API_KEY` if using litellm with Groq as a free-tier fallback). In your notebook, load it with `from dotenv import load_dotenv; load_dotenv()` and access the key via `os.environ`. Never hardcode the key in the notebook."
+    - step: 4
+      text: "Create a Jupyter notebook named `week01_<lastname>.ipynb`. In the notebook, write a Python function `query_llm(prompt: str, model: str = 'gpt-4o-mini') -> str` that sends a prompt to the LLM API using the OpenAI Python SDK (or Anthropic SDK / litellm) and returns the response text. Document the function with a docstring. Then query the model with at least three physics prompts of your choice — each should have a known answer you can verify independently. For each response: (a) record the model's answer verbatim; (b) look up the accepted value from a textbook or the PDG/NIST database; (c) compute or state the discrepancy; (d) classify the response as correct, approximately correct, or hallucinated, with one sentence of justification. Identify and clearly label at least one hallucination or significant limitation in the model's responses."
+  deliverables:
+    - "A Jupyter notebook named `week01_<lastname>.ipynb` containing: the `query_llm` function with a docstring, at least three physics queries with model responses, a quantitative or qualitative comparison of each response to the known answer, and an explicit identification and discussion of at least one hallucination or hard limit."
+    - "A `requirements.txt` or `environment.yml` file that fully specifies the Python environment, including pinned versions, so that the notebook can be run from a fresh install."
+    - "A `README.md` with: a one-paragraph description of what the notebook does, step-by-step instructions for reproducing the results from scratch (including how to create the `.env` file without revealing the key), and a one-paragraph reflection on what you learned about LLM reliability in a physics context."
+    - "A `.gitignore` that excludes `.env` and Python cache files. Confirm (in the README) that no API keys appear anywhere in the committed repository."
+  grading_criteria:
+    - criterion: "Methodology correctness"
+      weight: "30%"
+      description: "The `query_llm` function uses the OpenAI SDK (or an approved alternative) correctly — correct endpoint, valid model name, API key loaded from environment. The three physics prompts are substantive questions with known answers (not trivially obvious questions). The comparison methodology is sound: accepted values are sourced from a credible reference (PDG, NIST, textbook) and stated explicitly."
+    - criterion: "Reproducibility"
+      weight: "25%"
+      description: "Any graduate student can re-run the notebook from scratch following only the README instructions: environment file is present and complete, API key is loaded from a `.env` file (not hardcoded), cells run top-to-bottom without error, and the `.gitignore` prevents accidental key commits."
+    - criterion: "Physical plausibility"
+      weight: "25%"
+      description: "At least one hallucination or hard limit is identified and discussed with physical reasoning — not just 'the model got it wrong' but an explanation of what the correct value is, why the model's answer is wrong, and what this suggests about when to trust LLM outputs for similar questions. At least one correct response is also validated against a known source."
+    - criterion: "Code clarity"
+      weight: "20%"
+      description: "The notebook reads as a coherent document: the `query_llm` function has a docstring, each major notebook section has a markdown cell explaining its purpose, variable names are descriptive, and the comparison between model output and known answer is clearly laid out so a reader can follow the reasoning without running the code."
+  estimated_time: "3-4 hours"
+  due: "Before the first class meeting of Week 2"
+  tools_and_resources:
+    - "OpenAI Python SDK: `pip install openai>=1.0`; quickstart at https://platform.openai.com/docs/quickstart"
+    - "Anthropic Python SDK (alternative): `pip install anthropic`; docs at https://docs.anthropic.com/en/api/getting-started"
+    - "litellm (free-tier fallback via Groq): `pip install litellm`; supports OpenAI-compatible interface with Groq-hosted models at no cost"
+    - "python-dotenv for secret management: `pip install python-dotenv`; load with `load_dotenv()` before `os.environ` calls"
+    - "tiktoken for token counting: `pip install tiktoken`"
+    - "PDG Particle Data Group (known values): https://pdg.lbl.gov"
+    - "NIST Physical Reference Data (constants, atomic data): https://physics.nist.gov/PhysRefData"
+    - "Course GitHub repository with skeleton notebook: exercises/week01/"
+    - "APS guidelines on AI-assisted writing (2023): https://www.aps.org/policy/statements/ai-generated-text.cfm"

@@ -1,0 +1,247 @@
+week: 7
+phase: "Phase 2: Project Ideation & Deep Dives"
+title: "Evaluating AI in Physics"
+
+meetings:
+  - meeting: 1
+    title: "Benchmarking AI Outputs Against Physical Ground Truth"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: Evaluation metrics for AI in physics — calibration curves, mean absolute error
+        in physical units, coverage of uncertainty intervals, and R² vs. physically meaningful
+        error tolerances. Read Cranmer et al. 2020 "The frontier of simulation-based inference"
+        (arXiv:1911.01429) and identify how the authors evaluate their inference methods against
+        ground truth posteriors. In 3–5 sentences, name at least two specific metrics the paper
+        uses, explain what a well-calibrated posterior means in a physics context, and describe
+        one case where a low aggregate error metric can still hide a physically significant
+        failure mode. Connect this to your own project: what would a well-calibrated evaluation
+        look like for an AI component you plan to use?
+      format: "8-minute paper presentation"
+      guiding_questions:
+        - "If an AI model achieves 5% MAE on predicted band gaps — better than the variance in
+          DFT functionals — does that make it adequate for materials discovery? What additional
+          evidence would a skeptical referee demand?"
+        - "How do you distinguish a model that is accurate on average from one that is accurate
+          where it matters? Can you construct a scenario where the two diverge?"
+
+    active_engagement:
+      format: "Structured debate"
+      description: |
+        Claim for debate (displayed on a slide throughout): "A neural network that achieves
+        MAE < 0.1 eV on a held-out test set is ready to replace DFT for high-throughput
+        materials screening."
+
+        Step 1 — Assign sides (2 min): Randomly split the room into two groups of ~5.
+        One group defends the claim; the other critiques it. Assign students to the side
+        opposite their intuited view wherever possible.
+
+        Step 2 — Preparation (5 min): Each side caucuses privately. They must identify
+        (a) the two strongest arguments for their position, (b) the opposing side's most
+        likely strongest counterargument, and (c) one piece of evidence or reasoning that
+        would change their position.
+
+        Step 3 — Opening statements (6 min total): Each side delivers a 3-minute opening
+        statement. One spokesperson presents; others may pass written notes.
+
+        Step 4 — Rebuttal (6 min total): Each side has 3 minutes to respond directly to
+        the other side's opening statement. New evidence may be introduced.
+
+        Step 5 — Open cross-examination (10 min): Both sides may question each other
+        directly. Instructor enforces that every question receives a direct answer before
+        follow-ups are allowed.
+
+        Step 6 — Debrief (8 min): Instructor asks: What additional data would resolve this
+        debate? Students name specific experiments, datasets, or validation studies. Instructor
+        lists open questions on the whiteboard. Poll: did anyone change their position?
+      facilitation_notes: |
+        Assign the paper before class (Perdew et al. 1996 PRL on DFT accuracy, or a recent
+        neural network potential benchmark such as Batzner et al. 2022 NequIP, arXiv:2101.03164).
+        Display the claim on a persistent slide — students should be arguing about that specific
+        numeric threshold, not about AI in general.
+
+        Keep a visible countdown timer for each segment; do not let opening statements run long
+        as it compresses rebuttal. If one side dominates, prompt the weaker side with: "Your
+        opponents have not addressed X — is that a concession?"
+
+        Debrief key probe: "Name a physical regime where 0.1 eV MAE would be catastrophically
+        wrong. Now name one where 1 eV MAE would be acceptable. What does that tell you about
+        the adequacy of aggregate metrics?" Do not express your own view during the debate;
+        save it for the final two minutes of debrief.
+      estimated_duration: "45 minutes"
+      materials_needed: >-
+        Slide with the debate claim displayed; printed or digital access to at least one
+        neural network potential benchmark paper (e.g., Batzner et al. 2022 or Smith et al.
+        2017 ANI-1); visible countdown timer; whiteboard for recording open questions
+
+  - meeting: 2
+    title: "Uncertainty Quantification and Evaluation Protocol Design"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: Uncertainty quantification (UQ) for AI-generated physical quantities — conformal
+        prediction, Monte Carlo dropout, and deep ensembles, and how each applies when the
+        quantity carries physical units and must be compared to experimental measurement
+        uncertainty. Read Lakshminarayanan et al. 2017 "Simple and scalable predictive
+        uncertainty estimation using deep ensembles" (arXiv:1612.01474) and one physics-specific
+        application such as Wen & Bhatt 2020 on UQ for interatomic potentials or Peterson et al.
+        2017 on uncertainty in atomistic simulations. In 3–5 sentences, explain what it means
+        for an uncertainty interval to be calibrated, contrast coverage probability with interval
+        sharpness, and describe a case where overconfident AI predictions would lead to a
+        physically wrong conclusion. Explain how you would apply one of these UQ methods to
+        your own project.
+      format: "10-minute slide presentation (max 6 slides)"
+      guiding_questions:
+        - "A deep ensemble reports a 95% confidence interval for a predicted cross-section.
+          If you run 100 predictions and 12 of the true values fall outside the reported
+          interval, what does that tell you, and what should you do next?"
+        - "When is it better to have a wide, calibrated uncertainty interval than a narrow,
+          overconfident one? Give a concrete example from experimental or computational physics."
+
+    active_engagement:
+      format: "Collaborative whiteboard"
+      description: |
+        Goal: Collectively build a generalized evaluation protocol rubric on the whiteboard
+        that any student in the room could apply to assess an AI component in their own project.
+
+        Step 1 — Seed the whiteboard (3 min): Instructor writes the central node "AI Component
+        Evaluation Protocol" and draws five empty branches labeled: (1) Primary metric,
+        (2) Baseline, (3) Test dataset, (4) UQ method, (5) Success threshold. Ask: "What
+        belongs in each branch?"
+
+        Step 2 — Individual contribution round (10 min): Each student takes a marker in turn
+        and adds at least one concrete item to any branch — a specific metric name, a baseline
+        type, a dataset source, a UQ method, or an example success criterion. Students must
+        speak aloud as they write, explaining their choice. Others may challenge by raising a
+        hand; the instructor arbitrates briefly.
+
+        Step 3 — Project-specific annotation (12 min): Each student picks their own project
+        and, at their seat, drafts (on paper or laptop) their own version of the five-branch
+        protocol using the shared vocabulary on the whiteboard. They write their primary metric
+        with units, their named baseline, their test dataset with a DOI or URL, their UQ
+        approach, and their numeric success criterion.
+
+        Step 4 — Gallery share (10 min): Three students volunteer (or are called on) to read
+        their five-point protocol aloud. The room asks: Is the metric specific enough? Is the
+        baseline realistic? Is the success threshold defensible?
+
+        Step 5 — Debrief (7 min): Instructor photographs the whiteboard. Ask: "Which branch
+        was hardest to fill in, and why?" Highlight the branches where students disagreed —
+        these are the live methodological tensions in the field. Connect the rubric directly
+        to the Week 7 homework deliverable.
+      facilitation_notes: |
+        Resist the urge to organize the whiteboard before students have contributed — let it
+        be messy first, then ask a student to reorganize a branch that has grown unwieldy.
+        Call on quiet students by name for the contribution round; every student must add
+        something.
+
+        Common stalling point: the "success threshold" branch. Prompt with: "If a journal
+        referee asked you what 'good enough' means for your AI component, what specific number
+        would you defend?" If students propose vague thresholds ("better than baseline"),
+        push back: "Better by how much? At what confidence level?"
+
+        For the gallery share, prioritize students whose projects are most different from each
+        other so the room sees a range of evaluation contexts (e.g., one regression task, one
+        classification task, one generative task).
+
+        Post the whiteboard photograph to the course repository within 24 hours — students
+        will reference it when completing the homework evaluation protocol.
+      estimated_duration: "45 minutes"
+      materials_needed: >-
+        Whiteboard with sufficient space for a five-branch diagram; multiple colored markers
+        (use color to distinguish metric types from dataset sources from UQ methods); camera
+        or phone for whiteboard photograph; blank paper or open laptops for Step 3
+
+homework:
+  week: 7
+  title: "Project Evaluation Protocol and Annotated Bibliography"
+  phase: "Phase 2: Project Ideation & Deep Dives"
+  assessment_category: "Final Project Codebase & Paper"
+  background: |
+    Rigorous evaluation is what separates a physics result from a physics-flavored computation.
+    Before you build the core of your project in Weeks 8–13, you need a clear, quantitative
+    answer to: "How will I know if my AI component works?" This week's deliverables establish
+    that standard in writing. A specific evaluation protocol written now — with named metrics,
+    a named baseline, a named test dataset, and a numeric success criterion — will prevent the
+    most common project failure mode: building something that is hard to evaluate fairly.
+    The annotated bibliography grounds your evaluation choices in what the field already knows.
+  instructions:
+    - step: 1
+      text: "Write a one-page evaluation protocol document (evaluation_protocol_<lastname>.md)
+        for your project's primary AI component. It must specify: (a) the primary evaluation
+        metric (e.g., MAE in eV, F1 score, percent deviation from DFT baseline), (b) the
+        baseline model or method you will compare against (e.g., linear regression, DFT
+        calculation, literature value), (c) the test dataset you will use (with source URL
+        or DOI), and (d) the threshold for 'success' (e.g., 'MAE < 0.1 eV, matching chemical
+        accuracy'). The threshold must be a specific number with units and a justification
+        of one or two sentences explaining why that threshold is physically meaningful."
+    - step: 2
+      text: "Draw a project architecture diagram (architecture_<lastname>.pdf or .png) showing
+        the full data flow from raw data source through your AI pipeline to the final evaluated
+        output. Include all of the following labeled components: data source(s), preprocessing
+        steps, AI model or tool, any MCP server or external API calls, and the evaluation step
+        that applies your metric. Use any diagramming tool (draw.io at diagrams.net, Mermaid
+        at mermaid.js.org, or hand-drawn and photographed clearly). The diagram must be
+        readable at standard screen resolution — label every arrow and box."
+    - step: 3
+      text: "Find three papers directly relevant to your project's AI method or physics domain.
+        For each paper, write a 150-word annotation covering exactly four points: (a) what AI
+        method the paper uses, (b) how it evaluates the AI output (specific metrics and
+        datasets), (c) whether the evaluation is adequate — and why or why not, citing at
+        least one specific omission or strength — and (d) one specific technique or finding
+        you will adapt for your own project, stated concretely enough that a reader could
+        verify whether you actually did it. Compile all three annotations into
+        bibliography_<lastname>.md using a standard citation format (APA, AIP, or BibTeX
+        rendered as text)."
+    - step: 4
+      text: "Implement a baseline model for your project (e.g., linear regression,
+        nearest-neighbor lookup, a simple physics-based model, or a literature benchmark
+        value). In a Jupyter notebook (baseline_<lastname>.ipynb), load your test dataset,
+        fit or define the baseline, evaluate it using the metric you specified in Step 1,
+        and report the result with units. Include a markdown cell interpreting the baseline
+        result physically: is it better or worse than you expected, and why? You will compare
+        your AI model's performance against this baseline in later weeks."
+  deliverables:
+    - "evaluation_protocol_<lastname>.md — one-page evaluation protocol with metric, baseline,
+      test dataset (with DOI or URL), and numeric success threshold with justification"
+    - "architecture_<lastname>.pdf or .png — project architecture diagram showing the full
+      pipeline from data source to evaluated output with all components labeled"
+    - "bibliography_<lastname>.md — annotated bibliography of 3 papers, each annotation
+      addressing all four required points in approximately 150 words"
+    - "baseline_<lastname>.ipynb — Jupyter notebook implementing and evaluating the baseline
+      model on the test dataset, reporting the evaluation metric with units and a physical
+      interpretation"
+  grading_criteria:
+    - criterion: "Evaluation protocol specificity"
+      weight: "35%"
+      description: "The protocol names a specific metric with units, a named baseline method,
+        a named test dataset with a source URL or DOI, and a numeric success threshold with a
+        one-to-two sentence physical justification for that threshold. Vague thresholds
+        ('better than baseline') or missing dataset sources are inadequate."
+    - criterion: "Architecture diagram completeness"
+      weight: "25%"
+      description: "The diagram shows the full pipeline from data source to evaluated output
+        with all components present and labeled: data source, preprocessing, AI model or tool,
+        any external API or MCP server calls, and the evaluation step. Every arrow and box is
+        readable at standard screen resolution."
+    - criterion: "Annotation quality"
+      weight: "25%"
+      description: "Each annotation addresses all four required points (AI method, evaluation
+        approach, adequacy judgment, concrete adaptation plan) and falls within approximately
+        150 words. The 'what I will adapt' statement is specific enough to be verifiable in
+        the final project."
+    - criterion: "Baseline implementation"
+      weight: "15%"
+      description: "The baseline notebook runs end-to-end without errors, reports the evaluation
+        metric value with correct units on the named test dataset, and includes a markdown cell
+        with a physical interpretation of the baseline result."
+  estimated_time: "5–7 hours"
+  due: "Before the first class meeting of Week 8"
+  tools_and_resources:
+    - "scikit-learn for baseline models (linear regression, k-NN, SVR)"
+    - "matplotlib/seaborn for calibration curves and evaluation plots"
+    - "draw.io (diagrams.net) for graphical architecture diagrams"
+    - "Mermaid (mermaid.js.org) for code-based flowchart diagrams"
+    - "Semantic Scholar or Google Scholar for paper discovery"
+    - "uncertainties (Python package) for uncertainty propagation in baseline metrics"
+    - "MAPIE or nonconformist (Python) for conformal prediction baselines"

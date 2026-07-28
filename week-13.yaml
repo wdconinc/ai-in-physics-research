@@ -1,0 +1,95 @@
+week: 13
+phase: "Phase 3: Project Execution & Polish"
+title: "Scientific Communication"
+
+meetings:
+  - meeting: 1
+    title: "Writing the AI-Assisted Physics Paper"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Research and present how AI writing assistants (Claude, GPT-4, Grammarly) have been used in published physics papers — and where they went wrong. Find at least one published retraction or correction where AI-assisted writing introduced a factual error or hallucination. Present: (1) a brief taxonomy of legitimate vs. problematic AI writing assistance; (2) the specific failure case; (3) a practical workflow for using LLMs to improve clarity without distorting scientific claims (e.g., always show the LLM the underlying data before asking it to describe results). Limit to 8 minutes.
+      format: "8-minute paper presentation"
+      guiding_questions:
+        - "What is the difference between using an LLM to fix grammar and using it to paraphrase a results sentence?"
+        - "How do you verify that an LLM-improved sentence still accurately describes the underlying data?"
+        - "What should an author disclose when they use an LLM to help write their abstract?"
+    active_engagement:
+      format: "Socratic seminar"
+      description: |
+        Central question: "If an LLM rewrites your results section and the rewritten version is clearer but slightly overstates the certainty of your findings, is that a scientific integrity violation or an editing error?"
+
+        Round 1 (8 min): Each student writes their answer on an index card (anonymous). Instructor reads 4-5 aloud.
+        Round 2 (15 min): Structured discussion. Instructor cold-calls: "What if you didn't notice the overstatement until after publication?" and "Does it matter whether the LLM or you wrote the overstatement?"
+        Round 3 (8 min): Students pair up and draft a 2-sentence policy for their own paper: "I will use LLMs for ___, and I will NOT use LLMs for ___."
+        Debrief (9 min): Pairs share their policies. Instructor synthesizes into a practical class consensus and posts it to the course repo.
+      facilitation_notes: |
+        Prepare a concrete example: take a real results sentence like "The model achieves 94.3% accuracy" and show 3 LLM rewrites with varying degrees of overstatement. Ask students to rank them by acceptability. This makes the abstract question concrete. End by sharing the ICML 2024 policy on LLM use as a reference point.
+      estimated_duration: "45 minutes"
+      materials_needed: "Index cards; projector showing the example results sentence and its LLM rewrites; ICML 2024 and APS AI policy bookmarked"
+
+  - meeting: 2
+    title: "Practice Showcase Presentations"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Prepare and deliver the opening 3 minutes of your showcase presentation as a demonstration model for the class. Your goal is to show what an effective opening looks like: a crisp motivation statement (why this physics problem matters), your specific research question stated in one sentence, and the key result in one sentence with a figure. After your demo, briefly explain the choices you made (why this opening, what you cut, what you emphasized). This is a teaching demonstration, not a performance — feel free to narrate your thinking.
+      format: "10-minute slide presentation (max 6 slides) — 3 min demo + 7 min commentary"
+      guiding_questions:
+        - "How do you state a specific AI-assisted research question to a mixed physics audience in one sentence?"
+        - "What makes an opening figure compelling to a non-specialist?"
+        - "What did you have to cut from your full talk to fit the 3-minute version, and how did you decide what to cut?"
+    active_engagement:
+      format: "Structured debate"
+      description: |
+        Each student delivers a 3-minute practice version of their showcase talk (motivation → question → key result → one conclusion). The class provides structured written feedback after each talk using a shared feedback form with four fields: (1) Was the research question clear after the first 60 seconds? (2) Was the key result stated with a number and its uncertainty? (3) Was the AI methodology explained at a level a non-AI physicist could evaluate? (4) One specific suggestion for improvement.
+
+        Timing: 3 min talk + 2 min for audience to fill in feedback form = 5 min per student × 10 students = 50 min total.
+        Final 5 min: Instructor synthesizes the most common feedback themes and states what the departmental audience will expect in Week 14.
+      facilitation_notes: |
+        Use a shared Google Form or paper form for structured feedback — collecting written feedback prevents the conversation from being dominated by one or two voices. After the session, compile all feedback for each student and email it to them before Week 14. Time talks strictly with a visible timer. Coach students who go over: "What's the one sentence your audience absolutely needs to hear?"
+      estimated_duration: "55 minutes"
+      materials_needed: "Shared feedback form (Google Form or printed copies); visible countdown timer; projector"
+
+homework:
+  week: 13
+  title: "Complete Paper Draft, Claim-Tracing Table, and Repository Tag"
+  phase: "Phase 3: Project Execution & Polish"
+  assessment_category: "Final Project Codebase & Paper"
+  background: |
+    The Week 14 showcase is one week away. This homework produces the three artifacts that constitute your final submission: a complete paper draft, a claim-tracing table ensuring every number in your paper is reproducible, and a tagged repository release. Each artifact will be reviewed by the instructor before the showcase.
+  instructions:
+    - step: 1
+      text: "Assemble your complete paper draft in RevTeX (paper_draft_<lastname>.tex). All six sections must be present and substantive: Abstract (100 words max), Introduction (motivation and research question), Methods (AI tools, MCP server, evaluation protocol — sufficient for a reader to reproduce your approach), Results (from your Week 11 draft, revised based on peer comments), Discussion (interpretation, comparison to baseline, limitations from Week 12), Conclusion (one paragraph). Compile to PDF and confirm it is 4-6 pages excluding references."
+    - step: 2
+      text: "Build a claim-tracing table (claim_trace_<lastname>.md). For every quantitative claim in your Results and Discussion sections, record: (a) the exact quoted sentence from the paper, (b) the notebook filename and cell number that produces the number, (c) the command to run that cell in isolation (e.g., 'jupyter nbconvert --to script results.ipynb && python results.py --cell 12'), and (d) the expected output value or range. The table must have at least 5 entries."
+    - step: 3
+      text: "Use an LLM (Claude or GPT-4) to improve the clarity of your Abstract and Introduction. Save the original and the LLM-improved versions as abstract_original_<lastname>.txt and abstract_llm_<lastname>.txt. Write a 200-word reflection (llm_writing_reflection_<lastname>.md) explaining: what you changed, what you rejected, and whether the LLM introduced any inaccuracies you had to correct."
+    - step: 4
+      text: "Tag your GitHub repository with the version tag v0.9-draft using 'git tag v0.9-draft && git push origin v0.9-draft'. Confirm the tag is visible on GitHub. The tagged commit must include your data pipeline, the main analysis notebook, provenance.json, REPRODUCIBILITY.md, and the paper draft PDF."
+  deliverables:
+    - "paper_draft_<lastname>.tex and paper_draft_<lastname>.pdf — complete 4-6 page paper draft"
+    - "claim_trace_<lastname>.md — claim-tracing table with at least 5 entries"
+    - "abstract_original_<lastname>.txt, abstract_llm_<lastname>.txt, and llm_writing_reflection_<lastname>.md — LLM writing comparison"
+    - "GitHub repository tag v0.9-draft visible on GitHub with all required files committed"
+  grading_criteria:
+    - criterion: "Paper completeness"
+      weight: "40%"
+      description: "All six sections are present and substantive; the paper is 4-6 pages in RevTeX; the Results section reports at least one metric with uncertainty."
+    - criterion: "Claim traceability"
+      weight: "30%"
+      description: "Every quantitative claim in the paper has a corresponding entry in the claim-tracing table with a working reproduction command."
+    - criterion: "LLM writing reflection"
+      weight: "15%"
+      description: "The reflection identifies at least one specific inaccuracy or overstatement the LLM introduced and explains how it was corrected."
+    - criterion: "Repository tag"
+      weight: "15%"
+      description: "The v0.9-draft tag exists on GitHub and the tagged commit includes all required files."
+  estimated_time: "8-12 hours (the largest homework of the semester — plan accordingly)"
+  due: "Before the first class meeting of Week 14 (final submission deadline)"
+  tools_and_resources:
+    - "RevTeX 4.2 or Overleaf"
+    - "Claude or GPT-4 for writing assistance (document your prompts)"
+    - "jupyter nbconvert for converting notebooks to scripts"
+    - "git tag for creating repository releases"
+    - "GitHub Releases interface as an alternative to command-line tagging"

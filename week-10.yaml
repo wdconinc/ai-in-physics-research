@@ -1,0 +1,90 @@
+week: 10
+phase: "Phase 3: Project Execution & Polish"
+title: "Ethics & Reproducibility"
+
+meetings:
+  - meeting: 1
+    title: "AI Research Ethics and Disclosure Standards"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: current journal and professional society policies on AI tool use disclosure. Student should read: (1) the Nature portfolio editorial on AI use in papers (nature.com/articles/d41586-023-00191-1); (2) the APS statement on AI in peer review; (3) at least one recent arXiv paper that includes an explicit AI tools statement. Student presents a 3-slide summary of what current best practice looks like and where there is ambiguity. 3-5 sentences.
+      format: "10-minute slide presentation (max 6 slides)"
+      guiding_questions:
+        - "What is the difference between disclosing AI use for writing assistance vs. AI use for data analysis?"
+        - "Which current journal policies are specific enough to follow, and which leave room for interpretation?"
+        - "What information should an AI tools statement contain to be scientifically useful to a reader?"
+    active_engagement:
+      format: "Structured debate"
+      description: |
+        The class debates the motion: "An LLM-generated figure in a physics paper requires explicit caption-level disclosure, not just a methods-section statement."
+
+        Setup (5 min): Instructor assigns 5 students to argue FOR and 5 AGAINST. Each side gets 5 minutes to prepare arguments using laptops. Instructor provides a one-paragraph case summary for each side.
+        Opening statements (6 min): Each side delivers a 3-minute opening statement (one spokesperson, but anyone can speak).
+        Rebuttals (8 min): 4 minutes per side. Instructor enforces time strictly.
+        Open floor (10 min): Any student may speak; instructor cold-calls quieter students.
+        Vote and debrief (6 min): Anonymous re-vote; reveal whether opinions shifted; instructor summarizes the actual APS/Nature policies as the practical resolution.
+      facilitation_notes: |
+        Prepare a one-page "briefing document" for each side before class (can be AI-generated, which is itself a teaching moment). If debate stalls, inject: "What if the figure looks identical to what a human would draw — does that change your answer?" Debrief by noting that the field is actively unsettled and students should default to over-disclosure for now.
+      estimated_duration: "45 minutes"
+      materials_needed: "One-page briefing documents for each side; timer; APS and Nature policy pages bookmarked"
+
+  - meeting: 2
+    title: "In-Class Peer Code Review"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: how to write an actionable code review comment. Student should read Google's Engineering Practices Guide on code review (google.github.io/eng-practices/review/reviewer/) and adapt 3 principles to physics research code. They should bring 2 examples: one good code review comment and one unhelpful one (can be from open-source projects or fabricated). 3-5 sentences.
+      format: "8-minute chalk talk"
+      guiding_questions:
+        - "What makes a code review comment 'actionable' rather than just critical?"
+        - "How do you review code for physical correctness when you may not know the reviewer's physics subdomain?"
+        - "What is the difference between a blocking comment and a suggestion in a code review?"
+    active_engagement:
+      format: "Peer code review"
+      description: |
+        Pre-class setup: Assign review pairs before class (student A reviews student B's repo; student B reviews student A's repo). Share the review rubric (below) 48 hours before class so students can prepare.
+
+        In-class (45 min):
+        - Minutes 0-30: Each student opens their assigned partner's GitHub repository and writes inline comments directly in a GitHub PR or as a structured markdown review document. The rubric has four sections: (1) Can I reproduce the main result from the README alone? (2) Are all random seeds and API keys handled correctly? (3) Is every quantitative claim in the code traceable to a specific output? (4) Is AI tool use documented?
+        - Minutes 30-40: Partners meet for 10 minutes. The reviewer explains their top 3 findings; the author clarifies intent for any comments they disagree with.
+        - Minutes 40-45: Each reviewer shares their single most important finding with the class (1 min each, round-robin).
+      facilitation_notes: |
+        Circulate during the review period — ask each student "What's the most confusing thing you've encountered so far?" to surface common issues across projects. If a student finishes early, have them write a second pass focusing only on the provenance.json file. Remind students that the goal is to help their partner, not to score points. After class, collect all review documents and grade them for depth and constructiveness.
+      estimated_duration: "45 minutes"
+      materials_needed: "GitHub access for all students; review rubric printed or shared digitally; laptops required"
+
+homework:
+  week: 10
+  title: "Ethics Statement and Peer Review Submission"
+  phase: "Phase 3: Project Execution & Polish"
+  assessment_category: "Peer Review & Participation"
+  background: |
+    Transparency about AI tool use is now a professional expectation in physics research, and peer code review is how the community maintains reproducibility standards. This week you will write the ethics and limitations statement that will appear in your final paper, and submit your written peer review of your partner's codebase.
+  instructions:
+    - step: 1
+      text: "Write an 'AI Tools and Ethics' statement (300-500 words) for your project. The statement must specify: (a) which AI tools you used (name and version, e.g., 'Claude claude-3-5-sonnet via the Anthropic API'); (b) what each tool was used for (e.g., 'code generation', 'prose improvement', 'data analysis'); (c) how you verified the AI's outputs (e.g., 'all numerical results were cross-checked against the baseline model from Week 7'); (d) any limitations of your AI use that a reader should know. Save as ethics_statement_<lastname>.md."
+    - step: 2
+      text: "Submit your written peer code review as a GitHub PR review on your partner's repository or as a structured markdown document (peer_review_<your_lastname>_reviews_<partner_lastname>.md). The review must include: at least 5 inline comments at specific line numbers, one comment in each of the four rubric categories, and at least one 'blocking' issue (something that must be fixed for reproducibility) with a specific proposed fix."
+    - step: 3
+      text: "Respond to all comments in your partner's review of your code. For each comment: either implement the fix and reference the commit, or explain in writing (in the PR thread or a REVIEW_RESPONSES.md file) why you chose not to. This response is due before Week 12 Meeting 1."
+  deliverables:
+    - "ethics_statement_<lastname>.md — AI tools and ethics statement (300-500 words)"
+    - "peer_review_<your_lastname>_reviews_<partner_lastname>.md or GitHub PR review with at least 5 inline comments"
+  grading_criteria:
+    - criterion: "Depth of technical feedback"
+      weight: "40%"
+      description: "The review includes at least 5 inline comments at specific line numbers, covers all four rubric categories, and the blocking issue includes a specific proposed fix (not just 'fix this')."
+    - criterion: "Constructive tone"
+      weight: "30%"
+      description: "All comments are phrased as suggestions or questions rather than criticism; the review explains why each issue matters for reproducibility or correctness."
+    - criterion: "Ethics statement quality"
+      weight: "30%"
+      description: "The statement names specific AI tools with versions, describes their use with enough detail for a reader to assess impact on the results, and acknowledges at least one genuine limitation."
+  estimated_time: "4-6 hours (2-3 hr review + 1-2 hr ethics statement)"
+  due: "Peer review submitted before Week 11 Meeting 1; review responses due before Week 12 Meeting 1"
+  tools_and_resources:
+    - "GitHub Pull Request review interface for inline comments"
+    - "APS Statement on the Use of AI in Physics Research (aps.org)"
+    - "Nature portfolio AI use policy (nature.com)"
+    - "Google Engineering Practices — Code Review (google.github.io/eng-practices/review/reviewer/)"

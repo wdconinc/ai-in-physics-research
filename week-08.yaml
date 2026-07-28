@@ -1,0 +1,174 @@
+week: 8
+phase: "Phase 3: Project Execution & Polish"
+title: "Advanced Platform Integration"
+
+meetings:
+  - meeting: 1
+    title: "Unifying Heterogeneous Scientific Databases"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: data normalization across heterogeneous scientific APIs — how do you reconcile
+        unit systems (CGS vs SI), identifier schemes (object names vs coordinates vs DOIs), and
+        schema differences when combining SIMBAD, Materials Project, and arXiv data in one
+        pipeline? Prepare a chalk-talk diagram showing a concrete normalization schema you have
+        used or designed for your own project — for example, how you would unify a SIMBAD
+        celestial-object record (ICRS coordinates, flux in Jy) with an arXiv abstract (DOI,
+        author list, date) into a single internal data model. You should engage with the
+        astroquery documentation and the Materials Project REST API schema
+        (https://api.materialsproject.org) before class. Your talk must address: (1) what
+        canonical identifier you chose as the primary key and why, (2) how you handle objects
+        that exist in one database but not another, and (3) how unit conversion is encoded so
+        downstream code never sees raw heterogeneous units. Connect your answer explicitly to
+        Learning Objective 3 — producing a data provenance record — by explaining how your
+        schema tracks which database each field came from.
+      format: "8-minute chalk talk"
+      guiding_questions:
+        - "What is the minimal canonical identifier that is present (or derivable) across SIMBAD, Materials Project, and arXiv, and what do you do when an object has no entry in one of the three systems?"
+        - "If two APIs return the same physical quantity in different unit systems, where in the pipeline does the conversion happen, and how does the provenance record encode which system the raw value came from?"
+
+    active_engagement:
+      format: "Collaborative whiteboard"
+      description: |
+        Each student takes a 5-minute turn at the whiteboard to sketch the data-flow diagram
+        for their own project pipeline: where data enters, how it is normalized, where it is
+        cached, and where errors can occur. Use two marker colors throughout — one for data
+        flow, one for error/exception paths — so failure modes are visually distinct from the
+        happy path.
+
+        After all students have sketched their pipelines (approximately 50 minutes for 10
+        students at 5 minutes each), the class votes by show of hands on the 2 pipelines
+        that appear most architecturally complex or that expose the most interesting failure
+        modes. Those two pipelines are discussed in depth for the remaining time: the class
+        asks the pipeline's owner clarifying questions and suggests normalization or
+        error-handling improvements.
+
+        The instructor facilitates by prompting with "What is missing from this diagram?" and
+        "Does anyone disagree with how this arrow is drawn?" rather than by filling in the
+        diagram themselves. Every student must contribute at least one annotation or question
+        during the depth-discussion phase; the instructor should call on quiet students
+        directly.
+      facilitation_notes: |
+        Pre-assign whiteboard sections before class so students do not waste time negotiating
+        space. Use different marker colors for data flow vs error paths — establish this norm
+        during the first sketch so all subsequent sketches follow it. Photograph all sketches
+        at the end of class with a phone or tablet and post the images to the course repository
+        before the next meeting; these photographs become a shared reference for pipeline
+        architecture discussions in Weeks 9–12. If a student's pipeline is not yet implemented,
+        ask them to sketch the intended architecture — the gaps that emerge are equally
+        informative.
+      estimated_duration: "45 minutes"
+      materials_needed: "Whiteboard divided into 10 labeled sections, markers in at least two colors, phone or tablet camera for end-of-class photographs"
+
+  - meeting: 2
+    title: "Resilient API Clients and Data Provenance"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: building resilient API clients for long-running agentic pipelines — specifically
+        exponential backoff with jitter, circuit-breaker patterns, local caching with diskcache
+        or sqlite3, and structured provenance logging. Prepare a 10-minute live demo in a
+        Jupyter notebook or terminal that shows a concrete implementation. Your demo must
+        include: (1) a working example of the tenacity library (@retry decorator with
+        stop_after_attempt(3), wait_exponential, and a before_sleep logging callback) applied
+        to a real API call (e.g., astroquery SIMBAD or mp-api); (2) a diskcache or sqlite3
+        cache that prevents redundant API calls across pipeline runs; (3) a provenance record
+        written as a JSON file that captures source URL, access timestamp, and any
+        transformation applied. Run the demo against a live API if network is available; have
+        a pre-recorded fallback in case of connectivity issues. Connect to Learning Objectives
+        1 and 2: students should see exactly how exponential backoff and null-field handling
+        are implemented in production-quality research code.
+      format: "10-minute live demo"
+      guiding_questions:
+        - "The tenacity library retries on exceptions — what exception types should you catch when calling astroquery vs mp-api, and what exceptions should you let propagate immediately rather than retrying?"
+        - "When a field is missing from an API response, the instructions say to log the missing field and substitute a sentinel value — what sentinel value is physically meaningful (vs. just convenient) for a missing flux measurement, and how do you ensure downstream code handles it correctly?"
+
+    active_engagement:
+      format: "Pair debugging"
+      description: |
+        The instructor provides a pre-written Python script (multi_api_pipeline_broken.py,
+        committed to the course repository before class) that fetches data from SIMBAD and
+        the Materials Project, normalizes units, and writes a provenance JSON file. The script
+        contains exactly 3 planted failures:
+          (a) A rate-limit exception from astroquery that is caught by a bare except clause
+              and silently swallowed instead of being retried — the pipeline appears to succeed
+              but returns stale cached data from a previous run.
+          (b) A unit mismatch: luminosity values from SIMBAD are in solar luminosities but are
+              added directly to a column labeled "L_SI" without conversion, producing values
+              that are off by a factor of ~3.8e26.
+          (c) A missing null check: the Materials Project response occasionally omits the
+              "band_gap" field for metallic compounds; the script accesses response["band_gap"]
+              without a .get() guard and raises a KeyError on those entries.
+
+        Students are assigned to pairs (rotating alphabetically from the Week 7 pairing).
+        Pairs have 30 minutes to find and fix all three bugs and document each fix with a
+        one-sentence explanation in a comment above the corrected line. After 30 minutes,
+        the instructor calls time regardless of progress.
+
+        Debrief (10 minutes): each pair shares the bug they found last — typically the unit
+        mismatch, since it requires physical reasoning rather than Python knowledge to detect.
+        The instructor asks: "How would a provenance record have made bug (b) detectable
+        without running the pipeline?" to connect the exercise directly to Learning Objective 3.
+      facilitation_notes: |
+        Plant the bugs at different depths of difficulty: the null-check bug (c) is typically
+        found first because it raises an obvious exception; the silent-swallow bug (a) is
+        found second because it requires reading the error-handling code carefully; the unit
+        mismatch (b) is found last because it requires checking whether the numerical values
+        are physically plausible. If a pair finishes all three bugs early, ask them to write
+        a fourth test case that would catch bug (b) automatically without human inspection.
+        Assign pairs by rotating alphabetically through the class roster so each student
+        works with a new partner each week. Commit the broken script and a separate
+        solution script to the course repository at least 24 hours before class so students
+        who want to preview it can do so.
+      estimated_duration: "45 minutes"
+      materials_needed: "Laptops with Python environment (tenacity, astroquery, mp-api, diskcache installed), course repository access, broken pipeline script pre-committed to repo"
+
+homework:
+  week: 8
+  title: "Project Data Pipeline Implementation"
+  phase: "Phase 3: Project Execution & Polish"
+  assessment_category: "Final Project Codebase & Paper"
+  background: |
+    This assignment is the first concrete milestone of your final project codebase. The
+    data ingestion module you build this week will be submitted as part of your final
+    repository in Week 14 and will be reviewed by a peer in Week 10. Build it as if you
+    are writing production research code: documented, reproducible, and resilient to the
+    API failures that inevitably occur in long-running pipelines. The provenance record
+    you produce this week will also serve as the evidentiary foundation for the data
+    section of your final paper.
+  instructions:
+    - step: 1
+      text: "Implement the data ingestion layer of your project pipeline as a Python module (data_pipeline_<lastname>.py). The module must fetch data from at least two external sources (APIs, databases, or files), normalize units and identifiers to a consistent internal schema, and write the result to a local cache (SQLite database or parquet file) to avoid redundant API calls."
+    - step: 2
+      text: "Add error handling for at least two distinct failure modes: (a) API timeout or rate limit — implement exponential backoff using the tenacity library with at least 3 retries; (b) missing or null fields — log the missing field with its source URL and substitute a documented sentinel value rather than crashing."
+    - step: 3
+      text: "Write a data provenance JSON file (provenance_<lastname>.json) that records, for each dataset: source URL or API endpoint, access timestamp, version or commit hash of the source (if available), and any transformations applied."
+    - step: 4
+      text: "Run your pipeline on real data and record the first analysis result in a Jupyter lab notebook (lab_notebook_<lastname>.ipynb). The notebook must include: the raw output from at least one API call, the normalized version, and a plot comparing your AI pipeline's output to your Week 7 baseline on at least 5 data points."
+  deliverables:
+    - "data_pipeline_<lastname>.py — data ingestion module with error handling"
+    - "provenance_<lastname>.json — data provenance record"
+    - "lab_notebook_<lastname>.ipynb — lab notebook with first analysis results and baseline comparison plot"
+    - "Updated README.md in the project repository documenting how to run the pipeline"
+  grading_criteria:
+    - criterion: "Pipeline functionality"
+      weight: "40%"
+      description: "The pipeline fetches from two sources, normalizes data, caches results, and handles both required failure modes without crashing."
+    - criterion: "Reproducibility"
+      weight: "30%"
+      description: "Running the pipeline from a fresh clone produces identical cached data; provenance.json is complete and accurate."
+    - criterion: "Analysis results"
+      weight: "20%"
+      description: "The lab notebook shows real data from the pipeline and includes a quantitative comparison to the Week 7 baseline."
+    - criterion: "Code documentation"
+      weight: "10%"
+      description: "The pipeline module has docstrings on all functions; the README documents how to run the pipeline end-to-end."
+  estimated_time: "6-8 hours"
+  due: "Before the first class meeting of Week 9"
+  tools_and_resources:
+    - "tenacity (pip install tenacity) for retry logic"
+    - "diskcache or sqlite3 for local caching"
+    - "astroquery for SIMBAD/VizieR/NASA ADS access"
+    - "mp-api for Materials Project"
+    - "pandas for data normalization"
+    - "pyarrow for parquet file output"
