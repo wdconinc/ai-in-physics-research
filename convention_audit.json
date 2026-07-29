@@ -1,0 +1,404 @@
+{
+  "naming_conventions": {
+    "placeholder_variants": [
+      {
+        "variant": "<lastname>",
+        "weeks": [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14],
+        "usage": "single-author deliverables (notebooks, modules, docs, papers)"
+      },
+      {
+        "variant": "<your_lastname>",
+        "weeks": [10],
+        "usage": "reviewer submitting a peer review file in W10"
+      },
+      {
+        "variant": "<partner_lastname>",
+        "weeks": [10],
+        "usage": "person being reviewed in W10 peer review filename"
+      },
+      {
+        "variant": "<reviewer>",
+        "weeks": [12],
+        "usage": "reviewer in W12 reproducibility audit filename"
+      },
+      {
+        "variant": "<author>",
+        "weeks": [12],
+        "usage": "person being reviewed in W12 reproducibility audit filename"
+      }
+    ],
+    "peer_review_schemas": [
+      {
+        "week": 10,
+        "schema": "peer_review_<your_lastname>_reviews_<partner_lastname>.md",
+        "note": "Uses informal second-person <your_lastname> and role-based <partner_lastname>"
+      },
+      {
+        "week": 12,
+        "schema": "reproducibility_audit_<reviewer>_reviews_<author>.md",
+        "note": "Uses role-only placeholders <reviewer> and <author>; no '_lastname' suffix"
+      }
+    ],
+    "inconsistency_note": "W10 and W12 peer review schemas use different placeholder styles for the same semantic roles (reviewer, reviewed party). W10 says '<your_lastname>_reviews_<partner_lastname>' while W12 says '<reviewer>_reviews_<author>'. These should be harmonized.",
+    "proposed_standard": {
+      "single_author": "<lastname>",
+      "reviewer_as_submitter": "<reviewer_lastname>",
+      "reviewed_subject": "<author_lastname>",
+      "standard_peer_review_name": "peer_review_<reviewer_lastname>_reviews_<author_lastname>.md",
+      "standard_audit_name": "reproducibility_audit_<reviewer_lastname>_reviews_<author_lastname>.md"
+    },
+    "all_caps_files": ["REPRODUCIBILITY.md", "BUG_LOG.md", "REVIEW_RESPONSES.md"],
+    "all_caps_weeks": {
+      "REPRODUCIBILITY.md": [9, 14],
+      "BUG_LOG.md": [9, 14],
+      "REVIEW_RESPONSES.md": [10, 12]
+    },
+    "convention_note": "ALL_CAPS = project-root special/persistent files (one per project); snake_case_<lastname>.ext = per-student deliverables. ALL_CAPS files intentionally have no <lastname> suffix because they live at repo root and are mutated over time.",
+    "week01_prefix_note": "All notebook/file prefixes use weekNN_ (two-digit, no hyphen): week01_, week02_, week03_, week04_. Consistent across all weeks. Does NOT mirror the YAML filename convention of week-01.yaml (hyphenated). This is intentional: YAML filenames are course-author artifacts; weekNN_ prefixes are student deliverable names.",
+    "anomaly_brand_model_collision": {
+      "week": 5,
+      "location": "homework.instructions[2].text",
+      "text": "use Claude claude-3-5-sonnet to synthesize property trends",
+      "issue": "Brand name 'Claude' and model ID 'claude-3-5-sonnet' concatenated without separator; should be 'Claude (claude-3-5-sonnet)' or just 'claude-3-5-sonnet'"
+    }
+  },
+  "external_urls": [
+    {
+      "url": "https://platform.openai.com/docs/quickstart",
+      "weeks": [1],
+      "locations": ["week-01 homework.instructions step 2 (topic_prompt)", "week-01 tools_and_resources"],
+      "has_https_scheme": true,
+      "stability": "SEMI-STABLE",
+      "note": "OpenAI frequently restructures their docs; this specific path has moved before"
+    },
+    {
+      "url": "https://docs.anthropic.com/en/api/getting-started",
+      "weeks": [1],
+      "locations": ["week-01 meetings[1].student_introduction.topic_prompt", "week-01 tools_and_resources"],
+      "has_https_scheme": true,
+      "stability": "SEMI-STABLE",
+      "note": "Anthropic docs are versioned; URL path has changed with SDK version bumps"
+    },
+    {
+      "url": "https://pdg.lbl.gov",
+      "weeks": [1],
+      "locations": ["week-01 tools_and_resources"],
+      "has_https_scheme": true,
+      "stability": "STABLE",
+      "note": "PDG canonical URL; government/academic, highly stable"
+    },
+    {
+      "url": "https://physics.nist.gov/PhysRefData",
+      "weeks": [1],
+      "locations": ["week-01 tools_and_resources"],
+      "has_https_scheme": true,
+      "stability": "STABLE",
+      "note": "NIST government URL; very stable"
+    },
+    {
+      "url": "https://www.aps.org/policy/statements/ai-generated-text.cfm",
+      "weeks": [1],
+      "locations": ["week-01 tools_and_resources"],
+      "has_https_scheme": true,
+      "stability": "UNSTABLE",
+      "note": "APS restructured their website; .cfm extension suggests legacy ColdFusion page that may have moved. Also referenced generically as 'APS Statement' in W10 without URL."
+    },
+    {
+      "url": "https://claude.ai",
+      "weeks": [2],
+      "locations": ["week-02 tools_and_resources"],
+      "has_https_scheme": true,
+      "stability": "STABLE",
+      "note": "Main Anthropic product URL; stable"
+    },
+    {
+      "url": "https://pypi.org/project/arxiv/",
+      "weeks": [3],
+      "locations": ["week-03 tools_and_resources"],
+      "has_https_scheme": true,
+      "stability": "STABLE",
+      "note": "PyPI package page; stable"
+    },
+    {
+      "url": "modelcontextprotocol.io",
+      "weeks": [4, 6],
+      "locations": ["week-04 tools_and_resources", "week-06 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "SEMI-STABLE",
+      "note": "Missing https:// scheme. Relatively new domain (2024); may migrate as MCP matures under Anthropic stewardship"
+    },
+    {
+      "url": "modelcontextprotocol.io/specification",
+      "weeks": [6],
+      "locations": ["week-06 meetings[0].student_introduction.topic_prompt", "week-06 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "SEMI-STABLE",
+      "note": "Missing https:// scheme. Spec path may change as protocol versions are released"
+    },
+    {
+      "url": "simbad.u-strasbg.fr",
+      "weeks": [4],
+      "locations": ["week-04 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "SEMI-STABLE",
+      "note": "Missing https:// scheme. Old SIMBAD URL; CDS has migrated to simbad.cds.unistra.fr. The u-strasbg.fr domain still redirects but is officially deprecated."
+    },
+    {
+      "url": "arxiv.org/help/api",
+      "weeks": [4],
+      "locations": ["week-04 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "STABLE",
+      "note": "Missing https:// scheme. arXiv API help page; content is stable"
+    },
+    {
+      "url": "materialsproject.org/api",
+      "weeks": [6],
+      "locations": ["week-06 meetings[1].student_introduction.topic_prompt"],
+      "has_https_scheme": false,
+      "stability": "SEMI-STABLE",
+      "note": "Missing https:// scheme. MP API landing page; may redirect as API versions evolve"
+    },
+    {
+      "url": "astroquery.readthedocs.io",
+      "weeks": [6],
+      "locations": ["week-06 meetings[1].student_introduction.topic_prompt"],
+      "has_https_scheme": false,
+      "stability": "STABLE",
+      "note": "Missing https:// scheme. ReadTheDocs URL; stable"
+    },
+    {
+      "url": "https://api.materialsproject.org",
+      "weeks": [8],
+      "locations": ["week-08 meetings[0].student_introduction.topic_prompt"],
+      "has_https_scheme": true,
+      "stability": "SEMI-STABLE",
+      "note": "MP REST API root; schema endpoint may change between API versions"
+    },
+    {
+      "url": "mermaid.js.org",
+      "weeks": [7],
+      "locations": ["week-07 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "STABLE",
+      "note": "Missing https:// scheme. Mermaid documentation site; stable"
+    },
+    {
+      "url": "diagrams.net",
+      "weeks": [7],
+      "locations": ["week-07 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "STABLE",
+      "note": "Missing https:// scheme. draw.io/diagrams.net; stable"
+    },
+    {
+      "url": "nature.com/articles/d41586-023-00191-1",
+      "weeks": [10],
+      "locations": ["week-10 meetings[0].student_introduction.topic_prompt"],
+      "has_https_scheme": false,
+      "stability": "STABLE",
+      "note": "Missing https:// scheme. Nature news article; permanent URL by article ID"
+    },
+    {
+      "url": "aps.org",
+      "weeks": [10],
+      "locations": ["week-10 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "STABLE",
+      "note": "Missing https:// scheme. Root domain only; not specific enough for students to find the AI policy page"
+    },
+    {
+      "url": "nature.com",
+      "weeks": [10],
+      "locations": ["week-10 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "STABLE",
+      "note": "Missing https:// scheme. Root domain only; not specific enough for students to find the AI policy page"
+    },
+    {
+      "url": "google.github.io/eng-practices/review/reviewer/",
+      "weeks": [10],
+      "locations": ["week-10 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "SEMI-STABLE",
+      "note": "Missing https:// scheme. Google GitHub Pages doc; stable but controlled by Google"
+    },
+    {
+      "url": "journals.aps.org/prd/authors",
+      "weeks": [11],
+      "locations": ["week-11 meetings[1].facilitation_notes", "week-11 tools_and_resources"],
+      "has_https_scheme": false,
+      "stability": "STABLE",
+      "note": "Missing https:// scheme. APS journal author guidelines; stable"
+    },
+    {
+      "url": "https://doi.org/10.1126/science.359.6377.725",
+      "weeks": [12],
+      "locations": ["week-12 meetings[0].student_introduction.topic_prompt"],
+      "has_https_scheme": true,
+      "stability": "STABLE",
+      "note": "DOI-based URL; permanent"
+    },
+    {
+      "url": "https://doi.org/10.1016/j.patter.2023.100804",
+      "weeks": [12],
+      "locations": ["week-12 meetings[0].student_introduction.topic_prompt"],
+      "has_https_scheme": true,
+      "stability": "STABLE",
+      "note": "DOI-based URL; permanent"
+    },
+    {
+      "url": "github.com/hackergrrl/art-of-readme",
+      "weeks": [12],
+      "locations": ["week-12 meetings[1].student_introduction.topic_prompt"],
+      "has_https_scheme": false,
+      "stability": "UNSTABLE",
+      "note": "Missing https:// scheme. Personal GitHub repo; can be deleted, renamed, or archived. Should link to a specific commit or fork."
+    },
+    {
+      "url": "paperswithcode.com",
+      "weeks": [12],
+      "locations": ["week-12 meetings[1].student_introduction.topic_prompt"],
+      "has_https_scheme": false,
+      "stability": "STABLE",
+      "note": "Missing https:// scheme. Papers With Code main site; stable"
+    },
+    {
+      "url": "software.ac.uk/resources/guides/how-write-readme",
+      "weeks": [12],
+      "locations": ["week-12 meetings[1].student_introduction.topic_prompt"],
+      "has_https_scheme": false,
+      "stability": "SEMI-STABLE",
+      "note": "Missing https:// scheme. SSI guide page; academic org, sometimes reorganizes"
+    }
+  ],
+  "model_names": [
+    {
+      "name": "claude-3-5-sonnet",
+      "weeks": [2, 10],
+      "locations": [
+        "week-02 meetings[0].student_introduction.topic_prompt",
+        "week-02 meetings[1].active_engagement.description (step 2)",
+        "week-02 meetings[1].active_engagement.materials_needed",
+        "week-02 homework.background",
+        "week-02 homework.instructions step 4",
+        "week-02 tools_and_resources",
+        "week-05 homework.instructions step 3 (as 'Claude claude-3-5-sonnet')",
+        "week-10 homework.instructions step 1"
+      ],
+      "issue": "Missing version date suffix. Anthropic's versioned model ID is 'claude-3-5-sonnet-20241022'. The bare 'claude-3-5-sonnet' is an alias that resolves to the latest, which may change. For reproducibility in a research course, pin the date suffix or document explicitly that the alias is intentional.",
+      "proposed_fix": "Either use 'claude-3-5-sonnet-20241022' throughout, or add a course-wide note: 'Model aliases (e.g. claude-3-5-sonnet) are used for readability; pin to dated versions (e.g. claude-3-5-sonnet-20241022) in production code.'"
+    },
+    {
+      "name": "Claude claude-3-5-sonnet",
+      "weeks": [5],
+      "locations": ["week-05 homework.instructions step 3"],
+      "issue": "Redundant brand name + model ID concatenation: 'Claude claude-3-5-sonnet'. Should be 'claude-3-5-sonnet' (model ID only in code context) or 'Claude (claude-3-5-sonnet)' (brand + model ID in prose).",
+      "proposed_fix": "Use 'claude-3-5-sonnet-20241022' or 'Claude (claude-3-5-sonnet-20241022)'"
+    },
+    {
+      "name": "gpt-4o-mini",
+      "weeks": [1, 3],
+      "locations": ["week-01 homework.instructions step 4", "week-03 homework.instructions step 5"],
+      "issue": "No pinned version suffix. OpenAI uses date-stamped aliases (e.g., 'gpt-4o-mini-2024-07-18'). Lower priority than claude-3-5-sonnet since OpenAI's versioning is less commonly cited in course materials.",
+      "proposed_fix": "Add a note in Week 1 that students should pin model versions in their code and document the version used."
+    }
+  ],
+  "python_packages": [
+    {
+      "name": "mp-api",
+      "weeks": [6, 8],
+      "status": "CORRECT",
+      "note": "mp-api IS the correct PyPI package name for the Materials Project REST API Python client (previously accessed via pymatgen). No issue."
+    },
+    {
+      "name": "faiss-cpu",
+      "weeks": [3],
+      "status": "CORRECT",
+      "note": "faiss-cpu is the correct PyPI package for CPU-only FAISS. GPU variant is faiss-gpu. No issue for a course environment."
+    },
+    {
+      "name": "python-json-logger",
+      "weeks": [9],
+      "status": "CORRECT",
+      "note": "Correct PyPI package name. Note: the import name is 'pythonjsonlogger', not 'python_json_logger'."
+    },
+    {
+      "name": "langchain",
+      "weeks": [3],
+      "status": "ADVISORY",
+      "note": "Noted as optional in W3. langchain underwent a major API redesign (v0.1 -> v0.2 -> v0.3 with breaking changes). If used, students should pin a specific version."
+    },
+    {
+      "name": "llama-index",
+      "weeks": [3],
+      "status": "ADVISORY",
+      "note": "Noted as optional in W3. The package was renamed from 'llama-index' to 'llama_index' on PyPI (with hyphen vs underscore instability). Recommend using 'llama-index-core' instead."
+    }
+  ],
+  "issues": [
+    {
+      "severity": "HIGH",
+      "category": "naming_consistency",
+      "description": "Peer review filename schemas are inconsistent between W10 and W12. W10 uses <your_lastname>/<partner_lastname>; W12 uses <reviewer>/<author>. Students submitting both assignments face contradictory naming conventions for semantically equivalent roles.",
+      "affected_weeks": [10, 12],
+      "proposed_fix": "Standardize to <reviewer_lastname>_reviews_<author_lastname> across all peer review deliverables"
+    },
+    {
+      "severity": "HIGH",
+      "category": "url_stability",
+      "description": "https://www.aps.org/policy/statements/ai-generated-text.cfm uses .cfm extension (legacy ColdFusion) and APS has restructured their site. Likely to 404 or redirect.",
+      "affected_weeks": [1],
+      "proposed_fix": "Replace with https://www.aps.org/policy/statements/ai-generated-text or verify current URL"
+    },
+    {
+      "severity": "HIGH",
+      "category": "url_stability",
+      "description": "github.com/hackergrrl/art-of-readme is a personal GitHub repo that can be deleted or archived without notice. Course materials should not depend on a single uncontrolled repo.",
+      "affected_weeks": [12],
+      "proposed_fix": "Link to a specific commit SHA or to the GitHub README for the archived/popular fork"
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "model_versioning",
+      "description": "claude-3-5-sonnet appears 8 times without the version date suffix (20241022). In a reproducibility-focused course, using pinned model versions is a core principle that should be modeled in the course materials themselves.",
+      "affected_weeks": [2, 5, 10],
+      "proposed_fix": "Use claude-3-5-sonnet-20241022 throughout, or add a syllabus note explaining the intentional use of aliases"
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "url_missing_scheme",
+      "description": "14 out of 26 URLs are missing the https:// scheme (bare hostnames or paths). These may not render as clickable links in YAML-rendered views and can be ambiguous.",
+      "affected_weeks": [4, 6, 7, 10, 11, 12],
+      "proposed_fix": "Prepend https:// to all URLs in tools_and_resources and materials_needed fields"
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "url_specificity",
+      "description": "W10 tools_and_resources lists 'aps.org' and 'nature.com' as bare root domains without specific policy page paths. Students cannot find the referenced policies from these.",
+      "affected_weeks": [10],
+      "proposed_fix": "Replace with full URLs: https://www.aps.org/policy/statements/ai-generated-text and https://www.nature.com/nature-portfolio/editorial-policies/ai"
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "url_deprecated",
+      "description": "simbad.u-strasbg.fr is the old SIMBAD hostname. CDS officially migrated to simbad.cds.unistra.fr. The old URL still redirects but is deprecated in astroquery docs.",
+      "affected_weeks": [4],
+      "proposed_fix": "Replace with https://simbad.cds.unistra.fr"
+    },
+    {
+      "severity": "LOW",
+      "category": "naming_clarity",
+      "description": "W5 step 3 uses 'Claude claude-3-5-sonnet' (brand name + model ID concatenated without separator) in an example sentence. Minor but inconsistent with all other model name references.",
+      "affected_weeks": [5],
+      "proposed_fix": "Change to 'claude-3-5-sonnet-20241022' or 'Claude (claude-3-5-sonnet-20241022)'"
+    },
+    {
+      "severity": "LOW",
+      "category": "package_advisory",
+      "description": "llama-index is listed as optional in W3 but the package has been split; the correct top-level install is now 'llama-index-core' on PyPI.",
+      "affected_weeks": [3],
+      "proposed_fix": "Change 'llama-index' to 'llama-index-core' or add a version pin"
+    }
+  ]
+}

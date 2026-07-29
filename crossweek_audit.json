@@ -1,0 +1,187 @@
+{
+  "dependency_chain": [
+    {
+      "from_week": 7,
+      "from_deliverable": "baseline_<lastname>.ipynb",
+      "to_week": 8,
+      "to_step": "HW Step 4",
+      "description": "Week 8 Step 4 requires a plot comparing the AI pipeline output to the Week 7 baseline on at least 5 data points.",
+      "status": "VALID",
+      "notes": "W7 HW Step 4 explicitly produces baseline_<lastname>.ipynb; W8 Step 4 explicitly references 'your Week 7 baseline'."
+    },
+    {
+      "from_week": 6,
+      "from_deliverable": "mcp_server_<lastname>.py",
+      "to_week": 8,
+      "to_step": "HW background",
+      "description": "W8 background states the data pipeline 'will be submitted as part of your final repository in Week 14 and will be reviewed by a peer in Week 10', implying W6 MCP server is part of the evolving codebase.",
+      "status": "VALID",
+      "notes": "Both W6 and W8 carry assessment_category 'Final Project Codebase & Paper'. W8 is the first milestone in that chain that is explicitly called out as feeding Week 10 peer review and Week 14 final."
+    },
+    {
+      "from_week": 8,
+      "from_deliverable": "data_pipeline_<lastname>.py, provenance_<lastname>.json, lab_notebook_<lastname>.ipynb",
+      "to_week": 10,
+      "to_step": "HW Meeting 2 peer code review",
+      "description": "W8 background explicitly says the data pipeline 'will be reviewed by a peer in Week 10'. W10 Meeting 2 and HW Step 2 conduct the peer code review.",
+      "status": "VALID",
+      "notes": "W8 background contains a forward reference to W10 review. Students building W8 should know their code will be reviewed."
+    },
+    {
+      "from_week": 8,
+      "from_deliverable": "data_pipeline_<lastname>.py, provenance_<lastname>.json",
+      "to_week": 14,
+      "to_step": "HW Step 2",
+      "description": "W14 v1.0-final tag must include data_pipeline_<lastname>.py and provenance.json, both first produced in W8.",
+      "status": "VALID",
+      "notes": "W14 background confirms 'No new work this week — all deliverables assembled from previous weeks'."
+    },
+    {
+      "from_week": 9,
+      "from_deliverable": "REPRODUCIBILITY.md, BUG_LOG.md",
+      "to_week": 14,
+      "to_step": "HW Step 2",
+      "description": "W14 v1.0-final tag checklist explicitly requires REPRODUCIBILITY.md and BUG_LOG.md, both first produced in W9.",
+      "status": "VALID",
+      "notes": "W9 HW creates both files. W12 self-audit updates REPRODUCIBILITY.md implicitly, but the originating week is W9."
+    },
+    {
+      "from_week": 10,
+      "from_deliverable": "peer_review_<reviewer>_reviews_<author>.md or GitHub PR review",
+      "to_week": 12,
+      "to_step": "HW Step 2",
+      "description": "W12 HW Step 2 requires resolving ALL blocking comments from the Week 10 peer review, with commit SHAs or written justifications in REVIEW_RESPONSES.md.",
+      "status": "VALID",
+      "notes": "W10 HW Step 2 produces the peer review. W12 HW Step 2 explicitly targets 'blocking comments from your Week 10 peer review'. Chain is intact."
+    },
+    {
+      "from_week": 11,
+      "from_deliverable": "results_draft_<lastname>.tex",
+      "to_week": 13,
+      "to_step": "HW Step 1",
+      "description": "W13 HW Step 1 instructions say the Results section should be 'from your Week 11 draft, revised based on peer comments'.",
+      "status": "VALID",
+      "notes": "W11 HW Step 1 explicitly produces results_draft_<lastname>.tex in RevTeX. W13 re-uses it in the full paper_draft_<lastname>.tex assembly."
+    },
+    {
+      "from_week": 12,
+      "from_deliverable": "limitations_<lastname>.tex",
+      "to_week": 13,
+      "to_step": "HW Step 1",
+      "description": "W13 HW Step 1 says the Discussion section should incorporate 'limitations from Week 12'. W12 HW Step 1 produces limitations_<lastname>.tex.",
+      "status": "VALID",
+      "notes": "W12 grading criteria explicitly says 'This section will be incorporated directly into the final paper.'"
+    },
+    {
+      "from_week": 13,
+      "from_deliverable": "v0.9-draft git tag + paper_draft_<lastname>.pdf",
+      "to_week": 14,
+      "to_step": "HW Step 2",
+      "description": "W13 Step 4 creates the v0.9-draft tag. W14 Step 2 creates v1.0-final. W14 background states 'all deliverables assembled from previous weeks'.",
+      "status": "VALID",
+      "notes": "W14 does NOT explicitly reference the v0.9-draft tag — it only requires the v1.0-final tag. The progression from v0.9-draft to v1.0-final is implied but never stated. Students may not realize v0.9-draft is a required checkpoint rather than an optional label."
+    },
+    {
+      "from_week": 13,
+      "from_deliverable": "claim_trace_<lastname>.md",
+      "to_week": 14,
+      "to_step": "HW Step 2",
+      "description": "W14 v1.0-final tag checklist explicitly requires claim_trace_<lastname>.md, first produced in W13.",
+      "status": "VALID",
+      "notes": ""
+    },
+    {
+      "from_week": 5,
+      "from_deliverable": "proposal_<lastname>.tex / research direction",
+      "to_week": 6,
+      "to_step": "HW (entire week)",
+      "description": "W6 HW says students build the MCP server 'for your own research project domain', implying the W5 approved proposal determines the project direction from W6 onward.",
+      "status": "VALID",
+      "notes": "No explicit file deliverable from W5 is required in W6 submission, but the approved research direction is the implicit prerequisite for all W6-W14 project work."
+    },
+    {
+      "from_week": 10,
+      "from_deliverable": "ethics_statement_<lastname>.md",
+      "to_week": 14,
+      "to_step": "HW Step 1",
+      "description": "W14 final paper must include an 'AI Tools & Ethics statement'. W10 HW Step 1 produces ethics_statement_<lastname>.md.",
+      "status": "VALID",
+      "notes": "W14 does not reference W10 by name, but the paper requirement for an ethics statement creates an implicit dependency on the W10 artifact."
+    }
+  ],
+  "dual_deadlines": [
+    {
+      "week": 10,
+      "hw_main_due": "Before Week 11 Meeting 1",
+      "hw_secondary_due": "Review responses (Step 3) due before Week 12 Meeting 1",
+      "description": "The main W10 homework (peer review document and ethics statement) is due before Week 11 Meeting 1. However, Step 3 — responding to the partner's review of YOUR code — is due a full week later, before Week 12 Meeting 1. This secondary deadline is stated at the bottom of Step 3 in the instructions and is repeated in the top-level 'due' field as a second clause: 'Peer review submitted before Week 11 Meeting 1; review responses due before Week 12 Meeting 1'.",
+      "student_impact": "Students may not realize there is a delayed component that extends one full week past the assignment's headline due date. The review-response step is graded as part of the W12 homework (HW Step 2), not W10, which makes the dependency easy to miss. Missing the W12 deadline means failing a graded criterion of the W12 submission."
+    }
+  ],
+  "assessment_milestones": [
+    {
+      "weeks": [6, 7, 8, 9, 13],
+      "maps_to": "Final Project Codebase & Paper (25%)",
+      "graded_at": 14,
+      "note": "Weeks 6, 7, 8, 9, and 13 all carry assessment_category 'Final Project Codebase & Paper'. None of these weeks have an independent numeric grade — their deliverables are components of the final repository and paper graded at W14. Students who fall behind in these weeks will face compounding debt heading into the W13 final assembly week."
+    },
+    {
+      "weeks": [10, 11, 12],
+      "maps_to": "Peer Review & Participation",
+      "graded_at": "Per-week (W10, W11, W12)",
+      "note": "The peer review cycle across W10-W12 is graded independently per week, but the W10 review-response step (Step 3) is graded as part of W12, not W10. This creates an invisible dependency: W12 grading criteria include 'Reviewers' audit of their partner's repo' AND resolution of W10 blocking comments, making W12 the de facto close-out for the entire W10-W12 peer-review arc."
+    },
+    {
+      "weeks": [1, 2, 3, 4],
+      "maps_to": "Standard Curriculum Mini-Assignments",
+      "graded_at": "Per-week (W1-W4)",
+      "note": "These four weeks are independently graded mini-assignments. W1 establishes the repository infrastructure reused in all subsequent weeks; W2-W4 build test-driven, RAG, and agentic skills used in project weeks. No explicit deliverable file from W1-W4 is required in the W14 final repository, but the repository created in W1 HW Step 1 ('ai-physics-<lastname>') is the same repository used throughout."
+    },
+    {
+      "weeks": [5],
+      "maps_to": "Project Proposal & Pitch (separate assessment category)",
+      "graded_at": 5,
+      "note": "The proposal is graded independently at W5. However, it is the gating document for the entire project arc (W6-W14). No deliverable file from W5 is explicitly required in the W14 submission, yet the proposal's research question, dataset, and method directly determine what students build in W6-W13."
+    }
+  ],
+  "forward_references": [
+    {
+      "in_week": 8,
+      "references_future_week": 10,
+      "exact_text": "The data ingestion module you build this week will be submitted as part of your final repository in Week 14 and will be reviewed by a peer in Week 10.",
+      "impact": "Students building W8 should know their code will undergo formal peer review in W10. This is a useful motivational signal, but it appears only in the homework background, not in the instructions or grading criteria."
+    },
+    {
+      "in_week": 8,
+      "references_future_week": 14,
+      "exact_text": "The data ingestion module you build this week will be submitted as part of your final repository in Week 14.",
+      "impact": "Alerts students early that W8 work is permanent, not throwaway. Same as above."
+    }
+  ],
+  "issues": [
+    {
+      "severity": "WARNING",
+      "week": 13,
+      "description": "v0.9-draft tag dependency is implicit, not explicit in W14",
+      "detail": "W13 HW Step 4 requires tagging the repo 'v0.9-draft'. W14 HW Step 2 requires tagging 'v1.0-final'. There is no statement in W14 that the v1.0-final tag should supersede or be based on v0.9-draft, nor any requirement to verify the v0.9-draft tag exists before creating v1.0-final. A student who skipped W13 Step 4 will not be blocked from W14 submission."
+    },
+    {
+      "severity": "WARNING",
+      "week": 10,
+      "description": "Dual deadline: Step 3 review responses graded in W12, not W10",
+      "detail": "W10 HW Step 3 is due before Week 12 Meeting 1 — a full two weeks after the main W10 submission deadline. However, the GRADING of this step falls under W12 HW grading criteria ('REVIEW_RESPONSES.md — responses to all Week 10 peer review comments'). A student who reads only the W10 grading criteria will not see that Step 3 feeds into W12's grade. The W10 grading criteria section omits any mention of Step 3 responses."
+    },
+    {
+      "severity": "INFO",
+      "week": 14,
+      "description": "W14 background says 'No new work' but requires self_assessment_<lastname>.md submitted within 48 hours of the showcase",
+      "detail": "W14 HW Step 4 requires a one-page self-assessment submitted within 48 hours after the showcase. This is new writing not assembled from previous weeks. The background statement 'Week 14 has no new assignment' is slightly misleading."
+    },
+    {
+      "severity": "INFO",
+      "week": 12,
+      "description": "W12 HW grading bundles reviewer's W12 audit and author's W10 response together",
+      "detail": "W12 grading criterion 'Reproducibility audit quality' (35%) includes BOTH the student's self-audit AND the reviewer's audit of their partner's repo. These are two separate artifacts by two separate people, but they share a single grading criterion weight. This could cause ambiguity in grade assignment when one is strong and the other is weak."
+    }
+  ]
+}
