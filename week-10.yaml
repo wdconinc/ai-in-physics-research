@@ -8,7 +8,7 @@ meetings:
     student_introduction:
       assigned_to: "one student (rotating schedule)"
       topic_prompt: |
-        Topic: current journal and professional society policies on AI tool use disclosure. Student should read: (1) the Nature portfolio editorial on AI use in papers (nature.com/articles/d41586-023-00191-1); (2) the APS statement on AI in peer review; (3) at least one recent arXiv paper that includes an explicit AI tools statement. Student presents a 3-slide summary of what current best practice looks like and where there is ambiguity. 3-5 sentences.
+        Topic: current journal and professional society policies on AI tool use disclosure. Student should read: (1) the Nature portfolio editorial on AI use in papers (https://www.nature.com/articles/d41586-023-00191-1); (2) the APS statement on AI in peer review; (3) at least one recent arXiv paper that includes an explicit AI tools statement. Student presents a 3-slide summary of what current best practice looks like and where there is ambiguity. 3-5 sentences.
       format: "10-minute slide presentation (max 6 slides)"
       guiding_questions:
         - "What is the difference between disclosing AI use for writing assistance vs. AI use for data analysis?"
@@ -34,7 +34,7 @@ meetings:
     student_introduction:
       assigned_to: "one student (rotating schedule)"
       topic_prompt: |
-        Topic: how to write an actionable code review comment. Student should read Google's Engineering Practices Guide on code review (google.github.io/eng-practices/review/reviewer/) and adapt 3 principles to physics research code. They should bring 2 examples: one good code review comment and one unhelpful one (can be from open-source projects or fabricated). 3-5 sentences.
+        Topic: how to write an actionable code review comment. Student should read Google's Engineering Practices Guide on code review (https://google.github.io/eng-practices/review/reviewer/) and adapt 3 principles to physics research code. They should bring 2 examples: one good code review comment and one unhelpful one (can be from open-source projects or fabricated). 3-5 sentences.
       format: "8-minute chalk talk"
       guiding_questions:
         - "What makes a code review comment 'actionable' rather than just critical?"
@@ -63,18 +63,18 @@ homework:
     Transparency about AI tool use is now a professional expectation in physics research, and peer code review is how the community maintains reproducibility standards. This week you will write the ethics and limitations statement that will appear in your final paper, and submit your written peer review of your partner's codebase.
   instructions:
     - step: 1
-      text: "Write an 'AI Tools and Ethics' statement (300-500 words) for your project. The statement must specify: (a) which AI tools you used (name and version, e.g., 'Claude claude-3-5-sonnet via the Anthropic API'); (b) what each tool was used for (e.g., 'code generation', 'prose improvement', 'data analysis'); (c) how you verified the AI's outputs (e.g., 'all numerical results were cross-checked against the baseline model from Week 7'); (d) any limitations of your AI use that a reader should know. Save as ethics_statement_<lastname>.md."
+      text: "Write an 'AI Tools and Ethics' statement (300-500 words) for your project. The statement must specify: (a) which AI tools you used (name and version, e.g., 'Claude claude-3-5-sonnet-20241022 via the Anthropic API'); (b) what each tool was used for (e.g., 'code generation', 'prose improvement', 'data analysis'); (c) how you verified the AI's outputs (e.g., 'all numerical results were cross-checked against the baseline model from Week 7'); (d) any limitations of your AI use that a reader should know. Save as ethics_statement_<lastname>.md."
     - step: 2
-      text: "Submit your written peer code review as a GitHub PR review on your partner's repository or as a structured markdown document (peer_review_<your_lastname>_reviews_<partner_lastname>.md). The review must include: at least 5 inline comments at specific line numbers, one comment in each of the four rubric categories, and at least one 'blocking' issue (something that must be fixed for reproducibility) with a specific proposed fix."
+      text: "Submit your written peer code review as a GitHub PR review on your partner's repository or as a structured markdown document (peer_review_<reviewer_lastname>_reviews_<author_lastname>.md). The review must include: at least 5 inline comments at specific line numbers, one comment in each of the four rubric categories, and at least one 'blocking' issue (something that must be fixed for reproducibility) with a specific proposed fix."
     - step: 3
-      text: "Respond to all comments in your partner's review of your code. For each comment: either implement the fix and reference the commit, or explain in writing (in the PR thread or a REVIEW_RESPONSES.md file) why you chose not to. This response is due before Week 12 Meeting 1."
+      text: "Respond to all comments in your partner's review of your code. For each comment: either implement the fix and reference the commit, or explain in writing (in the PR thread or a REVIEW_RESPONSES.md file) why you chose not to. This response is due before Week 12 Meeting 1 and is graded in Week 12 under the participation/reproducibility rubric (not Week 10)."
   deliverables:
     - "ethics_statement_<lastname>.md — AI tools and ethics statement (300-500 words)"
-    - "peer_review_<your_lastname>_reviews_<partner_lastname>.md or GitHub PR review with at least 5 inline comments"
+    - "peer_review_<reviewer_lastname>_reviews_<author_lastname>.md or GitHub PR review with at least 5 inline comments"
   grading_criteria:
     - criterion: "Depth of technical feedback"
       weight: "40%"
-      description: "The review includes at least 5 inline comments at specific line numbers, covers all four rubric categories, and the blocking issue includes a specific proposed fix (not just 'fix this')."
+      description: "The review includes at least 5 inline comments at specific line numbers, covers all four rubric categories, and the blocking issue includes a specific proposed fix (not just 'fix this'). Week 10 scoring covers the review artifact itself; Step 3 author response scoring is deferred to Week 12 participation/reproducibility grading."
     - criterion: "Constructive tone"
       weight: "30%"
       description: "All comments are phrased as suggestions or questions rather than criticism; the review explains why each issue matters for reproducibility or correctness."
@@ -82,9 +82,9 @@ homework:
       weight: "30%"
       description: "The statement names specific AI tools with versions, describes their use with enough detail for a reader to assess impact on the results, and acknowledges at least one genuine limitation."
   estimated_time: "4-6 hours (2-3 hr review + 1-2 hr ethics statement)"
-  due: "Peer review submitted before Week 11 Meeting 1; review responses due before Week 12 Meeting 1"
+  due: "Peer review submitted before Week 11 Meeting 1; review responses due before Week 12 Meeting 1 (graded in Week 12 participation/reproducibility rubric)"
   tools_and_resources:
     - "GitHub Pull Request review interface for inline comments"
-    - "APS Statement on the Use of AI in Physics Research (aps.org)"
-    - "Nature portfolio AI use policy (nature.com)"
-    - "Google Engineering Practices — Code Review (google.github.io/eng-practices/review/reviewer/)"
+    - "APS Statement on the Use of AI in Physics Research (https://www.aps.org/policy/statements)"
+    - "Nature portfolio AI use policy (https://www.nature.com/articles/d41586-023-00191-1)"
+    - "Google Engineering Practices — Code Review (https://google.github.io/eng-practices/review/reviewer/)"

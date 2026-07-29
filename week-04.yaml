@@ -13,7 +13,7 @@ meetings:
         tools (callable functions the LLM can invoke), and how tool schemas are defined using
         JSON Schema. Walk through a minimal MCP server–client handshake: how does the client
         discover available tools, and how does the server return a structured result? Reference
-        the official MCP specification at modelcontextprotocol.io and the Anthropic blog post
+        the official MCP specification at https://modelcontextprotocol.io and the Anthropic blog post
         "Introducing the Model Context Protocol" (November 2024). Your presentation must address:
         (1) Why does MCP use JSON-RPC rather than a custom protocol? (2) How do tool input
         schemas constrain what an LLM can pass as arguments? (3) How does this architecture
@@ -186,8 +186,8 @@ homework:
     - "arxiv Python library (pip install arxiv)"
     - "anthropic or openai Python SDK for the LLM client"
     - "python-dotenv for .env file loading (pip install python-dotenv)"
-    - "MCP specification: modelcontextprotocol.io"
+    - "MCP specification: https://modelcontextprotocol.io"
     - "Anthropic blog post: 'Introducing the Model Context Protocol' (November 2024)"
     - "ReAct paper: Yao et al., arXiv:2210.03629"
-    - "SIMBAD web interface for manual cross-checking: simbad.u-strasbg.fr"
-    - "arXiv API documentation: arxiv.org/help/api"
+    - "SIMBAD web interface for manual cross-checking: https://simbad.cds.unistra.fr/simbad/"
+    - "arXiv API documentation: https://info.arxiv.org/help/api/index.html"

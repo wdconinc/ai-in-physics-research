@@ -192,7 +192,7 @@ Step 5 (5 min, debrief): Instructor summarizes the 2–3 key disagreements that 
 - PDG Particle Data Group (known values): https://pdg.lbl.gov
 - NIST Physical Reference Data (constants, atomic data): https://physics.nist.gov/PhysRefData
 - Course GitHub repository with skeleton notebook: exercises/week01/
-- APS guidelines on AI-assisted writing (2023): https://www.aps.org/policy/statements/ai-generated-text.cfm
+- APS guidelines on AI-assisted writing (2023): https://www.aps.org/policy/statements
 
 ---
 
@@ -204,7 +204,7 @@ Step 5 (5 min, debrief): Instructor summarizes the 2–3 key disagreements that 
 
 > *Format:* 10-minute live demo
 > 
-> **Topic prompt:** Research and demonstrate how large language model-based coding assistants — specifically GitHub Copilot and Claude (claude-3-5-sonnet) — generate code from natural language prompts. Focus on the internal mechanics that lead to failure: why does an LLM confidently hallucinate a non-existent NumPy or SciPy function, and what statistical properties of training data cause plausible-but-wrong physics outputs? Use the blog post "Copilot Internals" (GitHub Next, 2023) and Poldrack et al. "AI-assisted coding: Experiments with GPT-4" (arXiv:2304.13187) as primary sources. Your presentation must make the connection between how these tools are trained and the specific failure modes students will encounter in today's debugging exercise.
+> **Topic prompt:** Research and demonstrate how large language model-based coding assistants — specifically GitHub Copilot and Claude (claude-3-5-sonnet-20241022) — generate code from natural language prompts. Focus on the internal mechanics that lead to failure: why does an LLM confidently hallucinate a non-existent NumPy or SciPy function, and what statistical properties of training data cause plausible-but-wrong physics outputs? Use the blog post "Copilot Internals" (GitHub Next, 2023) and Poldrack et al. "AI-assisted coding: Experiments with GPT-4" (arXiv:2304.13187) as primary sources. Your presentation must make the connection between how these tools are trained and the specific failure modes students will encounter in today's debugging exercise.
 >
 > **Guiding questions:**
 > 1. What prompt structures (specification-first vs. open-ended) most reliably produce syntactically correct but physically wrong code, and why?
@@ -256,7 +256,7 @@ Before class: the instructor commits a skeleton Jupyter notebook named `week02_t
 
 Step 1 (3 min): Instructor explains the workflow: students will write a prompt for Claude or GitHub Copilot that includes the test suite and asks the AI to generate code that passes all five tests.
 
-Step 2 (15 min): Each student individually prompts Claude (claude-3-5-sonnet via the web interface) or GitHub Copilot using a test-driven prompt of their own design. They paste the AI output into the "AI-Generated Code" cell and run pytest.
+Step 2 (15 min): Each student individually prompts Claude (claude-3-5-sonnet-20241022 via the web interface) or GitHub Copilot using a test-driven prompt of their own design. They paste the AI output into the "AI-Generated Code" cell and run pytest.
 
 Step 3 (10 min): Students who have passing tests help those who do not by comparing prompt strategies — not by sharing code. Instructor circulates and asks each student: "What did you include in your prompt that you think made the difference?"
 
@@ -266,7 +266,7 @@ Step 5 (7 min): Whole-class debrief. Instructor collects on the whiteboard: (a) 
 
 *Facilitation notes:* Pre-run the skeleton notebook and confirm pytest is importable and that the five tests fail on an empty implementation (returning zeros). Expect most first-attempt AI outputs to pass tests 1–4 but fail `test_symmetry_broken_by_drag`, because this test requires the AI to implement a numerical optimization loop. Use this as a teaching moment about specification completeness. If students find that the AI passes all tests with a trivial solution (e.g., hardcoding the expected output), point out that their test suite is underspecified. Reserve 2 minutes at the end to explicitly connect today's activity to Mini-Assignment 2.
 
-*Materials needed:* `week02_test_driven_skeleton.ipynb` committed to the course GitHub repository; Python environment with numpy, scipy, and pytest pre-installed; student access to Claude (claude-3-5-sonnet) via web interface or GitHub Copilot via IDE; projector to display prompt comparison during debrief
+*Materials needed:* `week02_test_driven_skeleton.ipynb` committed to the course GitHub repository; Python environment with numpy, scipy, and pytest pre-installed; student access to Claude (claude-3-5-sonnet-20241022) via web interface or GitHub Copilot via IDE; projector to display prompt comparison during debrief
 
 ---
 
@@ -274,13 +274,13 @@ Step 5 (7 min): Whole-class debrief. Instructor collects on the whiteboard: (a) 
 
 **Assessment category:** Standard Curriculum Mini-Assignments | **Estimated time:** 3–5 hours | **Due:** Before the first class meeting of Week 3
 
-**Background:** AI coding assistants frequently generate code that is syntactically valid, runs without crashing, and produces output that looks physically reasonable — yet contains subtle errors that only careful physical reasoning can detect. This assignment trains you to be a critical consumer of AI-generated physics code by systematically finding, documenting, and repairing bugs in a script that was generated by Claude (claude-3-5-sonnet) with minimal prompting. You will then apply the test-driven prompting strategy practiced in class to produce a corrected, well-tested replacement.
+**Background:** AI coding assistants frequently generate code that is syntactically valid, runs without crashing, and produces output that looks physically reasonable — yet contains subtle errors that only careful physical reasoning can detect. This assignment trains you to be a critical consumer of AI-generated physics code by systematically finding, documenting, and repairing bugs in a script that was generated by Claude (claude-3-5-sonnet-20241022) with minimal prompting. You will then apply the test-driven prompting strategy practiced in class to produce a corrected, well-tested replacement.
 
 **Instructions:**
 1. Clone the course repository and open `week02_starter/ai_generated_oscillator.py`. This script was produced by Claude with the prompt "Write a Python script that computes and plots the first five energy levels and wavefunctions of the quantum harmonic oscillator using numpy and scipy." Run the script using Python 3.10+ and record every error message and every output value. Do not fix anything yet — just observe. Write your observations in a markdown file named `week02_<lastname>_bugreport.md`.
 2. Identify all bugs in `ai_generated_oscillator.py`. There are exactly five. For each bug, add an entry to `week02_<lastname>_bugreport.md` with the following fields: (a) Bug number and location (file and line number); (b) Category — choose one of: hallucinated API, off-by-one error, wrong physics formula, incorrect normalization, or wrong output quantity; (c) What the AI produced and why it is wrong — explain in one to two sentences using physical reasoning, not just "it crashes"; (d) The correct code and a citation (equation number from Griffiths "Introduction to Quantum Mechanics" or equivalent) supporting your fix.
 3. Write a pytest test suite in `week02_<lastname>.ipynb` containing at least five tests that collectively would have caught all five bugs if they had existed before the AI generated the code. Each test must include a docstring explaining what physical property it checks and why. Run your tests against the original buggy script to confirm they fail, then run them against your fixed version to confirm they pass. Include the pytest output for both runs in your notebook.
-4. Use a test-driven prompting strategy to ask Claude (claude-3-5-sonnet) or GitHub Copilot to regenerate the quantum harmonic oscillator script from scratch, this time including your test suite in the prompt. Paste your full prompt into a markdown cell in `week02_<lastname>.ipynb`, then paste the AI's output into the next code cell and run your test suite against it. If any tests still fail, perform one round of iterative refinement: paste the failing test output back into Claude and ask it to correct its code. Document whether the AI's correction addresses the physical root cause or only the Python error. Include a one-paragraph reflection on what this exercise reveals about the reliability of AI-assisted physics coding.
+4. Use a test-driven prompting strategy to ask Claude (claude-3-5-sonnet-20241022) or GitHub Copilot to regenerate the quantum harmonic oscillator script from scratch, this time including your test suite in the prompt. Paste your full prompt into a markdown cell in `week02_<lastname>.ipynb`, then paste the AI's output into the next code cell and run your test suite against it. If any tests still fail, perform one round of iterative refinement: paste the failing test output back into Claude and ask it to correct its code. Document whether the AI's correction addresses the physical root cause or only the Python error. Include a one-paragraph reflection on what this exercise reveals about the reliability of AI-assisted physics coding.
 
 **Deliverables:**
 - A Jupyter notebook named `week02_<lastname>.ipynb` containing: your five-test pytest suite with docstrings; the pytest output for the buggy script (showing failures) and for the fixed script (showing all passing); your test-driven AI prompt and the AI-generated corrected code; and the one-paragraph reflection on AI reliability.
@@ -297,7 +297,7 @@ Step 5 (7 min): Whole-class debrief. Instructor collects on the whiteboard: (a) 
 | Code clarity | 20% | The notebook reads as a coherent document; each pytest test has a docstring stating the physical property being checked; the bug report is clearly structured; the AI prompt is reproduced verbatim and annotated with a sentence explaining the prompting strategy used. |
 
 **Tools and resources:**
-- Claude (claude-3-5-sonnet) via https://claude.ai — free tier is sufficient
+- Claude (claude-3-5-sonnet-20241022) via https://claude.ai — free tier is sufficient
 - GitHub Copilot — available via student GitHub Education Pack or course license
 - pytest — install via `pip install pytest` or include in environment.yml
 - pytest-nbmake — optional, allows running pytest directly on Jupyter notebooks
@@ -426,7 +426,7 @@ Debrief (5 min): Instructor summarizes the 2–3 core disagreements that were no
 
 > *Format:* 10-minute live demo
 > 
-> **Topic prompt:** Explain the Model Context Protocol (MCP) specification, focusing on its JSON-RPC 2.0 transport layer, the distinction between resources (static data exposed to the LLM) and tools (callable functions the LLM can invoke), and how tool schemas are defined using JSON Schema. Walk through a minimal MCP server–client handshake: how does the client discover available tools, and how does the server return a structured result? Reference the official MCP specification at modelcontextprotocol.io and the Anthropic blog post "Introducing the Model Context Protocol" (November 2024). Your presentation must address: (1) Why does MCP use JSON-RPC rather than a custom protocol? (2) How do tool input schemas constrain what an LLM can pass as arguments? (3) How does this architecture differ from a plain function-calling API (e.g., OpenAI function calling)? This topic grounds the live coding exercise that follows, where students will implement their own MCP server wrapping a real physics database.
+> **Topic prompt:** Explain the Model Context Protocol (MCP) specification, focusing on its JSON-RPC 2.0 transport layer, the distinction between resources (static data exposed to the LLM) and tools (callable functions the LLM can invoke), and how tool schemas are defined using JSON Schema. Walk through a minimal MCP server–client handshake: how does the client discover available tools, and how does the server return a structured result? Reference the official MCP specification at https://modelcontextprotocol.io and the Anthropic blog post "Introducing the Model Context Protocol" (November 2024). Your presentation must address: (1) Why does MCP use JSON-RPC rather than a custom protocol? (2) How do tool input schemas constrain what an LLM can pass as arguments? (3) How does this architecture differ from a plain function-calling API (e.g., OpenAI function calling)? This topic grounds the live coding exercise that follows, where students will implement their own MCP server wrapping a real physics database.
 >
 > **Guiding questions:**
 > 1. What is the difference between a "resource" and a "tool" in the MCP specification, and when would you expose a physics dataset as one versus the other?
@@ -521,11 +521,11 @@ Debrief (5 min): Each student names one node or edge they would change if the pi
 - arxiv Python library (`pip install arxiv`)
 - anthropic or openai Python SDK for the LLM client
 - python-dotenv for `.env` file loading (`pip install python-dotenv`)
-- MCP specification: modelcontextprotocol.io
+- MCP specification: https://modelcontextprotocol.io
 - Anthropic blog post: "Introducing the Model Context Protocol" (November 2024)
 - ReAct paper: Yao et al., arXiv:2210.03629
-- SIMBAD web interface for manual cross-checking: simbad.u-strasbg.fr
-- arXiv API documentation: arxiv.org/help/api
+- SIMBAD web interface for manual cross-checking: https://simbad.cds.unistra.fr/simbad/
+- arXiv API documentation: https://info.arxiv.org/help/api/index.html
 
 ---
 
@@ -603,7 +603,7 @@ Note: If the class has fewer than 10 students, the saved time should be used to 
 **Instructions:**
 1. Write a 2-page project proposal in RevTeX (article class, 11pt font, standard margins). Use the following section structure: Abstract (100 words max), Research Question, Proposed Method, Dataset and Evaluation Criteria, Timeline (Weeks 6–14), References.
 2. In the Research Question section, state one specific, falsifiable question your project will answer. The question must name the physical system or dataset, the AI/MCP method you will use, and how you will know if the method succeeded.
-3. In the Proposed Method section, name the specific tools and libraries you will use (e.g., "I will build an MCP server using the mcp Python SDK to query the Materials Project REST API, then use Claude claude-3-5-sonnet to synthesize property trends for perovskite oxides").
+3. In the Proposed Method section, name the specific tools and libraries you will use (e.g., "I will build an MCP server using the mcp Python SDK to query the Materials Project REST API, then use Claude claude-3-5-sonnet-20241022 to synthesize property trends for perovskite oxides").
 4. In the Dataset section, identify a specific, accessible dataset (with URL or DOI) and state its size, format, and any preprocessing required.
 5. Prepare a 5-slide pitch deck (PDF) matching the proposal structure: one slide per section (skip references). Rehearse by delivering it out loud at least twice with a running timer, aiming for exactly 5 minutes; record any section that overruns and trim it before Meeting 2. [EDIT: vague "Practice delivering it" replaced with specific rehearsal protocol — timed out-loud run-throughs]
 
@@ -646,7 +646,7 @@ Phase 2 pivots from shared curriculum to project-specific development. Students 
 
 > *Format:* 10-minute slide presentation (max 6 slides)
 > 
-> **Topic prompt:** MCP server internals — the JSON-RPC 2.0 transport layer, the tool schema (inputSchema expressed as a JSON Schema object), and how the MCP host and server negotiate capabilities during the initialization handshake. Read the MCP specification at modelcontextprotocol.io/specification (focus on the "Transports", "Tools", and "Lifecycle" sections) and browse the mcp Python SDK source on GitHub (modelcontextprotocol/python-sdk), paying close attention to how `@mcp.tool()` decorators map to JSON Schema entries. Prepare up to 6 slides that walk through a single tool call from the LLM client to the server and back, annotating each JSON-RPC message at each stage. Your presentation must address the guiding questions below and connect to this week's learning objective: students will implement their own tool endpoints, so they need to understand exactly what the runtime expects to receive and return.
+> **Topic prompt:** MCP server internals — the JSON-RPC 2.0 transport layer, the tool schema (inputSchema expressed as a JSON Schema object), and how the MCP host and server negotiate capabilities during the initialization handshake. Read the MCP specification at https://modelcontextprotocol.io/specification (focus on the "Transports", "Tools", and "Lifecycle" sections) and browse the mcp Python SDK source on GitHub (modelcontextprotocol/python-sdk), paying close attention to how `@mcp.tool()` decorators map to JSON Schema entries. Prepare up to 6 slides that walk through a single tool call from the LLM client to the server and back, annotating each JSON-RPC message at each stage. Your presentation must address the guiding questions below and connect to this week's learning objective: students will implement their own tool endpoints, so they need to understand exactly what the runtime expects to receive and return.
 >
 > **Guiding questions:**
 > 1. What fields are required in a JSON Schema inputSchema object for an MCP tool, and what happens when a required field is absent from a client call?
@@ -678,7 +678,7 @@ Debrief (5 min): Instructor photographs all diagrams and posts them to the cours
 
 > *Format:* 10-minute live demo
 > 
-> **Topic prompt:** A real-world physics MCP server example — specifically, wrap either the Materials Project REST API (mp-api Python client) or the SIMBAD/VizieR astronomical database (astroquery) as a functioning MCP server with at least two tool endpoints. Build a minimal but working prototype in a Jupyter notebook or Python script and run it live during your introduction. Demonstrate: (1) the server starting and advertising its tool list, (2) a successful tool call returning real data, and (3) what happens when you send a malformed request. Read the mp-api quickstart (materialsproject.org/api) or the astroquery documentation (astroquery.readthedocs.io) as your primary resource. Your demo must address the guiding questions below and connect to this week's learning objective: students should see a complete, running example before they demo their own servers later in this meeting.
+> **Topic prompt:** A real-world physics MCP server example — specifically, wrap either the Materials Project REST API (mp-api Python client) or the SIMBAD/VizieR astronomical database (astroquery) as a functioning MCP server with at least two tool endpoints. Build a minimal but working prototype in a Jupyter notebook or Python script and run it live during your introduction. Demonstrate: (1) the server starting and advertising its tool list, (2) a successful tool call returning real data, and (3) what happens when you send a malformed request. Read the mp-api quickstart (https://materialsproject.org/api) or the astroquery documentation (https://astroquery.readthedocs.io) as your primary resource. Your demo must address the guiding questions below and connect to this week's learning objective: students should see a complete, running example before they demo their own servers later in this meeting.
 >
 > **Guiding questions:**
 > 1. What design choices did you make when mapping the external API's query parameters to MCP tool inputSchema fields, and what were the trade-offs?
@@ -732,7 +732,7 @@ Debrief (5 min, instructor): The instructor photographs all diagrams and posts t
 
 **Tools and resources:**
 - mcp Python SDK (`pip install mcp`)
-- MCP specification: modelcontextprotocol.io/specification
+- MCP specification: https://modelcontextprotocol.io/specification
 - astroquery (for SIMBAD, VizieR, NASA ADS)
 - mp-api (for Materials Project access)
 - arxiv Python library
@@ -816,7 +816,7 @@ Step 5 — Debrief (7 min): Instructor photographs the whiteboard. Ask: "Which b
 
 **Instructions:**
 1. Write a one-page evaluation protocol document (`evaluation_protocol_<lastname>.md`) for your project's primary AI component. It must specify: (a) the primary evaluation metric (e.g., MAE in eV, F1 score, percent deviation from DFT baseline), (b) the baseline model or method you will compare against, (c) the test dataset you will use (with source URL or DOI), and (d) the threshold for "success" (e.g., "MAE < 0.1 eV, matching chemical accuracy"). The threshold must be a specific number with units and a justification of one or two sentences explaining why that threshold is physically meaningful.
-2. Draw a project architecture diagram (`architecture_<lastname>.pdf` or `.png`) showing the full data flow from raw data source through your AI pipeline to the final evaluated output. Include all of the following labeled components: data source(s), preprocessing steps, AI model or tool, any MCP server or external API calls, and the evaluation step that applies your metric. Use any diagramming tool (draw.io at diagrams.net, Mermaid at mermaid.js.org, or hand-drawn and photographed clearly). The diagram must be readable at standard screen resolution — label every arrow and box.
+2. Draw a project architecture diagram (`architecture_<lastname>.pdf` or `.png`) showing the full data flow from raw data source through your AI pipeline to the final evaluated output. Include all of the following labeled components: data source(s), preprocessing steps, AI model or tool, any MCP server or external API calls, and the evaluation step that applies your metric. Use any diagramming tool (draw.io at https://diagrams.net, Mermaid at https://mermaid.js.org, or hand-drawn and photographed clearly). The diagram must be readable at standard screen resolution — label every arrow and box.
 3. Find three papers directly relevant to your project's AI method or physics domain. For each paper, write a 150-word annotation covering exactly four points: (a) what AI method the paper uses, (b) how it evaluates the AI output (specific metrics and datasets), (c) whether the evaluation is adequate — and why or why not, citing at least one specific omission or strength — and (d) one specific technique or finding you will adapt for your own project, stated concretely enough that a reader could verify whether you actually did it. Compile all three annotations into `bibliography_<lastname>.md` using a standard citation format (APA, AIP, or BibTeX rendered as text).
 4. Implement a baseline model for your project in a Jupyter notebook (`baseline_<lastname>.ipynb`). Load your test dataset, fit or define the baseline, evaluate it using the metric you specified in Step 1, and report the result with units. Include a markdown cell interpreting the baseline result physically: is it better or worse than you expected, and why? You will compare your AI model's performance against this baseline in later weeks.
 
@@ -838,8 +838,8 @@ Step 5 — Debrief (7 min): Instructor photographs the whiteboard. Ask: "Which b
 **Tools and resources:**
 - scikit-learn for baseline models (linear regression, k-NN, SVR)
 - matplotlib/seaborn for calibration curves and evaluation plots
-- draw.io (diagrams.net) for graphical architecture diagrams
-- Mermaid (mermaid.js.org) for code-based flowchart diagrams
+- draw.io (https://diagrams.net) for graphical architecture diagrams
+- Mermaid (https://mermaid.js.org) for code-based flowchart diagrams
 - Semantic Scholar or Google Scholar for paper discovery
 - uncertainties (Python package) for uncertainty propagation in baseline metrics
 - MAPIE or nonconformist (Python) for conformal prediction baselines
@@ -1058,7 +1058,7 @@ Step 6 — Vote and debrief (10 min): Anonymous vote: has your position changed?
 **Student Introduction** (assigned: S1) [EDIT: corrected from S5; rotation table and summary both assign S1 to 10M1]
 > *Format:* 10-minute slide presentation (max 6 slides)
 >
-> **Topic prompt:** Prepare a 10-minute slide presentation (max 6 slides) covering current journal and professional society policies on AI tool use disclosure in physics research. Read: (1) the Nature portfolio editorial on AI use in papers (nature.com/articles/d41586-023-00191-1); (2) the APS statement on AI in peer review; (3) at least one recent arXiv paper that includes an explicit AI tools statement. Your presentation must identify where current policies are specific enough to follow and where they leave room for interpretation, using concrete examples drawn from the three sources. Connect to this week's theme: students will write their own AI tools and ethics statements in Homework 10, and a clear understanding of existing policy language is the prerequisite. [EDIT: rewrote topic prompt from note-style ("Student should read..."; "3-5 sentences.") to directive format consistent with other week intros; removed template placeholder text]
+> **Topic prompt:** Prepare a 10-minute slide presentation (max 6 slides) covering current journal and professional society policies on AI tool use disclosure in physics research. Read: (1) the Nature portfolio editorial on AI use in papers (https://www.nature.com/articles/d41586-023-00191-1); (2) the APS statement on AI in peer review; (3) at least one recent arXiv paper that includes an explicit AI tools statement. Your presentation must identify where current policies are specific enough to follow and where they leave room for interpretation, using concrete examples drawn from the three sources. Connect to this week's theme: students will write their own AI tools and ethics statements in Homework 10, and a clear understanding of existing policy language is the prerequisite. [EDIT: rewrote topic prompt from note-style ("Student should read..."; "3-5 sentences.") to directive format consistent with other week intros; removed template placeholder text]
 >
 > **Guiding questions:**
 > 1. What is the difference between disclosing AI use for writing assistance vs. AI use for data analysis?
@@ -1086,7 +1086,7 @@ Vote and debrief (6 min): Anonymous re-vote; reveal whether opinions shifted; in
 **Student Introduction** (assigned: S6) [EDIT: S6 confirmed correct per rotation table]
 > *Format:* 8-minute chalk talk
 >
-> **Topic prompt:** Prepare an 8-minute chalk talk (no notes, whiteboard only) on how to write an actionable code review comment for physics research code. Read Google's Engineering Practices Guide on code review (google.github.io/eng-practices/review/reviewer/) and adapt three principles specifically to the challenges of physics code — where the reviewer may not know the subdomain. At the whiteboard, present two concrete examples side by side: one actionable code review comment and one unhelpful comment (drawn from open-source physics repositories or fabricated). Explain specifically what makes one actionable and the other not. Connect to today's peer review exercise: students will post real inline comments on their partner's repository, and these principles govern what makes those comments useful. [EDIT: rewrote from note-style ("Topic:... Student should read... 3-5 sentences.") to directive format; removed template placeholder text]
+> **Topic prompt:** Prepare an 8-minute chalk talk (no notes, whiteboard only) on how to write an actionable code review comment for physics research code. Read Google's Engineering Practices Guide on code review (https://google.github.io/eng-practices/review/reviewer/) and adapt three principles specifically to the challenges of physics code — where the reviewer may not know the subdomain. At the whiteboard, present two concrete examples side by side: one actionable code review comment and one unhelpful comment (drawn from open-source physics repositories or fabricated). Explain specifically what makes one actionable and the other not. Connect to today's peer review exercise: students will post real inline comments on their partner's repository, and these principles govern what makes those comments useful. [EDIT: rewrote from note-style ("Topic:... Student should read... 3-5 sentences.") to directive format; removed template placeholder text]
 >
 > **Guiding questions:**
 > 1. What makes a code review comment 'actionable' rather than just critical?
@@ -1110,33 +1110,33 @@ In-class (45 min):
 
 #### Homework Assignment 10: Ethics Statement and Peer Review Submission
 
-**Assessment category:** Peer Review & Participation | **Estimated time:** 4-6 hours (2-3 hr review + 1-2 hr ethics statement) | **Due:** Peer review submitted before Week 11 Meeting 1; review responses due before Week 12 Meeting 1
+**Assessment category:** Peer Review & Participation | **Estimated time:** 4-6 hours (2-3 hr review + 1-2 hr ethics statement) | **Due:** Peer review submitted before Week 11 Meeting 1; review responses due before Week 12 Meeting 1 (graded in Week 12 participation/reproducibility rubric)
 
 **Background:** Building on the structured logging and observability infrastructure added in Week 9, this week pivots to the social and ethical dimensions of AI-assisted research: what you must disclose about how that pipeline was built, and what a peer reviewer should be able to verify. [EDIT: added "building on Week 9" narrative arc bridge] Transparency about AI tool use is now a professional expectation in physics research, and peer code review is how the community maintains reproducibility standards. This week you will write the ethics and limitations statement that will appear in your final paper, and submit your written peer review of your partner's codebase.
 
 **Instructions:**
-1. Write an 'AI Tools and Ethics' statement (300-500 words) for your project. The statement must specify: (a) which AI tools you used (name and version, e.g., 'Claude claude-3-5-sonnet via the Anthropic API'); (b) what each tool was used for (e.g., 'code generation', 'prose improvement', 'data analysis'); (c) how you verified the AI's outputs (e.g., 'all numerical results were cross-checked against the baseline model from Week 7'); (d) any limitations of your AI use that a reader should know. Save as ethics_statement_<lastname>.md.
-2. Submit your written peer code review as a GitHub PR review on your partner's repository or as a structured markdown document (peer_review_<your_lastname>_reviews_<partner_lastname>.md). The review must include: at least 5 inline comments at specific line numbers, one comment in each of the four rubric categories, and at least one 'blocking' issue (something that must be fixed for reproducibility) with a specific proposed fix.
-3. Respond to all comments in your partner's review of your code. For each comment: either implement the fix and reference the commit, or explain in writing (in the PR thread or a REVIEW_RESPONSES.md file) why you chose not to. This response is due before Week 12 Meeting 1.
+1. Write an 'AI Tools and Ethics' statement (300-500 words) for your project. The statement must specify: (a) which AI tools you used (name and version, e.g., 'Claude claude-3-5-sonnet-20241022 via the Anthropic API'); (b) what each tool was used for (e.g., 'code generation', 'prose improvement', 'data analysis'); (c) how you verified the AI's outputs (e.g., 'all numerical results were cross-checked against the baseline model from Week 7'); (d) any limitations of your AI use that a reader should know. Save as ethics_statement_<lastname>.md.
+2. Submit your written peer code review as a GitHub PR review on your partner's repository or as a structured markdown document (peer_review_<reviewer_lastname>_reviews_<author_lastname>.md). The review must include: at least 5 inline comments at specific line numbers, one comment in each of the four rubric categories, and at least one 'blocking' issue (something that must be fixed for reproducibility) with a specific proposed fix.
+3. Respond to all comments in your partner's review of your code. For each comment: either implement the fix and reference the commit, or explain in writing (in the PR thread or a REVIEW_RESPONSES.md file) why you chose not to. This response is due before Week 12 Meeting 1 and is graded in Week 12 under the participation/reproducibility rubric (not Week 10).
 
 **Deliverables:**
 - ethics_statement_<lastname>.md — AI tools and ethics statement (300-500 words)
-- peer_review_<your_lastname>_reviews_<partner_lastname>.md or GitHub PR review with at least 5 inline comments
+- peer_review_<reviewer_lastname>_reviews_<author_lastname>.md or GitHub PR review with at least 5 inline comments
 - REVIEW_RESPONSES.md — written responses to all blocking peer review comments received in Week 10, due before Week 12 Meeting 1
 
 **Grading criteria:**
 
 | Criterion | Weight | Description |
 |-----------|--------|-------------|
-| Depth of technical feedback | 40% | The review includes at least 5 inline comments at specific line numbers, covers all four rubric categories, and the blocking issue includes a specific proposed fix (not just 'fix this'). |
+| Depth of technical feedback | 40% | The review includes at least 5 inline comments at specific line numbers, covers all four rubric categories, and the blocking issue includes a specific proposed fix (not just 'fix this'). Week 10 scoring covers the review artifact itself; Step 3 author response scoring is deferred to Week 12 participation/reproducibility grading. |
 | Constructive tone | 30% | All comments are phrased as suggestions or questions rather than criticism; the review explains why each issue matters for reproducibility or correctness. |
 | Ethics statement quality | 30% | The statement names specific AI tools with versions, describes their use with enough detail for a reader to assess impact on the results, and acknowledges at least one genuine limitation. |
 
 **Tools and resources:**
 - GitHub Pull Request review interface for inline comments
-- APS Statement on the Use of AI in Physics Research (aps.org)
-- Nature portfolio AI use policy (nature.com)
-- Google Engineering Practices — Code Review (google.github.io/eng-practices/review/reviewer/)
+- APS Statement on the Use of AI in Physics Research (https://www.aps.org/policy/statements)
+- Nature portfolio AI use policy (https://www.nature.com/articles/d41586-023-00191-1)
+- Google Engineering Practices — Code Review (https://google.github.io/eng-practices/review/reviewer/)
 
 ---
 
@@ -1192,7 +1192,7 @@ Rebuttals (8 min): 4 min per side.
 Open floor (8 min): Free discussion; instructor injects: "What if the baseline is 100× more expensive to compute than the AI method?"
 Vote and debrief (5 min): Reveal actual Physical Review Data guidelines on baselines.
 
-*Facilitation notes:* The debate motion is intentionally provocative — most students will initially vote FOR. The AGAINST side often argues for computational cost exceptions, which is a genuine research tradeoff. Prepare the Physical Review Data author guidelines (journals.aps.org/prd/authors) as the authoritative reference for the debrief. Assign sides before class to ensure balance.
+*Facilitation notes:* The debate motion is intentionally provocative — most students will initially vote FOR. The AGAINST side often argues for computational cost exceptions, which is a genuine research tradeoff. Prepare the Physical Review Data author guidelines (https://journals.aps.org/prd/authors) as the authoritative reference for the debrief. Assign sides before class to ensure balance.
 
 *Materials needed:* Papers shared 48 hours in advance; PRD author guidelines bookmarked
 
@@ -1228,7 +1228,7 @@ Vote and debrief (5 min): Reveal actual Physical Review Data guidelines on basel
 - RevTeX 4.2 (or Overleaf for online editing)
 - matplotlib with publication-quality defaults (plt.rcParams update)
 - Semantic Scholar or Google Scholar for paper discovery
-- APS Physical Review Data author guidelines (journals.aps.org/prd/authors)
+- APS Physical Review Data author guidelines (https://journals.aps.org/prd/authors)
 
 ---
 
@@ -1282,9 +1282,9 @@ No laptops during seminar. Students should bring the Week 11 and Week 12 papers 
 > *Format:* 8-minute chalk talk
 >
 > **Topic prompt:** Prepare an 8-minute chalk talk (no notes, whiteboard only) on what a complete, publication-ready README looks like for an AI-assisted physics project. Study the following resources before class: [EDIT: removed "Topic:" prefix; rewrote opening in directive format consistent with other week intros]
->   • "Art of README" (github.com/hackergrrl/art-of-readme) — read the full document.
->   • At least two READMEs from published AI-in-physics codebases on GitHub (e.g., from papers with code, paperswithcode.com, filtered to physics).
->   • The Software Sustainability Institute checklist for research software documentation (software.ac.uk/resources/guides/how-write-readme).
+>   • "Art of README" (https://github.com/hackergrrl/art-of-readme) — read the full document.
+>   • At least two READMEs from published AI-in-physics codebases on GitHub (e.g., from papers with code, https://paperswithcode.com, filtered to physics).
+>   • The Software Sustainability Institute checklist for research software documentation (https://www.software.ac.uk/resources/guides).
 > Your 8-minute chalk talk (no notes, whiteboard only) must cover exactly these five required elements of a publication-ready README:
 >   1. Installation: exact commands from a clean environment (conda or venv, Python version pinned).
 >   2. Data download: the exact command or URL to retrieve all input data, plus the expected file sizes or checksums.
@@ -1316,7 +1316,7 @@ In-class structure (45 min):
 - Minutes 30-40: Reviewer-author pairs meet for 10 minutes. Reviewer walks through their FAIL and PARTIAL findings. Author asks clarifying questions and notes which issues they plan to fix before Week 13.
 - Minutes 40-45: Round-robin share-out (1 min per student): each reviewer names the single checklist item their partner's repo failed or nearly failed, and the specific fix required.
 
-After class: reviewer submits the completed checklist as a GitHub PR review or as a structured markdown file (reproducibility_audit_<reviewer>_reviews_<author>.md) within 24 hours.
+After class: reviewer submits the completed checklist as a GitHub PR review or as a structured markdown file (reproducibility_audit_<reviewer_lastname>_reviews_<author_lastname>.md) within 24 hours.
 
 *Facilitation notes:* Distribute the audit checklist as a printout at the start of class — even students who read it digitally benefit from a physical copy to mark up. During minutes 0-30, circulate and ask each reviewer "Which checklist item have you found to be the hardest to verify so far?" — this surfaces common gaps across projects and lets you intervene early. If a student's `make reproduce` fails immediately, help them get unstuck (one intervention of up to 3 minutes) rather than letting them spend the whole period debugging a trivial environment issue. Remind reviewers that a PARTIAL is not a pass: if a reproduction command exists but is not documented in the README, that is PARTIAL, not PASS. The round-robin share-out at the end creates a public record of what reproducibility gaps are common across the class — photograph or transcribe the board and post it to the course repository.
 
@@ -1511,7 +1511,7 @@ Instructor closes with a brief reflection on how AI capabilities have evolved ev
 
 **Instructions:**
 1. Submit your final paper as a compiled PDF (paper_final_<lastname>.pdf) via the course submission portal or by emailing the instructor. The paper must be 4-6 pages in RevTeX, include all six sections (Abstract, Introduction, Methods, Results, Discussion, Conclusion), report at least one evaluation metric with uncertainty, and include an AI Tools & Ethics statement. The paper must compile from source using 'pdflatex paper_final_<lastname>.tex' with no errors.
-2. Tag your final GitHub repository with the version tag v1.0-final using 'git tag v1.0-final && git push origin v1.0-final'. The tagged commit must include: all analysis notebooks, data_pipeline_<lastname>.py, provenance.json, REPRODUCIBILITY.md, BUG_LOG.md, claim_trace_<lastname>.md, a complete README with a one-command reproduction instruction, requirements.txt or environment.yml, and the compiled paper PDF.
+2. Starting from your Week 13 v0.9-draft tag, refine the repository and then tag the final state as v1.0-final using 'git tag v1.0-final && git push origin v1.0-final'. The tagged commit must include: all analysis notebooks, data_pipeline_<lastname>.py, provenance.json, REPRODUCIBILITY.md, BUG_LOG.md, claim_trace_<lastname>.md, a complete README with a one-command reproduction instruction, requirements.txt or environment.yml, and the compiled paper PDF.
 3. Submit your showcase slide deck (slides_final_<lastname>.pdf, ≤12 slides) at least 24 hours before Meeting 2. Slides must include: a title slide with your research question, at least one figure showing your key result vs. the baseline with uncertainty bars, and a final slide stating your main conclusion and one open question.
 4. Deliver your 10-minute showcase presentation in Meeting 2. Speak to the slides you submitted; do not read from them. Be prepared to answer adversarial questions about your AI methodology. After the Q&A, submit a one-page self-assessment (self_assessment_<lastname>.md) within 48 hours of the showcase: state your strongest result, your biggest methodological limitation, and one specific thing you would do differently.
 
@@ -1584,24 +1584,24 @@ Instructor closes with a brief reflection on how AI capabilities have evolved ev
 
 ### APIs and Databases
 
-- arXiv API — https://arxiv.org/help/api; for programmatic access to preprints
+- arXiv API — https://info.arxiv.org/help/api/index.html; for programmatic access to preprints
 - Materials Project — https://materialsproject.org; crystal structure and property database (access via mp-api)
 - NASA ADS — Astrophysics Data System; accessible via astroquery
 - NIST Physical Reference Data — https://physics.nist.gov/PhysRefData; constants and atomic data
 - PDG Particle Data Group — https://pdg.lbl.gov; known particle physics values
-- SIMBAD / VizieR — astronomical object database and catalogue service; accessible via astroquery at simbad.u-strasbg.fr
+- SIMBAD / VizieR — astronomical object database and catalogue service; accessible via astroquery at https://simbad.cds.unistra.fr/simbad/
 - Semantic Scholar / Google Scholar — for literature discovery and paper search
 
 ### AI Tools and Services
 
-- Anthropic API / Claude (claude-3-5-sonnet and other models) — https://claude.ai; free tier available; also accessible via https://claude.ai
+- Anthropic API / Claude (claude-3-5-sonnet-20241022 and other models) — https://claude.ai; free tier available; also accessible via https://claude.ai
 - GitHub Copilot — AI code completion; available via GitHub Education Pack or course license
 - GPT-4 / OpenAI API — `pip install openai>=1.0`; quickstart at https://platform.openai.com/docs/quickstart
 - litellm / Groq (free-tier LLM access) — OpenAI-compatible interface at no cost
 
 ### Papers and References
 
-- APS Statement on the Use of AI in Physics Research — https://www.aps.org/policy/statements/ai-generated-text.cfm
+- APS Statement on the Use of AI in Physics Research — https://www.aps.org/policy/statements
 - APS Physical Review Data author guidelines — https://journals.aps.org/prd/authors
 - Anthropic blog: "Introducing the Model Context Protocol" (November 2024)
 - arXiv:2011.09961 — Pineau et al. (2021), "Improving Reproducibility in ML Research"
@@ -1613,15 +1613,15 @@ Instructor closes with a brief reflection on how AI capabilities have evolved ev
 - ICML 2024 policy on LLM use in research submissions
 - Kapoor, S. & Narayanan, A. (2023). "Leakage and the Reproducibility Crisis in ML-based Science." Patterns 4(9):100804. https://doi.org/10.1016/j.patter.2023.100804
 - MCP specification — https://modelcontextprotocol.io/specification
-- Nature portfolio AI use policy — https://nature.com/articles/d41586-023-00191-1
+- Nature portfolio AI use policy — https://www.nature.com/articles/d41586-023-00191-1
 
 ### Writing and Document Tools
 
-- draw.io (diagrams.net) — graphical architecture and flowchart diagrams
+- draw.io (https://diagrams.net) — graphical architecture and flowchart diagrams
 - git tag / GitHub Releases — for creating versioned repository releases (`git tag v1.0-final && git push origin v1.0-final`)
 - GNU Make — defining reproduction commands as Makefile targets (`make reproduce`)
 - Google Engineering Practices — Code Review guide: https://google.github.io/eng-practices/review/reviewer/
-- Mermaid (mermaid.js.org) — code-based flowchart diagrams
+- Mermaid (https://mermaid.js.org) — code-based flowchart diagrams
 - Overleaf — free online LaTeX editor; alternative to local RevTeX installation
 - pdflatex — local LaTeX compilation (`pdflatex paper_final_<lastname>.tex`)
 - RevTeX 4.2 (document class revtex4-2) — APS journal format; install via TeX Live or MikTeX

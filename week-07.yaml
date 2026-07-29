@@ -180,8 +180,8 @@ homework:
         the full data flow from raw data source through your AI pipeline to the final evaluated
         output. Include all of the following labeled components: data source(s), preprocessing
         steps, AI model or tool, any MCP server or external API calls, and the evaluation step
-        that applies your metric. Use any diagramming tool (draw.io at diagrams.net, Mermaid
-        at mermaid.js.org, or hand-drawn and photographed clearly). The diagram must be
+        that applies your metric. Use any diagramming tool (draw.io at https://diagrams.net, Mermaid
+        at https://mermaid.js.org, or hand-drawn and photographed clearly). The diagram must be
         readable at standard screen resolution — label every arrow and box."
     - step: 3
       text: "Find three papers directly relevant to your project's AI method or physics domain.
@@ -240,8 +240,8 @@ homework:
   tools_and_resources:
     - "scikit-learn for baseline models (linear regression, k-NN, SVR)"
     - "matplotlib/seaborn for calibration curves and evaluation plots"
-    - "draw.io (diagrams.net) for graphical architecture diagrams"
-    - "Mermaid (mermaid.js.org) for code-based flowchart diagrams"
+    - "draw.io (https://diagrams.net) for graphical architecture diagrams"
+    - "Mermaid (https://mermaid.js.org) for code-based flowchart diagrams"
     - "Semantic Scholar or Google Scholar for paper discovery"
     - "uncertainties (Python package) for uncertainty propagation in baseline metrics"
     - "MAPIE or nonconformist (Python) for conformal prediction baselines"

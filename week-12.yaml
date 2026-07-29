@@ -62,9 +62,9 @@ meetings:
       assigned_to: "one student (rotating schedule)"
       topic_prompt: |
         Topic: what a complete, publication-ready README looks like for an AI-assisted physics project. Study the following resources before class:
-          • "Art of README" (github.com/hackergrrl/art-of-readme) — read the full document.
-          • At least two READMEs from published AI-in-physics codebases on GitHub (e.g., from papers with code, paperswithcode.com, filtered to physics).
-          • The Software Sustainability Institute checklist for research software documentation (software.ac.uk/resources/guides/how-write-readme).
+          • "Art of README" (https://github.com/hackergrrl/art-of-readme) — read the full document.
+          • At least two READMEs from published AI-in-physics codebases on GitHub (e.g., from papers with code, https://paperswithcode.com, filtered to physics).
+          • The Software Sustainability Institute checklist for research software documentation (https://www.software.ac.uk/resources/guides).
         Your 8-minute chalk talk (no notes, whiteboard only) must cover exactly these five required elements of a publication-ready README:
           1. Installation: exact commands from a clean environment (conda or venv, Python version pinned).
           2. Data download: the exact command or URL to retrieve all input data, plus the expected file sizes or checksums.
@@ -96,7 +96,7 @@ meetings:
         - Minutes 30-40: Reviewer-author pairs meet for 10 minutes. Reviewer walks through their FAIL and PARTIAL findings. Author asks clarifying questions and notes which issues they plan to fix before Week 13.
         - Minutes 40-45: Round-robin share-out (1 min per student): each reviewer names the single checklist item their partner's repo failed or nearly failed, and the specific fix required.
 
-        After class: reviewer submits the completed checklist as a GitHub PR review or as a structured markdown file (reproducibility_audit_<reviewer>_reviews_<author>.md) within 24 hours.
+        After class: reviewer submits the completed checklist as a GitHub PR review or as a structured markdown file (reproducibility_audit_<reviewer_lastname>_reviews_<author_lastname>.md) within 24 hours.
       facilitation_notes: |
         Distribute the audit checklist as a printout at the start of class — even students who read it digitally benefit from a physical copy to mark up. During minutes 0-30, circulate and ask each reviewer "Which checklist item have you found to be the hardest to verify so far?" — this surfaces common gaps across projects and lets you intervene early. If a student's `make reproduce` fails immediately, help them get unstuck (one intervention of up to 3 minutes) rather than letting them spend the whole period debugging a trivial environment issue. Remind reviewers that a PARTIAL is not a pass: if a reproduction command exists but is not documented in the README, that is PARTIAL, not PASS. The round-robin share-out at the end creates a public record of what reproducibility gaps are common across the class — photograph or transcribe the board and post it to the course repository.
       estimated_duration: "45 minutes"
@@ -123,7 +123,7 @@ homework:
         Resolve all blocking comments from your Week 10 peer review. For each blocking comment:
           (a) Implement the fix and reference the fixing commit SHA in a REVIEW_RESPONSES.md file (e.g., "Resolved in commit abc1234: added sha256 checksum to README data download section").
           (b) If you are not implementing a fix, document your decision with a one-paragraph justification in REVIEW_RESPONSES.md explaining why the comment does not apply or why the alternative approach is preferable.
-        Every blocking comment must have an entry in REVIEW_RESPONSES.md. Non-blocking suggestions may be addressed at your discretion, but note which ones you chose to address and which you deferred.
+        Every blocking comment must have an entry in REVIEW_RESPONSES.md. This step is where Week 10 Step 3 review responses are formally graded in the Week 12 participation/reproducibility rubric. Non-blocking suggestions may be addressed at your discretion, but note which ones you chose to address and which you deferred.
     - step: 3
       text: |
         Run the Week 12 reproducibility audit checklist (five items) against your own repository as a self-audit. For each checklist item, record your honest assessment (PASS, PARTIAL, or FAIL) and the specific evidence (e.g., the exact command you ran and its output). Submit this self-audit as self_audit_checklist_<lastname>.md. For any item you rated PARTIAL or FAIL, add a brief plan (1-3 sentences) describing what you will fix before the Week 14 final submission.

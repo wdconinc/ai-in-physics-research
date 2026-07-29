@@ -51,7 +51,7 @@ meetings:
         Open floor (8 min): Free discussion; instructor injects: "What if the baseline is 100× more expensive to compute than the AI method?"
         Vote and debrief (5 min): Reveal actual Physical Review Data guidelines on baselines.
       facilitation_notes: |
-        The debate motion is intentionally provocative — most students will initially vote FOR. The AGAINST side often argues for computational cost exceptions, which is a genuine research tradeoff. Prepare the Physical Review Data author guidelines (journals.aps.org/prd/authors) as the authoritative reference for the debrief. Assign sides before class to ensure balance.
+        The debate motion is intentionally provocative — most students will initially vote FOR. The AGAINST side often argues for computational cost exceptions, which is a genuine research tradeoff. Prepare the Physical Review Data author guidelines (https://journals.aps.org/prd/authors) as the authoritative reference for the debrief. Assign sides before class to ensure balance.
       estimated_duration: "55 minutes"
       materials_needed: "Papers shared 48 hours in advance; PRD author guidelines bookmarked"
 
@@ -93,4 +93,4 @@ homework:
     - "RevTeX 4.2 (or Overleaf for online editing)"
     - "matplotlib with publication-quality defaults (plt.rcParams update)"
     - "Semantic Scholar or Google Scholar for paper discovery"
-    - "APS Physical Review Data author guidelines (journals.aps.org/prd/authors)"
+    - "APS Physical Review Data author guidelines (https://journals.aps.org/prd/authors)"

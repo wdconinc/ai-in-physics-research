@@ -145,7 +145,7 @@ homework:
     - step: 2
       text: "In the Research Question section, state one specific, falsifiable question your project will answer. The question must name the physical system or dataset, the AI/MCP method you will use, and how you will know if the method succeeded."
     - step: 3
-      text: "In the Proposed Method section, name the specific tools and libraries you will use (e.g., 'I will build an MCP server using the mcp Python SDK to query the Materials Project REST API, then use Claude claude-3-5-sonnet to synthesize property trends for perovskite oxides')."
+      text: "In the Proposed Method section, name the specific tools and libraries you will use (e.g., 'I will build an MCP server using the mcp Python SDK to query the Materials Project REST API, then use Claude claude-3-5-sonnet-20241022 to synthesize property trends for perovskite oxides')."
     - step: 4
       text: "In the Dataset section, identify a specific, accessible dataset (with URL or DOI) and state its size, format, and any preprocessing required."
     - step: 5

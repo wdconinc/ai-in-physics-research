@@ -7,7 +7,9 @@
       "item": "exercises/week01/meeting1_token_explorer.ipynb",
       "description": "Skeleton notebook with 3 cells: tiktoken tokenizer demo, count_tokens() stub, and buggy API call (misspelled model + temperature=2.0). Students fix bugs in-class.",
       "deadline": "Day 0 \u2014 before Week 1 starts",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Required file/artifact located in repository."
     },
     {
       "week": 1,
@@ -16,7 +18,8 @@
       "item": "litellm/Groq fallback URL in course README",
       "description": "Free-tier fallback (llama3 via Groq) for students without OpenAI API keys. URL must be in README so instructor can direct students during class.",
       "deadline": "Day 0 \u2014 before Week 1 starts",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 1,
@@ -25,7 +28,8 @@
       "item": "Pre-test exercises/week01/meeting1_token_explorer.ipynb",
       "description": "Open skeleton notebook in the exact Python environment students will use; confirm tiktoken import, count_tokens stub is empty, and the two bugs (misspelled model, temperature=2.0) trigger as expected.",
       "deadline": "Before Week 1 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 1,
@@ -34,7 +38,8 @@
       "item": "OpenAI API key (or Groq API key) configured in .env",
       "description": "Announced in the syllabus as pre-class homework. Without keys, Step 3-4 of the exercise cannot run. litellm/Groq fallback must also be documented.",
       "deadline": "Before Week 1 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 1,
@@ -43,7 +48,8 @@
       "item": "One-page excerpt packet: APS AI guidelines excerpt + retracted preprint paragraph",
       "description": "One printed copy per student (~10 copies). APS guidelines: aps.org/policy/statements/ai-generated-text.cfm. Retracted preprint: find one where LLM hallucinated a citation. Staple as a single page, no laptops during Step 1.",
       "deadline": "Before Week 1 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 1,
@@ -52,7 +58,8 @@
       "item": "Central question card for whiteboard or projection",
       "description": "Printed or projected: 'An AI model drafted 40% of the methods code in a published physics paper. The paper does not mention this. Is that a problem, and if so, for whom?' Must be visible to all students throughout the seminar.",
       "deadline": "Before Week 1 Meeting 2",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 2,
@@ -61,7 +68,9 @@
       "item": "week02_buggy_harmonic_oscillator.py",
       "description": "Buggy QHO script with exactly 5 planted bugs: (1) missing zero-point energy, (2) off-by-one index, (3) hallucinated scipy.special.hermite_poly API, (4) wrong normalization, (5) psi instead of |psi|^2. Script must run without crashing on bugs 1,2,4,5; only bug 3 raises AttributeError.",
       "deadline": "Before Week 2 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Required file/artifact located in repository."
     },
     {
       "week": 2,
@@ -70,7 +79,8 @@
       "item": "Pre-test week02_buggy_harmonic_oscillator.py in student Python environment",
       "description": "Run the script and verify: bugs 1,2,4,5 produce silently wrong output (no crash); bug 3 raises AttributeError on scipy.special.hermite_poly. Confirm numpy, scipy, matplotlib, math are installed in student environment.",
       "deadline": "Before Week 2 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 2,
@@ -79,7 +89,9 @@
       "item": "week02_test_driven_skeleton.ipynb",
       "description": "Skeleton notebook with: projectile motion problem statement, pre-written pytest suite with 5 tests (vacuum range, vacuum max height, drag reduces range, time positive, symmetry broken by drag), and 3 empty labeled cells (Your AI Prompt, AI-Generated Code, Test Results).",
       "deadline": "Before Week 2 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Required file/artifact located in repository."
     },
     {
       "week": 2,
@@ -88,7 +100,8 @@
       "item": "Pre-run week02_test_driven_skeleton.ipynb and verify pytest setup",
       "description": "Confirm pytest is importable in student environment, all 5 tests fail on an empty implementation (returning zeros), and that test_symmetry_broken_by_drag specifically requires a numerical optimization loop the AI may not include.",
       "deadline": "Before Week 2 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 3,
@@ -97,7 +110,9 @@
       "item": "week03_rag_skeleton.ipynb",
       "description": "Skeleton notebook with import cells (arxiv, sentence_transformers, faiss-cpu, openai/anthropic) and empty function stubs: fetch_abstracts(), embed_texts(), build_index(), retrieve(), answer_with_rag(). Students complete each stub in sequence.",
       "deadline": "Before Week 3 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Required file/artifact located in repository."
     },
     {
       "week": 3,
@@ -106,7 +121,9 @@
       "item": "week03_fallback_corpus.json",
       "description": "Pre-fetched set of 30 arXiv physics abstracts as JSON. Required if arXiv API is slow or rate-limited during class. Each entry should have: id, title, authors, abstract, url.",
       "deadline": "Before Week 3 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Required file/artifact located in repository."
     },
     {
       "week": 3,
@@ -115,7 +132,8 @@
       "item": "Pre-test week03_rag_skeleton.ipynb in student Python environment",
       "description": "Run 'pip install arxiv sentence-transformers faiss-cpu' and confirm no conflicts. Verify fetch_abstracts() can pull results from arXiv. Confirm fallback corpus loads correctly as backup.",
       "deadline": "Before Week 3 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 3,
@@ -124,7 +142,8 @@
       "item": "BEIR benchmark paper (arXiv:2104.08663) \u2014 Thakur et al. 2021",
       "description": "Printed or digital copy accessible during the 'evidence round' (Step 4) of the seminar. Students must be able to cite specific numbers from this paper. One copy per student or projector display.",
       "deadline": "Before Week 3 Meeting 2",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 4,
@@ -133,7 +152,8 @@
       "item": "Skeleton MCP server repository (mcp_skeleton/) with requirements.txt and stub functions for query_simbad() and search_arxiv()",
       "description": "Requirements: mcp, astroquery, arxiv, anthropic or openai SDK. Must include @server.tool() decorator stubs with JSON Schema parameter declarations. Include a visible expected output goal: 'spectral type M1-2Ia-Iab for Betelgeuse'.",
       "deadline": "Before Week 4 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 4,
@@ -142,7 +162,8 @@
       "item": "Pre-tested MCP client script and backup cached API responses (SIMBAD fallback JSON)",
       "description": "Client script that asks: 'What is the spectral type and parallax of Betelgeuse and what are the 3 most recent arXiv papers about it?' Cached fallback JSON for SIMBAD in case TAP service is unavailable during class.",
       "deadline": "Before Week 4 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 4,
@@ -151,7 +172,8 @@
       "item": "Pre-test MCP skeleton in student Python environment; verify SIMBAD TAP service availability",
       "description": "Install mcp, astroquery, arxiv SDK. Run query_simbad('Betelgeuse') and confirm it returns spectral type 'M1-2Ia-Iab'. Confirm cached fallback JSON is ready if TAP service is down during class.",
       "deadline": "Before Week 4 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 5,
@@ -160,7 +182,8 @@
       "item": "Ask students to email a one-sentence draft research question before the session",
       "description": "Required to select 3 representative examples (strong, adequate, weak) to evaluate anonymously in Step 3. Send request at least 24 hours before class via email or course LMS.",
       "deadline": "24 hours before Week 5 Meeting 1",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 5,
@@ -169,7 +192,9 @@
       "item": "Structured peer feedback form for project pitches",
       "description": "One page, three fields: (1) one specific strength of the research question or method; (2) one feasibility/dataset/methodology question the presenter must address; (3) one concrete suggestion for improving scope or clarity. Print 10 copies \u00d7 10 students = 100 forms.",
       "deadline": "Before Week 5 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Exists: instructor/forms/week05_proposal_feedback_form.md"
     },
     {
       "week": 5,
@@ -178,7 +203,9 @@
       "item": "Instructor evaluation sheet for pitch delivery grading",
       "description": "Separate from peer feedback. Rubric tracks: question specificity, feasibility, pitch delivery (within 5-min limit, addresses 3 guiding questions). One sheet per student (10 sheets).",
       "deadline": "Before Week 5 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Exists: instructor/forms/week05_pitch_evaluation_sheet.md"
     },
     {
       "week": 5,
@@ -187,7 +214,8 @@
       "item": "Proposal PDF and 5-slide pitch deck submitted before Week 5 Meeting 2",
       "description": "Written proposal (paper_draft_lastname.tex/.pdf) and slides (proposal_slides_lastname.pdf) must be submitted before pitches begin. Instructor reviews proposals before class to prepare feedback.",
       "deadline": "Before Week 5 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 6,
@@ -196,7 +224,9 @@
       "item": "skeleton_mcp_server.py",
       "description": "Working MCP server exposing one pre-built tool endpoint: unit_convert(value, from_unit, to_unit) using the pint library, with basic error handling. Students add a second domain-specific tool in class. Must run with Python 3.11+, mcp, pint installed.",
       "deadline": "Before Week 6 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Required file/artifact located in repository."
     },
     {
       "week": 6,
@@ -205,7 +235,8 @@
       "item": "Pre-test skeleton_mcp_server.py in student Python environment (Python 3.11+, pip install mcp pint)",
       "description": "Confirm pint and the mcp CLI are available. Run unit_convert() successfully from the mcp CLI or a test script. Verify error handling works for invalid unit strings.",
       "deadline": "Before Week 6 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 6,
@@ -214,7 +245,8 @@
       "item": "Assign whiteboard sections before students arrive (W6 M2)",
       "description": "Label 10 sections on a large whiteboard or prepare 10 large-format paper sheets. Students should be able to begin sketching immediately without negotiating space. Photograph all diagrams and post to course repo within 1 hour after class.",
       "deadline": "Before Week 6 Meeting 2",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 7,
@@ -223,7 +255,8 @@
       "item": "Assign benchmark paper to students before class (Batzner et al. 2022 NequIP, arXiv:2101.03164 or Perdew et al. 1996 PRL)",
       "description": "Students need to read the assigned paper before the debate. Share via LMS or email at least 48 hours before class. Display the debate claim ('MAE < 0.1 eV is ready to replace DFT') as a persistent slide.",
       "deadline": "At least 48 hours before Week 7 Meeting 1",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 8,
@@ -232,7 +265,8 @@
       "item": "Assign whiteboard sections before class (W8 M1); photograph all pipeline sketches after class",
       "description": "Pre-label 10 whiteboard zones. After class, photograph all pipeline sketches and post images to course repository before next meeting. These become shared architecture references for Weeks 9\u201312.",
       "deadline": "Before Week 8 Meeting 1",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 8,
@@ -241,7 +275,9 @@
       "item": "multi_api_pipeline_broken.py (3 planted bugs)",
       "description": "Broken pipeline fetching from SIMBAD + Materials Project with: (a) silent bare-except swallowing a rate-limit error, (b) unit mismatch (solar luminosity added to SI column without conversion), (c) missing .get() guard causing KeyError on 'band_gap' for metallic compounds.",
       "deadline": "At least 24 hours before Week 8 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Required file/artifact located in repository."
     },
     {
       "week": 8,
@@ -250,7 +286,9 @@
       "item": "multi_api_pipeline_solution.py (solution script)",
       "description": "Correct version of the pipeline script. Committed separately so instructor can reference it during debrief without giving away answers during the exercise.",
       "deadline": "At least 24 hours before Week 8 Meeting 2",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "RESOLVED",
+      "evidence": "Required file/artifact located in repository."
     },
     {
       "week": 8,
@@ -259,7 +297,8 @@
       "item": "Commit multi_api_pipeline_broken.py and solution script at least 24 hours before class; assign rotating student pairs",
       "description": "Ensures students who want to preview can do so. Assign pairs by rotating alphabetically through the class roster (different partner from prior weeks). Confirm tenacity, astroquery, mp-api, diskcache are installed in student environment.",
       "deadline": "At least 24 hours before Week 8 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 9,
@@ -268,7 +307,9 @@
       "item": "agentic_bug_hunt.py (60-line broken agentic pipeline, 3 planted failures)",
       "description": "Three bugs: (1) tool call silently returns empty list instead of raising error when API returns 0 results; (2) prompt accumulates context across iterations causing token limit overflow on iteration 4; (3) missing random seed causing non-reproducible results. Must trigger reliably.",
       "deadline": "Before Week 9 Meeting 1 (share 10 min before class)",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Required file/artifact located in repository."
     },
     {
       "week": 9,
@@ -277,7 +318,8 @@
       "item": "Run agentic_bug_hunt.py before class to confirm all 3 bugs trigger reliably",
       "description": "Verify: (1) empty list returned silently on 0-result API query; (2) token overflow happens at exactly iteration 4; (3) non-reproducibility visible across two consecutive runs. Confirm Python environment has required packages.",
       "deadline": "Before Week 9 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 9,
@@ -286,7 +328,8 @@
       "item": "Prepare 3 controversial claims to inject if seminar discussion stalls (W9 M2)",
       "description": "Claims: (1) 'Setting temperature=0 is sufficient for reproducibility.' (2) 'You should log every token the LLM generates.' (3) 'A result is reproducible if I get the same conclusion even if not the same numbers.' Have Pineau et al. checklist ready to project.",
       "deadline": "Before Week 9 Meeting 2",
-      "priority": "RECOMMENDED"
+      "priority": "RECOMMENDED",
+      "status": "PENDING"
     },
     {
       "week": 10,
@@ -295,7 +338,9 @@
       "item": "Debate briefing document FOR caption-level disclosure (one page)",
       "description": "One-page summary of strongest arguments FOR caption-level AI figure disclosure. Can be AI-generated (itself a teaching moment). Print 5 copies (one per student assigned to FOR side). Include references to APS, Nature policies.",
       "deadline": "Before Week 10 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Exists: instructor/debate-briefs/week10_ethics_debate_brief_for.md"
     },
     {
       "week": 10,
@@ -304,7 +349,9 @@
       "item": "Debate briefing document AGAINST caption-level disclosure (one page)",
       "description": "One-page summary of strongest arguments AGAINST caption-level disclosure (e.g., methods-section sufficiency, practical feasibility). Print 5 copies. Balance should mirror the FOR document.",
       "deadline": "Before Week 10 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Exists: instructor/debate-briefs/week10_ethics_debate_brief_against.md"
     },
     {
       "week": 10,
@@ -313,7 +360,9 @@
       "item": "Peer code review rubric (four sections)",
       "description": "Rubric with 4 sections: (1) Can I reproduce the main result from README alone? (2) Are random seeds and API keys handled correctly? (3) Is every quantitative claim traceable to a specific output? (4) Is AI tool use documented? Share 48 hours before class. Print or post digitally.",
       "deadline": "48 hours before Week 10 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Exists: instructor/rubrics/week10_peer_code_review_rubric.md"
     },
     {
       "week": 10,
@@ -322,7 +371,8 @@
       "item": "Assign Week 10 peer review pairs before class (student A reviews B; B reviews A)",
       "description": "Assign pairs so each student knows which repo to clone before class. Pairs should not have reviewed each other before. Share review rubric simultaneously with pair assignments, 48 hours before class.",
       "deadline": "48 hours before Week 10 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 11,
@@ -331,7 +381,8 @@
       "item": "Assign two paper discussion leaders at least one week in advance (W11 M1)",
       "description": "Leaders must select a paper published in the last 3 years using an AI/ML method central to their project. They must post their paper to the course repo 48 hours before the meeting. Coordinate so the two papers use different AI methods.",
       "deadline": "At least 1 week before Week 11 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 11,
@@ -340,7 +391,8 @@
       "item": "Both assigned papers shared with all students 48 hours before Week 11 Meeting 1",
       "description": "Student discussion leaders share their selected papers via course repo or LMS. All students must read both papers before class for the synthesis seminar (Minutes 30\u201360).",
       "deadline": "48 hours before Week 11 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 11,
@@ -349,7 +401,8 @@
       "item": "Assign Week 11 M2 debate sides before class (FOR vs AGAINST baseline comparison requirement)",
       "description": "Assign 5 students FOR and 5 AGAINST the motion: 'AI-in-physics papers should always include a non-AI baseline comparison.' Assign before class to ensure balance, not the same students as W10 debate leaders. Bookmark Physical Review Data author guidelines for debrief.",
       "deadline": "Before Week 11 Meeting 2",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 11,
@@ -358,7 +411,8 @@
       "item": "Assign third and fourth paper discussion leaders (W11 M2); confirm paper shared 48 hr in advance",
       "description": "Third student leads W11 M2 discussion; fourth student leads W12 M1 discussion. Must use a different AI method than W11 M1 papers. Both must post papers 48 hours before their respective meetings.",
       "deadline": "At least 1 week before Week 11 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 12,
@@ -367,7 +421,8 @@
       "item": "Post all four reading-group paper titles on the whiteboard before students arrive (W12 M1)",
       "description": "Write titles of all 4 papers from Weeks 11-12 on the whiteboard so students can reference them by number during the synthesis seminar. Cold-call by name for Round 1 \u2014 do not rely on volunteers.",
       "deadline": "Before Week 12 Meeting 1 (class setup)",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 12,
@@ -376,7 +431,9 @@
       "item": "Reproducibility audit checklist (5 items)",
       "description": "Checklist: (1) Clone test \u2014 does git clone + pip install + make reproduce complete on fresh env? (2) Figure provenance \u2014 every paper figure generated by a named script? (3) Data provenance \u2014 provenance.json covers all sources with URLs and hashes? (4) Secret hygiene \u2014 no API keys committed, .env.example present? (5) Output stability \u2014 numerical outputs match documented checksums? Print enough for all students plus extras.",
       "deadline": "48 hours before Week 12 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Exists: instructor/rubrics/week12_reproducibility_audit_checklist.md"
     },
     {
       "week": 12,
@@ -385,7 +442,8 @@
       "item": "Circulate reproducibility audit checklist 48 hours before class; assign new review pairs (rotate +2 from W10 pairs)",
       "description": "Distribute checklist 48 hr before class so students have time to prepare their repos. Assign new partner pairings (rotate the assignment ring by two positions so no student reviews the same partner twice). Confirm sha256sum is available on all student machines.",
       "deadline": "48 hours before Week 12 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 13,
@@ -394,7 +452,8 @@
       "item": "Prepare 3 LLM rewrites of a sample results sentence with varying degrees of overstatement",
       "description": "Take a real results sentence (e.g., 'The model achieves 94.3% accuracy') and produce 3 LLM rewrites: one faithful, one slightly overstated, one significantly overstated. Students rank by acceptability. Prepares the concrete example needed for Step 1 of the seminar.",
       "deadline": "Before Week 13 Meeting 1",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 13,
@@ -403,7 +462,9 @@
       "item": "Practice showcase feedback form (4 fields)",
       "description": "Form with: (1) Was the research question clear after the first 60 seconds? (2) Was the key result stated with a number and its uncertainty? (3) Was the AI methodology explained at a level a non-AI physicist can evaluate? (4) One specific improvement suggestion. Google Form or printed copies. Sufficient for 10 students evaluating 10 presenters = 100 forms if printed.",
       "deadline": "Before Week 13 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Exists: instructor/forms/week13_showcase_feedback_form.md"
     },
     {
       "week": 13,
@@ -412,7 +473,8 @@
       "item": "After Week 13 M2: compile all peer feedback and email to each student before Week 14",
       "description": "Aggregate feedback form responses per student and send each student their peer feedback before Week 14 M1 so they can incorporate suggestions into their final presentation. Time-sensitive \u2014 must arrive before W14 M2.",
       "deadline": "Within 24 hours after Week 13 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 14,
@@ -421,7 +483,8 @@
       "item": "Read all paper drafts (paper_draft_<lastname>.tex) to prepare tailored adversarial question bank",
       "description": "Read every student's Week 13 paper draft before W14 M1. Prepare one targeted question per student that probes their most vulnerable methodological choice (e.g., why trust LLM output here, why this baseline, why this dataset). Students need 48 hr notice of adversarial format.",
       "deadline": "Before Week 14 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 14,
@@ -430,7 +493,9 @@
       "item": "Tailored adversarial question bank (one question per student)",
       "description": "Ten individually crafted questions (one per student) targeting each student's specific project methodology. Derived from reading paper drafts. Examples: 'Why trust the LLM output here rather than computing directly?' / 'Why not a physics-informed neural network as baseline?'. After class, email each student their question + suggested response approach.",
       "deadline": "Before Week 14 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "RESOLVED",
+      "evidence": "Exists: instructor/forms/week14_question_bank_template.md"
     },
     {
       "week": 14,
@@ -439,7 +504,8 @@
       "item": "Students must have submitted paper draft (paper_draft_<lastname>.pdf) before Week 14 Meeting 1",
       "description": "Required for instructor to read drafts and prepare tailored question bank. Also required for final submission. Students given 48 hours advance notice that Meeting 1 format is adversarial Q&A.",
       "deadline": "Before Week 14 Meeting 1",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 14,
@@ -448,7 +514,8 @@
       "item": "Notify students 48 hours in advance that Week 14 M1 is adversarial Q&A format (no slides)",
       "description": "Send email/LMS post at least 48 hours before W14 M1 explaining the format: 2-minute plain-language result summary, then 3 minutes adversarial questions from instructor playing skeptical faculty. Students should prepare their most vulnerable methodological choices.",
       "deadline": "48 hours before Week 14 Meeting 1",
-      "priority": "IMPORTANT"
+      "priority": "IMPORTANT",
+      "status": "PENDING"
     },
     {
       "week": 14,
@@ -457,7 +524,8 @@
       "item": "Reserve departmental presentation room and invite faculty at least 2 weeks in advance",
       "description": "Secure a larger room than the regular seminar room. Send formal invitation to department faculty and other graduate students at least 2 weeks before the showcase. Assign a student timekeeper with a visible 2-minute warning signal.",
       "deadline": "At least 2 weeks before Week 14 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     },
     {
       "week": 14,
@@ -466,11 +534,14 @@
       "item": "Student showcase slide decks (slides_final_<lastname>.pdf, \u226412 slides) submitted 24 hours before Meeting 2",
       "description": "Instructor must receive slides 24 hours in advance to confirm projector compatibility and order presentations. Slides must include: title with research question, key result figure with uncertainty bars, main conclusion slide.",
       "deadline": "24 hours before Week 14 Meeting 2",
-      "priority": "BLOCKING"
+      "priority": "BLOCKING",
+      "status": "PENDING"
     }
   ],
   "summary": {
     "total_items": 52,
+    "resolved_items": 17,
+    "unresolved_items": 35,
     "by_type": {
       "REPO_FILE": 12,
       "PRE_CLASS_ACTION": 24,
@@ -479,9 +550,22 @@
       "INSTRUCTOR_FORM": 8
     },
     "by_priority": {
-      "BLOCKING": 39,
-      "IMPORTANT": 12,
+      "IMPORTANT": 11,
+      "BLOCKING": 23,
       "RECOMMENDED": 1
+    },
+    "resolved_by_priority": {
+      "BLOCKING": 16,
+      "IMPORTANT": 1
+    },
+    "status_breakdown": {
+      "RESOLVED": 17,
+      "PENDING": 35
     }
+  },
+  "audit_metadata": {
+    "generated_at": "2026-07-28T19:29:25-05:00",
+    "repo_root": "/home/wdconinc/git/copilot-worktrees/ai-in-research/wdconinc-didactic-potato",
+    "note": "REPO_FILE and INSTRUCTOR_FORM items were auto-resolved when corresponding repository artifacts were found."
   }
 }

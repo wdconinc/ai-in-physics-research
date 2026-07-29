@@ -11,7 +11,7 @@ meetings:
         Topic: MCP server internals — the JSON-RPC 2.0 transport layer, the tool schema
         (inputSchema expressed as a JSON Schema object), and how the MCP host and server
         negotiate capabilities during the initialization handshake. Read the MCP specification
-        at modelcontextprotocol.io/specification (focus on the "Transports", "Tools", and
+        at https://modelcontextprotocol.io/specification (focus on the "Transports", "Tools", and
         "Lifecycle" sections) and browse the mcp Python SDK source on GitHub
         (modelcontextprotocol/python-sdk), paying close attention to how @mcp.tool() decorators
         map to JSON Schema entries. Prepare up to 6 slides that walk through a single tool
@@ -82,7 +82,7 @@ meetings:
         run it live during your introduction. Demonstrate: (1) the server starting and
         advertising its tool list, (2) a successful tool call returning real data, and
         (3) what happens when you send a malformed request. Read the mp-api quickstart
-        (materialsproject.org/api) or the astroquery documentation (astroquery.readthedocs.io)
+        (https://materialsproject.org/api) or the astroquery documentation (https://astroquery.readthedocs.io)
         as your primary resource. Your demo must address the guiding questions below and
         connect to this week's learning objective: students should see a complete, running
         example before they demo their own servers later in this meeting.
@@ -183,7 +183,7 @@ homework:
   due: "Before the first class meeting of Week 7"
   tools_and_resources:
     - "mcp Python SDK (pip install mcp)"
-    - "MCP specification: modelcontextprotocol.io/specification"
+    - "MCP specification: https://modelcontextprotocol.io/specification"
     - "astroquery (for SIMBAD, VizieR, NASA ADS)"
     - "mp-api (for Materials Project access)"
     - "arxiv Python library"
