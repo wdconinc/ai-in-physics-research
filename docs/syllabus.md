@@ -11,13 +11,22 @@ The course is divided into three phases: **The Common Baseline** (Weeks 1–5),
 **Project Ideation & Deep Dives** (Weeks 6–7), and **Project Execution & Polish** (Weeks 8–14).
 The experience culminates in a departmental showcase presentation.
 
+## Course Information
+
+| Item | Details |
+| --- | --- |
+| **Contact hours** | Twice a week for 1 hour 15 minutes |
+| **Course dates** | September 9 to December 11, 2026 |
+| **Method of evaluation** | Continuous assessment through mini-assignments, project proposal and pitch, peer review and participation, final project codebase and paper, and the departmental showcase presentation |
+
 ---
 
 ## Assessment Plan
 
 This course utilizes a seminar/workshop model scaled for a maximum of 10 graduate students.
 Assessment pivots away from traditional exams, focusing heavily on reproducibility, peer
-collaboration, and the final deliverables.
+collaboration, and the final deliverables. Evaluation is therefore a mix of individual coding
+work, collaborative critique, and public presentation of the final project.
 
 | Component | Weight | Description |
 |-----------|--------|-------------|
