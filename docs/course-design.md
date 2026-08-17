@@ -1,5 +1,5 @@
 # Course Design: Agent Fleet Specification
-## "AI in Physics Research – Generative AI & Knowledge Platforms"
+## "Generative AI in Physics Research"
 
 This document specifies a **fleet of AI agents** to expand the high-level syllabus into a
 complete, class-ready course guide. The fleet will produce:
@@ -233,7 +233,7 @@ You are an expert in active-learning pedagogy for graduate STEM seminars, with s
 experience in physics departments.
 
 Write a style guide (roughly 800-1200 words) for the following course:
-- Course: "AI in Physics Research – Generative AI & Knowledge Platforms"
+- Course: "Generative AI in Physics Research"
 - Format: 14-week graduate seminar, max 10 students, 2 × 1-hour meetings per week
 - Model: seminar/workshop — no traditional lectures; student-driven
 
@@ -360,7 +360,7 @@ All 14 instances run in parallel after Phase A completes.
 ```
 You are a curriculum designer for a graduate physics seminar. Your job is to write the
 complete content for WEEK {N} of a 14-week course titled:
-"AI in Physics Research – Generative AI & Knowledge Platforms"
+"Generative AI in Physics Research"
 
 COURSE CONTEXT
 ==============
@@ -520,7 +520,7 @@ You have:
 Apply ALL recommended fixes from the consistency report, then assemble the following
 Markdown document:
 
-# Full Course Plan: AI in Physics Research
+# Full Course Plan: Generative AI in Physics Research
 
 ## How to Use This Guide
 <2-paragraph note to instructors on how the guide is structured and how to assign
@@ -582,7 +582,7 @@ readability. Produces an edited final version.
 **Prompt Skeleton:**
 ```
 You are an experienced graduate physics faculty member and course designer reviewing a
-draft course plan for "AI in Physics Research – Generative AI & Knowledge Platforms,"
+draft course plan for "Generative AI in Physics Research,"
 a 14-week graduate seminar for up to 10 students.
 
 Read the full draft course plan below carefully.

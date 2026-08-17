@@ -1,4 +1,4 @@
-# AI in Physics Research
+# Generative AI in Physics Research
 ## Generative AI & Knowledge Platforms
 
 A 14-week graduate seminar for physics PhD students covering practical workflows for

@@ -1,5 +1,5 @@
 # Internal Consistency Review
-## AI in Physics Research Course Artifacts
+## Generative AI in Physics Research Course Artifacts
 
 ## 1. Executive Summary
 
