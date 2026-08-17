@@ -1,4 +1,4 @@
-# Syllabus: AI in Physics Research
+# Syllabus: Generative AI in Physics Research
 ## Generative AI & Knowledge Platforms
 
 ## Course Overview

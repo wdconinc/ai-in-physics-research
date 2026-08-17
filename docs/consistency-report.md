@@ -1,4 +1,4 @@
-# Consistency Report: AI in Physics Research Course
+# Consistency Report: Generative AI in Physics Research Course
 
 Generated: 2026-07-28
 

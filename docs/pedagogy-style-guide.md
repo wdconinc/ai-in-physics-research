@@ -1,5 +1,5 @@
 # Pedagogy Style Guide
-## AI in Physics Research – Generative AI & Knowledge Platforms
+## Generative AI in Physics Research
 ### Graduate Seminar | 14 Weeks | 2 × 60-Minute Meetings | Max 10 Students
 
 ---
