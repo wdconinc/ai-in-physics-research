@@ -4,7 +4,7 @@
 This document specifies a **fleet of AI agents** to expand the high-level syllabus into a
 complete, class-ready course guide. The fleet will produce:
 
-- **28 individual class-meeting plans** (2 meetings × 14 weeks, each 1 hour)
+- **28 individual class-meeting plans** (2 meetings × 14 weeks, each 1 hour 15 minutes)
   - A student-led introduction (topic prompt, format, guiding questions)
   - An active engagement activity for all students
 - **14 detailed homework assignments** (one per week, with concrete instructions and deliverables)

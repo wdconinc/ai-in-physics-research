@@ -13,8 +13,9 @@ pipelines — with every technique grounded in real physics problems.
 |---|---|
 | **Format** | Seminar / workshop — no traditional lectures |
 | **Enrollment** | Maximum 10 graduate students |
-| **Meetings** | 2 × 1 hour per week |
-| **Assessment** | Coding assignments, proposal pitch, peer review, final paper & showcase |
+| **Contact hours** | Twice a week for 1 hour 15 minutes |
+| **Course dates** | September 9 to December 11, 2026 |
+| **Method of evaluation** | Mini-assignments, proposal pitch, peer review, final paper & showcase |
 
 ### Three Phases
 
