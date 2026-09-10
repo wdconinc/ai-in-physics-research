@@ -1,7 +1,7 @@
 # Full Course Plan: Generative AI in Physics Research
 ## Generative AI & Knowledge Platforms — 14-Week Graduate Seminar
 
-This fourteen-week graduate physics seminar introduces researchers to the practical use of generative AI and knowledge-platform tools in scientific workflows. Meeting twice per week in sessions of 45–55 minutes each, the course is organized into three phases: **Phase 1: The Common Baseline** (Weeks 1–5) builds shared competency in LLM APIs, vibe-coding pitfalls, retrieval-augmented generation, tool-augmented agents, and the proposal process; **Phase 2: Project Ideation & Deep Dives** (Weeks 6–7) shifts focus to constructing and evaluating project-specific MCP servers; and **Phase 3: Project Execution & Polish** (Weeks 8–14) supports students through pipeline implementation, peer review, ethics, scientific writing, and a public departmental showcase. Assessment is weighted as follows: Standard Curriculum Mini-Assignments 20%, Project Proposal & Pitch 15%, Peer Review & Participation 15%, Final Project Codebase & Paper 25%, and Departmental Showcase Presentation 25%. Class enrolment is capped at ten graduate students to preserve the seminar format.
+This fourteen-week graduate physics seminar introduces researchers to the practical use of generative AI and knowledge-platform tools in scientific workflows. Meeting twice per week in sessions of 45–55 minutes each, the course is organized into three phases: **Phase 1: The Common Baseline** (Weeks 1–5) builds shared competency in LLM APIs, vibe-coding pitfalls, retrieval-augmented generation, tool-augmented agents, and the proposal process; **Phase 2: Project Ideation & Deep Dives** (Weeks 6–7) shifts focus to constructing and evaluating project-specific MCP servers; and **Phase 3: Project Execution & Polish** (Weeks 8–14) supports students through pipeline implementation, peer review, ethics, scientific writing, and a public departmental showcase. Assessment is weighted as follows: Standard Curriculum Mini-Assignments 20%, Project Proposal & Pitch 15%, Peer Review & Participation 15%, Final Project Codebase & Paper 25%, and Departmental Showcase Presentation 25%. Class enrolment is capped at ten graduate students to preserve the seminar format (current enrolment: 7).
 
 ---
 
@@ -9,7 +9,7 @@ This fourteen-week graduate physics seminar introduces researchers to the practi
 
 **Week structure.** Each week entry below contains three components. First, two meeting records — each giving the student introduction assignment (format, full topic prompt, and guiding questions), the active-engagement activity (full description, facilitation notes, and materials list), and the estimated duration. Second, a single homework assignment with background context, numbered instructions, a deliverables list, a grading-criteria table, time estimate, due date, and a tools-and-resources list. The three active-engagement archetypes used most frequently are: *live coding exercise* (students implement code in real time with the instructor circulating), *collaborative whiteboard* (students co-construct a diagram or map at the board), and *structured debate* or *Socratic seminar* (argument-driven discussion with structured roles and cold-calling). Facilitation notes are written for the instructor; they describe common failure modes, extension tasks for early finishers, and techniques for equitable participation.
 
-**Student introduction rotation.** Each non-showcase meeting opens with a student introduction: a short prepared presentation in one of six formats (chalk talk, live demo, slide presentation, paper presentation, paper discussion, or mixed). The rotation table below assigns each of the ten enrolled students (labelled S1–S10) to two or three introduction slots spread across the 14 weeks. Formats vary by slot so that each student experiences multiple presentation styles. Week 5 Meeting 2 (the proposal pitch session) and Week 14 Meeting 2 (the departmental showcase) are whole-class events — every student presents and those slots are marked "ALL" in the table. Week 12 Meeting 1 is the only meeting with two simultaneous discussion leaders; both slots are assigned to different students. The instructor should distribute the rotation table to the class at the start of Week 1 so students have sufficient preparation time, especially for Week 11–12 paper discussion leadership slots that require reading and annotating a paper 48 hours in advance.
+**Student introduction rotation.** Each non-showcase meeting opens with a student introduction: a short prepared presentation in one of six formats (chalk talk, live demo, slide presentation, paper presentation, paper discussion, or mixed). The rotation table below assigns each of the seven enrolled students (AAAM, BA, IS, NACV, NRN, TK, TL) to two or three introduction slots spread across the 14 weeks. Formats vary by slot so that each student experiences multiple presentation styles. Week 5 Meeting 2 (the proposal pitch session) and Week 14 Meeting 2 (the departmental showcase) are whole-class events — every student presents and those slots are marked "ALL" in the table. Week 12 Meeting 1 is the only meeting with two simultaneous discussion leaders; both slots are assigned to different students. The instructor should distribute the rotation table to the class at the start of Week 1 so students have sufficient preparation time, especially for Week 11–12 paper discussion leadership slots that require reading and annotating a paper 48 hours in advance.
 
 ---
 
@@ -17,49 +17,46 @@ This fourteen-week graduate physics seminar introduces researchers to the practi
 
 | Week | Meeting | Assigned Student | Format |
 |------|---------|-----------------|--------|
-| 1  | 1 | S1  | 8-minute chalk talk |
-| 1  | 2 | S2  | 10-minute live demo |
-| 2  | 1 | S3  | 10-minute live demo |
-| 2  | 2 | S4  | 8-minute chalk talk |
-| 3  | 1 | S5  | 8-minute chalk talk |
-| 3  | 2 | S6  | 10-minute slide presentation (max 6 slides) |
-| 4  | 1 | S7  | 10-minute live demo |
-| 4  | 2 | S8  | 10-minute slide presentation (max 6 slides) |
-| 5  | 1 | S1  | 8-minute paper presentation |
+| 1  | 1 | BA  | 8-minute chalk talk |
+| 1  | 2 | TK  | 10-minute live demo |
+| 2  | 1 | TL  | 10-minute live demo |
+| 2  | 2 | NACV  | 8-minute chalk talk |
+| 3  | 1 | IS  | 8-minute chalk talk |
+| 3  | 2 | AAAM  | 10-minute slide presentation (max 6 slides) |
+| 4  | 1 | NRN  | 10-minute live demo |
+| 4  | 2 | TL  | 10-minute slide presentation (max 6 slides) |
+| 5  | 1 | BA  | 8-minute paper presentation |
 | 5  | 2 | ALL | 5-minute pitch presentation (max 5 slides) per student |
-| 6  | 1 | S2  | 10-minute slide presentation (max 6 slides) |
-| 6  | 2 | S9  | 10-minute live demo |
-| 7  | 1 | S3  | 8-minute paper presentation |
-| 7  | 2 | S10 | 10-minute slide presentation (max 6 slides) |
-| 8  | 1 | S4  | 10-minute slide presentation (max 6 slides) |
-| 8  | 2 | S8  | 10-minute live demo |
-| 9  | 1 | S5  | 10-minute live demo |
-| 9  | 2 | S9  | 8-minute paper presentation |
-| 10 | 1 | S1  | 10-minute slide presentation (max 6 slides) |
-| 10 | 2 | S6  | 8-minute chalk talk |
-| 11 | 1 | S2  | 15-minute paper discussion (whiteboard outline) |
-| 11 | 2 | S7  | 15-minute paper discussion (whiteboard outline) |
-| 12 | 1 | S3 & S4 | 15-minute paper discussion (whiteboard outline) each |
-| 12 | 2 | S10 | 10-minute live demo |
-| 13 | 1 | S5  | 8-minute paper presentation |
-| 13 | 2 | S7  | 10-minute slide presentation (3 min demo + 7 min commentary) |
-| 14 | 1 | S6  | 8-minute chalk talk |
+| 6  | 1 | TK  | 10-minute slide presentation (max 6 slides) |
+| 6  | 2 | IS  | 10-minute live demo |
+| 7  | 1 | TL  | 8-minute paper presentation |
+| 7  | 2 | NRN | 10-minute slide presentation (max 6 slides) |
+| 8  | 1 | NACV  | 10-minute slide presentation (max 6 slides) |
+| 8  | 2 | BA  | 10-minute live demo |
+| 9  | 1 | IS  | 10-minute live demo |
+| 9  | 2 | TK  | 8-minute paper presentation |
+| 10 | 1 | BA  | 10-minute slide presentation (max 6 slides) |
+| 10 | 2 | AAAM  | 8-minute chalk talk |
+| 11 | 1 | TK  | 15-minute paper discussion (whiteboard outline) |
+| 11 | 2 | NRN  | 15-minute paper discussion (whiteboard outline) |
+| 12 | 1 | TL & NACV | 15-minute paper discussion (whiteboard outline) each |
+| 12 | 2 | NACV | 10-minute live demo |
+| 13 | 1 | IS  | 8-minute paper presentation |
+| 13 | 2 | NRN  | 10-minute slide presentation (3 min demo + 7 min commentary) |
+| 14 | 1 | AAAM  | 8-minute chalk talk |
 | 14 | 2 | ALL | 10-minute showcase presentation (≤12 slides) + 5-min Q&A per student |
 
 **Summary by student:**
 
 | Student | Slots | Weeks |
 |---------|-------|-------|
-| S1  | 3 | 1M1 (chalk talk), 5M1 (paper presentation), 10M1 (slide presentation) |
-| S2  | 3 | 1M2 (live demo), 6M1 (slide presentation), 11M1 (paper discussion) |
-| S3  | 3 | 2M1 (live demo), 7M1 (paper presentation), 12M1 (paper discussion) |
-| S4  | 3 | 2M2 (chalk talk), 8M1 (slide presentation), 12M1 (paper discussion) |
-| S5  | 3 | 3M1 (chalk talk), 9M1 (live demo), 13M1 (paper presentation) |
-| S6  | 3 | 3M2 (slide presentation), 10M2 (chalk talk), 14M1 (chalk talk) |
-| S7  | 3 | 4M1 (live demo), 11M2 (paper discussion), 13M2 (slide presentation) |
-| S8  | 2 | 4M2 (slide presentation), 8M2 (live demo) |
-| S9  | 2 | 6M2 (live demo), 9M2 (paper presentation) |
-| S10 | 2 | 7M2 (slide presentation), 12M2 (live demo) |
+| BA   | 4 | 1M1 (chalk talk), 5M1 (paper presentation), 10M1 (slide presentation), 8M2 (live demo) |
+| TK   | 4 | 1M2 (live demo), 6M1 (slide presentation), 11M1 (paper discussion), 9M2 (paper presentation) |
+| TL   | 4 | 2M1 (live demo), 7M1 (paper presentation), 12M1 (paper discussion), 4M2 (slide presentation) |
+| NACV | 4 | 2M2 (chalk talk), 8M1 (slide presentation), 12M1 (paper discussion), 12M2 (live demo) |
+| IS   | 4 | 3M1 (chalk talk), 9M1 (live demo), 13M1 (paper presentation), 6M2 (live demo) |
+| AAAM | 3 | 3M2 (slide presentation), 10M2 (chalk talk), 14M1 (chalk talk) |
+| NRN  | 4 | 4M1 (live demo), 11M2 (paper discussion), 13M2 (slide presentation), 7M2 (slide presentation) |
 
 ---
 
@@ -73,7 +70,7 @@ Phase 1 establishes the technical and methodological baseline shared by all stud
 
 #### Meeting 1 — How Transformers Work: Attention, Tokens, and Next-Token Prediction
 
-**Student Introduction** (assigned: S1)
+**Student Introduction** (assigned: BA)
 
 > *Format:* 8-minute chalk talk
 > 
@@ -115,7 +112,7 @@ Step 5 (5 min, debrief): Each student or pair shares: (1) which bug took longer 
 
 #### Meeting 2 — Responsible Use, Attribution, and Setting Up a Reproducible Research Environment
 
-**Student Introduction** (assigned: S2)
+**Student Introduction** (assigned: TK)
 
 > *Format:* 10-minute live demo
 > 
@@ -200,7 +197,7 @@ Step 5 (5 min, debrief): Instructor summarizes the 2–3 key disagreements that 
 
 #### Meeting 1 — How AI Coding Assistants Generate Code — and Why They Fail
 
-**Student Introduction** (assigned: S3)
+**Student Introduction** (assigned: TL)
 
 > *Format:* 10-minute live demo
 > 
@@ -239,7 +236,7 @@ Step 5 (10 min): Class debrief — each pair shares the bug they found last (typ
 
 #### Meeting 2 — Test-Driven Prompting — Making AI Code Reliable
 
-**Student Introduction** (assigned: S4)
+**Student Introduction** (assigned: NACV)
 
 > *Format:* 8-minute chalk talk
 > 
@@ -312,7 +309,7 @@ Step 5 (7 min): Whole-class debrief. Instructor collects on the whiteboard: (a) 
 
 #### Meeting 1 — Embeddings, Vector Stores, and the RAG Pipeline
 
-**Student Introduction** (assigned: S5)
+**Student Introduction** (assigned: IS)
 
 > *Format:* 8-minute chalk talk
 > 
@@ -347,7 +344,7 @@ Debrief (5 min): Each student or pair shares one result — did RAG change the a
 
 #### Meeting 2 — Evaluating Retrieval Quality for Scientific Queries
 
-**Student Introduction** (assigned: S6)
+**Student Introduction** (assigned: AAAM)
 
 > *Format:* 10-minute slide presentation (max 6 slides)
 > 
@@ -422,7 +419,7 @@ Debrief (5 min): Instructor summarizes the 2–3 core disagreements that were no
 
 #### Meeting 1 — MCP Specification and Connecting LLMs to External Tools
 
-**Student Introduction** (assigned: S7)
+**Student Introduction** (assigned: NRN)
 
 > *Format:* 10-minute live demo
 > 
@@ -455,7 +452,7 @@ Debrief (5 min): Each student shares one unexpected error they encountered and h
 
 #### Meeting 2 — Agentic Workflows: Multi-Step Reasoning, Tool Chaining, and Failure Recovery
 
-**Student Introduction** (assigned: S8)
+**Student Introduction** (assigned: TL)
 
 > *Format:* 10-minute slide presentation (max 6 slides)
 > 
@@ -533,7 +530,7 @@ Debrief (5 min): Each student names one node or edge they would change if the pi
 
 #### Meeting 1 — What Makes a Strong GenAI Research Proposal in Physics?
 
-**Student Introduction** (assigned: S1)
+**Student Introduction** (assigned: BA)
 
 > *Format:* 8-minute paper presentation
 > 
@@ -642,7 +639,7 @@ Phase 2 pivots from shared curriculum to project-specific development. Students 
 
 #### Meeting 1 — MCP Server Internals: Transport, Schemas, and Capability Negotiation
 
-**Student Introduction** (assigned: S2)
+**Student Introduction** (assigned: TK)
 
 > *Format:* 10-minute slide presentation (max 6 slides)
 > 
@@ -674,7 +671,7 @@ Debrief (5 min): Instructor photographs all diagrams and posts them to the cours
 
 #### Meeting 2 — Physics MCP Servers in the Wild: Design Reviews and Project Demos
 
-**Student Introduction** (assigned: S9)
+**Student Introduction** (assigned: IS)
 
 > *Format:* 10-minute live demo
 > 
@@ -744,7 +741,7 @@ Debrief (5 min, instructor): The instructor photographs all diagrams and posts t
 
 #### Meeting 1 — Benchmarking AI Outputs Against Physical Ground Truth
 
-**Student Introduction** (assigned: S3)
+**Student Introduction** (assigned: TL)
 
 > *Format:* 8-minute paper presentation
 > 
@@ -778,7 +775,7 @@ Step 6 — Debrief (8 min): Instructor asks: What additional data would resolve 
 
 #### Meeting 2 — Uncertainty Quantification and Evaluation Protocol Design
 
-**Student Introduction** (assigned: S10)
+**Student Introduction** (assigned: NRN)
 
 > *Format:* 10-minute slide presentation (max 6 slides)
 > 
@@ -858,7 +855,7 @@ Phase 3 is the longest and most intensive phase of the course. Students build, d
 
 #### Meeting 1 — Unifying Heterogeneous Scientific Databases
 
-**Student Introduction** (assigned: S4)
+**Student Introduction** (assigned: NACV)
 
 > *Format:* 10-minute slide presentation (max 6 slides)
 > 
@@ -884,7 +881,7 @@ The instructor facilitates by prompting with "What is missing from this diagram?
 
 #### Meeting 2 — Resilient API Clients and Data Provenance
 
-**Student Introduction** (assigned: S8)
+**Student Introduction** (assigned: BA)
 
 > *Format:* 10-minute live demo
 > 
@@ -953,7 +950,7 @@ Debrief (10 minutes): each pair shares the bug they found last — typically the
 
 #### Meeting 1 — Structured Debugging and Observability for Agentic Pipelines
 
-**Student Introduction** (assigned: S5)
+**Student Introduction** (assigned: IS)
 
 > *Format:* 10-minute live demo
 > 
@@ -981,7 +978,7 @@ Pairs have 30 minutes to find all three bugs using only the script and its logs.
 
 #### Meeting 2 — Reproducibility in Agentic Workflows
 
-**Student Introduction** (assigned: S9)
+**Student Introduction** (assigned: TK)
 
 > *Format:* 8-minute paper presentation
 > 
@@ -1055,7 +1052,7 @@ Step 6 — Vote and debrief (10 min): Anonymous vote: has your position changed?
 
 #### Meeting 1 — AI Research Ethics and Disclosure Standards
 
-**Student Introduction** (assigned: S1) [EDIT: corrected from S5; rotation table and summary both assign S1 to 10M1]
+**Student Introduction** (assigned: BA) [EDIT: corrected from IS; rotation table and summary both assign BA to 10M1]
 > *Format:* 10-minute slide presentation (max 6 slides)
 >
 > **Topic prompt:** Prepare a 10-minute slide presentation (max 6 slides) covering current journal and professional society policies on AI tool use disclosure in physics research. Read: (1) the Nature portfolio editorial on AI use in papers (https://www.nature.com/articles/d41586-023-00191-1); (2) the APS statement on AI in peer review; (3) at least one recent arXiv paper that includes an explicit AI tools statement. Your presentation must identify where current policies are specific enough to follow and where they leave room for interpretation, using concrete examples drawn from the three sources. Connect to this week's theme: students will write their own AI tools and ethics statements in Homework 10, and a clear understanding of existing policy language is the prerequisite. [EDIT: rewrote topic prompt from note-style ("Student should read..."; "3-5 sentences.") to directive format consistent with other week intros; removed template placeholder text]
@@ -1083,7 +1080,7 @@ Vote and debrief (6 min): Anonymous re-vote; reveal whether opinions shifted; in
 
 #### Meeting 2 — In-Class Peer Code Review
 
-**Student Introduction** (assigned: S6) [EDIT: S6 confirmed correct per rotation table]
+**Student Introduction** (assigned: AAAM) [EDIT: AAAM confirmed correct per rotation table]
 > *Format:* 8-minute chalk talk
 >
 > **Topic prompt:** Prepare an 8-minute chalk talk (no notes, whiteboard only) on how to write an actionable code review comment for physics research code. Read Google's Engineering Practices Guide on code review (https://google.github.io/eng-practices/review/reviewer/) and adapt three principles specifically to the challenges of physics code — where the reviewer may not know the subdomain. At the whiteboard, present two concrete examples side by side: one actionable code review comment and one unhelpful comment (drawn from open-source physics repositories or fabricated). Explain specifically what makes one actionable and the other not. Connect to today's peer review exercise: students will post real inline comments on their partner's repository, and these principles govern what makes those comments useful. [EDIT: rewrote from note-style ("Topic:... Student should read... 3-5 sentences.") to directive format; removed template placeholder text]
@@ -1144,7 +1141,7 @@ In-class (45 min):
 
 #### Meeting 1 — Reading Group Session A
 
-**Student Introduction** (assigned: S2) [EDIT: corrected from S7; rotation table and summary both assign S2 to 11M1]
+**Student Introduction** (assigned: TK) [EDIT: corrected from NRN; rotation table and summary both assign TK to 11M1]
 > *Format:* 15-minute paper discussion (whiteboard outline, no slides required)
 >
 > **Topic prompt:** You will lead a 15-minute discussion of a paper directly relevant to your project. Select a paper published in the last 3 years that uses an AI or ML method central to your research question. Prepare a structured presentation covering: (1) the physical problem being solved; (2) the AI method used and why it was chosen; (3) the evaluation approach and its adequacy; (4) one specific finding you will apply or adapt in your own project; (5) one weakness or open question in the paper. Prepare 3 discussion questions for the class. You do not need slides — a whiteboard outline is sufficient.
@@ -1170,7 +1167,7 @@ Minutes 50-60: Each student writes one sentence on a notecard: "The one thing I 
 
 #### Meeting 2 — Reading Group Session B
 
-**Student Introduction** (assigned: S7) [EDIT: corrected from S8; rotation table and summary both assign S7 to 11M2]
+**Student Introduction** (assigned: NRN) [EDIT: corrected from BA; rotation table and summary both assign NRN to 11M2]
 > *Format:* 15-minute paper discussion (whiteboard outline)
 >
 > **Topic prompt:** You will lead a 15-minute discussion of a paper directly relevant to your project. Select a paper that uses a different AI method than the Week 11 Meeting 1 papers (to maximize class exposure to diverse approaches). Prepare the same structured outline as Meeting 1 leaders: physical problem, AI method, evaluation, what you will adapt, one weakness, and 3 discussion questions. Post your paper to the course repo 48 hours in advance.
@@ -1236,7 +1233,7 @@ Vote and debrief (5 min): Reveal actual Physical Review Data guidelines on basel
 
 #### Meeting 1 — Advanced & Cross-Cutting AI-in-Physics Reading Group
 
-**Student Introduction** (assigned: S3 & S4) [EDIT: corrected from S9; rotation table and summary both assign S3 and S4 to 12M1 as a joint two-student slot]
+**Student Introduction** (assigned: TL & NACV) [EDIT: corrected from TK; rotation table and summary both assign TL and NACV to 12M1 as a joint two-student slot]
 > *Format:* 15-minute paper discussion (whiteboard outline)
 >
 > **Topic prompt:** Each of the two students leads a 15-minute paper discussion on a cross-cutting or advanced AI-in-physics paper — one that addresses AI reproducibility or reliability at a field-wide scale rather than within a single method. Recommended papers (choose one each, or propose an alternative with instructor approval):
@@ -1278,7 +1275,7 @@ No laptops during seminar. Students should bring the Week 11 and Week 12 papers 
 
 #### Meeting 2 — In-Class Peer Code Review — Reproducibility Audit
 
-**Student Introduction** (assigned: S10)
+**Student Introduction** (assigned: NACV)
 > *Format:* 8-minute chalk talk
 >
 > **Topic prompt:** Prepare an 8-minute chalk talk (no notes, whiteboard only) on what a complete, publication-ready README looks like for an AI-assisted physics project. Study the following resources before class: [EDIT: removed "Topic:" prefix; rewrote opening in directive format consistent with other week intros]
@@ -1360,7 +1357,7 @@ After class: reviewer submits the completed checklist as a GitHub PR review or a
 
 #### Meeting 1 — Writing the AI-Assisted Physics Paper
 
-**Student Introduction** (assigned: S5) [EDIT: corrected from S1; rotation table and summary both assign S5 to 13M1]
+**Student Introduction** (assigned: IS) [EDIT: corrected from BA; rotation table and summary both assign IS to 13M1]
 > *Format:* 8-minute paper presentation
 >
 > **Topic prompt:** Research and present how AI writing assistants (Claude, GPT-4, Grammarly) have been used in published physics papers — and where they went wrong. Find at least one published retraction or correction where AI-assisted writing introduced a factual error or hallucination. Present: (1) a brief taxonomy of legitimate vs. problematic AI writing assistance; (2) the specific failure case; (3) a practical workflow for using LLMs to improve clarity without distorting scientific claims (e.g., always show the LLM the underlying data before asking it to describe results). Limit to 8 minutes.
@@ -1387,7 +1384,7 @@ Debrief (9 min): Pairs share their policies. Instructor synthesizes into a pract
 
 #### Meeting 2 — Practice Showcase Presentations
 
-**Student Introduction** (assigned: S7) [EDIT: corrected from S2; rotation table and summary both assign S7 to 13M2]
+**Student Introduction** (assigned: NRN) [EDIT: corrected from TK; rotation table and summary both assign NRN to 13M2]
 > *Format:* 10-minute slide presentation (max 6 slides) — 3 min demo + 7 min commentary
 >
 > **Topic prompt:** Prepare and deliver the opening 3 minutes of your showcase presentation as a demonstration model for the class. Your goal is to show what an effective opening looks like: a crisp motivation statement (why this physics problem matters), your specific research question stated in one sentence, and the key result in one sentence with a figure. After your demo, briefly explain the choices you made (why this opening, what you cut, what you emphasized). This is a teaching demonstration, not a performance — feel free to narrate your thinking.
@@ -1450,7 +1447,7 @@ Final 5 min: Instructor synthesizes the most common feedback themes and states w
 
 #### Meeting 1 — Final Submission and Adversarial Q&A Rehearsal
 
-**Student Introduction** (assigned: S6) [EDIT: corrected from S3; rotation table and summary both assign S6 to 14M1]
+**Student Introduction** (assigned: AAAM) [EDIT: corrected from TL; rotation table and summary both assign AAAM to 14M1]
 > *Format:* 8-minute chalk talk
 >
 > **Topic prompt:** Reflect on the 14-week course arc in a forward-looking synthesis, not a recap: what has changed in AI capabilities for physics research since the course began? Find one AI-in-physics development from the past month (a preprint, tool release, or policy change) and present it as a "course update" — what would we cover differently if the course started today? Your chalk talk must be delivered from the whiteboard with no notes; connect the new development explicitly to one topic from Phase 1 or Phase 2 that it would change, extend, or supersede. [EDIT: removed "3-5 sentences." template placeholder; integrated "This is a forward-looking synthesis" note into the prose directive]
