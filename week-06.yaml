@@ -97,7 +97,7 @@ meetings:
         Session structure:
         - Opening (3 min): Instructor reviews the feedback form, sets timer protocol,
           and reminds the class that critique is a form of intellectual generosity.
-        - Pitches (49 min): 7 students × 7 min each (5 min pitch + 2 min Q&A).
+        - Pitches (56 min): 8 students × 7 min each (5 min pitch + 2 min Q&A).
           A visible countdown timer is used. The instructor cuts off at 5 minutes
           without apology. After each Q&A, peers silently complete the feedback form
           for that presenter; forms are collected and given to the presenter at the
@@ -119,7 +119,7 @@ meetings:
         specifically impressed you, and why does it matter for the project?" Collect
         all feedback forms at the end of class and return them to the corresponding
         presenters (digitally or physically) within 24 hours.
-      estimated_duration: "49 minutes (7 min × 7 students = 49 min; adjust Q&A if time is short)"
+      estimated_duration: "56 minutes (7 min × 8 students = 56 min; adjust Q&A if time is short)"
       materials_needed: "Printed or shared feedback forms; projector for slides; visible countdown timer; instructor evaluation sheet for pitch delivery grading"
 
 homework:
