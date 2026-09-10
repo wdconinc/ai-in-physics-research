@@ -36,7 +36,7 @@ meetings:
         flow, one for error/exception paths — so failure modes are visually distinct from the
         happy path.
 
-        After all students have sketched their pipelines (approximately 50 minutes for 10
+        After all students have sketched their pipelines (approximately 35 minutes for 7
         students at 5 minutes each), the class votes by show of hands on the 2 pipelines
         that appear most architecturally complex or that expose the most interesting failure
         modes. Those two pipelines are discussed in depth for the remaining time: the class
@@ -58,7 +58,7 @@ meetings:
         ask them to sketch the intended architecture — the gaps that emerge are equally
         informative.
       estimated_duration: "45 minutes"
-      materials_needed: "Whiteboard divided into 10 labeled sections, markers in at least two colors, phone or tablet camera for end-of-class photographs"
+      materials_needed: "Whiteboard divided into 7 labeled sections, markers in at least two colors, phone or tablet camera for end-of-class photographs"
 
   - meeting: 2
     title: "Resilient API Clients and Data Provenance"

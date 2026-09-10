@@ -61,7 +61,7 @@ meetings:
           visually plausible but is physically incorrect.
 
         Step 1 (2 min): Instructor assigns pairs alphabetically by last name
-        (five pairs for ten students). Each pair clones the repository and opens
+        (three pairs and one trio for seven students). Each pair/trio clones the repository and opens
         week03_buggy_harmonic_oscillator.py.
 
         Step 2 (3 min): Pairs run the script as-is and record every error message

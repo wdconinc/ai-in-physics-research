@@ -129,7 +129,7 @@ meetings:
         The act of students reorganizing it is where the learning happens. Keep a mental list
         of nodes that must appear (rate limiter, error handler, physical plausibility checker)
         and surface them with questions rather than additions: "What happens when this tool
-        gets called 50 times? Is there a node for that?" For 10 students, ensure every student
+        gets called 50 times? Is there a node for that?" For 7 students, ensure every student
         adds at least one node or edge — cold-call quieter students with "Can you draw the
         connection between the rate limiter and the LLM loop?" The stress-test scenarios in
         Step 3 reliably generate productive disagreement; let disagreements run for 2 minutes
