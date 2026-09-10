@@ -1,7 +1,10 @@
 # Full Course Plan: Generative AI in Physics Research
-## Generative AI & Knowledge Platforms — 14-Week Graduate Seminar
+## Generative AI & Knowledge Platforms — 13-Week Graduate Seminar
 
-This fourteen-week graduate physics seminar introduces researchers to the practical use of generative AI and knowledge-platform tools in scientific workflows. Meeting twice per week in sessions of 45–55 minutes each, the course is organized into three phases: **Phase 1: The Common Baseline** (Weeks 1–5) builds shared competency in LLM APIs, vibe-coding pitfalls, retrieval-augmented generation, tool-augmented agents, and the proposal process; **Phase 2: Project Ideation & Deep Dives** (Weeks 6–7) shifts focus to constructing and evaluating project-specific MCP servers; and **Phase 3: Project Execution & Polish** (Weeks 8–14) supports students through pipeline implementation, peer review, ethics, scientific writing, and a public departmental showcase. Assessment is weighted as follows: Standard Curriculum Mini-Assignments 20%, Project Proposal & Pitch 15%, Peer Review & Participation 15%, Final Project Codebase & Paper 25%, and Departmental Showcase Presentation 25%. Class enrolment is capped at ten graduate students to preserve the seminar format (current enrolment: 7).
+This revised graduate physics seminar now begins with an instructor-led orientation in Week 1 and then runs a 12-content-week main curriculum across Weeks 2–13. Meeting twice per week in sessions of 45–55 minutes each, the course is organized into three phases: **Phase 1: The Common Baseline** (Weeks 2–6) builds shared competency in LLM APIs, vibe-coding pitfalls, retrieval-augmented generation, tool-augmented agents, and the proposal process; **Phase 2: Project Ideation & Deep Dives** (Weeks 7–8) shifts focus to constructing and evaluating project-specific MCP servers; and **Phase 3: Project Execution & Polish** (Weeks 9–13) supports students through pipeline implementation, peer review, ethics, scientific writing, and a public departmental showcase. Assessment is weighted as follows: Standard Curriculum Mini-Assignments 20%, Project Proposal & Pitch 15%, Peer Review & Participation 15%, Final Project Codebase & Paper 25%, and Departmental Showcase Presentation 25%. Class enrolment is capped at ten graduate students to preserve the seminar format (current enrolment: 7).
+
+
+**Note:** Week 1 is a partial course orientation week handled separately by the instructor and is not covered in the weekly plan below; the main curriculum runs in Weeks 2–13.
 
 ---
 
@@ -9,7 +12,7 @@ This fourteen-week graduate physics seminar introduces researchers to the practi
 
 **Week structure.** Each week entry below contains three components. First, two meeting records — each giving the student introduction assignment (format, full topic prompt, and guiding questions), the active-engagement activity (full description, facilitation notes, and materials list), and the estimated duration. Second, a single homework assignment with background context, numbered instructions, a deliverables list, a grading-criteria table, time estimate, due date, and a tools-and-resources list. The three active-engagement archetypes used most frequently are: *live coding exercise* (students implement code in real time with the instructor circulating), *collaborative whiteboard* (students co-construct a diagram or map at the board), and *structured debate* or *Socratic seminar* (argument-driven discussion with structured roles and cold-calling). Facilitation notes are written for the instructor; they describe common failure modes, extension tasks for early finishers, and techniques for equitable participation.
 
-**Student introduction rotation.** Each non-showcase meeting opens with a student introduction: a short prepared presentation in one of six formats (chalk talk, live demo, slide presentation, paper presentation, paper discussion, or mixed). The rotation table below assigns each of the seven enrolled students (AAAM, BA, IS, NACV, NRN, TK, TL) to two or three introduction slots spread across the 14 weeks. Formats vary by slot so that each student experiences multiple presentation styles. Week 5 Meeting 2 (the proposal pitch session) and Week 14 Meeting 2 (the departmental showcase) are whole-class events — every student presents and those slots are marked "ALL" in the table. Week 12 Meeting 1 is the only meeting with two simultaneous discussion leaders; both slots are assigned to different students. The instructor should distribute the rotation table to the class at the start of Week 1 so students have sufficient preparation time, especially for Week 11–12 paper discussion leadership slots that require reading and annotating a paper 48 hours in advance.
+**Student introduction rotation.** Each non-showcase meeting opens with a student introduction: a short prepared presentation in one of six formats (chalk talk, live demo, slide presentation, paper presentation, paper discussion, or mixed). The rotation table below assigns each of the seven enrolled students (AAAM, BA, IS, NACV, NRN, TK, TL) to two or three introduction slots spread across the 12 content weeks covered here. Formats vary by slot so that each student experiences multiple presentation styles. Week 6 Meeting 2 (the proposal pitch session) and Week 13 Meeting 2 (the departmental showcase) are whole-class events. Week 12 Meeting 1 now compresses the reading-group sequence into one extended session with multiple named facilitators, and Week 13 Meeting 1 compresses the paper-writing and practice-presentation slots into one pre-showcase meeting. The instructor should distribute the rotation table to the class during the Week 1 orientation so students have sufficient preparation time, especially for the Week 12 reading-group roles and Week 13 showcase-prep roles.
 
 ---
 
@@ -17,56 +20,52 @@ This fourteen-week graduate physics seminar introduces researchers to the practi
 
 | Week | Meeting | Assigned Student | Format |
 |------|---------|-----------------|--------|
-| 1  | 1 | BA  | 8-minute chalk talk |
-| 1  | 2 | TK  | 10-minute live demo |
-| 2  | 1 | TL  | 10-minute live demo |
-| 2  | 2 | NACV  | 8-minute chalk talk |
-| 3  | 1 | IS  | 8-minute chalk talk |
-| 3  | 2 | AAAM  | 10-minute slide presentation (max 6 slides) |
-| 4  | 1 | NRN  | 10-minute live demo |
-| 4  | 2 | TL  | 10-minute slide presentation (max 6 slides) |
-| 5  | 1 | BA  | 8-minute paper presentation |
-| 5  | 2 | ALL | 5-minute pitch presentation (max 5 slides) per student |
-| 6  | 1 | TK  | 10-minute slide presentation (max 6 slides) |
-| 6  | 2 | IS  | 10-minute live demo |
-| 7  | 1 | TL  | 8-minute paper presentation |
-| 7  | 2 | NRN | 10-minute slide presentation (max 6 slides) |
-| 8  | 1 | NACV  | 10-minute slide presentation (max 6 slides) |
-| 8  | 2 | BA  | 10-minute live demo |
-| 9  | 1 | IS  | 10-minute live demo |
-| 9  | 2 | TK  | 8-minute paper presentation |
-| 10 | 1 | BA  | 10-minute slide presentation (max 6 slides) |
-| 10 | 2 | AAAM  | 8-minute chalk talk |
-| 11 | 1 | TK  | 15-minute paper discussion (whiteboard outline) |
-| 11 | 2 | NRN  | 15-minute paper discussion (whiteboard outline) |
-| 12 | 1 | TL & NACV | 15-minute paper discussion (whiteboard outline) each |
-| 12 | 2 | NACV | 10-minute live demo |
-| 13 | 1 | IS  | 8-minute paper presentation |
-| 13 | 2 | NRN  | 10-minute slide presentation (3 min demo + 7 min commentary) |
-| 14 | 1 | AAAM  | 8-minute chalk talk |
-| 14 | 2 | ALL | 10-minute showcase presentation (≤12 slides) + 5-min Q&A per student |
+| 2  | 1 | BA  | 8-minute chalk talk |
+| 2  | 2 | TK  | 10-minute live demo |
+| 3  | 1 | TL  | 10-minute live demo |
+| 3  | 2 | NACV  | 8-minute chalk talk |
+| 4  | 1 | IS  | 8-minute chalk talk |
+| 4  | 2 | AAAM  | 10-minute slide presentation (max 6 slides) |
+| 5  | 1 | NRN  | 10-minute live demo |
+| 5  | 2 | TL  | 10-minute slide presentation (max 6 slides) |
+| 6  | 1 | BA  | 8-minute paper presentation |
+| 6  | 2 | ALL | 5-minute pitch presentation (max 5 slides) per student |
+| 7  | 1 | TK  | 10-minute slide presentation (max 6 slides) |
+| 7  | 2 | IS  | 10-minute live demo |
+| 8  | 1 | TL  | 8-minute paper presentation |
+| 8  | 2 | NRN | 10-minute slide presentation (max 6 slides) |
+| 9  | 1 | NACV  | 10-minute slide presentation (max 6 slides) |
+| 9  | 2 | BA  | 10-minute live demo |
+| 10 | 1 | IS  | 10-minute live demo |
+| 10 | 2 | TK  | 8-minute paper presentation |
+| 11 | 1 | BA  | 10-minute slide presentation (max 6 slides) |
+| 11 | 2 | AAAM  | 8-minute chalk talk |
+| 12 | 1 | TK & NRN (co-facilitate), TL & NACV (cross-cutting discussion) | Extended 15-minute paper discussions + synthesis |
+| 12 | 2 | NACV | 8-minute chalk talk |
+| 13 | 1 | IS & NRN | Combined paper presentation + showcase practice demo |
+| 13 | 2 | AAAM opener; ALL showcase presenters | 8-minute chalk talk opener + departmental showcase |
 
 **Summary by student:**
 
 | Student | Slots | Weeks |
 |---------|-------|-------|
-| BA   | 4 | 1M1 (chalk talk), 5M1 (paper presentation), 10M1 (slide presentation), 8M2 (live demo) |
-| TK   | 4 | 1M2 (live demo), 6M1 (slide presentation), 11M1 (paper discussion), 9M2 (paper presentation) |
-| TL   | 4 | 2M1 (live demo), 7M1 (paper presentation), 12M1 (paper discussion), 4M2 (slide presentation) |
-| NACV | 4 | 2M2 (chalk talk), 8M1 (slide presentation), 12M1 (paper discussion), 12M2 (live demo) |
-| IS   | 4 | 3M1 (chalk talk), 9M1 (live demo), 13M1 (paper presentation), 6M2 (live demo) |
-| AAAM | 3 | 3M2 (slide presentation), 10M2 (chalk talk), 14M1 (chalk talk) |
-| NRN  | 4 | 4M1 (live demo), 11M2 (paper discussion), 13M2 (slide presentation), 7M2 (slide presentation) |
+| BA   | 4 | 2M1 (chalk talk), 6M1 (paper presentation), 11M1 (slide presentation), 9M2 (live demo) |
+| TK   | 4 | 2M2 (live demo), 7M1 (slide presentation), 12M1 (paper discussion co-facilitator), 10M2 (paper presentation) |
+| TL   | 4 | 3M1 (live demo), 8M1 (paper presentation), 12M1 (cross-cutting discussion), 5M2 (slide presentation) |
+| NACV | 4 | 3M2 (chalk talk), 9M1 (slide presentation), 12M1 (cross-cutting discussion), 12M2 (live demo / README audit opener) |
+| IS   | 4 | 4M1 (chalk talk), 10M1 (live demo), 13M1 (paper-writing opener), 7M2 (live demo) |
+| AAAM | 3 | 4M2 (slide presentation), 11M2 (chalk talk), 13M2 (showcase-week opener) |
+| NRN  | 4 | 5M1 (live demo), 12M1 (paper discussion co-facilitator), 13M1 (practice-talk co-presenter), 8M2 (slide presentation) |
 
 ---
 
-## Phase 1: The Common Baseline (Weeks 1–5)
+## Phase 1: The Common Baseline (Weeks 2–6)
 
-Phase 1 establishes the technical and methodological baseline shared by all students before project work diverges. By the end of Week 5, every student will have built a reproducible Python environment, queried LLM APIs programmatically, debugged AI-generated physics code, implemented a RAG pipeline, constructed a minimal MCP server, and submitted a project proposal with a live pitch.
+Phase 1 establishes the technical and methodological baseline shared by all students before project work diverges. By the end of Week 6, every student will have built a reproducible Python environment, queried LLM APIs programmatically, debugged AI-generated physics code, implemented a RAG pipeline, constructed a minimal MCP server, and submitted a project proposal with a live pitch.
 
 ---
 
-### Week 1: GenAI Underpinnings
+### Week 2: GenAI Underpinnings
 
 #### Meeting 1 — How Transformers Work: Attention, Tokens, and Next-Token Prediction
 
@@ -92,7 +91,7 @@ Phase 1 establishes the technical and methodological baseline shared by all stud
 
 **Active Engagement** — Live coding exercise (45 minutes)
 
-The instructor pre-loads a skeleton Jupyter notebook into the course GitHub repository (path: exercises/week01/meeting1_token_explorer.ipynb). Students clone the repository and open the notebook in their local Jupyter environment before class.
+The instructor pre-loads a skeleton Jupyter notebook into the course GitHub repository (path: exercises/week02/meeting1_token_explorer.ipynb). Students clone the repository and open the notebook in their local Jupyter environment before class.
 
 Step 1 (5 min): Instructor introduces the notebook. It contains three skeleton cells: (a) a cell that uses the `tiktoken` library to tokenize a physics sentence and print token IDs and decoded tokens side-by-side; (b) a cell stub for a function `count_tokens(prompt: str, model: str) -> int` that students must complete using `tiktoken.encoding_for_model`; (c) a cell that calls the OpenAI chat completions API (`openai>=1.0`) with a short physics prompt and prints the response, but has a bug: the model name is misspelled and the temperature is set to 2.0.
 
@@ -153,9 +152,9 @@ Step 5 (5 min, debrief): Instructor summarizes the 2–3 key disagreements that 
 
 ---
 
-#### Homework Assignment 1: First Contact: Querying an LLM API with a Physics Question
+#### Homework Assignment 2: First Contact: Querying an LLM API with a Physics Question
 
-**Assessment category:** Standard Curriculum Mini-Assignments | **Estimated time:** 3–4 hours | **Due:** Before the first class meeting of Week 2
+**Assessment category:** Standard Curriculum Mini-Assignments | **Estimated time:** 3–4 hours | **Due:** Before the first class meeting of Week 3
 
 **Background:** Before AI-assisted methods can contribute to physics research, a researcher must be able to set up a controlled, reproducible environment, query a model programmatically, and critically evaluate the output against known physical results. This assignment establishes that baseline: you will build the minimal infrastructure needed for all subsequent work in this course and confront, for the first time, the practical problem of detecting hallucinations in a domain where you have independent knowledge. The environment you create here — version-controlled, with secrets managed properly, and dependencies pinned — will serve as the foundation for every assignment that follows.
 
@@ -163,10 +162,10 @@ Step 5 (5 min, debrief): Instructor summarizes the 2–3 key disagreements that 
 1. Create a new GitHub repository named `ai-physics-<lastname>` (public or private with the instructor added as collaborator). Initialize it with a README.md. Clone the repository locally. Create a `.gitignore` that includes `.env`, `__pycache__/`, and `*.pyc`. Commit and push.
 2. Set up a reproducible Python environment: run `conda create -n ai-physics python=3.11`, activate it, then install `openai>=1.0`, `anthropic`, `litellm`, `numpy`, `matplotlib`, `jupyter`, and `python-dotenv`. Export the environment with `conda env export > environment.yml` and commit it. Alternatively, use `pip` and produce a `requirements.txt` via `pip freeze > requirements.txt`. Your choice of tool must be documented in the README.
 3. Create a `.env` file (not committed) containing your API key as `OPENAI_API_KEY=sk-...` (or `ANTHROPIC_API_KEY` if using the Anthropic SDK, or a `GROQ_API_KEY` if using litellm with Groq as a free-tier fallback). In your notebook, load it with `from dotenv import load_dotenv; load_dotenv()` and access the key via `os.environ`. Never hardcode the key in the notebook.
-4. Create a Jupyter notebook named `week01_<lastname>.ipynb`. In the notebook, write a Python function `query_llm(prompt: str, model: str = 'gpt-4o-mini') -> str` that sends a prompt to the LLM API using the OpenAI Python SDK (or Anthropic SDK / litellm) and returns the response text. Document the function with a docstring. Then query the model with at least three physics prompts of your choice — each should have a known answer you can verify independently. For each response: (a) record the model's answer verbatim; (b) look up the accepted value from a textbook or the PDG/NIST database; (c) compute or state the discrepancy; (d) classify the response as correct, approximately correct, or hallucinated, with one sentence of justification. Identify and clearly label at least one hallucination or significant limitation in the model's responses.
+4. Create a Jupyter notebook named `week02_<lastname>.ipynb`. In the notebook, write a Python function `query_llm(prompt: str, model: str = 'gpt-4o-mini') -> str` that sends a prompt to the LLM API using the OpenAI Python SDK (or Anthropic SDK / litellm) and returns the response text. Document the function with a docstring. Then query the model with at least three physics prompts of your choice — each should have a known answer you can verify independently. For each response: (a) record the model's answer verbatim; (b) look up the accepted value from a textbook or the PDG/NIST database; (c) compute or state the discrepancy; (d) classify the response as correct, approximately correct, or hallucinated, with one sentence of justification. Identify and clearly label at least one hallucination or significant limitation in the model's responses.
 
 **Deliverables:**
-- A Jupyter notebook named `week01_<lastname>.ipynb` containing: the `query_llm` function with a docstring, at least three physics queries with model responses, a quantitative or qualitative comparison of each response to the known answer, and an explicit identification and discussion of at least one hallucination or hard limit.
+- A Jupyter notebook named `week02_<lastname>.ipynb` containing: the `query_llm` function with a docstring, at least three physics queries with model responses, a quantitative or qualitative comparison of each response to the known answer, and an explicit identification and discussion of at least one hallucination or hard limit.
 - A `requirements.txt` or `environment.yml` file that fully specifies the Python environment, including pinned versions, so that the notebook can be run from a fresh install.
 - A `README.md` with: a one-paragraph description of what the notebook does, step-by-step instructions for reproducing the results from scratch (including how to create the `.env` file without revealing the key), and a one-paragraph reflection on what you learned about LLM reliability in a physics context.
 - A `.gitignore` that excludes `.env` and Python cache files. Confirm (in the README) that no API keys appear anywhere in the committed repository.
@@ -188,12 +187,12 @@ Step 5 (5 min, debrief): Instructor summarizes the 2–3 key disagreements that 
 - tiktoken for token counting: `pip install tiktoken`
 - PDG Particle Data Group (known values): https://pdg.lbl.gov
 - NIST Physical Reference Data (constants, atomic data): https://physics.nist.gov/PhysRefData
-- Course GitHub repository with skeleton notebook: exercises/week01/
+- Course GitHub repository with skeleton notebook: exercises/week02/
 - APS guidelines on AI-assisted writing (2023): https://www.aps.org/policy/statements
 
 ---
 
-### Week 2: Vibe-Coding & Pitfalls
+### Week 3: Vibe-Coding & Pitfalls
 
 #### Meeting 1 — How AI Coding Assistants Generate Code — and Why They Fail
 
@@ -210,7 +209,7 @@ Step 5 (5 min, debrief): Instructor summarizes the 2–3 key disagreements that 
 
 **Active Engagement** — Pair debugging (45 minutes)
 
-Before class: the instructor prepares a Python script named `week02_buggy_harmonic_oscillator.py` (committed to the course repository) that was ostensibly generated by Claude to compute the first five energy levels of a quantum harmonic oscillator and plot the corresponding wavefunctions. The script contains exactly five planted bugs spanning three difficulty tiers:
+Before class: the instructor prepares a Python script named `week03_buggy_harmonic_oscillator.py` (committed to the course repository) that was ostensibly generated by Claude to compute the first five energy levels of a quantum harmonic oscillator and plot the corresponding wavefunctions. The script contains exactly five planted bugs spanning three difficulty tiers:
 
 - **Bug 1 (easy — syntax/logic):** The loop computing energy levels uses `E_n = hbar * omega * n` instead of `E_n = hbar * omega * (n + 0.5)`, omitting the zero-point energy term.
 - **Bug 2 (easy — off-by-one):** The wavefunction array is indexed as `psi[1:N]` instead of `psi[0:N]`, causing the ground state wavefunction to be silently dropped from the plot.
@@ -218,7 +217,7 @@ Before class: the instructor prepares a Python script named `week02_buggy_harmon
 - **Bug 4 (medium — wrong normalization):** The Hermite–Gaussian wavefunction is normalized by dividing by `np.sqrt(n!)` instead of `np.sqrt(2**n * math.factorial(n) * np.sqrt(np.pi))`, producing amplitudes that are not unit-normalized.
 - **Bug 5 (hard — plausible-but-wrong physics):** The script plots probability density as `psi` instead of `np.abs(psi)**2`, so the y-axis shows the (signed) wavefunction rather than the probability density, which looks visually plausible but is physically incorrect.
 
-Step 1 (2 min): Instructor assigns pairs alphabetically by last name (five pairs for ten students). Each pair clones the repository and opens `week02_buggy_harmonic_oscillator.py`.
+Step 1 (2 min): Instructor assigns pairs alphabetically by last name (five pairs for ten students). Each pair clones the repository and opens `week03_buggy_harmonic_oscillator.py`.
 
 Step 2 (3 min): Pairs run the script as-is and record every error message or unexpected output in a shared comment block at the top of the file.
 
@@ -230,7 +229,7 @@ Step 5 (10 min): Class debrief — each pair shares the bug they found last (typ
 
 *Facilitation notes:* Prepare the buggy script in advance and test that it runs without crashing on Bugs 1–4 (only Bug 3 raises an AttributeError; the others produce wrong results silently). This is intentional — students must check physical plausibility, not just error messages. If a pair finds all five bugs in fewer than 20 minutes, extend: ask them to write a pytest test suite with at least three assertions that would have caught bugs 1, 4, and 5 automatically. For pairs stuck on Bug 3: prompt them to run `help(scipy.special)` or check the SciPy docs page for `hermite` — do not tell them the correct call. For pairs stuck on Bug 5: ask "Does this quantity have to be non-negative everywhere? Why?" This usually surfaces the sign issue within two minutes. Keep a running tally on the whiteboard of which bugs each pair has found, so the room can see whether Bug 5 is consistently the last to be identified.
 
-*Materials needed:* `week02_buggy_harmonic_oscillator.py` committed to the course GitHub repository; Python environment with numpy, scipy, matplotlib, and math pre-installed; whiteboard for tracking pair progress; printed or projected SciPy documentation for scipy.special.hermite
+*Materials needed:* `week03_buggy_harmonic_oscillator.py` committed to the course GitHub repository; Python environment with numpy, scipy, matplotlib, and math pre-installed; whiteboard for tracking pair progress; printed or projected SciPy documentation for scipy.special.hermite
 
 ---
 
@@ -249,7 +248,7 @@ Step 5 (10 min): Class debrief — each pair shares the bug they found last (typ
 
 **Active Engagement** — Live coding exercise (45 minutes)
 
-Before class: the instructor commits a skeleton Jupyter notebook named `week02_test_driven_skeleton.ipynb` to the course repository. The notebook contains: a problem statement (implement a projectile motion simulator in Python that computes range, maximum height, and time of flight for a given launch angle and initial speed, accounting for air resistance using a linear drag model F_drag = -b*v), and a pre-written pytest test suite (five tests): `test_vacuum_range` (verifies R = v0² sin(2θ)/g), `test_vacuum_max_height` (verifies H_max = v0² sin²θ/(2g) for zero drag), `test_drag_reduces_range` (verifies any positive drag coefficient reduces range), `test_time_of_flight_positive` (verifies TOF is always positive and finite), and `test_symmetry_broken_by_drag` (verifies optimal launch angle is strictly less than 45 degrees with drag).
+Before class: the instructor commits a skeleton Jupyter notebook named `week03_test_driven_skeleton.ipynb` to the course repository. The notebook contains: a problem statement (implement a projectile motion simulator in Python that computes range, maximum height, and time of flight for a given launch angle and initial speed, accounting for air resistance using a linear drag model F_drag = -b*v), and a pre-written pytest test suite (five tests): `test_vacuum_range` (verifies R = v0² sin(2θ)/g), `test_vacuum_max_height` (verifies H_max = v0² sin²θ/(2g) for zero drag), `test_drag_reduces_range` (verifies any positive drag coefficient reduces range), `test_time_of_flight_positive` (verifies TOF is always positive and finite), and `test_symmetry_broken_by_drag` (verifies optimal launch angle is strictly less than 45 degrees with drag).
 
 Step 1 (3 min): Instructor explains the workflow: students will write a prompt for Claude or GitHub Copilot that includes the test suite and asks the AI to generate code that passes all five tests.
 
@@ -261,27 +260,27 @@ Step 4 (10 min): Each student runs one iteration of refinement: take the failing
 
 Step 5 (7 min): Whole-class debrief. Instructor collects on the whiteboard: (a) how many students passed all 5 tests on the first attempt, (b) which test was hardest to get the AI to pass, and (c) one example where the AI "fixed" a failing test by weakening the assertion rather than fixing the physics.
 
-*Facilitation notes:* Pre-run the skeleton notebook and confirm pytest is importable and that the five tests fail on an empty implementation (returning zeros). Expect most first-attempt AI outputs to pass tests 1–4 but fail `test_symmetry_broken_by_drag`, because this test requires the AI to implement a numerical optimization loop. Use this as a teaching moment about specification completeness. If students find that the AI passes all tests with a trivial solution (e.g., hardcoding the expected output), point out that their test suite is underspecified. Reserve 2 minutes at the end to explicitly connect today's activity to Mini-Assignment 2.
+*Facilitation notes:* Pre-run the skeleton notebook and confirm pytest is importable and that the five tests fail on an empty implementation (returning zeros). Expect most first-attempt AI outputs to pass tests 1–4 but fail `test_symmetry_broken_by_drag`, because this test requires the AI to implement a numerical optimization loop. Use this as a teaching moment about specification completeness. If students find that the AI passes all tests with a trivial solution (e.g., hardcoding the expected output), point out that their test suite is underspecified. Reserve 2 minutes at the end to explicitly connect today's activity to Mini-Assignment 3.
 
-*Materials needed:* `week02_test_driven_skeleton.ipynb` committed to the course GitHub repository; Python environment with numpy, scipy, and pytest pre-installed; student access to Claude (claude-3-5-sonnet-20241022) via web interface or GitHub Copilot via IDE; projector to display prompt comparison during debrief
+*Materials needed:* `week03_test_driven_skeleton.ipynb` committed to the course GitHub repository; Python environment with numpy, scipy, and pytest pre-installed; student access to Claude (claude-3-5-sonnet-20241022) via web interface or GitHub Copilot via IDE; projector to display prompt comparison during debrief
 
 ---
 
-#### Homework Assignment 2: Bug Hunt and Test-Driven Repair of an AI-Generated Physics Script
+#### Homework Assignment 3: Bug Hunt and Test-Driven Repair of an AI-Generated Physics Script
 
-**Assessment category:** Standard Curriculum Mini-Assignments | **Estimated time:** 3–5 hours | **Due:** Before the first class meeting of Week 3
+**Assessment category:** Standard Curriculum Mini-Assignments | **Estimated time:** 3–5 hours | **Due:** Before the first class meeting of Week 4
 
 **Background:** AI coding assistants frequently generate code that is syntactically valid, runs without crashing, and produces output that looks physically reasonable — yet contains subtle errors that only careful physical reasoning can detect. This assignment trains you to be a critical consumer of AI-generated physics code by systematically finding, documenting, and repairing bugs in a script that was generated by Claude (claude-3-5-sonnet-20241022) with minimal prompting. You will then apply the test-driven prompting strategy practiced in class to produce a corrected, well-tested replacement.
 
 **Instructions:**
-1. Clone the course repository and open `week02_starter/ai_generated_oscillator.py`. This script was produced by Claude with the prompt "Write a Python script that computes and plots the first five energy levels and wavefunctions of the quantum harmonic oscillator using numpy and scipy." Run the script using Python 3.10+ and record every error message and every output value. Do not fix anything yet — just observe. Write your observations in a markdown file named `week02_<lastname>_bugreport.md`.
-2. Identify all bugs in `ai_generated_oscillator.py`. There are exactly five. For each bug, add an entry to `week02_<lastname>_bugreport.md` with the following fields: (a) Bug number and location (file and line number); (b) Category — choose one of: hallucinated API, off-by-one error, wrong physics formula, incorrect normalization, or wrong output quantity; (c) What the AI produced and why it is wrong — explain in one to two sentences using physical reasoning, not just "it crashes"; (d) The correct code and a citation (equation number from Griffiths "Introduction to Quantum Mechanics" or equivalent) supporting your fix.
-3. Write a pytest test suite in `week02_<lastname>.ipynb` containing at least five tests that collectively would have caught all five bugs if they had existed before the AI generated the code. Each test must include a docstring explaining what physical property it checks and why. Run your tests against the original buggy script to confirm they fail, then run them against your fixed version to confirm they pass. Include the pytest output for both runs in your notebook.
-4. Use a test-driven prompting strategy to ask Claude (claude-3-5-sonnet-20241022) or GitHub Copilot to regenerate the quantum harmonic oscillator script from scratch, this time including your test suite in the prompt. Paste your full prompt into a markdown cell in `week02_<lastname>.ipynb`, then paste the AI's output into the next code cell and run your test suite against it. If any tests still fail, perform one round of iterative refinement: paste the failing test output back into Claude and ask it to correct its code. Document whether the AI's correction addresses the physical root cause or only the Python error. Include a one-paragraph reflection on what this exercise reveals about the reliability of AI-assisted physics coding.
+1. Clone the course repository and open `week03_starter/ai_generated_oscillator.py`. This script was produced by Claude with the prompt "Write a Python script that computes and plots the first five energy levels and wavefunctions of the quantum harmonic oscillator using numpy and scipy." Run the script using Python 3.10+ and record every error message and every output value. Do not fix anything yet — just observe. Write your observations in a markdown file named `week03_<lastname>_bugreport.md`.
+2. Identify all bugs in `ai_generated_oscillator.py`. There are exactly five. For each bug, add an entry to `week03_<lastname>_bugreport.md` with the following fields: (a) Bug number and location (file and line number); (b) Category — choose one of: hallucinated API, off-by-one error, wrong physics formula, incorrect normalization, or wrong output quantity; (c) What the AI produced and why it is wrong — explain in one to two sentences using physical reasoning, not just "it crashes"; (d) The correct code and a citation (equation number from Griffiths "Introduction to Quantum Mechanics" or equivalent) supporting your fix.
+3. Write a pytest test suite in `week03_<lastname>.ipynb` containing at least five tests that collectively would have caught all five bugs if they had existed before the AI generated the code. Each test must include a docstring explaining what physical property it checks and why. Run your tests against the original buggy script to confirm they fail, then run them against your fixed version to confirm they pass. Include the pytest output for both runs in your notebook.
+4. Use a test-driven prompting strategy to ask Claude (claude-3-5-sonnet-20241022) or GitHub Copilot to regenerate the quantum harmonic oscillator script from scratch, this time including your test suite in the prompt. Paste your full prompt into a markdown cell in `week03_<lastname>.ipynb`, then paste the AI's output into the next code cell and run your test suite against it. If any tests still fail, perform one round of iterative refinement: paste the failing test output back into Claude and ask it to correct its code. Document whether the AI's correction addresses the physical root cause or only the Python error. Include a one-paragraph reflection on what this exercise reveals about the reliability of AI-assisted physics coding.
 
 **Deliverables:**
-- A Jupyter notebook named `week02_<lastname>.ipynb` containing: your five-test pytest suite with docstrings; the pytest output for the buggy script (showing failures) and for the fixed script (showing all passing); your test-driven AI prompt and the AI-generated corrected code; and the one-paragraph reflection on AI reliability.
-- A markdown file named `week02_<lastname>_bugreport.md` containing the structured bug report for all five bugs (number, location, category, explanation, correct code with citation).
+- A Jupyter notebook named `week03_<lastname>.ipynb` containing: your five-test pytest suite with docstrings; the pytest output for the buggy script (showing failures) and for the fixed script (showing all passing); your test-driven AI prompt and the AI-generated corrected code; and the one-paragraph reflection on AI reliability.
+- A markdown file named `week03_<lastname>_bugreport.md` containing the structured bug report for all five bugs (number, location, category, explanation, correct code with citation).
 - A `requirements.txt` or `environment.yml` listing all Python package versions used (numpy, scipy, matplotlib, pytest, and any others), with a `README.md` containing one paragraph of instructions for reproducing your results from a fresh clone.
 
 **Grading criteria:**
@@ -300,12 +299,12 @@ Step 5 (7 min): Whole-class debrief. Instructor collects on the whiteboard: (a) 
 - pytest-nbmake — optional, allows running pytest directly on Jupyter notebooks
 - NumPy (numpy >= 1.24), SciPy (scipy >= 1.10), Matplotlib (matplotlib >= 3.7)
 - Griffiths, D.J. "Introduction to Quantum Mechanics" (3rd ed.) — Chapter 2 (sections 2.3–2.4) for the harmonic oscillator energy levels and wavefunctions
-- Course repository: `week02_starter/` directory contains `ai_generated_oscillator.py`
+- Course repository: `week03_starter/` directory contains `ai_generated_oscillator.py`
 - arXiv:2304.13187 (Poldrack et al.) for background on AI coding failure modes
 
 ---
 
-### Week 3: RAG & Knowledge Platforms
+### Week 4: RAG & Knowledge Platforms
 
 #### Meeting 1 — Embeddings, Vector Stores, and the RAG Pipeline
 
@@ -338,7 +337,7 @@ Debrief (5 min): Each student or pair shares one result — did RAG change the a
 
 *Facilitation notes:* Pre-test the skeleton notebook in the exact Python environment students will use; confirm that `pip install arxiv sentence-transformers faiss-cpu` works without conflicts. Have a fallback set of 30 pre-fetched abstracts as a JSON file in the repo in case the arXiv API is slow or rate-limited during class. If students finish Steps 1-4 early, extend: "Now query with a deliberately vague question like 'what is energy?' and note which abstracts come back — is the retrieval still sensible?" For students whose subfield queries return fewer than 30 results, suggest broadening the arXiv category filter. Do not debug for students — ask "what does the shape of your embedding matrix print out?" to guide them to the source of shape mismatches.
 
-*Materials needed:* Course GitHub repository with skeleton notebook `week03_rag_skeleton.ipynb`; pre-fetched fallback corpus `week03_fallback_corpus.json`; Python environment with arxiv, sentence-transformers, faiss-cpu, and either openai or anthropic installed; projector for instructor to display one working solution during debrief
+*Materials needed:* Course GitHub repository with skeleton notebook `week04_rag_skeleton.ipynb`; pre-fetched fallback corpus `week04_fallback_corpus.json`; Python environment with arxiv, sentence-transformers, faiss-cpu, and either openai or anthropic installed; projector for instructor to display one working solution during debrief
 
 ---
 
@@ -348,7 +347,7 @@ Debrief (5 min): Each student or pair shares one result — did RAG change the a
 
 > *Format:* 10-minute slide presentation (max 6 slides)
 > 
-> **Topic prompt:** Present the standard information-retrieval metrics — precision@k, recall@k, and Mean Reciprocal Rank (MRR) — and explain why they must be adapted for scientific queries where relevance is not binary. Specifically, discuss how TREC-style relevance judgments work and why a physics abstract may be "partially relevant" to a query. Reference the BEIR benchmark paper (Thakur et al., 2021, arXiv:2104.08663), which evaluates retrieval models on domain-specific corpora including scientific text, and note which embedding models perform best on biomedical and scientific subsets. Connect this to today's objective: measuring whether your Week 3 RAG pipeline retrieves the right abstracts for known physics questions, and identifying the failure modes — keyword mismatch, concept drift, and embedding space collapse — that degrade scientific retrieval.
+> **Topic prompt:** Present the standard information-retrieval metrics — precision@k, recall@k, and Mean Reciprocal Rank (MRR) — and explain why they must be adapted for scientific queries where relevance is not binary. Specifically, discuss how TREC-style relevance judgments work and why a physics abstract may be "partially relevant" to a query. Reference the BEIR benchmark paper (Thakur et al., 2021, arXiv:2104.08663), which evaluates retrieval models on domain-specific corpora including scientific text, and note which embedding models perform best on biomedical and scientific subsets. Connect this to today's objective: measuring whether your Week 4 RAG pipeline retrieves the right abstracts for known physics questions, and identifying the failure modes — keyword mismatch, concept drift, and embedding space collapse — that degrade scientific retrieval.
 >
 > **Guiding questions:**
 > 1. If your RAG pipeline returns the top-3 abstracts for a question about "Cooper pair condensation" but none of them use that exact phrase, how would you decide whether the retrieval succeeded or failed?
@@ -365,19 +364,19 @@ Step 2 (15 min) — First round: Instructor cold-calls each student once to give
 
 Step 3 (15 min) — Second round (peer responses): Students now respond directly to each other's claims, not to the instructor. Instructor intervenes only with probes: (a) "Can you give a concrete physics example where that claim would break down?" (b) "What would a skeptical referee say about using RAG-retrieved citations in a paper?" (c) "If you had to specify a retrieval precision threshold before trusting an RAG answer, what number would you choose and why?"
 
-Step 4 (7 min) — Evidence round: Students are now allowed to open laptops and pull up one piece of evidence (from their Week 3 notebook results, the BEIR paper, or the arXiv API documentation) that supports or refutes the most contested claim on the whiteboard. Each student who found evidence has 60 seconds to present it.
+Step 4 (7 min) — Evidence round: Students are now allowed to open laptops and pull up one piece of evidence (from their Week 4 notebook results, the BEIR paper, or the arXiv API documentation) that supports or refutes the most contested claim on the whiteboard. Each student who found evidence has 60 seconds to present it.
 
 Debrief (5 min): Instructor summarizes the 2–3 core disagreements that were not resolved.
 
 *Facilitation notes:* Prepare three follow-up probes in case discussion stalls: (1) "Name a physics question where you are confident RAG would retrieve the right abstract every time — what makes that query easy?" (2) "Name a physics question where you are confident RAG would fail — what makes it hard?" (3) "If the LLM answer is correct but the retrieved abstracts are wrong, is that a success or a failure of RAG?" Cold-call students in an order that pairs confident and quiet students alternately. The anonymous notecard step is important: it prevents anchoring. Do not express a personal view during the seminar.
 
-*Materials needed:* Whiteboard and markers; one notecard per student for anonymous position statements; student laptops with Week 3 RAG notebooks accessible; printed or digital copy of BEIR benchmark paper (arXiv:2104.08663) for the evidence round
+*Materials needed:* Whiteboard and markers; one notecard per student for anonymous position statements; student laptops with Week 4 RAG notebooks accessible; printed or digital copy of BEIR benchmark paper (arXiv:2104.08663) for the evidence round
 
 ---
 
-#### Homework Assignment 3: Building and Evaluating a RAG Pipeline over Physics Abstracts
+#### Homework Assignment 4: Building and Evaluating a RAG Pipeline over Physics Abstracts
 
-**Assessment category:** Standard Curriculum Mini-Assignments | **Estimated time:** 4–5 hours | **Due:** Before the first class meeting of Week 4
+**Assessment category:** Standard Curriculum Mini-Assignments | **Estimated time:** 4–5 hours | **Due:** Before the first class meeting of Week 5
 
 **Background:** Retrieval-augmented generation (RAG) grounds LLM answers in a retrieved document corpus, reducing hallucination and making claims traceable to specific sources. For physics research, this means an LLM can in principle cite real papers rather than fabricate citations. However, retrieval quality depends heavily on the embedding model, the chunking strategy, and the specificity of the physics query — failures are common and often silent. In this assignment you build a minimal but complete RAG pipeline over a set of arXiv abstracts from your subfield, measure its retrieval precision on questions with known correct sources, and compare LLM answer quality with and without RAG context.
 
@@ -389,7 +388,7 @@ Debrief (5 min): Instructor summarizes the 2–3 core disagreements that were no
 5. **Compare RAG vs. no-RAG answers:** For each of the 5 questions, call an LLM twice: once with no additional context (baseline), and once with the top-3 retrieved abstract texts prepended to the system prompt as context (RAG). Record both answers. For the 3 gold questions, judge each answer pair as "RAG better", "Baseline better", or "Equivalent", and write a one-sentence justification. Write a Markdown cell of 100–150 words identifying at least two specific conditions under which RAG improved the LLM's accuracy and at least one condition where it made no difference or degraded the answer, citing the specific question text and retrieved abstract IDs as evidence. [EDIT: vague "Discuss in a Markdown cell" replaced with specific word-count, structure, and evidence requirements] Load your API key from a `.env` file using python-dotenv — do not hardcode it.
 
 **Deliverables:**
-- A Jupyter notebook named `week03_<lastname>.ipynb` containing all five steps above, with Markdown cells explaining each step and a final summary cell discussing retrieval quality and RAG improvement for your subfield query.
+- A Jupyter notebook named `week04_<lastname>.ipynb` containing all five steps above, with Markdown cells explaining each step and a final summary cell discussing retrieval quality and RAG improvement for your subfield query.
 - A `corpus.json` file containing the fetched abstracts (committed to the repository or included in the zip submission).
 - A `requirements.txt` or `environment.yml` listing all dependencies with pinned versions, and a `README.md` with a single paragraph explaining how to reproduce the results from a fresh clone (including how to supply the API key via a `.env` file).
 - A `.env.example` file (not `.env`) showing the required environment variable names with placeholder values (e.g., `OPENAI_API_KEY=your-key-here`).
@@ -411,11 +410,11 @@ Debrief (5 min): Instructor summarizes the 2–3 core disagreements that were no
 - OpenAI Python SDK or Anthropic Python SDK: for LLM answer generation
 - langchain or llama-index (optional): may be used to wire retrieval and generation, but the notebook must also show the raw FAISS retrieval step explicitly
 - BEIR benchmark paper (Thakur et al., 2021, arXiv:2104.08663): for context on evaluating retrieval models on scientific corpora
-- Course repository skeleton notebook `week03_rag_skeleton.ipynb` as a starting point
+- Course repository skeleton notebook `week04_rag_skeleton.ipynb` as a starting point
 
 ---
 
-### Week 4: Tool Use & Agents
+### Week 5: Tool Use & Agents
 
 #### Meeting 1 — MCP Specification and Connecting LLMs to External Tools
 
@@ -475,7 +474,7 @@ Step 3 (10 min): Instructor poses three stress-test scenarios and asks students 
 
 Step 4 (10 min): Students negotiate and reorganize the diagram — "Does this arrow make sense? Should the rate limiter be before or after the LLM reasoning loop?" Instructor prompts quiet students directly: "Where would you add a sanity check on the output?"
 
-Step 5 (5 min): Instructor photographs the final whiteboard, assigns one student to post it to the course repository before next class, and highlights two design decisions the class will revisit when evaluating their Week 4 homework pipelines.
+Step 5 (5 min): Instructor photographs the final whiteboard, assigns one student to post it to the course repository before next class, and highlights two design decisions the class will revisit when evaluating their Week 5 homework pipelines.
 
 Debrief (5 min): Each student names one node or edge they would change if the pipeline needed to run unsupervised overnight versus interactively with a human in the loop.
 
@@ -485,23 +484,23 @@ Debrief (5 min): Each student names one node or edge they would change if the pi
 
 ---
 
-#### Homework Assignment 4: Building a Tool-Augmented Physics Agent with MCP
+#### Homework Assignment 5: Building a Tool-Augmented Physics Agent with MCP
 
-**Assessment category:** Standard Curriculum Mini-Assignments | **Estimated time:** 4–6 hours | **Due:** Before the first class meeting of Week 5
+**Assessment category:** Standard Curriculum Mini-Assignments | **Estimated time:** 4–6 hours | **Due:** Before the first class meeting of Week 6
 
-**Background:** Building on the retrieval pipeline from Week 3 and the debugging experience from Week 2, this assignment introduces a higher-level abstraction: the Model Context Protocol, which enables LLMs to call external tools reliably by standardizing how tool schemas, inputs, and results are communicated between a language model client and a server exposing domain-specific capabilities. [EDIT: added "building on Week 3" narrative arc context] In this assignment you will build a minimal MCP server that exposes two physics database queries as LLM-callable tools, then wire it into a short agentic loop that uses both tools to answer a compound physics question. The goal is not just a working pipeline but a documented understanding of where and how it fails — reliability analysis is as important as functionality in production AI systems.
+**Background:** Building on the retrieval pipeline from Week 4 and the debugging experience from Week 3, this assignment introduces a higher-level abstraction: the Model Context Protocol, which enables LLMs to call external tools reliably by standardizing how tool schemas, inputs, and results are communicated between a language model client and a server exposing domain-specific capabilities. [EDIT: added "building on Week 4" narrative arc context] In this assignment you will build a minimal MCP server that exposes two physics database queries as LLM-callable tools, then wire it into a short agentic loop that uses both tools to answer a compound physics question. The goal is not just a working pipeline but a documented understanding of where and how it fails — reliability analysis is as important as functionality in production AI systems.
 
 **Instructions:**
-1. Install the required libraries (mcp, astroquery, arxiv, and either anthropic or openai) and create a Python module named `mcp_server_week04_<lastname>.py`. Implement two MCP tools using the `@server.tool()` decorator: (1) `query_simbad(object_name: str) -> dict`, which queries the SIMBAD TAP service via astroquery.simbad and returns at minimum the object type, spectral type, parallax, and radial velocity for the named object; and (2) `search_arxiv(keyword: str, max_results: int) -> list`, which returns a list of dicts with title, authors, abstract, and arXiv ID for the most recent papers matching the keyword. Each tool's JSON Schema must be complete enough that an LLM can invoke it correctly without additional guidance. Include a requirements.txt and load all API keys from a `.env` file.
-2. Write a Jupyter notebook named `week04_<lastname>.ipynb` that starts the MCP server as a subprocess and connects to it with an LLM client. Send the compound query to the LLM: "What is the spectral type and parallax of Betelgeuse, and what are the 3 most recent arXiv papers whose abstracts mention Betelgeuse? Summarize what the papers suggest about its current evolutionary status." Log every tool call the LLM makes (tool name, input arguments, and returned result) so the full reasoning chain is visible in the notebook output.
+1. Install the required libraries (mcp, astroquery, arxiv, and either anthropic or openai) and create a Python module named `mcp_server_week05_<lastname>.py`. Implement two MCP tools using the `@server.tool()` decorator: (1) `query_simbad(object_name: str) -> dict`, which queries the SIMBAD TAP service via astroquery.simbad and returns at minimum the object type, spectral type, parallax, and radial velocity for the named object; and (2) `search_arxiv(keyword: str, max_results: int) -> list`, which returns a list of dicts with title, authors, abstract, and arXiv ID for the most recent papers matching the keyword. Each tool's JSON Schema must be complete enough that an LLM can invoke it correctly without additional guidance. Include a requirements.txt and load all API keys from a `.env` file.
+2. Write a Jupyter notebook named `week05_<lastname>.ipynb` that starts the MCP server as a subprocess and connects to it with an LLM client. Send the compound query to the LLM: "What is the spectral type and parallax of Betelgeuse, and what are the 3 most recent arXiv papers whose abstracts mention Betelgeuse? Summarize what the papers suggest about its current evolutionary status." Log every tool call the LLM makes (tool name, input arguments, and returned result) so the full reasoning chain is visible in the notebook output.
 3. Run the same agentic query for a second astronomical object of your choice and verify the SIMBAD output against the SIMBAD web interface manually. Document whether the LLM's summary of the arXiv papers is consistent with the abstracts it received — flag any factual discrepancies between the summary and the raw abstracts.
-4. Deliberately trigger at least two distinct failure modes in your pipeline and document them in a markdown file named `week04_failures_<lastname>.md`. For each failure mode, record: the input that triggered it, the error or incorrect output produced, whether the agentic loop recovered or required manual intervention, and one sentence describing how you would fix it in a production system.
+4. Deliberately trigger at least two distinct failure modes in your pipeline and document them in a markdown file named `week05_failures_<lastname>.md`. For each failure mode, record: the input that triggered it, the error or incorrect output produced, whether the agentic loop recovered or required manual intervention, and one sentence describing how you would fix it in a production system.
 5. Add a `README.md` to your submission repository with one paragraph explaining how to reproduce your results from scratch (including starting the MCP server), the Python version and key library versions used, and a note on which LLM model you used and any relevant model-version caveats. Ensure all API keys are loaded from a `.env` file and that your `.env` file is listed in `.gitignore`.
 
 **Deliverables:**
-- A Python module named `mcp_server_week04_<lastname>.py` containing a working MCP server with two tools (`query_simbad` and `search_arxiv`) with complete JSON Schema declarations.
-- A Jupyter notebook named `week04_<lastname>.ipynb` demonstrating the full agentic loop for Betelgeuse and a second object of your choice, with all tool calls and results logged and a physical plausibility check documented.
-- A markdown file named `week04_failures_<lastname>.md` documenting at least two failure modes: the triggering input, the erroneous output, the recovery behavior, and a proposed fix for each.
+- A Python module named `mcp_server_week05_<lastname>.py` containing a working MCP server with two tools (`query_simbad` and `search_arxiv`) with complete JSON Schema declarations.
+- A Jupyter notebook named `week05_<lastname>.ipynb` demonstrating the full agentic loop for Betelgeuse and a second object of your choice, with all tool calls and results logged and a physical plausibility check documented.
+- A markdown file named `week05_failures_<lastname>.md` documenting at least two failure modes: the triggering input, the erroneous output, the recovery behavior, and a proposed fix for each.
 
 **Grading criteria:**
 
@@ -526,7 +525,7 @@ Debrief (5 min): Each student names one node or edge they would change if the pi
 
 ---
 
-### Week 5: GenAI in Theoretical Physics & Project Proposals [EDIT: extended week title to reflect that both meetings focus on proposal development, not only GenAI in theoretical physics; the symbolic regression student intro is one component of a week whose primary purpose is proposal writing and pitching]
+### Week 6: GenAI in Theoretical Physics & Project Proposals [EDIT: extended week title to reflect that both meetings focus on proposal development, not only GenAI in theoretical physics; the symbolic regression student intro is one component of a week whose primary purpose is proposal writing and pitching]
 
 #### Meeting 1 — What Makes a Strong GenAI Research Proposal in Physics?
 
@@ -591,14 +590,14 @@ Note: If the class has fewer than 10 students, the saved time should be used to 
 
 ---
 
-#### Homework Assignment 5: Project Proposal
+#### Homework Assignment 6: Project Proposal
 
-**Assessment category:** Project Proposal & Pitch | **Estimated time:** 5–8 hours (proposal writing + pitch preparation) | **Due:** Proposal PDF and slides submitted before Meeting 2 of Week 5; live pitch delivered in Meeting 2
+**Assessment category:** Project Proposal & Pitch | **Estimated time:** 5–8 hours (proposal writing + pitch preparation) | **Due:** Proposal PDF and slides submitted before Meeting 2 of Week 6; live pitch delivered in Meeting 2
 
-**Background:** Weeks 1–4 gave you the technical vocabulary — LLM APIs, code debugging, RAG pipelines, and MCP servers — that you need to make a credible research proposal. [EDIT: added "building on Weeks 1–4" narrative arc connection to explain why the proposal is possible now] Your project proposal is your public commitment to a research direction for the remaining nine weeks of the course. It is not a wish list — it is a contract with your peers and instructor that you have identified a specific, tractable question and confirmed that the tools and data you need are accessible. Writing a good proposal is also a communication exercise: you must convince a skeptical reader that your question is worth pursuing and that you have a credible plan to answer it within the available time and computational resources.
+**Background:** Weeks 2–5 gave you the technical vocabulary — LLM APIs, code debugging, RAG pipelines, and MCP servers — that you need to make a credible research proposal. [EDIT: added "building on Weeks 2–5" narrative arc connection to explain why the proposal is possible now] Your project proposal is your public commitment to a research direction for the remaining eight weeks of the course. It is not a wish list — it is a contract with your peers and instructor that you have identified a specific, tractable question and confirmed that the tools and data you need are accessible. Writing a good proposal is also a communication exercise: you must convince a skeptical reader that your question is worth pursuing and that you have a credible plan to answer it within the available time and computational resources.
 
 **Instructions:**
-1. Write a 2-page project proposal in RevTeX (article class, 11pt font, standard margins). Use the following section structure: Abstract (100 words max), Research Question, Proposed Method, Dataset and Evaluation Criteria, Timeline (Weeks 6–14), References.
+1. Write a 2-page project proposal in RevTeX (article class, 11pt font, standard margins). Use the following section structure: Abstract (100 words max), Research Question, Proposed Method, Dataset and Evaluation Criteria, Timeline (Weeks 7–13), References.
 2. In the Research Question section, state one specific, falsifiable question your project will answer. The question must name the physical system or dataset, the AI/MCP method you will use, and how you will know if the method succeeded.
 3. In the Proposed Method section, name the specific tools and libraries you will use (e.g., "I will build an MCP server using the mcp Python SDK to query the Materials Project REST API, then use Claude claude-3-5-sonnet-20241022 to synthesize property trends for perovskite oxides").
 4. In the Dataset section, identify a specific, accessible dataset (with URL or DOI) and state its size, format, and any preprocessing required.
@@ -627,15 +626,15 @@ Note: If the class has fewer than 10 students, the saved time should be used to 
 
 ---
 
-> **Phase transition — from shared curriculum to individual projects:** Weeks 1–5 built a common technical foundation that every student now shares: reproducible environments, API querying, debugging, RAG pipelines, tool-augmented agents, and a submitted project proposal. Starting in Week 6, each student works primarily on their *own* project. The Phase 2 meetings still serve the full class but the homework deliverables are now project-specific. Bring your approved proposal and any early data or API explorations to every class session from this point forward. [EDIT: added explicit Phase 1→2 transition note signaling shift to individual project work]
+> **Phase transition — from shared curriculum to individual projects:** Weeks 2–6 built a common technical foundation that every student now shares: reproducible environments, API querying, debugging, RAG pipelines, tool-augmented agents, and a submitted project proposal. Starting in Week 7, each student works primarily on their *own* project. The Phase 2 meetings still serve the full class but the homework deliverables are now project-specific. Bring your approved proposal and any early data or API explorations to every class session from this point forward. [EDIT: added explicit Phase 1→2 transition note signaling shift to individual project work]
 
-## Phase 2: Project Ideation & Deep Dives (Weeks 6–7)
+## Phase 2: Project Ideation & Deep Dives (Weeks 7–8)
 
-Phase 2 pivots from shared curriculum to project-specific development. Students design and build the MCP server infrastructure that will underpin their final project, and develop the evaluation protocols and annotated bibliographies that frame their research contributions. By the end of Week 7, every student has a working MCP server prototype, a named evaluation baseline, and three annotated papers grounding their methodology.
+Phase 2 pivots from shared curriculum to project-specific development. Students design and build the MCP server infrastructure that will underpin their final project, and develop the evaluation protocols and annotated bibliographies that frame their research contributions. By the end of Week 8, every student has a working MCP server prototype, a named evaluation baseline, and three annotated papers grounding their methodology.
 
 ---
 
-### Week 6: Building MCP Servers
+### Week 7: Building MCP Servers
 
 #### Meeting 1 — MCP Server Internals: Transport, Schemas, and Capability Negotiation
 
@@ -699,11 +698,11 @@ Debrief (5 min, instructor): The instructor photographs all diagrams and posts t
 
 ---
 
-#### Homework Assignment 6: Project MCP Server Prototype
+#### Homework Assignment 7: Project MCP Server Prototype
 
-**Assessment category:** Final Project Codebase & Paper | **Estimated time:** 5–8 hours | **Due:** Before the first class meeting of Week 7
+**Assessment category:** Final Project Codebase & Paper | **Estimated time:** 5–8 hours | **Due:** Before the first class meeting of Week 8
 
-**Background:** This week you build the core tool infrastructure for your own research project: a working MCP server that exposes at least two tool endpoints wrapping a physics-relevant external API or dataset. The server you submit this week is not a throwaway exercise — it will become a committed component of your final project codebase, and the design decisions you make now (schema choices, error handling strategy, authentication approach) will carry forward into Weeks 7–14. Treat this assignment as the first real engineering deliverable of your project, not as a tutorial exercise.
+**Background:** This week you build the core tool infrastructure for your own research project: a working MCP server that exposes at least two tool endpoints wrapping a physics-relevant external API or dataset. The server you submit this week is not a throwaway exercise — it will become a committed component of your final project codebase, and the design decisions you make now (schema choices, error handling strategy, authentication approach) will carry forward into Weeks 8–13. Treat this assignment as the first real engineering deliverable of your project, not as a tutorial exercise.
 
 **Instructions:**
 1. Design the tool schema for your project-specific MCP server. Write a design document (1 page, any format) listing: (a) the two tool endpoints you will implement, (b) each tool's inputSchema (as a JSON Schema object), (c) the expected output format, and (d) the external API or data source each tool will call.
@@ -737,7 +736,7 @@ Debrief (5 min, instructor): The instructor photographs all diagrams and posts t
 
 ---
 
-### Week 7: Evaluating AI in Physics
+### Week 8: Evaluating AI in Physics
 
 #### Meeting 1 — Benchmarking AI Outputs Against Physical Ground Truth
 
@@ -797,7 +796,7 @@ Step 3 — Project-specific annotation (12 min): Each student picks their own pr
 
 Step 4 — Gallery share (10 min): Three students volunteer (or are called on) to read their five-point protocol aloud. The room asks: Is the metric specific enough? Is the baseline realistic? Is the success threshold defensible?
 
-Step 5 — Debrief (7 min): Instructor photographs the whiteboard. Ask: "Which branch was hardest to fill in, and why?" Highlight the branches where students disagreed — these are the live methodological tensions in the field. Connect the rubric directly to the Week 7 homework deliverable.
+Step 5 — Debrief (7 min): Instructor photographs the whiteboard. Ask: "Which branch was hardest to fill in, and why?" Highlight the branches where students disagreed — these are the live methodological tensions in the field. Connect the rubric directly to the Week 8 homework deliverable.
 
 *Facilitation notes:* Resist the urge to organize the whiteboard before students have contributed — let it be messy first, then ask a student to reorganize a branch that has grown unwieldy. Call on quiet students by name for the contribution round; every student must add something. Common stalling point: the "success threshold" branch. Prompt with: "If a journal referee asked you what 'good enough' means for your AI component, what specific number would you defend?" If students propose vague thresholds ("better than baseline"), push back: "Better by how much? At what confidence level?" For the gallery share, prioritize students whose projects are most different from each other so the room sees a range of evaluation contexts. Post the whiteboard photograph to the course repository within 24 hours.
 
@@ -805,11 +804,11 @@ Step 5 — Debrief (7 min): Instructor photographs the whiteboard. Ask: "Which b
 
 ---
 
-#### Homework Assignment 7: Project Evaluation Protocol and Annotated Bibliography
+#### Homework Assignment 8: Project Evaluation Protocol and Annotated Bibliography
 
-**Assessment category:** Final Project Codebase & Paper | **Estimated time:** 5–7 hours | **Due:** Before the first class meeting of Week 8
+**Assessment category:** Final Project Codebase & Paper | **Estimated time:** 5–7 hours | **Due:** Before the first class meeting of Week 9
 
-**Background:** Rigorous evaluation is what separates a physics result from a physics-flavored computation. Before you build the core of your project in Weeks 8–13, you need a clear, quantitative answer to: "How will I know if my AI component works?" This week's deliverables establish that standard in writing. A specific evaluation protocol written now — with named metrics, a named baseline, a named test dataset, and a numeric success criterion — will prevent the most common project failure mode: building something that is hard to evaluate fairly. The annotated bibliography grounds your evaluation choices in what the field already knows.
+**Background:** Rigorous evaluation is what separates a physics result from a physics-flavored computation. Before you build the core of your project in Weeks 9–13, you need a clear, quantitative answer to: "How will I know if my AI component works?" This week's deliverables establish that standard in writing. A specific evaluation protocol written now — with named metrics, a named baseline, a named test dataset, and a numeric success criterion — will prevent the most common project failure mode: building something that is hard to evaluate fairly. The annotated bibliography grounds your evaluation choices in what the field already knows.
 
 **Instructions:**
 1. Write a one-page evaluation protocol document (`evaluation_protocol_<lastname>.md`) for your project's primary AI component. It must specify: (a) the primary evaluation metric (e.g., MAE in eV, F1 score, percent deviation from DFT baseline), (b) the baseline model or method you will compare against, (c) the test dataset you will use (with source URL or DOI), and (d) the threshold for "success" (e.g., "MAE < 0.1 eV, matching chemical accuracy"). The threshold must be a specific number with units and a justification of one or two sentences explaining why that threshold is physically meaningful.
@@ -843,15 +842,15 @@ Step 5 — Debrief (7 min): Instructor photographs the whiteboard. Ask: "Which b
 
 ---
 
-> **Phase transition — from design to execution:** By the end of Week 7 every student has a working MCP server prototype, a named evaluation baseline, and a written evaluation protocol. Phase 3 is execution mode: the deliverables from Weeks 8–13 are direct components of your final submission. The lab notebook from Week 8, the observability infrastructure from Week 9, the peer reviews from Weeks 10 and 12, and the paper drafts from Weeks 11–13 all feed into the final codebase and paper due in Week 14. Plan your Week 8 start by ensuring your MCP server runs cleanly, your test dataset is downloaded, and your evaluation protocol is pinned. [EDIT: added explicit Phase 2→3 transition note signaling shift into project execution mode]
+> **Phase transition — from design to execution:** By the end of Week 8 every student has a working MCP server prototype, a named evaluation baseline, and a written evaluation protocol. Phase 3 is execution mode: the deliverables from Weeks 9–13 are direct components of your final submission. The lab notebook from Week 9, the observability infrastructure from Week 10, the peer reviews from Weeks 10 and 12, and the paper drafts from Weeks 12–13 all feed into the final codebase and paper due in Week 13. Plan your Week 9 start by ensuring your MCP server runs cleanly, your test dataset is downloaded, and your evaluation protocol is pinned. [EDIT: added explicit Phase 2→3 transition note signaling shift into project execution mode]
 
-## Phase 3: Project Execution & Polish (Weeks 8–14)
+## Phase 3: Project Execution & Polish (Weeks 9–13)
 
-Phase 3 is the longest and most intensive phase of the course. Students build, debug, and document their full project pipeline (Weeks 8–9), then engage in two rounds of structured peer code review (Weeks 10 and 12), read and discuss cutting-edge papers in a seminar format (Weeks 11–12), write and polish their scientific paper (Weeks 11–13), and conclude with a public departmental showcase (Week 14). The homework load is heavier than in earlier phases; the Week 13 assignment is explicitly flagged as the largest of the semester.
+Phase 3 is the longest and most intensive phase of the course. Students build, debug, and document their full project pipeline (Weeks 9–10), then engage in two rounds of structured peer code review (Weeks 10 and 12), read and discuss cutting-edge papers in a seminar format (Weeks 12–12), write and polish their scientific paper (Weeks 12–13), and conclude with a public departmental showcase (Week 13). The homework load is heavier than in earlier phases; the Week 13 assignment is explicitly flagged as the largest of the semester.
 
 ---
 
-### Week 8: Advanced Platform Integration
+### Week 9: Advanced Platform Integration
 
 #### Meeting 1 — Unifying Heterogeneous Scientific Databases
 
@@ -873,7 +872,7 @@ After all students have sketched their pipelines (approximately 50 minutes for 1
 
 The instructor facilitates by prompting with "What is missing from this diagram?" and "Does anyone disagree with how this arrow is drawn?" rather than by filling in the diagram themselves. Every student must contribute at least one annotation or question during the depth-discussion phase; the instructor should call on quiet students directly.
 
-*Facilitation notes:* Pre-assign whiteboard sections before class so students do not waste time negotiating space. Use different marker colors for data flow vs error paths — establish this norm during the first sketch so all subsequent sketches follow it. Photograph all sketches at the end of class with a phone or tablet and post the images to the course repository before the next meeting; these photographs become a shared reference for pipeline architecture discussions in Weeks 9–12. If a student's pipeline is not yet implemented, ask them to sketch the intended architecture — the gaps that emerge are equally informative.
+*Facilitation notes:* Pre-assign whiteboard sections before class so students do not waste time negotiating space. Use different marker colors for data flow vs error paths — establish this norm during the first sketch so all subsequent sketches follow it. Photograph all sketches at the end of class with a phone or tablet and post the images to the course repository before the next meeting; these photographs become a shared reference for pipeline architecture discussions in Weeks 10–12. If a student's pipeline is not yet implemented, ask them to sketch the intended architecture — the gaps that emerge are equally informative.
 
 *Materials needed:* Whiteboard divided into 10 labeled sections, markers in at least two colors, phone or tablet camera for end-of-class photographs
 
@@ -899,7 +898,7 @@ The instructor provides a pre-written Python script (`multi_api_pipeline_broken.
 - **(b)** A unit mismatch: luminosity values from SIMBAD are in solar luminosities but are added directly to a column labeled "L_SI" without conversion, producing values that are off by a factor of ~3.8×10²⁶.
 - **(c)** A missing null check: the Materials Project response occasionally omits the "band_gap" field for metallic compounds; the script accesses `response["band_gap"]` without a `.get()` guard and raises a `KeyError` on those entries.
 
-Students are assigned to pairs (rotating alphabetically from the Week 7 pairing). Pairs have 30 minutes to find and fix all three bugs and document each fix with a one-sentence explanation in a comment above the corrected line. After 30 minutes, the instructor calls time regardless of progress.
+Students are assigned to pairs (rotating alphabetically from the Week 8 pairing). Pairs have 30 minutes to find and fix all three bugs and document each fix with a one-sentence explanation in a comment above the corrected line. After 30 minutes, the instructor calls time regardless of progress.
 
 Debrief (10 minutes): each pair shares the bug they found last — typically the unit mismatch, since it requires physical reasoning rather than Python knowledge to detect. The instructor asks: "How would a provenance record have made bug (b) detectable without running the pipeline?" to connect the exercise directly to Learning Objective 3.
 
@@ -909,17 +908,17 @@ Debrief (10 minutes): each pair shares the bug they found last — typically the
 
 ---
 
-#### Homework Assignment 8: Project Data Pipeline Implementation
+#### Homework Assignment 9: Project Data Pipeline Implementation
 
-**Assessment category:** Final Project Codebase & Paper | **Estimated time:** 6–8 hours | **Due:** Before the first class meeting of Week 9
+**Assessment category:** Final Project Codebase & Paper | **Estimated time:** 6–8 hours | **Due:** Before the first class meeting of Week 10
 
-**Background:** This assignment is the first concrete milestone of your final project codebase. The data ingestion module you build this week will be submitted as part of your final repository in Week 14 and will be reviewed by a peer in Week 10. Build it as if you are writing production research code: documented, reproducible, and resilient to the API failures that inevitably occur in long-running pipelines. The provenance record you produce this week will also serve as the evidentiary foundation for the data section of your final paper.
+**Background:** This assignment is the first concrete milestone of your final project codebase. The data ingestion module you build this week will be submitted as part of your final repository in Week 13 and will be reviewed by a peer in Week 11. Build it as if you are writing production research code: documented, reproducible, and resilient to the API failures that inevitably occur in long-running pipelines. The provenance record you produce this week will also serve as the evidentiary foundation for the data section of your final paper.
 
 **Instructions:**
 1. Implement the data ingestion layer of your project pipeline as a Python module (`data_pipeline_<lastname>.py`). The module must fetch data from at least two external sources (APIs, databases, or files), normalize units and identifiers to a consistent internal schema, and write the result to a local cache (SQLite database or parquet file) to avoid redundant API calls.
 2. Add error handling for at least two distinct failure modes: (a) API timeout or rate limit — implement exponential backoff using the tenacity library with at least 3 retries; (b) missing or null fields — log the missing field with its source URL and substitute a documented sentinel value rather than crashing.
 3. Write a data provenance JSON file (`provenance_<lastname>.json`) that records, for each dataset: source URL or API endpoint, access timestamp, version or commit hash of the source (if available), and any transformations applied.
-4. Run your pipeline on real data and record the first analysis result in a Jupyter lab notebook (`lab_notebook_<lastname>.ipynb`). The notebook must include: the raw output from at least one API call, the normalized version, and a plot comparing your AI pipeline's output to your Week 7 baseline on at least 5 data points.
+4. Run your pipeline on real data and record the first analysis result in a Jupyter lab notebook (`lab_notebook_<lastname>.ipynb`). The notebook must include: the raw output from at least one API call, the normalized version, and a plot comparing your AI pipeline's output to your Week 8 baseline on at least 5 data points.
 
 **Deliverables:**
 - `data_pipeline_<lastname>.py` — data ingestion module with error handling
@@ -933,7 +932,7 @@ Debrief (10 minutes): each pair shares the bug they found last — typically the
 |-----------|--------|---------------------|
 | Pipeline functionality | 40% | The pipeline fetches from two sources, normalizes data, caches results, and handles both required failure modes without crashing. |
 | Reproducibility | 30% | Running the pipeline from a fresh clone produces identical cached data; provenance.json is complete and accurate. |
-| Analysis results | 20% | The lab notebook shows real data from the pipeline and includes a quantitative comparison to the Week 7 baseline. |
+| Analysis results | 20% | The lab notebook shows real data from the pipeline and includes a quantitative comparison to the Week 8 baseline. |
 | Code documentation | 10% | The pipeline module has docstrings on all functions; the README documents how to run the pipeline end-to-end. |
 
 **Tools and resources:**
@@ -946,7 +945,7 @@ Debrief (10 minutes): each pair shares the bug they found last — typically the
 
 ---
 
-### Week 9: Debugging Agentic Workflows
+### Week 10: Debugging Agentic Workflows
 
 #### Meeting 1 — Structured Debugging and Observability for Agentic Pipelines
 
@@ -1011,9 +1010,9 @@ Step 6 — Vote and debrief (10 min): Anonymous vote: has your position changed?
 
 ---
 
-#### Homework Assignment 9: Adding Observability and Reproducibility to Your Project Pipeline
+#### Homework Assignment 10: Adding Observability and Reproducibility to Your Project Pipeline
 
-**Assessment category:** Final Project Codebase & Paper | **Estimated time:** 5–7 hours | **Due:** Before the first class meeting of Week 10
+**Assessment category:** Final Project Codebase & Paper | **Estimated time:** 5–7 hours | **Due:** Before the first class meeting of Week 11
 
 **Background:** A pipeline that cannot be debugged from its logs is not a scientific instrument — it is a black box. This week you will instrument your project pipeline with structured logging and commit at least one reproducible result to your GitHub repository, establishing the observability standards your final codebase must meet.
 
@@ -1048,14 +1047,14 @@ Step 6 — Vote and debrief (10 min): Anonymous vote: has your position changed?
 
 ---
 
-### Week 10: Ethics & Reproducibility
+### Week 11: Ethics & Reproducibility
 
 #### Meeting 1 — AI Research Ethics and Disclosure Standards
 
 **Student Introduction** (assigned: BA) [EDIT: corrected from IS; rotation table and summary both assign BA to 10M1]
 > *Format:* 10-minute slide presentation (max 6 slides)
 >
-> **Topic prompt:** Prepare a 10-minute slide presentation (max 6 slides) covering current journal and professional society policies on AI tool use disclosure in physics research. Read: (1) the Nature portfolio editorial on AI use in papers (https://www.nature.com/articles/d41586-023-00191-1); (2) the APS statement on AI in peer review; (3) at least one recent arXiv paper that includes an explicit AI tools statement. Your presentation must identify where current policies are specific enough to follow and where they leave room for interpretation, using concrete examples drawn from the three sources. Connect to this week's theme: students will write their own AI tools and ethics statements in Homework 10, and a clear understanding of existing policy language is the prerequisite. [EDIT: rewrote topic prompt from note-style ("Student should read..."; "3-5 sentences.") to directive format consistent with other week intros; removed template placeholder text]
+> **Topic prompt:** Prepare a 10-minute slide presentation (max 6 slides) covering current journal and professional society policies on AI tool use disclosure in physics research. Read: (1) the Nature portfolio editorial on AI use in papers (https://www.nature.com/articles/d41586-023-00191-1); (2) the APS statement on AI in peer review; (3) at least one recent arXiv paper that includes an explicit AI tools statement. Your presentation must identify where current policies are specific enough to follow and where they leave room for interpretation, using concrete examples drawn from the three sources. Connect to this week's theme: students will write their own AI tools and ethics statements in Homework 11, and a clear understanding of existing policy language is the prerequisite. [EDIT: rewrote topic prompt from note-style ("Student should read..."; "3-5 sentences.") to directive format consistent with other week intros; removed template placeholder text]
 >
 > **Guiding questions:**
 > 1. What is the difference between disclosing AI use for writing assistance vs. AI use for data analysis?
@@ -1105,27 +1104,27 @@ In-class (45 min):
 
 ---
 
-#### Homework Assignment 10: Ethics Statement and Peer Review Submission
+#### Homework Assignment 11: Ethics Statement and Peer Review Submission
 
-**Assessment category:** Peer Review & Participation | **Estimated time:** 4-6 hours (2-3 hr review + 1-2 hr ethics statement) | **Due:** Peer review submitted before Week 11 Meeting 1; review responses due before Week 12 Meeting 1 (graded in Week 12 participation/reproducibility rubric)
+**Assessment category:** Peer Review & Participation | **Estimated time:** 4-6 hours (2-3 hr review + 1-2 hr ethics statement) | **Due:** Peer review submitted before Week 12 Meeting 1; review responses due before Week 13 Meeting 1 (graded in Week 12 participation/reproducibility rubric)
 
-**Background:** Building on the structured logging and observability infrastructure added in Week 9, this week pivots to the social and ethical dimensions of AI-assisted research: what you must disclose about how that pipeline was built, and what a peer reviewer should be able to verify. [EDIT: added "building on Week 9" narrative arc bridge] Transparency about AI tool use is now a professional expectation in physics research, and peer code review is how the community maintains reproducibility standards. This week you will write the ethics and limitations statement that will appear in your final paper, and submit your written peer review of your partner's codebase.
+**Background:** Building on the structured logging and observability infrastructure added in Week 10, this week pivots to the social and ethical dimensions of AI-assisted research: what you must disclose about how that pipeline was built, and what a peer reviewer should be able to verify. [EDIT: added "building on Week 10" narrative arc bridge] Transparency about AI tool use is now a professional expectation in physics research, and peer code review is how the community maintains reproducibility standards. This week you will write the ethics and limitations statement that will appear in your final paper, and submit your written peer review of your partner's codebase.
 
 **Instructions:**
-1. Write an 'AI Tools and Ethics' statement (300-500 words) for your project. The statement must specify: (a) which AI tools you used (name and version, e.g., 'Claude claude-3-5-sonnet-20241022 via the Anthropic API'); (b) what each tool was used for (e.g., 'code generation', 'prose improvement', 'data analysis'); (c) how you verified the AI's outputs (e.g., 'all numerical results were cross-checked against the baseline model from Week 7'); (d) any limitations of your AI use that a reader should know. Save as ethics_statement_<lastname>.md.
+1. Write an 'AI Tools and Ethics' statement (300-500 words) for your project. The statement must specify: (a) which AI tools you used (name and version, e.g., 'Claude claude-3-5-sonnet-20241022 via the Anthropic API'); (b) what each tool was used for (e.g., 'code generation', 'prose improvement', 'data analysis'); (c) how you verified the AI's outputs (e.g., 'all numerical results were cross-checked against the baseline model from Week 8'); (d) any limitations of your AI use that a reader should know. Save as ethics_statement_<lastname>.md.
 2. Submit your written peer code review as a GitHub PR review on your partner's repository or as a structured markdown document (peer_review_<reviewer_lastname>_reviews_<author_lastname>.md). The review must include: at least 5 inline comments at specific line numbers, one comment in each of the four rubric categories, and at least one 'blocking' issue (something that must be fixed for reproducibility) with a specific proposed fix.
-3. Respond to all comments in your partner's review of your code. For each comment: either implement the fix and reference the commit, or explain in writing (in the PR thread or a REVIEW_RESPONSES.md file) why you chose not to. This response is due before Week 12 Meeting 1 and is graded in Week 12 under the participation/reproducibility rubric (not Week 10).
+3. Respond to all comments in your partner's review of your code. For each comment: either implement the fix and reference the commit, or explain in writing (in the PR thread or a REVIEW_RESPONSES.md file) why you chose not to. This response is due before Week 13 Meeting 1 and is graded in Week 12 under the participation/reproducibility rubric (not Week 11).
 
 **Deliverables:**
 - ethics_statement_<lastname>.md — AI tools and ethics statement (300-500 words)
 - peer_review_<reviewer_lastname>_reviews_<author_lastname>.md or GitHub PR review with at least 5 inline comments
-- REVIEW_RESPONSES.md — written responses to all blocking peer review comments received in Week 10, due before Week 12 Meeting 1
+- REVIEW_RESPONSES.md — written responses to all blocking peer review comments received in Week 11, due before Week 13 Meeting 1
 
 **Grading criteria:**
 
 | Criterion | Weight | Description |
 |-----------|--------|-------------|
-| Depth of technical feedback | 40% | The review includes at least 5 inline comments at specific line numbers, covers all four rubric categories, and the blocking issue includes a specific proposed fix (not just 'fix this'). Week 10 scoring covers the review artifact itself; Step 3 author response scoring is deferred to Week 12 participation/reproducibility grading. |
+| Depth of technical feedback | 40% | The review includes at least 5 inline comments at specific line numbers, covers all four rubric categories, and the blocking issue includes a specific proposed fix (not just 'fix this'). Week 11 scoring covers the review artifact itself; Step 3 author response scoring is deferred to Week 12 participation/reproducibility grading. |
 | Constructive tone | 30% | All comments are phrased as suggestions or questions rather than criticism; the review explains why each issue matters for reproducibility or correctness. |
 | Ethics statement quality | 30% | The statement names specific AI tools with versions, describes their use with enough detail for a reader to assess impact on the results, and acknowledges at least one genuine limitation. |
 
@@ -1137,139 +1136,34 @@ In-class (45 min):
 
 ---
 
-### Week 11: Seminar / Reading Group Part 1
+### Week 12: Seminar / Reading Group & Peer Review
 
-#### Meeting 1 — Reading Group Session A
+#### Meeting 1 — Combined Reading Group
 
-**Student Introduction** (assigned: TK) [EDIT: corrected from NRN; rotation table and summary both assign TK to 11M1]
-> *Format:* 15-minute paper discussion (whiteboard outline, no slides required)
+**Student Introduction** (assigned: TK & NRN, with TL & NACV leading the cross-cutting discussion portion)
+
+> *Format:* Extended 55-minute seminar with multiple 15-minute paper discussions
 >
-> **Topic prompt:** You will lead a 15-minute discussion of a paper directly relevant to your project. Select a paper published in the last 3 years that uses an AI or ML method central to your research question. Prepare a structured presentation covering: (1) the physical problem being solved; (2) the AI method used and why it was chosen; (3) the evaluation approach and its adequacy; (4) one specific finding you will apply or adapt in your own project; (5) one weakness or open question in the paper. Prepare 3 discussion questions for the class. You do not need slides — a whiteboard outline is sufficient.
->
-> **Guiding questions:**
-> 1. What physical problem does this paper solve, and how does the AI method address it?
-> 2. Is the evaluation rigorous enough to trust the paper's main claim?
-> 3. What would you do differently, and how does this paper inform your own project?
-
-**Active Engagement** — Socratic seminar (55 minutes)
-
-The hour is structured as follows:
-Minutes 0-15: First student leads their paper discussion using their prepared outline and 3 questions.
-Minutes 15-30: Second student leads their paper discussion (same format).
-Minutes 30-50: Structured synthesis discussion. Instructor asks: "What evaluation patterns appeared in both papers? What would a skeptical Physical Review referee ask about either paper?" Students respond in structured rounds — no one speaks twice until everyone has spoken once.
-Minutes 50-60: Each student writes one sentence on a notecard: "The one thing I will change about my own evaluation approach based on today's discussion is ___." Cards are collected and anonymized summaries shared next class.
-
-*Facilitation notes:* Assign the two paper leaders at least one week in advance. Ask them to share their paper with the class 48 hours before the meeting. During the synthesis discussion, keep a running list on the whiteboard of "evaluation patterns" and "open referee questions" — this serves as a study guide for the showcase. If discussion stalls, project a specific figure from one of the papers and ask "How would you reproduce this figure from a fresh clone of the code?"
-
-*Materials needed:* Whiteboard; papers shared digitally 48 hours in advance; index cards for synthesis round
-
----
-
-#### Meeting 2 — Reading Group Session B
-
-**Student Introduction** (assigned: NRN) [EDIT: corrected from BA; rotation table and summary both assign NRN to 11M2]
-> *Format:* 15-minute paper discussion (whiteboard outline)
->
-> **Topic prompt:** You will lead a 15-minute discussion of a paper directly relevant to your project. Select a paper that uses a different AI method than the Week 11 Meeting 1 papers (to maximize class exposure to diverse approaches). Prepare the same structured outline as Meeting 1 leaders: physical problem, AI method, evaluation, what you will adapt, one weakness, and 3 discussion questions. Post your paper to the course repo 48 hours in advance.
+> **Topic prompt:** This meeting compresses the three reading-group sessions formerly spread across Weeks 11 and 12 into one extended seminar. TK and NRN co-facilitate back-to-back 15-minute paper discussions on recent AI-in-physics papers directly relevant to their projects. Each discussion should cover: (1) the physical problem being solved; (2) the AI method used and why it was chosen; (3) the evaluation approach and whether it is adequate; (4) one specific idea the presenter will adapt in their own project; (5) one weakness or open question; and (6) three discussion questions for the class. TL and NACV then lead the cross-cutting discussion portion, using an advanced reproducibility or reliability paper (for example, Hutson 2018 or Kapoor & Narayanan 2023) to connect the two project-specific papers to field-wide evaluation practices.
 >
 > **Guiding questions:**
-> 1. How does this paper's AI method differ from those discussed in Meeting 1, and when would you choose one over the other?
-> 2. What caveats would you add to the abstract if you were a co-author?
-> 3. What single experiment would most strengthen this paper's main claim?
+> 1. What evaluation pattern appears across more than one paper, and which of those patterns is worth borrowing for your own project?
+> 2. What would a skeptical referee most likely challenge about the evidence presented in these papers?
+> 3. What reproducibility or reliability practice from today's cross-cutting discussion should become non-negotiable in your final repository and paper?
 
-**Active Engagement** — Structured debate (55 minutes)
+**Active Engagement** — Extended seminar (55 minutes)
 
-Minutes 0-15: Third student leads their paper discussion.
-Minutes 15-30: Fourth student leads their paper discussion.
-Minutes 30-55: Structured debate on the motion: "The results section of an AI-in-physics paper should always include a comparison to a non-AI baseline, even if the baseline is trivially worse."
+Minutes 0-15: TK leads the first paper discussion using the Week 11 reading-group structure.
 
-Setup (3 min): Instructor assigns 5 students FOR, 5 AGAINST (not the paper leaders for this round).
-Opening statements (6 min): 3 min per side.
-Rebuttals (8 min): 4 min per side.
-Open floor (8 min): Free discussion; instructor injects: "What if the baseline is 100× more expensive to compute than the AI method?"
-Vote and debrief (5 min): Reveal actual Physical Review Data guidelines on baselines.
+Minutes 15-30: NRN leads the second paper discussion, again emphasizing physical problem, AI method, evaluation quality, one concrete takeaway, one weakness, and three discussion questions.
 
-*Facilitation notes:* The debate motion is intentionally provocative — most students will initially vote FOR. The AGAINST side often argues for computational cost exceptions, which is a genuine research tradeoff. Prepare the Physical Review Data author guidelines (https://journals.aps.org/prd/authors) as the authoritative reference for the debrief. Assign sides before class to ensure balance.
+Minutes 30-45: TL and NACV jointly lead the cross-cutting discussion portion. They synthesize themes from the first two papers with a broader reproducibility/reliability paper and ask the class to identify one failure mode or evaluation blind spot that also appears in their own projects.
 
-*Materials needed:* Papers shared 48 hours in advance; PRD author guidelines bookmarked
+Minutes 45-55: Whole-class synthesis. Instructor asks: "What evaluation pattern appeared more than once today?" and "What is the single most important change you will make to your own results, limitations, or reproducibility documentation because of this discussion?" Each student records one sentence answer for use in the homework.
 
----
+*Facilitation notes:* Ask TK and NRN to post their papers to the course repository 48 hours before class, and ask TL and NACV to share the cross-cutting paper or perspective they will use on the same schedule. Keep a whiteboard with two running columns — "evaluation patterns" and "open referee questions." Because three sessions are being compressed into one, timekeeping matters: cut transitions quickly and reserve the final 10 minutes for synthesis.
 
-#### Homework Assignment 11: Draft Results Section and Reading Group Summary
-
-**Assessment category:** Peer Review & Participation | **Estimated time:** 5-7 hours | **Due:** Before the first class meeting of Week 12
-
-**Background:** With the peer code review from Week 10 complete and reviewer feedback in hand, this week turns to translating your pipeline's outputs into scientific prose. [EDIT: added "building on Week 10" narrative arc bridge] Writing a results section for AI-assisted physics research requires translating stochastic model outputs into physical claims with appropriate uncertainty. This week you will produce a draft results section that will receive peer feedback before the final paper deadline, and you will document the reading group discussion to help the class build a shared knowledge base.
-
-**Instructions:**
-1. Write a draft results section (600-900 words) for your project paper in RevTeX format (results_draft_<lastname>.tex). The section must: (a) report your primary evaluation metric with a numeric value and uncertainty estimate (e.g., 'MAE = 0.08 ± 0.02 eV, compared to the DFT baseline of 0.31 ± 0.05 eV'); (b) include at least one figure (saved as results_fig1_<lastname>.pdf) showing the AI output vs. baseline or ground truth; (c) state explicitly what each AI-generated quantity represents physically; (d) note at least one result that was unexpected or inconsistent with prior work.
-2. Write a 300-word reading group summary (reading_group_summary_<lastname>.md) covering the two papers discussed in the meeting you attended. For each paper: state the main claim in one sentence, identify the strongest and weakest aspect of the evaluation, and write one question you would ask the authors. Commit the summary to the course repository before the next class.
-3. Draft written responses to two skeptical reviewer questions about your AI methodology (use the most challenging questions raised during the Week 11 reading group discussions if possible). [EDIT: vague "Formulate written responses" replaced with "Draft" plus a specific source for the questions] Write these as you would in a rebuttal letter (reviewer_response_<lastname>.md): quote the hypothetical reviewer comment, then write a 100-150 word response citing your evaluation protocol, baseline comparison, and reproducibility controls.
-
-**Deliverables:**
-- results_draft_<lastname>.tex — draft results section in RevTeX
-- results_fig1_<lastname>.pdf — figure showing AI output vs. baseline or ground truth
-- reading_group_summary_<lastname>.md — 300-word summary of two papers (committed to course repo)
-- reviewer_response_<lastname>.md — responses to two hypothetical skeptical reviewer questions
-
-**Grading criteria:**
-
-| Criterion | Weight | Description |
-|-----------|--------|-------------|
-| Discussion engagement | 30% | Student contributes at least two substantive new points during the reading group (not just agreeing or restating); paper leaders receive full credit for leading their discussion with the required structure. |
-| Results section quality | 40% | The draft results section reports the evaluation metric with uncertainty, includes a figure comparing AI to baseline, and explicitly interprets each quantity in physical terms. |
-| Reading group summary | 15% | The summary addresses all required points for both papers and is committed to the course repo before the next class. |
-| Reviewer response quality | 15% | Each response is 100-150 words, cites specific evidence from the project (evaluation metric, baseline comparison, reproducibility controls), and directly addresses the hypothetical concern. |
-
-**Tools and resources:**
-- RevTeX 4.2 (or Overleaf for online editing)
-- matplotlib with publication-quality defaults (plt.rcParams update)
-- Semantic Scholar or Google Scholar for paper discovery
-- APS Physical Review Data author guidelines (https://journals.aps.org/prd/authors)
-
----
-
-### Week 12: Seminar / Reading Group Part 2
-
-#### Meeting 1 — Advanced & Cross-Cutting AI-in-Physics Reading Group
-
-**Student Introduction** (assigned: TL & NACV) [EDIT: corrected from TK; rotation table and summary both assign TL and NACV to 12M1 as a joint two-student slot]
-> *Format:* 15-minute paper discussion (whiteboard outline)
->
-> **Topic prompt:** Each of the two students leads a 15-minute paper discussion on a cross-cutting or advanced AI-in-physics paper — one that addresses AI reproducibility or reliability at a field-wide scale rather than within a single method. Recommended papers (choose one each, or propose an alternative with instructor approval):
->   • Hutson, M. (2018). "Artificial intelligence faces reproducibility crisis." Science 359(6377):725-726. https://doi.org/10.1126/science.359.6377.725
->   • Kapoor, S. & Narayanan, A. (2023). "Leakage and the Reproducibility Crisis in ML-based Science." Patterns 4(9):100804. https://doi.org/10.1016/j.patter.2023.100804
-> Each presenter should: (1) sketch the paper's main claim and evidence on the whiteboard; (2) locate a concrete example of the failure mode the paper describes in AI-in-physics literature; (3) propose one corrective practice the class could adopt today.
-> Use the format "15-minute paper discussion (whiteboard outline)": draw the argument structure, not slides. No notes — you must be able to reproduce the paper's core logic from memory at the whiteboard.
->
-> **Guiding questions:**
-> 1. What specific evaluation or publication practice does this paper identify as the root cause of irreproducibility?
-> 2. Does this failure mode apply to your own project? Where?
-> 3. What would a reproducibility-passing version of the paper's worst-case example look like?
-
-**Active Engagement** — Socratic seminar (45 minutes)
-
-Synthesis discussion connecting all four papers discussed across Weeks 11 and 12. The goal is to surface shared evaluation patterns and open problems that cut across AI methods in physics.
-
-Central question posed by the instructor at the start of the seminar:
-"After four papers, what is the single most important thing the physics community should change about how it evaluates AI-generated results — and what would stop it from doing so?"
-
-Structure (45 min):
-- Round 1, "First responses" (12 min): Instructor cold-calls each student in turn for a 60-90 second response to the central question. No interruptions; other students take brief notes.
-- Round 2, "Peer responses" (15 min): Each student may respond to a specific thing someone said in Round 1. Instructor enforces the rule that a student may not simply repeat their Round 1 point — they must engage with another student's idea.
-- Round 3, "Convergence or divergence?" (10 min): Instructor asks: "Which two student positions from Round 1 are most in tension? Can they be reconciled?" Instructor facilitates direct dialogue between the two named students.
-- Debrief (8 min): Instructor lists on the whiteboard the 2-3 key disagreements that were NOT resolved. These become optional essay prompts available for the final paper's discussion section.
-
-Instructor follow-up probes (use if discussion stalls):
-  • "Kapoor & Narayanan argue that leakage is the rule, not the exception. Does anyone disagree? What would falsify that claim for physics specifically?"
-  • "Hutson wrote in 2018. Name one thing that has concretely improved since then, and one thing that has gotten worse."
-  • "If you were a referee, which of today's papers would you reject for reproducibility reasons? Be specific."
-
-No laptops during seminar. Students should bring the Week 11 and Week 12 papers with annotations.
-
-*Facilitation notes:* Before Round 1, write each paper's title on the whiteboard so students can reference them by number. Cold-call by name — do not open to volunteers; equitable participation is especially important in a 10-person seminar where confident students can dominate. Keep a live whiteboard list of the key claims being made; update it between rounds. At the start of Round 2, point to two claims on the board that are in apparent tension and ask students to address the tension directly. If a student raises a genuinely novel point not captured on the board, add it; this signals that new ideas are welcome even late in the discussion. Reserve the final 2 minutes of the debrief to ask: "What single sentence would you add to your own limitations section because of today's discussion?"
-
-*Materials needed:* Whiteboard and markers; printed or annotated digital copies of all four reading-group papers (Weeks 11 and 12); no laptops during seminar
+*Materials needed:* Whiteboard; papers shared digitally 48 hours in advance; printed or annotated copies of the selected papers; index cards or notebooks for final synthesis notes
 
 ---
 
@@ -1278,7 +1172,7 @@ No laptops during seminar. Students should bring the Week 11 and Week 12 papers 
 **Student Introduction** (assigned: NACV)
 > *Format:* 8-minute chalk talk
 >
-> **Topic prompt:** Prepare an 8-minute chalk talk (no notes, whiteboard only) on what a complete, publication-ready README looks like for an AI-assisted physics project. Study the following resources before class: [EDIT: removed "Topic:" prefix; rewrote opening in directive format consistent with other week intros]
+> **Topic prompt:** Prepare an 8-minute chalk talk (no notes, whiteboard only) on what a complete, publication-ready README looks like for an AI-assisted physics project. Study the following resources before class:
 >   • "Art of README" (https://github.com/hackergrrl/art-of-readme) — read the full document.
 >   • At least two READMEs from published AI-in-physics codebases on GitHub (e.g., from papers with code, https://paperswithcode.com, filtered to physics).
 >   • The Software Sustainability Institute checklist for research software documentation (https://www.software.ac.uk/resources/guides).
@@ -1297,7 +1191,7 @@ No laptops during seminar. Students should bring the Week 11 and Week 12 papers 
 
 **Active Engagement** — Peer code review (45 minutes)
 
-Second in-class peer code review session, focused entirely on reproducibility audit. This round uses a different partner pairing from Week 10 (rotate the assignment ring by two positions so no student reviews the same partner twice).
+Second in-class peer code review session, focused entirely on reproducibility audit. This round uses a different partner pairing from Week 11 (rotate the assignment ring by two positions so no student reviews the same partner twice).
 
 Pre-class setup: Instructor circulates the reproducibility audit checklist 48 hours before class. Each student must have their repository in a state where it could plausibly be reviewed by a stranger.
 
@@ -1315,173 +1209,97 @@ In-class structure (45 min):
 
 After class: reviewer submits the completed checklist as a GitHub PR review or as a structured markdown file (reproducibility_audit_<reviewer_lastname>_reviews_<author_lastname>.md) within 24 hours.
 
-*Facilitation notes:* Distribute the audit checklist as a printout at the start of class — even students who read it digitally benefit from a physical copy to mark up. During minutes 0-30, circulate and ask each reviewer "Which checklist item have you found to be the hardest to verify so far?" — this surfaces common gaps across projects and lets you intervene early. If a student's `make reproduce` fails immediately, help them get unstuck (one intervention of up to 3 minutes) rather than letting them spend the whole period debugging a trivial environment issue. Remind reviewers that a PARTIAL is not a pass: if a reproduction command exists but is not documented in the README, that is PARTIAL, not PASS. The round-robin share-out at the end creates a public record of what reproducibility gaps are common across the class — photograph or transcribe the board and post it to the course repository.
+*Facilitation notes:* Distribute the audit checklist as a printout at the start of class — even students who read it digitally benefit from a physical copy to mark up. During minutes 0-30, circulate and ask each reviewer "Which checklist item have you found to be the hardest to verify so far?" If a student's `make reproduce` fails immediately, help them get unstuck (one intervention of up to 3 minutes) rather than letting them spend the whole period debugging a trivial environment issue. Remind reviewers that a PARTIAL is not a pass: if a reproduction command exists but is not documented in the README, that is PARTIAL, not PASS.
 
 *Materials needed:* Reproducibility audit checklist (printed or shared digitally 48 hours before class); GitHub access for all students; laptops required; sha256sum available on each machine
 
 ---
 
-#### Homework Assignment 12: Limitations Section, Review Responses, and Self-Audit
+#### Homework Assignment 12: Draft Results, Limitations, Review Responses, and Reproducibility Self-Audit
 
-**Assessment category:** Peer Review & Participation | **Estimated time:** 4-6 hours (1-2 hr limitations section + 1-2 hr review responses + 1 hr self-audit) | **Due:** All three deliverables submitted before Week 13 Meeting 1; REVIEW_RESPONSES.md must be committed to the project repository (not submitted separately)
+**Assessment category:** Peer Review & Participation | **Estimated time:** 9-13 hours | **Due:** reading_group_summary_<lastname>.md committed before Week 12 Meeting 2; all remaining deliverables submitted before Week 13 Meeting 1; REVIEW_RESPONSES.md must be committed to the project repository
 
-**Background:** With the second round of peer code review complete, your project is entering its final polishing phase. This week's homework has three mutually reinforcing tasks. First, you will write the limitations section of your final paper — the section that requires the most intellectual honesty because it asks you to characterize where your AI methods fail. Second, you will formally close out the Week 10 peer review cycle by resolving all blocking comments and documenting your decisions. Third, you will apply the Week 12 reproducibility audit checklist to your own repository before Week 13's final check, so you arrive at the final submission deadline without last-minute surprises.
+**Background:** This compressed week combines the drafting and reflection work previously spread across the reading-group sequence and the follow-up peer-review week. You will translate the reading-group discussions into scientific prose, document how you would answer skeptical reviewers, resolve real peer-review comments, and perform a reproducibility self-audit before the final showcase week.
 
 **Instructions:**
-1. Write the limitations section for your final paper in RevTeX (400-600 words, not counting any inline citations). The section must: (a) Identify at least two specific failure modes of the AI method(s) you used — not generic AI limitations, but limitations observable in your own results (e.g., "the retrieval step returns irrelevant abstracts when the query uses non-standard terminology, which we observed in 3 of 12 test queries on lattice QCD papers"). (b) Quantify the failure mode where possible (frequency, magnitude, or severity). (c) Describe what additional data, compute, or methodological change would be required to overcome each limitation. (d) Cite at least one paper from the Week 11 or Week 12 reading group that corroborates or contextualizes a limitation you describe. Save as limitations_<lastname>.tex. This section will be incorporated directly into the final paper.
-2. Resolve all blocking comments from your Week 10 peer review. For each blocking comment: (a) Implement the fix and reference the fixing commit SHA in a REVIEW_RESPONSES.md file (e.g., "Resolved in commit abc1234: added sha256 checksum to README data download section"). (b) If you are not implementing a fix, document your decision with a one-paragraph justification in REVIEW_RESPONSES.md explaining why the comment does not apply or why the alternative approach is preferable. Every blocking comment must have an entry in REVIEW_RESPONSES.md. Non-blocking suggestions may be addressed at your discretion, but note which ones you chose to address and which you deferred.
-3. Run the Week 12 reproducibility audit checklist (five items) against your own repository as a self-audit. For each checklist item, record your honest assessment (PASS, PARTIAL, or FAIL) and the specific evidence (e.g., the exact command you ran and its output). Submit this self-audit as self_audit_checklist_<lastname>.md. For any item you rated PARTIAL or FAIL, add a brief plan (1-3 sentences) describing what you will fix before the Week 14 final submission.
+1. Write a draft results section (600-900 words) for your project paper in RevTeX format (results_draft_<lastname>.tex). The section must: (a) report your primary evaluation metric with a numeric value and uncertainty estimate; (b) include at least one figure (results_fig1_<lastname>.pdf) showing the AI output vs. baseline or ground truth; (c) state explicitly what each AI-generated quantity represents physically; and (d) note at least one result that was unexpected or inconsistent with prior work.
+2. Write a 300-word reading group summary (reading_group_summary_<lastname>.md) covering the papers discussed in this week's combined seminar. For at least two papers, state the main claim in one sentence, identify the strongest and weakest aspect of the evaluation, and write one question you would ask the authors. Commit the summary to the course repository before Week 12 Meeting 2.
+3. Write responses to two skeptical reviewer questions about your AI methodology in rebuttal-letter style (reviewer_response_<lastname>.md). Quote each hypothetical reviewer comment, then write a 100-150 word response citing your evaluation protocol, baseline comparison, and reproducibility controls.
+4. Write the limitations section for your final paper in RevTeX (400-600 words, not counting inline citations). Identify at least two project-specific failure modes, quantify at least one where possible, describe what would be required to overcome each limitation, and cite at least one paper from this week's reading group that contextualizes your argument. Save as limitations_<lastname>.tex.
+5. Resolve all blocking comments from your Week 11 peer review in REVIEW_RESPONSES.md. For each blocking comment, either implement the fix and reference the commit SHA or justify in one paragraph why an alternative approach is preferable.
+6. Run the reproducibility audit checklist against your own repository as a self-audit. Record PASS, PARTIAL, or FAIL for each item, include the evidence for each rating, and submit the result as self_audit_checklist_<lastname>.md. For any PARTIAL or FAIL item, add a brief remediation plan.
 
 **Deliverables:**
+- results_draft_<lastname>.tex — draft results section in RevTeX
+- results_fig1_<lastname>.pdf — figure showing AI output vs. baseline or ground truth
+- reading_group_summary_<lastname>.md — reading-group synthesis summary
+- reviewer_response_<lastname>.md — responses to two hypothetical skeptical reviewer questions
 - limitations_<lastname>.tex — limitations section in RevTeX (400-600 words)
-- REVIEW_RESPONSES.md — responses to all Week 10 peer review comments (blocking comments fully resolved)
-- self_audit_checklist_<lastname>.md — reproducibility self-audit with PASS/PARTIAL/FAIL per item and remediation plan for any non-PASS items
+- REVIEW_RESPONSES.md — responses to all Week 11 peer review comments (blocking comments fully resolved)
+- self_audit_checklist_<lastname>.md — reproducibility self-audit with PASS/PARTIAL/FAIL per item and a remediation plan for any non-PASS items
 
 **Grading criteria:**
 
 | Criterion | Weight | Description |
 |-----------|--------|-------------|
-| Discussion engagement | 30% | Substantive contributions in both the reading group synthesis seminar (Meeting 1) and the review-pair debrief (Meeting 2); demonstrates having read and annotated the assigned papers before class. Assessed by in-class observation and post-class self-assessment form submitted within 24 hours. |
-| Reproducibility audit quality | 35% | The self-audit checklist is complete (all five items addressed), honest (PARTIAL and FAIL ratings are not inflated to PASS), and identifies at least one genuine gap with a specific, actionable remediation plan. Reviewers' audit of their partner's repo is also graded here: at least one FAIL or PARTIAL must be documented with a line-level comment and a concrete fix. |
-| Limitations section quality | 35% | Honestly describes at least two AI method failure modes with specific examples drawn from the student's own results (not generic AI criticism); at least one failure mode is quantified; at least one citation from the Week 11 or Week 12 reading group is incorporated; the section is 400-600 words in valid RevTeX. |
+| Discussion engagement | 20% | Substantive contributions in both the combined reading-group seminar and the reproducibility-audit debrief; demonstrates having read and annotated the assigned papers before class. |
+| Results section quality | 20% | The draft results section reports the evaluation metric with uncertainty, includes a figure comparing AI to baseline, and explicitly interprets each quantity in physical terms. |
+| Reading group summary | 10% | The summary addresses the required points for the discussed papers and is committed to the course repository on time. |
+| Reviewer response quality | 10% | Each hypothetical reviewer response is evidence-based, specific, and directly addresses the concern raised. |
+| Reproducibility audit quality | 20% | The self-audit checklist is complete, honest, and identifies at least one genuine gap with a specific remediation plan; the in-class audit of a partner repository is also substantive. |
+| Limitations section quality | 20% | The limitations section identifies at least two concrete failure modes from the student's own work, quantifies at least one of them, and situates the discussion in the course reading group. |
 
 **Tools and resources:**
-- RevTeX (document class revtex4-2) for the limitations section
+- RevTeX 4.2 (or Overleaf for online editing)
+- matplotlib with publication-quality defaults (plt.rcParams update)
+- Semantic Scholar or Google Scholar for paper discovery
+- APS Physical Review Data author guidelines (https://journals.aps.org/prd/authors)
 - GitHub Pull Request interface for resolving and referencing review comments
 - GNU Make for running the reproduction command during self-audit
 - sha256sum for generating and verifying file checksums in the audit
 
 ---
 
-### Week 13: Scientific Communication
+### Week 13: Scientific Communication & Showcase
 
-#### Meeting 1 — Writing the AI-Assisted Physics Paper
+#### Meeting 1 — Pre-Showcase Writing, Practice Presentations, and Adversarial Q&A
 
-**Student Introduction** (assigned: IS) [EDIT: corrected from BA; rotation table and summary both assign IS to 13M1]
-> *Format:* 8-minute paper presentation
+**Student Introduction** (assigned: IS & NRN)
+
+> *Format:* Combined paper presentation + showcase practice demo
 >
-> **Topic prompt:** Research and present how AI writing assistants (Claude, GPT-4, Grammarly) have been used in published physics papers — and where they went wrong. Find at least one published retraction or correction where AI-assisted writing introduced a factual error or hallucination. Present: (1) a brief taxonomy of legitimate vs. problematic AI writing assistance; (2) the specific failure case; (3) a practical workflow for using LLMs to improve clarity without distorting scientific claims (e.g., always show the LLM the underlying data before asking it to describe results). Limit to 8 minutes.
->
-> **Guiding questions:**
-> 1. What is the difference between using an LLM to fix grammar and using it to paraphrase a results sentence?
-> 2. How do you verify that an LLM-improved sentence still accurately describes the underlying data?
-> 3. What should an author disclose when they use an LLM to help write their abstract?
-
-**Active Engagement** — Socratic seminar (45 minutes)
-
-Central question: "If an LLM rewrites your results section and the rewritten version is clearer but slightly overstates the certainty of your findings, is that a scientific integrity violation or an editing error?"
-
-Round 1 (8 min): Each student writes their answer on an index card (anonymous). Instructor reads 4-5 aloud.
-Round 2 (15 min): Structured discussion. Instructor cold-calls: "What if you didn't notice the overstatement until after publication?" and "Does it matter whether the LLM or you wrote the overstatement?"
-Round 3 (8 min): Students pair up and draft a 2-sentence policy for their own paper: "I will use LLMs for ___, and I will NOT use LLMs for ___."
-Debrief (9 min): Pairs share their policies. Instructor synthesizes into a practical class consensus and posts it to the course repo.
-
-*Facilitation notes:* Prepare a concrete example: take a real results sentence like "The model achieves 94.3% accuracy" and show 3 LLM rewrites with varying degrees of overstatement. Ask students to rank them by acceptability. This makes the abstract question concrete. End by sharing the ICML 2024 policy on LLM use as a reference point.
-
-*Materials needed:* Index cards; projector showing the example results sentence and its LLM rewrites; ICML 2024 and APS AI policy bookmarked
-
----
-
-#### Meeting 2 — Practice Showcase Presentations
-
-**Student Introduction** (assigned: NRN) [EDIT: corrected from TK; rotation table and summary both assign NRN to 13M2]
-> *Format:* 10-minute slide presentation (max 6 slides) — 3 min demo + 7 min commentary
->
-> **Topic prompt:** Prepare and deliver the opening 3 minutes of your showcase presentation as a demonstration model for the class. Your goal is to show what an effective opening looks like: a crisp motivation statement (why this physics problem matters), your specific research question stated in one sentence, and the key result in one sentence with a figure. After your demo, briefly explain the choices you made (why this opening, what you cut, what you emphasized). This is a teaching demonstration, not a performance — feel free to narrate your thinking.
+> **Topic prompt:** This compressed pre-showcase meeting merges the paper-writing guidance, practice-presentation, and adversarial-rehearsal work that previously occupied separate sessions. IS opens with the paper-writing segment: explain how AI writing assistants have been used in published physics papers, where they have gone wrong, one specific correction or retraction case, and a practical workflow for using LLMs to improve clarity without distorting scientific claims. NRN then models an effective showcase opening for a mixed physics audience by stating the motivation, the specific research question, and the key result with one figure; this demonstration becomes the bridge into the class practice-talk session.
 >
 > **Guiding questions:**
-> 1. How do you state a specific AI-assisted research question to a mixed physics audience in one sentence?
-> 2. What makes an opening figure compelling to a non-specialist?
-> 3. What did you have to cut from your full talk to fit the 3-minute version, and how did you decide what to cut?
+> 1. How do you improve clarity with AI assistance without overstating what the data actually support?
+> 2. What makes a practice talk strong enough that a mixed physics audience can understand the research question within the first minute?
+> 3. What adversarial question would most expose a weakness in your current argument, figure, or methods description?
 
-**Active Engagement** — Structured debate (55 minutes)
+**Active Engagement** — Structured workshop (55 minutes)
 
-Each student delivers a 3-minute practice version of their showcase talk (motivation → question → key result → one conclusion). The class provides structured written feedback after each talk using a shared feedback form with four fields: (1) Was the research question clear after the first 60 seconds? (2) Was the key result stated with a number and its uncertainty? (3) Was the AI methodology explained at a level a non-AI physicist could evaluate? (4) One specific suggestion for improvement.
+Minutes 0-15: Paper-writing guidance. The class discusses how to use AI writing tools responsibly when drafting abstracts, introductions, and results prose. Instructor uses IS's opening presentation to anchor a short discussion of acceptable vs. unacceptable AI writing assistance.
 
-Timing: 3 min talk + 2 min for audience to fill in feedback form = 5 min per student × 10 students = 50 min total.
-Final 5 min: Instructor synthesizes the most common feedback themes and states what the departmental audience will expect in Week 14.
+Minutes 15-40: Practice presentations with structured peer feedback. Students deliver a short practice version of their showcase talk (motivation → question → key result → one conclusion). NRN's demonstration serves as the model. Peers complete written feedback on clarity, quantitative specificity, and whether the AI methodology is explained at a level a non-AI physicist could evaluate.
 
-*Facilitation notes:* Use a shared Google Form or paper form for structured feedback — collecting written feedback prevents the conversation from being dominated by one or two voices. After the session, compile all feedback for each student and email it to them before Week 14. Time talks strictly with a visible timer. Coach students who go over: "What's the one sentence your audience absolutely needs to hear?"
+Minutes 40-55: Adversarial Q&A rehearsal. Instructor and classmates play the role of a skeptical departmental audience, asking pointed questions about baselines, hallucination risk, uncertainty, and reproducibility. The goal is to surface vulnerable claims before the final showcase.
 
-*Materials needed:* Shared feedback form (Google Form or printed copies); visible countdown timer; projector
+*Facilitation notes:* Tell students in advance that this session is deliberately compressed and paced tightly. Time the practice talks strictly and collect written feedback so every student leaves with concrete revision notes. During the adversarial Q&A segment, challenge the strongest and weakest talks alike: the point is not embarrassment, but pressure-testing claims before the public showcase.
 
----
-
-#### Homework Assignment 13: Complete Paper Draft, Claim-Tracing Table, and Repository Tag
-
-**Assessment category:** Final Project Codebase & Paper | **Estimated time:** 8-12 hours (the largest homework of the semester — plan accordingly) | **Due:** Before the first class meeting of Week 14 (final submission deadline)
-
-**Background:** The Week 14 showcase is one week away. This homework produces the three artifacts that constitute your final submission: a complete paper draft, a claim-tracing table ensuring every number in your paper is reproducible, and a tagged repository release. Each artifact will be reviewed by the instructor before the showcase.
-
-**Instructions:**
-1. Assemble your complete paper draft in RevTeX (paper_draft_<lastname>.tex). All six sections must be present and substantive: Abstract (100 words max), Introduction (motivation and research question), Methods (AI tools, MCP server, evaluation protocol — sufficient for a reader to reproduce your approach), Results (from your Week 11 draft, revised based on peer comments), Discussion (interpretation, comparison to baseline, limitations from Week 12), Conclusion (one paragraph). Compile to PDF and confirm it is 4-6 pages excluding references.
-2. Build a claim-tracing table (claim_trace_<lastname>.md). For every quantitative claim in your Results and Discussion sections, record: (a) the exact quoted sentence from the paper, (b) the notebook filename and cell number that produces the number, (c) the command to run that cell in isolation (e.g., 'jupyter nbconvert --to script results.ipynb && python results.py --cell 12'), and (d) the expected output value or range. The table must have at least 5 entries.
-3. Use Claude or GPT-4 to improve the clarity of your Abstract and Introduction by pasting each section into the model with the following prompt: "Improve the clarity and scientific precision of this physics paper section without changing any quantitative claims, adding new scientific assertions, or weakening any stated uncertainties. Return only the revised text." [EDIT: vague "improve the clarity" replaced with a specific, copy-pasteable prompt instruction that guards against overstatement] Save the original sections as abstract_original_<lastname>.txt and the LLM-improved version as abstract_llm_<lastname>.txt. Write a 200-word reflection (llm_writing_reflection_<lastname>.md) explaining: what you changed, what you rejected, and whether the LLM introduced any inaccuracies you had to correct.
-4. Tag your GitHub repository with the version tag v0.9-draft using 'git tag v0.9-draft && git push origin v0.9-draft'. Confirm the tag is visible on GitHub. The tagged commit must include your data pipeline, the main analysis notebook, provenance.json, REPRODUCIBILITY.md, and the paper draft PDF.
-
-**Deliverables:**
-- paper_draft_<lastname>.tex and paper_draft_<lastname>.pdf — complete 4-6 page paper draft
-- claim_trace_<lastname>.md — claim-tracing table with at least 5 entries
-- abstract_original_<lastname>.txt, abstract_llm_<lastname>.txt, and llm_writing_reflection_<lastname>.md — LLM writing comparison
-- GitHub repository tag v0.9-draft visible on GitHub with all required files committed
-
-**Grading criteria:**
-
-| Criterion | Weight | Description |
-|-----------|--------|-------------|
-| Paper completeness | 40% | All six sections are present and substantive; the paper is 4-6 pages in RevTeX; the Results section reports at least one metric with uncertainty. |
-| Claim traceability | 30% | Every quantitative claim in the paper has a corresponding entry in the claim-tracing table with a working reproduction command. |
-| LLM writing reflection | 15% | The reflection identifies at least one specific inaccuracy or overstatement the LLM introduced and explains how it was corrected. |
-| Repository tag | 15% | The v0.9-draft tag exists on GitHub and the tagged commit includes all required files. |
-
-**Tools and resources:**
-- RevTeX 4.2 or Overleaf
-- Claude or GPT-4 for writing assistance (document your prompts)
-- jupyter nbconvert for converting notebooks to scripts
-- git tag for creating repository releases
-- GitHub Releases interface as an alternative to command-line tagging
-
----
-
-### Week 14: Showcase & Wrap-Up
-
-#### Meeting 1 — Final Submission and Adversarial Q&A Rehearsal
-
-**Student Introduction** (assigned: AAAM) [EDIT: corrected from TL; rotation table and summary both assign AAAM to 14M1]
-> *Format:* 8-minute chalk talk
->
-> **Topic prompt:** Reflect on the 14-week course arc in a forward-looking synthesis, not a recap: what has changed in AI capabilities for physics research since the course began? Find one AI-in-physics development from the past month (a preprint, tool release, or policy change) and present it as a "course update" — what would we cover differently if the course started today? Your chalk talk must be delivered from the whiteboard with no notes; connect the new development explicitly to one topic from Phase 1 or Phase 2 that it would change, extend, or supersede. [EDIT: removed "3-5 sentences." template placeholder; integrated "This is a forward-looking synthesis" note into the prose directive]
->
-> **Guiding questions:**
-> 1. What is the single most important thing you learned about AI's role in physics research that you did not know at the start of the course?
-> 2. What capability or tool released in the last month would have changed how you designed your project?
-> 3. What question about AI in physics research do you now have that you did not know to ask in Week 1?
-
-**Active Engagement** — Socratic seminar (55 minutes)
-
-Adversarial Q&A rehearsal. Each student has 5 minutes total: 2 minutes to state their project's main result in plain language (no slides), then 3 minutes of adversarial questions from the instructor and class playing the role of a skeptical physics faculty audience.
-
-Instructor prepares a question bank before class — one tailored question per student targeting their most vulnerable methodological choice (e.g., "Why did you trust the LLM's output here rather than computing it directly?", "Your baseline is linear regression — why not a physics-informed neural network?", "How do you know this result isn't a hallucination that happens to match your test set?").
-
-After all 10 students have gone (50 min), 10-minute debrief: what questions surprised you? What answers felt strongest? Instructor previews what faculty will likely ask at the showcase.
-
-*Facilitation notes:* Prepare the tailored question bank by reading all paper drafts before this meeting. The goal is not to embarrass students but to surface real vulnerabilities they can address before the showcase. Give students 48 hours notice that this format will be adversarial so they can prepare. After class, email each student their tailored question and a suggested response approach.
-
-*Materials needed:* Instructor question bank (one tailored question per student, prepared from paper drafts); no slides needed from students
+*Materials needed:* Shared feedback form (Google Form or printed copies); visible countdown timer; projector; index cards or notes for rapid peer feedback
 
 ---
 
 #### Meeting 2 — Departmental Showcase
 
-**Student Introduction** (assigned: ALL)
-> *Format:* 10-minute showcase presentation (≤12 slides) + 5-minute Q&A per student
+**Student Introduction** (assigned: AAAM opener; ALL students present for the showcase)
+> *Format:* 8-minute chalk talk opener
 >
-> **Topic prompt:** Each student delivers a 10-minute showcase presentation to a departmental audience (faculty, other graduate students, and invited guests), followed by 5 minutes of open Q&A. Your presentation must cover: motivation and research question (2 min), methods including AI tools and MCP server (3 min), results with evaluation against baseline (3 min), conclusions and limitations (2 min). Every quantitative result must appear on a slide with its uncertainty and a brief statement of how it was validated. Prepare for adversarial questions about your AI methodology — reviewers will probe whether results could be hallucinations or artifacts.
+> **Topic prompt:** Reflect on the semester's course arc in a forward-looking synthesis, not a recap: what has changed in AI capabilities for physics research since the course began? Find one AI-in-physics development from the past month (a preprint, tool release, or policy change) and present it as a "course update" — what would we cover differently if the course started today? Connect the new development explicitly to one topic from Phase 1 or Phase 2 that it would change, extend, or supersede.
 >
 > **Guiding questions:**
-> 1. Can you explain your main result and its significance in two sentences to a physicist who has never used an LLM?
-> 2. What is the strongest evidence that your AI output is correct and not a plausible-looking hallucination?
-> 3. If you had one more month, what would you do to strengthen your main claim?
+> 1. What is the single most important thing you learned about AI's role in physics research that you did not know at the start of the main curriculum?
+> 2. What capability or tool released in the last month would have changed how you designed your project?
+> 3. What question about AI in physics research do you now have that you did not know to ask in Week 2?
 
 **Active Engagement** — Structured debate (50 minutes presentations + 10 minutes retrospective = 60 minutes)
 
@@ -1492,7 +1310,7 @@ After all presentations (final 10 min): Course retrospective. Instructor asks th
 (2) "What is the one thing about AI in physics research that turned out to be much harder than you expected?"
 (3) "What would you tell a first-year graduate student who is considering this course next year?"
 
-Instructor closes with a brief reflection on how AI capabilities have evolved even over the 14 weeks of the course, and what that means for physics research going forward.
+Instructor closes with a brief reflection on how AI capabilities have evolved over the semester, and what that means for physics research going forward.
 
 *Facilitation notes:* Coordinate with the department to secure a larger room and invite faculty at least two weeks in advance. Assign a student timekeeper with a visible 2-minute warning signal. After the retrospective, take a group photo. Collect all showcase slide decks and post them to the course repository with student permission. Send a thank-you email to faculty attendees with links to students' GitHub repositories.
 
@@ -1500,15 +1318,15 @@ Instructor closes with a brief reflection on how AI capabilities have evolved ev
 
 ---
 
-#### Homework Assignment 14: Final Project Codebase, Paper, and Showcase Presentation
+#### Homework Assignment 13: Final Project Codebase, Paper, and Showcase Presentation
 
-**Assessment category:** Final Project Codebase & Paper (25%) and Departmental Showcase Presentation (25%) | **Estimated time:** No new work this week — all deliverables assembled from previous weeks | **Due:** Final paper and repository tag due before Meeting 1 of Week 14; slides due 24 hours before Meeting 2
+**Assessment category:** Final Project Codebase & Paper (25%) and Departmental Showcase Presentation (25%) | **Estimated time:** No new work this week — all deliverables assembled from previous weeks | **Due:** Final paper and repository tag due before Meeting 1 of Week 13; slides due 24 hours before Meeting 2
 
-**Background:** Week 14 has no new assignment — the semester's work culminates in two final deliverables that together constitute 50% of your course grade. The final codebase and paper represent the scientific contribution; the showcase presentation is your public defense of that contribution. Both are due before Meeting 1 of Week 14.
+**Background:** This final week has no new exploratory assignment — the semester's work culminates in two public-facing deliverable clusters that together constitute 50% of your course grade. The final codebase and paper represent the scientific contribution; the showcase presentation is your public defense of that contribution. Both are due before Meeting 1 of Week 13.
 
 **Instructions:**
 1. Submit your final paper as a compiled PDF (paper_final_<lastname>.pdf) via the course submission portal or by emailing the instructor. The paper must be 4-6 pages in RevTeX, include all six sections (Abstract, Introduction, Methods, Results, Discussion, Conclusion), report at least one evaluation metric with uncertainty, and include an AI Tools & Ethics statement. The paper must compile from source using 'pdflatex paper_final_<lastname>.tex' with no errors.
-2. Starting from your Week 13 v0.9-draft tag, refine the repository and then tag the final state as v1.0-final using 'git tag v1.0-final && git push origin v1.0-final'. The tagged commit must include: all analysis notebooks, data_pipeline_<lastname>.py, provenance.json, REPRODUCIBILITY.md, BUG_LOG.md, claim_trace_<lastname>.md, a complete README with a one-command reproduction instruction, requirements.txt or environment.yml, and the compiled paper PDF.
+2. Starting from your v0.9-draft tag, refine the repository to incorporate final fixes and then create v1.0-final using 'git tag v1.0-final && git push origin v1.0-final'. The tagged commit must include: all analysis notebooks, data_pipeline_<lastname>.py, provenance.json, REPRODUCIBILITY.md, BUG_LOG.md, claim_trace_<lastname>.md, a complete README with a one-command reproduction instruction, requirements.txt or environment.yml, and the compiled paper PDF.
 3. Submit your showcase slide deck (slides_final_<lastname>.pdf, ≤12 slides) at least 24 hours before Meeting 2. Slides must include: a title slide with your research question, at least one figure showing your key result vs. the baseline with uncertainty bars, and a final slide stating your main conclusion and one open question.
 4. Deliver your 10-minute showcase presentation in Meeting 2. Speak to the slides you submitted; do not read from them. Be prepared to answer adversarial questions about your AI methodology. After the Q&A, submit a one-page self-assessment (self_assessment_<lastname>.md) within 48 hours of the showcase: state your strongest result, your biggest methodological limitation, and one specific thing you would do differently.
 

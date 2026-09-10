@@ -1,174 +1,247 @@
 week: 8
-phase: "Phase 3: Project Execution & Polish"
-title: "Advanced Platform Integration"
+phase: "Phase 2: Project Ideation & Deep Dives"
+title: "Evaluating AI in Physics"
 
 meetings:
   - meeting: 1
-    title: "Unifying Heterogeneous Scientific Databases"
+    title: "Benchmarking AI Outputs Against Physical Ground Truth"
     student_introduction:
       assigned_to: "one student (rotating schedule)"
       topic_prompt: |
-        Topic: data normalization across heterogeneous scientific APIs — how do you reconcile
-        unit systems (CGS vs SI), identifier schemes (object names vs coordinates vs DOIs), and
-        schema differences when combining SIMBAD, Materials Project, and arXiv data in one
-        pipeline? Prepare a chalk-talk diagram showing a concrete normalization schema you have
-        used or designed for your own project — for example, how you would unify a SIMBAD
-        celestial-object record (ICRS coordinates, flux in Jy) with an arXiv abstract (DOI,
-        author list, date) into a single internal data model. You should engage with the
-        astroquery documentation and the Materials Project REST API schema
-        (https://api.materialsproject.org) before class. Your talk must address: (1) what
-        canonical identifier you chose as the primary key and why, (2) how you handle objects
-        that exist in one database but not another, and (3) how unit conversion is encoded so
-        downstream code never sees raw heterogeneous units. Connect your answer explicitly to
-        Learning Objective 3 — producing a data provenance record — by explaining how your
-        schema tracks which database each field came from.
-      format: "8-minute chalk talk"
+        Topic: Evaluation metrics for AI in physics — calibration curves, mean absolute error
+        in physical units, coverage of uncertainty intervals, and R² vs. physically meaningful
+        error tolerances. Read Cranmer et al. 2020 "The frontier of simulation-based inference"
+        (arXiv:1911.01429) and identify how the authors evaluate their inference methods against
+        ground truth posteriors. In 3–5 sentences, name at least two specific metrics the paper
+        uses, explain what a well-calibrated posterior means in a physics context, and describe
+        one case where a low aggregate error metric can still hide a physically significant
+        failure mode. Connect this to your own project: what would a well-calibrated evaluation
+        look like for an AI component you plan to use?
+      format: "8-minute paper presentation"
       guiding_questions:
-        - "What is the minimal canonical identifier that is present (or derivable) across SIMBAD, Materials Project, and arXiv, and what do you do when an object has no entry in one of the three systems?"
-        - "If two APIs return the same physical quantity in different unit systems, where in the pipeline does the conversion happen, and how does the provenance record encode which system the raw value came from?"
+        - "If an AI model achieves 5% MAE on predicted band gaps — better than the variance in
+          DFT functionals — does that make it adequate for materials discovery? What additional
+          evidence would a skeptical referee demand?"
+        - "How do you distinguish a model that is accurate on average from one that is accurate
+          where it matters? Can you construct a scenario where the two diverge?"
+
+    active_engagement:
+      format: "Structured debate"
+      description: |
+        Claim for debate (displayed on a slide throughout): "A neural network that achieves
+        MAE < 0.1 eV on a held-out test set is ready to replace DFT for high-throughput
+        materials screening."
+
+        Step 1 — Assign sides (2 min): Randomly split the room into two groups of ~5.
+        One group defends the claim; the other critiques it. Assign students to the side
+        opposite their intuited view wherever possible.
+
+        Step 2 — Preparation (5 min): Each side caucuses privately. They must identify
+        (a) the two strongest arguments for their position, (b) the opposing side's most
+        likely strongest counterargument, and (c) one piece of evidence or reasoning that
+        would change their position.
+
+        Step 3 — Opening statements (6 min total): Each side delivers a 3-minute opening
+        statement. One spokesperson presents; others may pass written notes.
+
+        Step 4 — Rebuttal (6 min total): Each side has 3 minutes to respond directly to
+        the other side's opening statement. New evidence may be introduced.
+
+        Step 5 — Open cross-examination (10 min): Both sides may question each other
+        directly. Instructor enforces that every question receives a direct answer before
+        follow-ups are allowed.
+
+        Step 6 — Debrief (8 min): Instructor asks: What additional data would resolve this
+        debate? Students name specific experiments, datasets, or validation studies. Instructor
+        lists open questions on the whiteboard. Poll: did anyone change their position?
+      facilitation_notes: |
+        Assign the paper before class (Perdew et al. 1996 PRL on DFT accuracy, or a recent
+        neural network potential benchmark such as Batzner et al. 2022 NequIP, arXiv:2101.03164).
+        Display the claim on a persistent slide — students should be arguing about that specific
+        numeric threshold, not about AI in general.
+
+        Keep a visible countdown timer for each segment; do not let opening statements run long
+        as it compresses rebuttal. If one side dominates, prompt the weaker side with: "Your
+        opponents have not addressed X — is that a concession?"
+
+        Debrief key probe: "Name a physical regime where 0.1 eV MAE would be catastrophically
+        wrong. Now name one where 1 eV MAE would be acceptable. What does that tell you about
+        the adequacy of aggregate metrics?" Do not express your own view during the debate;
+        save it for the final two minutes of debrief.
+      estimated_duration: "45 minutes"
+      materials_needed: >-
+        Slide with the debate claim displayed; printed or digital access to at least one
+        neural network potential benchmark paper (e.g., Batzner et al. 2022 or Smith et al.
+        2017 ANI-1); visible countdown timer; whiteboard for recording open questions
+
+  - meeting: 2
+    title: "Uncertainty Quantification and Evaluation Protocol Design"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: Uncertainty quantification (UQ) for AI-generated physical quantities — conformal
+        prediction, Monte Carlo dropout, and deep ensembles, and how each applies when the
+        quantity carries physical units and must be compared to experimental measurement
+        uncertainty. Read Lakshminarayanan et al. 2017 "Simple and scalable predictive
+        uncertainty estimation using deep ensembles" (arXiv:1612.01474) and one physics-specific
+        application such as Wen & Bhatt 2020 on UQ for interatomic potentials or Peterson et al.
+        2017 on uncertainty in atomistic simulations. In 3–5 sentences, explain what it means
+        for an uncertainty interval to be calibrated, contrast coverage probability with interval
+        sharpness, and describe a case where overconfident AI predictions would lead to a
+        physically wrong conclusion. Explain how you would apply one of these UQ methods to
+        your own project.
+      format: "10-minute slide presentation (max 6 slides)"
+      guiding_questions:
+        - "A deep ensemble reports a 95% confidence interval for a predicted cross-section.
+          If you run 100 predictions and 12 of the true values fall outside the reported
+          interval, what does that tell you, and what should you do next?"
+        - "When is it better to have a wide, calibrated uncertainty interval than a narrow,
+          overconfident one? Give a concrete example from experimental or computational physics."
 
     active_engagement:
       format: "Collaborative whiteboard"
       description: |
-        Each student takes a 5-minute turn at the whiteboard to sketch the data-flow diagram
-        for their own project pipeline: where data enters, how it is normalized, where it is
-        cached, and where errors can occur. Use two marker colors throughout — one for data
-        flow, one for error/exception paths — so failure modes are visually distinct from the
-        happy path.
+        Goal: Collectively build a generalized evaluation protocol rubric on the whiteboard
+        that any student in the room could apply to assess an AI component in their own project.
 
-        After all students have sketched their pipelines (approximately 50 minutes for 10
-        students at 5 minutes each), the class votes by show of hands on the 2 pipelines
-        that appear most architecturally complex or that expose the most interesting failure
-        modes. Those two pipelines are discussed in depth for the remaining time: the class
-        asks the pipeline's owner clarifying questions and suggests normalization or
-        error-handling improvements.
+        Step 1 — Seed the whiteboard (3 min): Instructor writes the central node "AI Component
+        Evaluation Protocol" and draws five empty branches labeled: (1) Primary metric,
+        (2) Baseline, (3) Test dataset, (4) UQ method, (5) Success threshold. Ask: "What
+        belongs in each branch?"
 
-        The instructor facilitates by prompting with "What is missing from this diagram?" and
-        "Does anyone disagree with how this arrow is drawn?" rather than by filling in the
-        diagram themselves. Every student must contribute at least one annotation or question
-        during the depth-discussion phase; the instructor should call on quiet students
-        directly.
+        Step 2 — Individual contribution round (10 min): Each student takes a marker in turn
+        and adds at least one concrete item to any branch — a specific metric name, a baseline
+        type, a dataset source, a UQ method, or an example success criterion. Students must
+        speak aloud as they write, explaining their choice. Others may challenge by raising a
+        hand; the instructor arbitrates briefly.
+
+        Step 3 — Project-specific annotation (12 min): Each student picks their own project
+        and, at their seat, drafts (on paper or laptop) their own version of the five-branch
+        protocol using the shared vocabulary on the whiteboard. They write their primary metric
+        with units, their named baseline, their test dataset with a DOI or URL, their UQ
+        approach, and their numeric success criterion.
+
+        Step 4 — Gallery share (10 min): Three students volunteer (or are called on) to read
+        their five-point protocol aloud. The room asks: Is the metric specific enough? Is the
+        baseline realistic? Is the success threshold defensible?
+
+        Step 5 — Debrief (7 min): Instructor photographs the whiteboard. Ask: "Which branch
+        was hardest to fill in, and why?" Highlight the branches where students disagreed —
+        these are the live methodological tensions in the field. Connect the rubric directly
+        to the Week 8 homework deliverable.
       facilitation_notes: |
-        Pre-assign whiteboard sections before class so students do not waste time negotiating
-        space. Use different marker colors for data flow vs error paths — establish this norm
-        during the first sketch so all subsequent sketches follow it. Photograph all sketches
-        at the end of class with a phone or tablet and post the images to the course repository
-        before the next meeting; these photographs become a shared reference for pipeline
-        architecture discussions in Weeks 9–12. If a student's pipeline is not yet implemented,
-        ask them to sketch the intended architecture — the gaps that emerge are equally
-        informative.
+        Resist the urge to organize the whiteboard before students have contributed — let it
+        be messy first, then ask a student to reorganize a branch that has grown unwieldy.
+        Call on quiet students by name for the contribution round; every student must add
+        something.
+
+        Common stalling point: the "success threshold" branch. Prompt with: "If a journal
+        referee asked you what 'good enough' means for your AI component, what specific number
+        would you defend?" If students propose vague thresholds ("better than baseline"),
+        push back: "Better by how much? At what confidence level?"
+
+        For the gallery share, prioritize students whose projects are most different from each
+        other so the room sees a range of evaluation contexts (e.g., one regression task, one
+        classification task, one generative task).
+
+        Post the whiteboard photograph to the course repository within 24 hours — students
+        will reference it when completing the homework evaluation protocol.
       estimated_duration: "45 minutes"
-      materials_needed: "Whiteboard divided into 10 labeled sections, markers in at least two colors, phone or tablet camera for end-of-class photographs"
-
-  - meeting: 2
-    title: "Resilient API Clients and Data Provenance"
-    student_introduction:
-      assigned_to: "one student (rotating schedule)"
-      topic_prompt: |
-        Topic: building resilient API clients for long-running agentic pipelines — specifically
-        exponential backoff with jitter, circuit-breaker patterns, local caching with diskcache
-        or sqlite3, and structured provenance logging. Prepare a 10-minute live demo in a
-        Jupyter notebook or terminal that shows a concrete implementation. Your demo must
-        include: (1) a working example of the tenacity library (@retry decorator with
-        stop_after_attempt(3), wait_exponential, and a before_sleep logging callback) applied
-        to a real API call (e.g., astroquery SIMBAD or mp-api); (2) a diskcache or sqlite3
-        cache that prevents redundant API calls across pipeline runs; (3) a provenance record
-        written as a JSON file that captures source URL, access timestamp, and any
-        transformation applied. Run the demo against a live API if network is available; have
-        a pre-recorded fallback in case of connectivity issues. Connect to Learning Objectives
-        1 and 2: students should see exactly how exponential backoff and null-field handling
-        are implemented in production-quality research code.
-      format: "10-minute live demo"
-      guiding_questions:
-        - "The tenacity library retries on exceptions — what exception types should you catch when calling astroquery vs mp-api, and what exceptions should you let propagate immediately rather than retrying?"
-        - "When a field is missing from an API response, the instructions say to log the missing field and substitute a sentinel value — what sentinel value is physically meaningful (vs. just convenient) for a missing flux measurement, and how do you ensure downstream code handles it correctly?"
-
-    active_engagement:
-      format: "Pair debugging"
-      description: |
-        The instructor provides a pre-written Python script (multi_api_pipeline_broken.py,
-        committed to the course repository before class) that fetches data from SIMBAD and
-        the Materials Project, normalizes units, and writes a provenance JSON file. The script
-        contains exactly 3 planted failures:
-          (a) A rate-limit exception from astroquery that is caught by a bare except clause
-              and silently swallowed instead of being retried — the pipeline appears to succeed
-              but returns stale cached data from a previous run.
-          (b) A unit mismatch: luminosity values from SIMBAD are in solar luminosities but are
-              added directly to a column labeled "L_SI" without conversion, producing values
-              that are off by a factor of ~3.8e26.
-          (c) A missing null check: the Materials Project response occasionally omits the
-              "band_gap" field for metallic compounds; the script accesses response["band_gap"]
-              without a .get() guard and raises a KeyError on those entries.
-
-        Students are assigned to pairs (rotating alphabetically from the Week 7 pairing).
-        Pairs have 30 minutes to find and fix all three bugs and document each fix with a
-        one-sentence explanation in a comment above the corrected line. After 30 minutes,
-        the instructor calls time regardless of progress.
-
-        Debrief (10 minutes): each pair shares the bug they found last — typically the unit
-        mismatch, since it requires physical reasoning rather than Python knowledge to detect.
-        The instructor asks: "How would a provenance record have made bug (b) detectable
-        without running the pipeline?" to connect the exercise directly to Learning Objective 3.
-      facilitation_notes: |
-        Plant the bugs at different depths of difficulty: the null-check bug (c) is typically
-        found first because it raises an obvious exception; the silent-swallow bug (a) is
-        found second because it requires reading the error-handling code carefully; the unit
-        mismatch (b) is found last because it requires checking whether the numerical values
-        are physically plausible. If a pair finishes all three bugs early, ask them to write
-        a fourth test case that would catch bug (b) automatically without human inspection.
-        Assign pairs by rotating alphabetically through the class roster so each student
-        works with a new partner each week. Commit the broken script and a separate
-        solution script to the course repository at least 24 hours before class so students
-        who want to preview it can do so.
-      estimated_duration: "45 minutes"
-      materials_needed: "Laptops with Python environment (tenacity, astroquery, mp-api, diskcache installed), course repository access, broken pipeline script pre-committed to repo"
+      materials_needed: >-
+        Whiteboard with sufficient space for a five-branch diagram; multiple colored markers
+        (use color to distinguish metric types from dataset sources from UQ methods); camera
+        or phone for whiteboard photograph; blank paper or open laptops for Step 3
 
 homework:
   week: 8
-  title: "Project Data Pipeline Implementation"
-  phase: "Phase 3: Project Execution & Polish"
+  title: "Project Evaluation Protocol and Annotated Bibliography"
+  phase: "Phase 2: Project Ideation & Deep Dives"
   assessment_category: "Final Project Codebase & Paper"
   background: |
-    This assignment is the first concrete milestone of your final project codebase. The
-    data ingestion module you build this week will be submitted as part of your final
-    repository in Week 14 and will be reviewed by a peer in Week 10. Build it as if you
-    are writing production research code: documented, reproducible, and resilient to the
-    API failures that inevitably occur in long-running pipelines. The provenance record
-    you produce this week will also serve as the evidentiary foundation for the data
-    section of your final paper.
+    Rigorous evaluation is what separates a physics result from a physics-flavored computation.
+    Before you build the core of your project in Weeks 9–13, you need a clear, quantitative
+    answer to: "How will I know if my AI component works?" This week's deliverables establish
+    that standard in writing. A specific evaluation protocol written now — with named metrics,
+    a named baseline, a named test dataset, and a numeric success criterion — will prevent the
+    most common project failure mode: building something that is hard to evaluate fairly.
+    The annotated bibliography grounds your evaluation choices in what the field already knows.
   instructions:
     - step: 1
-      text: "Implement the data ingestion layer of your project pipeline as a Python module (data_pipeline_<lastname>.py). The module must fetch data from at least two external sources (APIs, databases, or files), normalize units and identifiers to a consistent internal schema, and write the result to a local cache (SQLite database or parquet file) to avoid redundant API calls."
+      text: "Write a one-page evaluation protocol document (evaluation_protocol_<lastname>.md)
+        for your project's primary AI component. It must specify: (a) the primary evaluation
+        metric (e.g., MAE in eV, F1 score, percent deviation from DFT baseline), (b) the
+        baseline model or method you will compare against (e.g., linear regression, DFT
+        calculation, literature value), (c) the test dataset you will use (with source URL
+        or DOI), and (d) the threshold for 'success' (e.g., 'MAE < 0.1 eV, matching chemical
+        accuracy'). The threshold must be a specific number with units and a justification
+        of one or two sentences explaining why that threshold is physically meaningful."
     - step: 2
-      text: "Add error handling for at least two distinct failure modes: (a) API timeout or rate limit — implement exponential backoff using the tenacity library with at least 3 retries; (b) missing or null fields — log the missing field with its source URL and substitute a documented sentinel value rather than crashing."
+      text: "Draw a project architecture diagram (architecture_<lastname>.pdf or .png) showing
+        the full data flow from raw data source through your AI pipeline to the final evaluated
+        output. Include all of the following labeled components: data source(s), preprocessing
+        steps, AI model or tool, any MCP server or external API calls, and the evaluation step
+        that applies your metric. Use any diagramming tool (draw.io at https://diagrams.net, Mermaid
+        at https://mermaid.js.org, or hand-drawn and photographed clearly). The diagram must be
+        readable at standard screen resolution — label every arrow and box."
     - step: 3
-      text: "Write a data provenance JSON file (provenance_<lastname>.json) that records, for each dataset: source URL or API endpoint, access timestamp, version or commit hash of the source (if available), and any transformations applied."
+      text: "Find three papers directly relevant to your project's AI method or physics domain.
+        For each paper, write a 150-word annotation covering exactly four points: (a) what AI
+        method the paper uses, (b) how it evaluates the AI output (specific metrics and
+        datasets), (c) whether the evaluation is adequate — and why or why not, citing at
+        least one specific omission or strength — and (d) one specific technique or finding
+        you will adapt for your own project, stated concretely enough that a reader could
+        verify whether you actually did it. Compile all three annotations into
+        bibliography_<lastname>.md using a standard citation format (APA, AIP, or BibTeX
+        rendered as text)."
     - step: 4
-      text: "Run your pipeline on real data and record the first analysis result in a Jupyter lab notebook (lab_notebook_<lastname>.ipynb). The notebook must include: the raw output from at least one API call, the normalized version, and a plot comparing your AI pipeline's output to your Week 7 baseline on at least 5 data points."
+      text: "Implement a baseline model for your project (e.g., linear regression,
+        nearest-neighbor lookup, a simple physics-based model, or a literature benchmark
+        value). In a Jupyter notebook (baseline_<lastname>.ipynb), load your test dataset,
+        fit or define the baseline, evaluate it using the metric you specified in Step 1,
+        and report the result with units. Include a markdown cell interpreting the baseline
+        result physically: is it better or worse than you expected, and why? You will compare
+        your AI model's performance against this baseline in later weeks."
   deliverables:
-    - "data_pipeline_<lastname>.py — data ingestion module with error handling"
-    - "provenance_<lastname>.json — data provenance record"
-    - "lab_notebook_<lastname>.ipynb — lab notebook with first analysis results and baseline comparison plot"
-    - "Updated README.md in the project repository documenting how to run the pipeline"
+    - "evaluation_protocol_<lastname>.md — one-page evaluation protocol with metric, baseline,
+      test dataset (with DOI or URL), and numeric success threshold with justification"
+    - "architecture_<lastname>.pdf or .png — project architecture diagram showing the full
+      pipeline from data source to evaluated output with all components labeled"
+    - "bibliography_<lastname>.md — annotated bibliography of 3 papers, each annotation
+      addressing all four required points in approximately 150 words"
+    - "baseline_<lastname>.ipynb — Jupyter notebook implementing and evaluating the baseline
+      model on the test dataset, reporting the evaluation metric with units and a physical
+      interpretation"
   grading_criteria:
-    - criterion: "Pipeline functionality"
-      weight: "40%"
-      description: "The pipeline fetches from two sources, normalizes data, caches results, and handles both required failure modes without crashing."
-    - criterion: "Reproducibility"
-      weight: "30%"
-      description: "Running the pipeline from a fresh clone produces identical cached data; provenance.json is complete and accurate."
-    - criterion: "Analysis results"
-      weight: "20%"
-      description: "The lab notebook shows real data from the pipeline and includes a quantitative comparison to the Week 7 baseline."
-    - criterion: "Code documentation"
-      weight: "10%"
-      description: "The pipeline module has docstrings on all functions; the README documents how to run the pipeline end-to-end."
-  estimated_time: "6-8 hours"
+    - criterion: "Evaluation protocol specificity"
+      weight: "35%"
+      description: "The protocol names a specific metric with units, a named baseline method,
+        a named test dataset with a source URL or DOI, and a numeric success threshold with a
+        one-to-two sentence physical justification for that threshold. Vague thresholds
+        ('better than baseline') or missing dataset sources are inadequate."
+    - criterion: "Architecture diagram completeness"
+      weight: "25%"
+      description: "The diagram shows the full pipeline from data source to evaluated output
+        with all components present and labeled: data source, preprocessing, AI model or tool,
+        any external API or MCP server calls, and the evaluation step. Every arrow and box is
+        readable at standard screen resolution."
+    - criterion: "Annotation quality"
+      weight: "25%"
+      description: "Each annotation addresses all four required points (AI method, evaluation
+        approach, adequacy judgment, concrete adaptation plan) and falls within approximately
+        150 words. The 'what I will adapt' statement is specific enough to be verifiable in
+        the final project."
+    - criterion: "Baseline implementation"
+      weight: "15%"
+      description: "The baseline notebook runs end-to-end without errors, reports the evaluation
+        metric value with correct units on the named test dataset, and includes a markdown cell
+        with a physical interpretation of the baseline result."
+  estimated_time: "5–7 hours"
   due: "Before the first class meeting of Week 9"
   tools_and_resources:
-    - "tenacity (pip install tenacity) for retry logic"
-    - "diskcache or sqlite3 for local caching"
-    - "astroquery for SIMBAD/VizieR/NASA ADS access"
-    - "mp-api for Materials Project"
-    - "pandas for data normalization"
-    - "pyarrow for parquet file output"
+    - "scikit-learn for baseline models (linear regression, k-NN, SVR)"
+    - "matplotlib/seaborn for calibration curves and evaluation plots"
+    - "draw.io (https://diagrams.net) for graphical architecture diagrams"
+    - "Mermaid (https://mermaid.js.org) for code-based flowchart diagrams"
+    - "Semantic Scholar or Google Scholar for paper discovery"
+    - "uncertainties (Python package) for uncertainty propagation in baseline metrics"
+    - "MAPIE or nonconformist (Python) for conformal prediction baselines"

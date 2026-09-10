@@ -1,65 +1,74 @@
 week: 12
 phase: "Phase 3: Project Execution & Polish"
-title: "Seminar / Reading Group Part 2"
+title: "Seminar / Reading Group & Peer Review"
 
 learning_objectives:
-  - "Provide and receive a second round of peer review focused on reproducibility gaps and documentation completeness."
-  - "Resolve all blocking code review comments and document decisions in commit messages."
-  - "Write a limitations section that honestly characterizes the AI methods and their failure modes."
+  - "Synthesize recent AI-in-physics papers into concrete evaluation and reproducibility lessons for final projects."
+  - "Provide and receive peer review focused on reproducibility gaps, documentation completeness, and defensible scientific claims."
+  - "Translate reading-group insights into stronger results, limitations, and review-response writing."
 
 milestones:
-  - "Second round of peer code reviews completed."
-  - "All blocking review comments resolved in the project repository."
+  - "Combined reading-group discussion completed with project-specific takeaways recorded by each student."
+  - "Reproducibility audit findings documented and incorporated into final project revisions."
 
 meetings:
   - meeting: 1
-    title: "Advanced & Cross-Cutting AI-in-Physics Reading Group"
+    title: "Combined Reading Group"
     student_introduction:
-      assigned_to: "two students (the remaining students who have not yet led a paper discussion)"
+      assigned_to: "TK and NRN (co-facilitating presenters), with TL & NACV leading the cross-cutting discussion portion"
       topic_prompt: |
-        Each of the two students leads a 15-minute paper discussion on a cross-cutting or advanced AI-in-physics paper — one that addresses AI reproducibility or reliability at a field-wide scale rather than within a single method. Recommended papers (choose one each, or propose an alternative with instructor approval):
-          • Hutson, M. (2018). "Artificial intelligence faces reproducibility crisis." Science 359(6377):725-726. https://doi.org/10.1126/science.359.6377.725
-          • Kapoor, S. & Narayanan, A. (2023). "Leakage and the Reproducibility Crisis in ML-based Science." Patterns 4(9):100804. https://doi.org/10.1016/j.patter.2023.100804
-        Each presenter should: (1) sketch the paper's main claim and evidence on the whiteboard; (2) locate a concrete example of the failure mode the paper describes in AI-in-physics literature; (3) propose one corrective practice the class could adopt today.
-        Use the format "15-minute paper discussion (whiteboard outline)": draw the argument structure, not slides. No notes — you must be able to reproduce the paper's core logic from memory at the whiteboard.
-        Guiding questions your discussion must address:
-          1. What specific evaluation or publication practice does this paper identify as the root cause of irreproducibility?
-          2. Does this failure mode apply to your own project? Where?
-          3. What would a reproducibility-passing version of the paper's worst-case example look like?
-      format: "15-minute paper discussion (whiteboard outline)"
+        This week compresses the three reading-group meetings formerly spread across two weeks
+        into one extended seminar. TK and NRN co-facilitate back-to-back 15-minute paper
+        discussions on recent AI-in-physics papers directly relevant to their projects,
+        following the Week 11 reading-group structure: the physical problem being solved, the
+        AI method used and why it was chosen, the evaluation approach and its adequacy, one
+        specific idea they will adapt in their own work, one weakness or open question, and
+        three discussion questions for the class.
+
+        TL and NACV then lead a 15-minute cross-cutting discussion segment focused on field-wide
+        reproducibility and reliability issues in AI-in-physics research. They should use one of
+        the advanced papers previously assigned for the cross-cutting reading group (for example,
+        Hutson 2018 or Kapoor & Narayanan 2023), sketch the core claim on the whiteboard, connect
+        it to a concrete failure mode from the earlier paper discussions, and propose one
+        corrective practice the class could adopt immediately.
+      format: "Extended 55-minute seminar with multiple 15-minute paper discussions"
       guiding_questions:
-        - "What specific evaluation or publication practice does this paper identify as the root cause of irreproducibility?"
-        - "Does this failure mode apply to your own project? Where?"
-        - "What would a reproducibility-passing version of the paper's worst-case example look like?"
+        - "What evaluation patterns recur across the papers discussed today, and which of those patterns are strong enough to borrow for your own project?"
+        - "Which criticism would a skeptical referee most likely raise about the evidence in these papers?"
+        - "What reproducibility or reliability practice from the cross-cutting discussion should become a non-negotiable part of your final repository and paper?"
     active_engagement:
-      format: "Socratic seminar"
+      format: "Extended seminar"
       description: |
-        Synthesis discussion connecting all four papers discussed across Weeks 11 and 12. The goal is to surface shared evaluation patterns and open problems that cut across AI methods in physics.
+        Minutes 0-15: TK leads the first paper discussion using the structured Week 11 format.
 
-        Central question posed by the instructor at the start of the seminar:
-        "After four papers, what is the single most important thing the physics community should change about how it evaluates AI-generated results — and what would stop it from doing so?"
+        Minutes 15-30: NRN leads the second paper discussion, again focusing on physical
+        problem, AI method, evaluation quality, one concrete takeaway, one weakness, and three
+        discussion questions.
 
-        Structure (45 min):
-        - Round 1, "First responses" (12 min): Instructor cold-calls each student in turn for a 60-90 second response to the central question. No interruptions; other students take brief notes.
-        - Round 2, "Peer responses" (15 min): Each student may respond to a specific thing someone said in Round 1. Instructor enforces the rule that a student may not simply repeat their Round 1 point — they must engage with another student's idea.
-        - Round 3, "Convergence or divergence?" (10 min): Instructor asks: "Which two student positions from Round 1 are most in tension? Can they be reconciled?" Instructor facilitates direct dialogue between the two named students.
-        - Debrief (8 min): Instructor lists on the whiteboard the 2-3 key disagreements that were NOT resolved. These become optional essay prompts available for the final paper's discussion section.
+        Minutes 30-45: TL and NACV jointly lead the cross-cutting discussion segment. They
+        synthesize themes from the first two papers with an advanced reproducibility/reliability
+        paper and ask the class to identify one failure mode or evaluation blind spot that also
+        appears in their own projects.
 
-        Instructor follow-up probes (use if discussion stalls):
-          • "Kapoor & Narayanan argue that leakage is the rule, not the exception. Does anyone disagree? What would falsify that claim for physics specifically?"
-          • "Hutson wrote in 2018. Name one thing that has concretely improved since then, and one thing that has gotten worse."
-          • "If you were a referee, which of today's papers would you reject for reproducibility reasons? Be specific."
-
-        No laptops during seminar. Students should bring the Week 11 and Week 12 papers with annotations.
+        Minutes 45-55: Whole-class synthesis. Instructor asks: "What evaluation pattern appeared
+        in more than one paper today?" and "What is the single most important change you will
+        make to your own results, limitations, or reproducibility documentation because of this
+        discussion?" Each student records one sentence answer for use in their homework.
       facilitation_notes: |
-        Before Round 1, write each paper's title on the whiteboard so students can reference them by number. Cold-call by name — do not open to volunteers; equitable participation is especially important in a 10-person seminar where confident students can dominate. Keep a live whiteboard list of the key claims being made; update it between rounds. At the start of Round 2, point to two claims on the board that are in apparent tension and ask students to address the tension directly. If a student raises a genuinely novel point not captured on the board, add it; this signals that new ideas are welcome even late in the discussion. Reserve the final 2 minutes of the debrief to ask: "What single sentence would you add to your own limitations section because of today's discussion?"
-      estimated_duration: "45 minutes"
-      materials_needed: "Whiteboard and markers; printed or annotated digital copies of all four reading-group papers (Weeks 11 and 12); no laptops during seminar"
+        Ask TK and NRN to post their papers to the course repository 48 hours before class, and
+        ask TL and NACV to share the cross-cutting paper or perspective they will use for the
+        final segment on the same schedule. Keep a running whiteboard list with two columns:
+        "evaluation patterns" and "open referee questions." If discussion stalls, project a
+        specific figure or table from one of the papers and ask how a stranger would reproduce it
+        from a fresh clone of the repository. Because three sessions are being compressed into one,
+        timekeeping matters: cut transitions quickly and reserve the final 10 minutes for synthesis.
+      estimated_duration: "55 minutes"
+      materials_needed: "Whiteboard; papers shared digitally 48 hours in advance; printed or annotated copies of the selected papers; index cards or notebooks for final synthesis notes"
 
   - meeting: 2
     title: "In-Class Peer Code Review — Reproducibility Audit"
     student_introduction:
-      assigned_to: "one student (rotating schedule)"
+      assigned_to: "NACV (live demo)"
       topic_prompt: |
         Topic: what a complete, publication-ready README looks like for an AI-assisted physics project. Study the following resources before class:
           • "Art of README" (https://github.com/hackergrrl/art-of-readme) — read the full document.
@@ -80,7 +89,7 @@ meetings:
     active_engagement:
       format: "Peer code review"
       description: |
-        Second in-class peer code review session, focused entirely on reproducibility audit. This round uses a different partner pairing from Week 10 (rotate the assignment ring by two positions so no student reviews the same partner twice).
+        Second in-class peer code review session, focused entirely on reproducibility audit. This round uses a different partner pairing from Week 11 (rotate the assignment ring by two positions so no student reviews the same partner twice).
 
         Pre-class setup: Instructor circulates the reproducibility audit checklist 48 hours before class. Each student must have their repository in a state where it could plausibly be reviewed by a stranger.
 
@@ -104,47 +113,74 @@ meetings:
 
 homework:
   week: 12
-  title: "Limitations Section, Review Responses, and Self-Audit"
+  title: "Draft Results, Limitations, Review Responses, and Reproducibility Self-Audit"
   phase: "Phase 3: Project Execution & Polish"
   assessment_category: "Peer Review & Participation"
   background: |
-    With the second round of peer code review complete, your project is entering its final polishing phase. This week's homework has three mutually reinforcing tasks. First, you will write the limitations section of your final paper — the section that requires the most intellectual honesty because it asks you to characterize where your AI methods fail. Second, you will formally close out the Week 10 peer review cycle by resolving all blocking comments and documenting your decisions. Third, you will apply the Week 12 reproducibility audit checklist to your own repository before Week 13's final check, so you arrive at the final submission deadline without last-minute surprises.
+    This compressed week combines the drafting and reflection work previously spread across
+    the reading-group sequence and the follow-up peer-review week. You will translate the
+    reading-group discussions into scientific prose, document how you would answer skeptical
+    reviewers, resolve real peer-review comments, and perform a reproducibility self-audit
+    before the final showcase week. Taken together, these tasks move your project from
+    "working pipeline" to "defensible research artifact."
   instructions:
     - step: 1
+      text: "Write a draft results section (600-900 words) for your project paper in RevTeX format (results_draft_<lastname>.tex). The section must: (a) report your primary evaluation metric with a numeric value and uncertainty estimate (e.g., 'MAE = 0.08 ± 0.02 eV, compared to the DFT baseline of 0.31 ± 0.05 eV'); (b) include at least one figure (saved as results_fig1_<lastname>.pdf) showing the AI output vs. baseline or ground truth; (c) state explicitly what each AI-generated quantity represents physically; (d) note at least one result that was unexpected or inconsistent with prior work."
+    - step: 2
+      text: "Write a 300-word reading group summary (reading_group_summary_<lastname>.md) covering the papers discussed in this week's combined seminar. For at least two papers, state the main claim in one sentence, identify the strongest and weakest aspect of the evaluation, and write one question you would ask the authors. Commit the summary to the course repository before Week 12 Meeting 2."
+    - step: 3
+      text: "Write responses to two skeptical reviewer questions about your AI methodology in rebuttal-letter style (reviewer_response_<lastname>.md). Quote each hypothetical reviewer comment, then write a 100-150 word response citing your evaluation protocol, baseline comparison, and reproducibility controls. Use the most challenging questions raised during the combined reading-group discussion if possible."
+    - step: 4
       text: |
         Write the limitations section for your final paper in RevTeX (400-600 words, not counting any inline citations). The section must:
-          (a) Identify at least two specific failure modes of the AI method(s) you used — not generic AI limitations, but limitations observable in your own results (e.g., "the retrieval step returns irrelevant abstracts when the query uses non-standard terminology, which we observed in 3 of 12 test queries on lattice QCD papers").
+          (a) Identify at least two specific failure modes of the AI method(s) you used — not generic AI limitations, but limitations observable in your own results.
           (b) Quantify the failure mode where possible (frequency, magnitude, or severity).
           (c) Describe what additional data, compute, or methodological change would be required to overcome each limitation.
-          (d) Cite at least one paper from the Week 11 or Week 12 reading group that corroborates or contextualizes a limitation you describe.
+          (d) Cite at least one paper from this week's reading group that corroborates or contextualizes a limitation you describe.
         Save as limitations_<lastname>.tex. This section will be incorporated directly into the final paper.
-    - step: 2
+    - step: 5
       text: |
-        Resolve all blocking comments from your Week 10 peer review. For each blocking comment:
+        Resolve all blocking comments from your Week 11 peer review. For each blocking comment:
           (a) Implement the fix and reference the fixing commit SHA in a REVIEW_RESPONSES.md file (e.g., "Resolved in commit abc1234: added sha256 checksum to README data download section").
           (b) If you are not implementing a fix, document your decision with a one-paragraph justification in REVIEW_RESPONSES.md explaining why the comment does not apply or why the alternative approach is preferable.
-        Every blocking comment must have an entry in REVIEW_RESPONSES.md. This step is where Week 10 Step 3 review responses are formally graded in the Week 12 participation/reproducibility rubric. Non-blocking suggestions may be addressed at your discretion, but note which ones you chose to address and which you deferred.
-    - step: 3
+        Every blocking comment must have an entry in REVIEW_RESPONSES.md. Non-blocking suggestions may be addressed at your discretion, but note which ones you chose to address and which you deferred.
+    - step: 6
       text: |
-        Run the Week 12 reproducibility audit checklist (five items) against your own repository as a self-audit. For each checklist item, record your honest assessment (PASS, PARTIAL, or FAIL) and the specific evidence (e.g., the exact command you ran and its output). Submit this self-audit as self_audit_checklist_<lastname>.md. For any item you rated PARTIAL or FAIL, add a brief plan (1-3 sentences) describing what you will fix before the Week 14 final submission.
+        Run the reproducibility audit checklist (five items) against your own repository as a self-audit. For each checklist item, record your honest assessment (PASS, PARTIAL, or FAIL) and the specific evidence (e.g., the exact command you ran and its output). Submit this self-audit as self_audit_checklist_<lastname>.md. For any item you rated PARTIAL or FAIL, add a brief plan (1-3 sentences) describing what you will fix before the final submission.
   deliverables:
+    - "results_draft_<lastname>.tex — draft results section in RevTeX"
+    - "results_fig1_<lastname>.pdf — figure showing AI output vs. baseline or ground truth"
+    - "reading_group_summary_<lastname>.md — reading-group synthesis summary"
+    - "reviewer_response_<lastname>.md — responses to two hypothetical skeptical reviewer questions"
     - "limitations_<lastname>.tex — limitations section in RevTeX (400-600 words)"
-    - "REVIEW_RESPONSES.md — responses to all Week 10 peer review comments (blocking comments fully resolved)"
+    - "REVIEW_RESPONSES.md — responses to all Week 11 peer review comments (blocking comments fully resolved)"
     - "self_audit_checklist_<lastname>.md — reproducibility self-audit with PASS/PARTIAL/FAIL per item and remediation plan for any non-PASS items"
   grading_criteria:
     - criterion: "Discussion engagement"
-      weight: "30%"
-      description: "Substantive contributions in both the reading group synthesis seminar (Meeting 1) and the review-pair debrief (Meeting 2); demonstrates having read and annotated the assigned papers before class. Assessed by in-class observation and post-class self-assessment form submitted within 24 hours."
+      weight: "20%"
+      description: "Substantive contributions in both the combined reading-group seminar and the reproducibility-audit debrief; demonstrates having read and annotated the assigned papers before class."
+    - criterion: "Results section quality"
+      weight: "20%"
+      description: "The draft results section reports the evaluation metric with uncertainty, includes a figure comparing AI to baseline, and explicitly interprets each quantity in physical terms."
+    - criterion: "Reading group summary"
+      weight: "10%"
+      description: "The summary addresses the required points for the discussed papers and is committed to the course repository on time."
+    - criterion: "Reviewer response quality"
+      weight: "10%"
+      description: "Each hypothetical reviewer response is evidence-based, specific, and directly addresses the concern raised."
     - criterion: "Reproducibility audit quality"
-      weight: "35%"
-      description: "The self-audit checklist is complete (all five items addressed), honest (PARTIAL and FAIL ratings are not inflated to PASS), and identifies at least one genuine gap with a specific, actionable remediation plan. Reviewers' audit of their partner's repo is also graded here: at least one FAIL or PARTIAL must be documented with a line-level comment and a concrete fix."
+      weight: "20%"
+      description: "The self-audit checklist is complete, honest, and identifies at least one genuine gap with a specific remediation plan; the in-class audit of a partner repository is also substantive."
     - criterion: "Limitations section quality"
-      weight: "35%"
-      description: "Honestly describes at least two AI method failure modes with specific examples drawn from the student's own results (not generic AI criticism); at least one failure mode is quantified; at least one citation from the Week 11 or Week 12 reading group is incorporated; the section is 400-600 words in valid RevTeX."
-  estimated_time: "4-6 hours (1-2 hr limitations section + 1-2 hr review responses + 1 hr self-audit)"
-  due: "All three deliverables submitted before Week 13 Meeting 1; REVIEW_RESPONSES.md must be committed to the project repository (not submitted separately)"
+      weight: "20%"
+      description: "The limitations section identifies at least two concrete failure modes from the student's own work, quantifies at least one of them, and situates the discussion in the course reading group."
+  estimated_time: "9-13 hours"
+  due: "reading_group_summary_<lastname>.md committed before Week 12 Meeting 2; all remaining deliverables submitted before Week 13 Meeting 1; REVIEW_RESPONSES.md must be committed to the project repository"
   tools_and_resources:
-    - "RevTeX (document class revtex4-2) for the limitations section"
+    - "RevTeX 4.2 (or Overleaf for online editing)"
+    - "matplotlib with publication-quality defaults (plt.rcParams update)"
+    - "Semantic Scholar or Google Scholar for paper discovery"
+    - "APS Physical Review Data author guidelines (https://journals.aps.org/prd/authors)"
     - "GitHub Pull Request interface for resolving and referencing review comments"
     - "GNU Make for running the reproduction command during self-audit"
     - "sha256sum for generating and verifying file checksums in the audit"
