@@ -1,97 +1,174 @@
 week: 9
 phase: "Phase 3: Project Execution & Polish"
-title: "Debugging Agentic Workflows"
+title: "Advanced Platform Integration"
 
 meetings:
   - meeting: 1
-    title: "Structured Debugging and Observability for Agentic Pipelines"
+    title: "Unifying Heterogeneous Scientific Databases"
     student_introduction:
       assigned_to: "one student (rotating schedule)"
       topic_prompt: |
-        Topic: structured debugging of AI pipelines — the OODA loop (Observe, Orient, Decide, Act) applied to agentic failures; how to add structured logging with Python's logging module and JSON log formatting; how to use LangSmith or a simple trace dictionary to capture tool call sequences. Read the LangSmith tracing documentation and the python-json-logger README before class. Student should demonstrate adding structured logging to a short agentic script (20–40 lines) and show how to replay a failure from the resulting logs alone. Your presentation must connect directly to Learning Objective 2: adding logging sufficient to reproduce any failure from the logs alone. 3–5 sentences of spoken context, then a live terminal demo.
+        Topic: data normalization across heterogeneous scientific APIs — how do you reconcile
+        unit systems (CGS vs SI), identifier schemes (object names vs coordinates vs DOIs), and
+        schema differences when combining SIMBAD, Materials Project, and arXiv data in one
+        pipeline? Prepare a chalk-talk diagram showing a concrete normalization schema you have
+        used or designed for your own project — for example, how you would unify a SIMBAD
+        celestial-object record (ICRS coordinates, flux in Jy) with an arXiv abstract (DOI,
+        author list, date) into a single internal data model. You should engage with the
+        astroquery documentation and the Materials Project REST API schema
+        (https://api.materialsproject.org) before class. Your talk must address: (1) what
+        canonical identifier you chose as the primary key and why, (2) how you handle objects
+        that exist in one database but not another, and (3) how unit conversion is encoded so
+        downstream code never sees raw heterogeneous units. Connect your answer explicitly to
+        Learning Objective 3 — producing a data provenance record — by explaining how your
+        schema tracks which database each field came from.
+      format: "8-minute chalk talk"
+      guiding_questions:
+        - "What is the minimal canonical identifier that is present (or derivable) across SIMBAD, Materials Project, and arXiv, and what do you do when an object has no entry in one of the three systems?"
+        - "If two APIs return the same physical quantity in different unit systems, where in the pipeline does the conversion happen, and how does the provenance record encode which system the raw value came from?"
+
+    active_engagement:
+      format: "Collaborative whiteboard"
+      description: |
+        Each student takes a 5-minute turn at the whiteboard to sketch the data-flow diagram
+        for their own project pipeline: where data enters, how it is normalized, where it is
+        cached, and where errors can occur. Use two marker colors throughout — one for data
+        flow, one for error/exception paths — so failure modes are visually distinct from the
+        happy path.
+
+        After all students have sketched their pipelines (approximately 35 minutes for 7
+        students at 5 minutes each), the class votes by show of hands on the 2 pipelines
+        that appear most architecturally complex or that expose the most interesting failure
+        modes. Those two pipelines are discussed in depth for the remaining time: the class
+        asks the pipeline's owner clarifying questions and suggests normalization or
+        error-handling improvements.
+
+        The instructor facilitates by prompting with "What is missing from this diagram?" and
+        "Does anyone disagree with how this arrow is drawn?" rather than by filling in the
+        diagram themselves. Every student must contribute at least one annotation or question
+        during the depth-discussion phase; the instructor should call on quiet students
+        directly.
+      facilitation_notes: |
+        Pre-assign whiteboard sections before class so students do not waste time negotiating
+        space. Use different marker colors for data flow vs error paths — establish this norm
+        during the first sketch so all subsequent sketches follow it. Photograph all sketches
+        at the end of class with a phone or tablet and post the images to the course repository
+        before the next meeting; these photographs become a shared reference for pipeline
+        architecture discussions in Weeks 10–12. If a student's pipeline is not yet implemented,
+        ask them to sketch the intended architecture — the gaps that emerge are equally
+        informative.
+      estimated_duration: "45 minutes"
+      materials_needed: "Whiteboard divided into 7 labeled sections, markers in at least two colors, phone or tablet camera for end-of-class photographs"
+
+  - meeting: 2
+    title: "Resilient API Clients and Data Provenance"
+    student_introduction:
+      assigned_to: "one student (rotating schedule)"
+      topic_prompt: |
+        Topic: building resilient API clients for long-running agentic pipelines — specifically
+        exponential backoff with jitter, circuit-breaker patterns, local caching with diskcache
+        or sqlite3, and structured provenance logging. Prepare a 10-minute live demo in a
+        Jupyter notebook or terminal that shows a concrete implementation. Your demo must
+        include: (1) a working example of the tenacity library (@retry decorator with
+        stop_after_attempt(3), wait_exponential, and a before_sleep logging callback) applied
+        to a real API call (e.g., astroquery SIMBAD or mp-api); (2) a diskcache or sqlite3
+        cache that prevents redundant API calls across pipeline runs; (3) a provenance record
+        written as a JSON file that captures source URL, access timestamp, and any
+        transformation applied. Run the demo against a live API if network is available; have
+        a pre-recorded fallback in case of connectivity issues. Connect to Learning Objectives
+        1 and 2: students should see exactly how exponential backoff and null-field handling
+        are implemented in production-quality research code.
       format: "10-minute live demo"
       guiding_questions:
-        - "What information must a log entry contain to allow a failure to be reproduced from the log alone?"
-        - "How do you distinguish a model hallucination from a tool failure in a log trace?"
-        - "What is prompt drift and how would you detect it in a long agentic conversation?"
+        - "The tenacity library retries on exceptions — what exception types should you catch when calling astroquery vs mp-api, and what exceptions should you let propagate immediately rather than retrying?"
+        - "When a field is missing from an API response, the instructions say to log the missing field and substitute a sentinel value — what sentinel value is physically meaningful (vs. just convenient) for a missing flux measurement, and how do you ensure downstream code handles it correctly?"
+
     active_engagement:
       format: "Pair debugging"
       description: |
-        Instructor pre-loads a broken 60-line agentic pipeline script (agentic_bug_hunt.py, shared via the course repo) with three planted failures:
-        (1) a tool call that silently returns an empty list instead of raising an error when the API returns 0 results,
-        (2) a prompt that accumulates context across iterations causing a token limit overflow on iteration 4,
-        (3) a missing random seed causing non-reproducible results between runs.
+        The instructor provides a pre-written Python script (multi_api_pipeline_broken.py,
+        committed to the course repository before class) that fetches data from SIMBAD and
+        the Materials Project, normalizes units, and writes a provenance JSON file. The script
+        contains exactly 3 planted failures:
+          (a) A rate-limit exception from astroquery that is caught by a bare except clause
+              and silently swallowed instead of being retried — the pipeline appears to succeed
+              but returns stale cached data from a previous run.
+          (b) A unit mismatch: luminosity values from SIMBAD are in solar luminosities but are
+              added directly to a column labeled "L_SI" without conversion, producing values
+              that are off by a factor of ~3.8e26.
+          (c) A missing null check: the Materials Project response occasionally omits the
+              "band_gap" field for metallic compounds; the script accesses response["band_gap"]
+              without a .get() guard and raises a KeyError on those entries.
 
-        Pairs have 30 minutes to find all three bugs using only the script and its logs. They must write a bug_report.md naming the line number, the failure mode category (from the week's taxonomy), and the fix applied. Last 10 minutes: each pair shares their most interesting bug; class votes on best fix.
+        Students are assigned to pairs (rotating alphabetically from the Week 8 pairing).
+        Pairs have 30 minutes to find and fix all three bugs and document each fix with a
+        one-sentence explanation in a comment above the corrected line. After 30 minutes,
+        the instructor calls time regardless of progress.
+
+        Debrief (10 minutes): each pair shares the bug they found last — typically the unit
+        mismatch, since it requires physical reasoning rather than Python knowledge to detect.
+        The instructor asks: "How would a provenance record have made bug (b) detectable
+        without running the pipeline?" to connect the exercise directly to Learning Objective 3.
       facilitation_notes: |
-        Run the script yourself before class to confirm all three bugs trigger reliably. Share the script 10 minutes before class starts so pairs can read it cold. If pairs finish early, give them a bonus challenge: add structured JSON logging to the fixed script. Debrief by revealing the bugs one at a time, asking each pair whether they found it and what threw them off.
+        Plant the bugs at different depths of difficulty: the null-check bug (c) is typically
+        found first because it raises an obvious exception; the silent-swallow bug (a) is
+        found second because it requires reading the error-handling code carefully; the unit
+        mismatch (b) is found last because it requires checking whether the numerical values
+        are physically plausible. If a pair finishes all three bugs early, ask them to write
+        a fourth test case that would catch bug (b) automatically without human inspection.
+        Assign pairs by rotating alphabetically through the class roster so each student
+        works with a new partner each week. Commit the broken script and a separate
+        solution script to the course repository at least 24 hours before class so students
+        who want to preview it can do so.
       estimated_duration: "45 minutes"
-      materials_needed: "agentic_bug_hunt.py pre-loaded in course GitHub repo; pairs need laptops with Python environment"
-
-  - meeting: 2
-    title: "Reproducibility in Agentic Workflows"
-    student_introduction:
-      assigned_to: "one student (rotating schedule)"
-      topic_prompt: |
-        Topic: reproducibility for agentic workflows — how to record tool call sequences (storing inputs/outputs as a JSON trace), how to set and propagate random seeds through a pipeline that uses both numpy and an LLM (temperature=0 for determinism), and how to use pytest-recording or vcr.py to mock API calls in tests. Read Pineau et al. 2021 'Improving Reproducibility in ML Research' (arXiv:2011.09961) before class, focusing on their reproducibility checklist. Your chalk talk must explain why temperature=0 is necessary but not sufficient for full pipeline reproducibility, and connect to Learning Objective 2. No notes allowed — draw the key ideas at the whiteboard from memory in 8 minutes.
-      format: "8-minute chalk talk"
-      guiding_questions:
-        - "What does it mean for an agentic pipeline to be 'reproducible' if the LLM is stochastic?"
-        - "What is the minimum information that must be logged to allow another researcher to reproduce your result?"
-        - "How do vcr.py cassettes help make agentic tests deterministic?"
-    active_engagement:
-      format: "Socratic seminar"
-      description: |
-        Instructor poses the central question: "Can an agentic AI pipeline ever be fully reproducible in the scientific sense?"
-
-        Round 1 (10 min): Each student writes one sentence answering the question on a notecard. Instructor collects and reads 3-4 aloud without attribution.
-        Round 2 (15 min): Open discussion with structured cold-calling. Instructor probes: "What would you accept as evidence that a pipeline IS reproducible?" and "If you can't reproduce an LLM's exact token sequence, does that invalidate the result?"
-        Round 3 (10 min): Students revise their notecard answer and share whether their view changed and why.
-        Debrief (10 min): Instructor synthesizes the key practical consensus — what students should actually do in their own projects.
-      facilitation_notes: |
-        Prepare 3 controversial claims to inject if discussion stalls: (1) "Setting temperature=0 is sufficient for reproducibility." (2) "You should log every token the LLM generates." (3) "A result is reproducible if I can get the same conclusion even if not the same exact numbers." Have the Pineau et al. checklist ready to project as a concrete reference.
-      estimated_duration: "45 minutes"
-      materials_needed: "Index cards for Round 1; projector for Pineau et al. checklist"
+      materials_needed: "Laptops with Python environment (tenacity, astroquery, mp-api, diskcache installed), course repository access, broken pipeline script pre-committed to repo"
 
 homework:
   week: 9
-  title: "Adding Observability and Reproducibility to Your Project Pipeline"
+  title: "Project Data Pipeline Implementation"
   phase: "Phase 3: Project Execution & Polish"
   assessment_category: "Final Project Codebase & Paper"
   background: |
-    A pipeline that cannot be debugged from its logs is not a scientific instrument — it is a black box. This week you will instrument your project pipeline with structured logging and commit at least one reproducible result to your GitHub repository, establishing the observability standards your final codebase must meet.
+    This assignment is the first concrete milestone of your final project codebase. The
+    data ingestion module you build this week will be submitted as part of your final
+    repository in Week 13 and will be reviewed by a peer in Week 11. Build it as if you
+    are writing production research code: documented, reproducible, and resilient to the
+    API failures that inevitably occur in long-running pipelines. The provenance record
+    you produce this week will also serve as the evidentiary foundation for the data
+    section of your final paper.
   instructions:
     - step: 1
-      text: "Add structured JSON logging to every tool call in your project pipeline using Python's logging module configured with a JSONFormatter (pip install python-json-logger). Each log entry must include: timestamp, tool name, input arguments (sanitized to remove API keys), output summary (first 200 characters or a structured dict), elapsed time in milliseconds, and success/failure status."
+      text: "Implement the data ingestion layer of your project pipeline as a Python module (data_pipeline_<lastname>.py). The module must fetch data from at least two external sources (APIs, databases, or files), normalize units and identifiers to a consistent internal schema, and write the result to a local cache (SQLite database or parquet file) to avoid redundant API calls."
     - step: 2
-      text: "Set and document all random seeds in your pipeline. For numpy operations, call numpy.random.seed(42) at the top of your main script. For LLM calls, set temperature=0 (or the lowest deterministic setting available). Add a REPRODUCIBILITY.md file listing every source of randomness in your pipeline and how it is controlled."
+      text: "Add error handling for at least two distinct failure modes: (a) API timeout or rate limit — implement exponential backoff using the tenacity library with at least 3 retries; (b) missing or null fields — log the missing field with its source URL and substitute a documented sentinel value rather than crashing."
     - step: 3
-      text: "Find and fix at least one bug in your own pipeline this week. Document it in a BUG_LOG.md file with: the bug description, the failure mode category (from class taxonomy: silent failure, hallucination, context overflow, loop, non-reproducibility), the line(s) of code affected, and the fix applied."
+      text: "Write a data provenance JSON file (provenance_<lastname>.json) that records, for each dataset: source URL or API endpoint, access timestamp, version or commit hash of the source (if available), and any transformations applied."
     - step: 4
-      text: "Commit at least one key analysis result to your GitHub repository. The commit must include: the result itself (a figure or table), the exact command to reproduce it (in the README or a Makefile target), and the log file from the run that produced it."
+      text: "Run your pipeline on real data and record the first analysis result in a Jupyter lab notebook (lab_notebook_<lastname>.ipynb). The notebook must include: the raw output from at least one API call, the normalized version, and a plot comparing your AI pipeline's output to your Week 8 baseline on at least 5 data points."
   deliverables:
-    - "Updated project repository on GitHub with JSON logging added to all tool calls"
-    - "REPRODUCIBILITY.md documenting all random seeds and non-deterministic components"
-    - "BUG_LOG.md documenting at least one bug found and fixed with the required fields"
-    - "At least one committed analysis result (figure or table) with a reproduction command in the README"
+    - "data_pipeline_<lastname>.py — data ingestion module with error handling"
+    - "provenance_<lastname>.json — data provenance record"
+    - "lab_notebook_<lastname>.ipynb — lab notebook with first analysis results and baseline comparison plot"
+    - "Updated README.md in the project repository documenting how to run the pipeline"
   grading_criteria:
-    - criterion: "Logging completeness"
-      weight: "35%"
-      description: "Every tool call produces a structured JSON log entry with all required fields; a reviewer can trace the full execution from the log without running the code."
-    - criterion: "Reproducibility controls"
+    - criterion: "Pipeline functionality"
+      weight: "40%"
+      description: "The pipeline fetches from two sources, normalizes data, caches results, and handles both required failure modes without crashing."
+    - criterion: "Reproducibility"
       weight: "30%"
-      description: "REPRODUCIBILITY.md is complete; all random seeds are set and documented; running the pipeline twice produces identical output."
-    - criterion: "Bug documentation"
+      description: "Running the pipeline from a fresh clone produces identical cached data; provenance.json is complete and accurate."
+    - criterion: "Analysis results"
       weight: "20%"
-      description: "BUG_LOG.md identifies the bug with line numbers, classifies it using the week's taxonomy, and describes the fix clearly enough to understand without running the code."
-    - criterion: "Committed result"
-      weight: "15%"
-      description: "A figure or table is committed to the repository with a one-command reproduction instruction that works from a fresh clone."
-  estimated_time: "5-7 hours"
+      description: "The lab notebook shows real data from the pipeline and includes a quantitative comparison to the Week 8 baseline."
+    - criterion: "Code documentation"
+      weight: "10%"
+      description: "The pipeline module has docstrings on all functions; the README documents how to run the pipeline end-to-end."
+  estimated_time: "6-8 hours"
   due: "Before the first class meeting of Week 10"
   tools_and_resources:
-    - "python-json-logger (pip install python-json-logger)"
-    - "tenacity for retry logging"
-    - "vcr.py or pytest-recording for mocking API calls in tests"
-    - "Pineau et al. 2021 'Improving Reproducibility in ML Research' (arXiv:2011.09961)"
-    - "GNU Make for defining reproduction commands as Makefile targets"
+    - "tenacity (pip install tenacity) for retry logic"
+    - "diskcache or sqlite3 for local caching"
+    - "astroquery for SIMBAD/VizieR/NASA ADS access"
+    - "mp-api for Materials Project"
+    - "pandas for data normalization"
+    - "pyarrow for parquet file output"

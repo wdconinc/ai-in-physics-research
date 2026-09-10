@@ -1,95 +1,135 @@
 week: 13
 phase: "Phase 3: Project Execution & Polish"
-title: "Scientific Communication"
+title: "Scientific Communication & Showcase"
 
 meetings:
   - meeting: 1
-    title: "Writing the AI-Assisted Physics Paper"
+    title: "Pre-Showcase Writing, Practice Presentations, and Adversarial Q&A"
     student_introduction:
-      assigned_to: "one student (rotating schedule)"
+      assigned_to: "IS and NRN"
       topic_prompt: |
-        Research and present how AI writing assistants (Claude, GPT-4, Grammarly) have been used in published physics papers — and where they went wrong. Find at least one published retraction or correction where AI-assisted writing introduced a factual error or hallucination. Present: (1) a brief taxonomy of legitimate vs. problematic AI writing assistance; (2) the specific failure case; (3) a practical workflow for using LLMs to improve clarity without distorting scientific claims (e.g., always show the LLM the underlying data before asking it to describe results). Limit to 8 minutes.
-      format: "8-minute paper presentation"
-      guiding_questions:
-        - "What is the difference between using an LLM to fix grammar and using it to paraphrase a results sentence?"
-        - "How do you verify that an LLM-improved sentence still accurately describes the underlying data?"
-        - "What should an author disclose when they use an LLM to help write their abstract?"
-    active_engagement:
-      format: "Socratic seminar"
-      description: |
-        Central question: "If an LLM rewrites your results section and the rewritten version is clearer but slightly overstates the certainty of your findings, is that a scientific integrity violation or an editing error?"
+        This compressed pre-showcase meeting combines the paper-writing guidance, practice
+        showcase presentation, and adversarial Q&A rehearsal that were previously spread across
+        multiple sessions.
 
-        Round 1 (8 min): Each student writes their answer on an index card (anonymous). Instructor reads 4-5 aloud.
-        Round 2 (15 min): Structured discussion. Instructor cold-calls: "What if you didn't notice the overstatement until after publication?" and "Does it matter whether the LLM or you wrote the overstatement?"
-        Round 3 (8 min): Students pair up and draft a 2-sentence policy for their own paper: "I will use LLMs for ___, and I will NOT use LLMs for ___."
-        Debrief (9 min): Pairs share their policies. Instructor synthesizes into a practical class consensus and posts it to the course repo.
+        IS opens the meeting with the student introduction segment on writing the AI-assisted
+        physics paper: present how AI writing assistants have been used in published physics
+        papers, where they have gone wrong, one specific correction or retraction case, and a
+        practical workflow for using LLMs to improve clarity without distorting scientific claims.
+
+        NRN then presents a short showcase-practice demonstration: model an effective opening for
+        a mixed physics audience by stating the motivation, the specific research question, and
+        the key result with one figure. Use the demonstration to transition directly into the
+        class practice-presentation and peer-feedback portion.
+      format: "Combined paper presentation + showcase practice demo"
+      guiding_questions:
+        - "How do you improve clarity with AI assistance without overstating what the data actually support?"
+        - "What makes a practice talk strong enough that a mixed physics audience can understand the research question within the first minute?"
+        - "What adversarial question would most expose a weakness in your current argument, figure, or methods description?"
+    active_engagement:
+      format: "Structured workshop"
+      description: |
+        This meeting is intentionally compressed into one extended pre-showcase session.
+
+        Minutes 0-15: Paper-writing guidance. The class discusses how to use AI writing tools
+        responsibly when drafting abstracts, introductions, and results prose. Instructor uses
+        IS's opening presentation to anchor a short discussion of acceptable vs. unacceptable AI
+        writing assistance and asks students to identify one sentence in their own paper draft
+        that requires especially careful claim-checking.
+
+        Minutes 15-40: Practice presentations with structured peer feedback. Students deliver a
+        short practice version of their showcase talk (motivation → question → key result → one
+        conclusion). NRN's demonstration serves as the model. Peers complete written feedback on
+        clarity, quantitative specificity, and whether the AI methodology is explained at a level
+        a non-AI physicist could evaluate.
+
+        Minutes 40-55: Adversarial Q&A rehearsal. Instructor and classmates play the role of a
+        skeptical departmental audience, asking pointed questions about baselines, hallucination
+        risk, uncertainty, and reproducibility. The goal is to surface vulnerable claims before
+        the final showcase.
       facilitation_notes: |
-        Prepare a concrete example: take a real results sentence like "The model achieves 94.3% accuracy" and show 3 LLM rewrites with varying degrees of overstatement. Ask students to rank them by acceptability. This makes the abstract question concrete. End by sharing the ICML 2024 policy on LLM use as a reference point.
-      estimated_duration: "45 minutes"
-      materials_needed: "Index cards; projector showing the example results sentence and its LLM rewrites; ICML 2024 and APS AI policy bookmarked"
+        Tell students in advance that this session is deliberately compressed and paced tightly.
+        The first 15 minutes should stay focused on paper-writing guidance rather than drifting
+        into general discussion. Time the practice talks strictly and collect written feedback so
+        every student leaves with concrete revision notes. During the adversarial Q&A segment,
+        challenge the strongest and weakest talks alike: the point is not embarrassment, but
+        pressure-testing claims before the public showcase.
+      estimated_duration: "55 minutes"
+      materials_needed: "Shared feedback form (Google Form or printed copies); visible countdown timer; projector; index cards or notes for rapid peer feedback"
 
   - meeting: 2
-    title: "Practice Showcase Presentations"
+    title: "Departmental Showcase"
     student_introduction:
-      assigned_to: "one student (rotating schedule)"
+      assigned_to: "AAAM (chalk talk opener), followed by all students' showcase presentations"
       topic_prompt: |
-        Prepare and deliver the opening 3 minutes of your showcase presentation as a demonstration model for the class. Your goal is to show what an effective opening looks like: a crisp motivation statement (why this physics problem matters), your specific research question stated in one sentence, and the key result in one sentence with a figure. After your demo, briefly explain the choices you made (why this opening, what you cut, what you emphasized). This is a teaching demonstration, not a performance — feel free to narrate your thinking.
-      format: "10-minute slide presentation (max 6 slides) — 3 min demo + 7 min commentary"
+        Reflect on the semester's course arc in a forward-looking synthesis, not a recap: what
+        has changed in AI capabilities for physics research since the course began? Find one
+        AI-in-physics development from the past month (preprint, tool release, or policy change)
+        and present it as a "course update" — what would we cover differently if the course
+        started today? Connect the new development explicitly to one topic from Phase 1 or Phase 2
+        that it would change, extend, or supersede.
+      format: "8-minute chalk talk"
       guiding_questions:
-        - "How do you state a specific AI-assisted research question to a mixed physics audience in one sentence?"
-        - "What makes an opening figure compelling to a non-specialist?"
-        - "What did you have to cut from your full talk to fit the 3-minute version, and how did you decide what to cut?"
+        - "What is the single most important thing you learned about AI's role in physics research that you did not know at the start of the main curriculum?"
+        - "What capability or tool released in the last month would have changed how you designed your project?"
+        - "What question about AI in physics research do you now have that you did not know to ask in Week 2?"
     active_engagement:
       format: "Structured debate"
       description: |
-        Each student delivers a 3-minute practice version of their showcase talk (motivation → question → key result → one conclusion). The class provides structured written feedback after each talk using a shared feedback form with four fields: (1) Was the research question clear after the first 60 seconds? (2) Was the key result stated with a number and its uncertainty? (3) Was the AI methodology explained at a level a non-AI physicist could evaluate? (4) One specific suggestion for improvement.
+        Showcase presentations (105 min for 7 students at 10+5 min each; may be extended if the showcase is held in a larger venue with more Q&A time).
 
-        Timing: 3 min talk + 2 min for audience to fill in feedback form = 5 min per student × 10 students = 50 min total.
-        Final 5 min: Instructor synthesizes the most common feedback themes and states what the departmental audience will expect in Week 14.
+        After all presentations (final 10 min): Course retrospective. Instructor asks three questions in sequence; students respond popcorn-style (anyone can speak, no repeating what was said):
+        (1) "What is the one AI tool or technique from this course you will still be using in your research five years from now?"
+        (2) "What is the one thing about AI in physics research that turned out to be much harder than you expected?"
+        (3) "What would you tell a first-year graduate student who is considering this course next year?"
+
+        Instructor closes with a brief reflection on how AI capabilities have evolved over the semester, and what that means for physics research going forward.
       facilitation_notes: |
-        Use a shared Google Form or paper form for structured feedback — collecting written feedback prevents the conversation from being dominated by one or two voices. After the session, compile all feedback for each student and email it to them before Week 14. Time talks strictly with a visible timer. Coach students who go over: "What's the one sentence your audience absolutely needs to hear?"
-      estimated_duration: "55 minutes"
-      materials_needed: "Shared feedback form (Google Form or printed copies); visible countdown timer; projector"
+        Coordinate with the department to secure a larger room and invite faculty at least two weeks in advance. Assign a student timekeeper with a visible 2-minute warning signal. After the retrospective, take a group photo. Collect all showcase slide decks and post them to the course repository with student permission. Send a thank-you email to faculty attendees with links to students' GitHub repositories.
+      estimated_duration: "105 minutes presentations + 10 minutes retrospective = 115 minutes (or more if extended)"
+      materials_needed: "Departmental presentation room; projector; student slide decks submitted 24 hours in advance; visible timer; faculty invited 2 weeks in advance"
 
 homework:
   week: 13
-  title: "Complete Paper Draft, Claim-Tracing Table, and Repository Tag"
+  title: "Final Project Codebase, Paper, and Showcase Presentation"
   phase: "Phase 3: Project Execution & Polish"
-  assessment_category: "Final Project Codebase & Paper"
+  assessment_category: "Final Project Codebase & Paper (25%) and Departmental Showcase Presentation (25%)"
   background: |
-    The Week 14 showcase is one week away. This homework produces the three artifacts that constitute your final submission: a complete paper draft, a claim-tracing table ensuring every number in your paper is reproducible, and a tagged repository release. Each artifact will be reviewed by the instructor before the showcase.
+    This final week has no new exploratory assignment — the semester's work culminates in two
+    public-facing deliverable clusters that together constitute 50% of your course grade. The
+    final codebase and paper represent the scientific contribution; the showcase presentation is
+    your public defense of that contribution. Both are due before Meeting 1 of Week 13.
   instructions:
     - step: 1
-      text: "Assemble your complete paper draft in RevTeX (paper_draft_<lastname>.tex). All six sections must be present and substantive: Abstract (100 words max), Introduction (motivation and research question), Methods (AI tools, MCP server, evaluation protocol — sufficient for a reader to reproduce your approach), Results (from your Week 11 draft, revised based on peer comments), Discussion (interpretation, comparison to baseline, limitations from Week 12), Conclusion (one paragraph). Compile to PDF and confirm it is 4-6 pages excluding references."
+      text: "Submit your final paper as a compiled PDF (paper_final_<lastname>.pdf) via the course submission portal or by emailing the instructor. The paper must be 4-6 pages in RevTeX, include all six sections (Abstract, Introduction, Methods, Results, Discussion, Conclusion), report at least one evaluation metric with uncertainty, and include an AI Tools & Ethics statement. The paper must compile from source using 'pdflatex paper_final_<lastname>.tex' with no errors."
     - step: 2
-      text: "Build a claim-tracing table (claim_trace_<lastname>.md). For every quantitative claim in your Results and Discussion sections, record: (a) the exact quoted sentence from the paper, (b) the notebook filename and cell number that produces the number, (c) the command to run that cell in isolation (e.g., 'jupyter nbconvert --to script results.ipynb && python results.py --cell 12'), and (d) the expected output value or range. The table must have at least 5 entries."
+      text: "Starting from your v0.9-draft tag, refine the repository to incorporate final fixes and then create v1.0-final using 'git tag v1.0-final && git push origin v1.0-final'. The tagged commit must include: all analysis notebooks, data_pipeline_<lastname>.py, provenance.json, REPRODUCIBILITY.md, BUG_LOG.md, claim_trace_<lastname>.md, a complete README with a one-command reproduction instruction, requirements.txt or environment.yml, and the compiled paper PDF."
     - step: 3
-      text: "Use an LLM (Claude or GPT-4) to improve the clarity of your Abstract and Introduction. If you use Claude, prefer a dated model release (e.g., claude-3-5-sonnet-20241022) and record the exact model ID in your reflection. Save the original and the LLM-improved versions as abstract_original_<lastname>.txt and abstract_llm_<lastname>.txt. Write a 200-word reflection (llm_writing_reflection_<lastname>.md) explaining: what you changed, what you rejected, and whether the LLM introduced any inaccuracies you had to correct."
+      text: "Submit your showcase slide deck (slides_final_<lastname>.pdf, ≤12 slides) at least 24 hours before Meeting 2. Slides must include: a title slide with your research question, at least one figure showing your key result vs. the baseline with uncertainty bars, and a final slide stating your main conclusion and one open question."
     - step: 4
-      text: "Tag your GitHub repository with the version tag v0.9-draft using 'git tag v0.9-draft && git push origin v0.9-draft'. Confirm the tag is visible on GitHub. The tagged commit must include your data pipeline, the main analysis notebook, provenance.json, REPRODUCIBILITY.md, and the paper draft PDF."
+      text: "Deliver your 10-minute showcase presentation in Meeting 2. Speak to the slides you submitted; do not read from them. Be prepared to answer adversarial questions about your AI methodology. After the Q&A, submit a one-page self-assessment (self_assessment_<lastname>.md) within 48 hours of the showcase: state your strongest result, your biggest methodological limitation, and one specific thing you would do differently."
   deliverables:
-    - "paper_draft_<lastname>.tex and paper_draft_<lastname>.pdf — complete 4-6 page paper draft"
-    - "claim_trace_<lastname>.md — claim-tracing table with at least 5 entries"
-    - "abstract_original_<lastname>.txt, abstract_llm_<lastname>.txt, and llm_writing_reflection_<lastname>.md — LLM writing comparison"
-    - "GitHub repository tag v0.9-draft visible on GitHub with all required files committed"
+    - "paper_final_<lastname>.pdf — final 4-6 page RevTeX paper"
+    - "GitHub repository tagged v1.0-final with all required files"
+    - "slides_final_<lastname>.pdf — showcase slide deck (≤12 slides, submitted 24 hr before showcase)"
+    - "self_assessment_<lastname>.md — one-page self-assessment submitted within 48 hours of the showcase"
   grading_criteria:
-    - criterion: "Paper completeness"
-      weight: "40%"
-      description: "All six sections are present and substantive; the paper is 4-6 pages in RevTeX; the Results section reports at least one metric with uncertainty."
-    - criterion: "Claim traceability"
+    - criterion: "Reproducibility (Codebase & Paper — 25%)"
       weight: "30%"
-      description: "Every quantitative claim in the paper has a corresponding entry in the claim-tracing table with a working reproduction command."
-    - criterion: "LLM writing reflection"
-      weight: "15%"
-      description: "The reflection identifies at least one specific inaccuracy or overstatement the LLM introduced and explains how it was corrected."
-    - criterion: "Repository tag"
-      weight: "15%"
-      description: "The v0.9-draft tag exists on GitHub and the tagged commit includes all required files."
-  estimated_time: "8-12 hours (the largest homework of the semester — plan accordingly)"
-  due: "Before the first class meeting of Week 14 (final submission deadline)"
+      description: "Running 'git clone && pip install -r requirements.txt && make reproduce' from a fresh environment produces the main result figure and matches the value reported in the paper within stated uncertainty."
+    - criterion: "Physical interpretation (Codebase & Paper — 25%)"
+      weight: "30%"
+      description: "Every AI-generated quantity in the paper is explicitly interpreted in physical terms with units and uncertainty; at least one result is compared quantitatively to a non-AI baseline or literature value."
+    - criterion: "Clarity of narrative (Showcase — 25%)"
+      weight: "20%"
+      description: "A physics faculty member unfamiliar with the student's subfield can follow the talk from motivation to conclusion without prior briefing; the research question is stated in the first 2 minutes."
+    - criterion: "Defensibility of AI claims (Showcase — 25%)"
+      weight: "20%"
+      description: "The student answers at least two adversarial questions about their AI methodology with specific evidence (citing evaluation metric, baseline comparison, or reproducibility controls) rather than general assurances."
+  estimated_time: "No new work this week — all deliverables assembled from previous weeks"
+  due: "Final paper and repository tag due before Meeting 1 of Week 13; slides due 24 hours before Meeting 2"
   tools_and_resources:
-    - "RevTeX 4.2 or Overleaf"
-    - "Claude or GPT-4 for writing assistance (document your prompts)"
-    - "jupyter nbconvert for converting notebooks to scripts"
-    - "git tag for creating repository releases"
-    - "GitHub Releases interface as an alternative to command-line tagging"
+    - "git tag and git push origin for creating the final repository release"
+    - "pdflatex or Overleaf for compiling the final paper"
+    - "GNU Make for the one-command reproduction target"
+    - "GitHub Releases page to verify the v1.0-final tag is publicly visible"

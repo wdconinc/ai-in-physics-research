@@ -1,193 +1,261 @@
 week: 4
 phase: "Phase 1: The Common Baseline"
-title: "Tool Use & Agents"
+title: "RAG & Knowledge Platforms"
 
 meetings:
   - meeting: 1
-    title: "MCP Specification and Connecting LLMs to External Tools"
+    title: "Embeddings, Vector Stores, and the RAG Pipeline"
     student_introduction:
       assigned_to: "one student (rotating schedule)"
       topic_prompt: |
-        Explain the Model Context Protocol (MCP) specification, focusing on its JSON-RPC 2.0
-        transport layer, the distinction between resources (static data exposed to the LLM) and
-        tools (callable functions the LLM can invoke), and how tool schemas are defined using
-        JSON Schema. Walk through a minimal MCP server–client handshake: how does the client
-        discover available tools, and how does the server return a structured result? Reference
-        the official MCP specification at https://modelcontextprotocol.io and the Anthropic blog post
-        "Introducing the Model Context Protocol" (November 2024). Your presentation must address:
-        (1) Why does MCP use JSON-RPC rather than a custom protocol? (2) How do tool input
-        schemas constrain what an LLM can pass as arguments? (3) How does this architecture
-        differ from a plain function-calling API (e.g., OpenAI function calling)?
-        This topic grounds the live coding exercise that follows, where students will implement
-        their own MCP server wrapping a real physics database.
-      format: "10-minute live demo"
+        Explain the end-to-end architecture of a retrieval-augmented generation (RAG) pipeline,
+        focusing on how text is converted to dense vector embeddings, stored in a vector database,
+        and retrieved via approximate nearest-neighbor search. Cover cosine similarity as the
+        retrieval metric, common chunking strategies (fixed-size vs. sentence-boundary), and how
+        FAISS or ChromaDB implement the index. Draw the full pipeline from a physics query string
+        to a grounded LLM answer. Engage with the foundational paper "FAISS: A Library for
+        Efficient Similarity Search" (Johnson et al., arXiv:1702.08734) and the sentence-transformers
+        library documentation for all-MiniLM-L6-v2. Your presentation must connect directly to
+        this week's objective: implementing a RAG pipeline over arXiv physics abstracts.
+      format: "8-minute chalk talk"
       guiding_questions:
-        - "What is the difference between a 'resource' and a 'tool' in the MCP specification, and when would you expose a physics dataset as one versus the other?"
-        - "If an LLM receives a JSON Schema describing a tool's input parameters, how does that schema influence the reliability of the LLM's tool calls?"
-        - "What happens when an MCP server returns an error — how does the protocol signal failure back to the LLM client, and how should the client recover?"
+        - "Why does cosine similarity work better than Euclidean distance for comparing sentence
+          embeddings, and what geometrical property of normalized vectors makes this so?"
+        - "If your physics paper corpus has abstracts of very different lengths, what chunking
+          strategy would you choose and why might uniform chunking hurt retrieval precision?"
+        - "At what point in the RAG pipeline does the LLM first see text from the retrieved
+          documents, and what would happen if retrieval fails silently?"
 
     active_engagement:
-      format: "Live Coding Exercise"
+      format: "Live coding exercise"
       description: |
-        Students implement a minimal MCP server that wraps two physics database queries.
-        A skeleton repository is pre-loaded with stub functions and a requirements file.
+        Students build a minimal RAG pipeline over a small corpus of arXiv abstracts in real time.
 
-        Step 1 (5 min): Instructor shows the skeleton structure — a Python file using the
-        mcp SDK with two empty @server.tool() stubs: query_simbad() and search_arxiv().
-        Students clone the skeleton or open it in the shared environment.
+        Step 1 (5 min): Instructor shares a skeleton Jupyter notebook pre-loaded in the course
+        repository. The notebook has cells for imports (arxiv, sentence_transformers, faiss-cpu,
+        openai or anthropic) and empty function stubs: fetch_abstracts(), embed_texts(),
+        build_index(), retrieve(), and answer_with_rag(). Students clone the repo or open it in
+        their cloud environment.
 
-        Step 2 (15 min): Students implement query_simbad(object_name: str) -> dict using
-        astroquery.simbad to retrieve the object type, spectral type, and parallax for a
-        named star. The tool schema (input type, description, required fields) must be
-        declared correctly so the LLM can call it without guidance. AI coding assistants
-        (Copilot, Claude) are encouraged; students narrate what they are prompting and why.
+        Step 2 (10 min): Students complete fetch_abstracts() using the arxiv Python library to
+        pull 30 abstracts for a query relevant to their subfield (e.g., "dark matter direct
+        detection" or "quantum error correction surface codes"). They print the first abstract
+        to verify the fetch works.
 
-        Step 3 (15 min): Students implement search_arxiv(keyword: str, max_results: int) -> list
-        using the arxiv Python library, returning a list of dicts with title, authors, and
-        abstract for the top results. Students test each tool in isolation using the MCP
-        inspector or a direct JSON-RPC call before connecting to an LLM client.
+        Step 3 (10 min): Students complete embed_texts() using SentenceTransformer('all-MiniLM-L6-v2')
+        to produce a (30, 384) NumPy array of embeddings. They check the shape and verify that
+        two thematically similar abstracts have cosine similarity > 0.7.
 
-        Step 4 (5 min): Students run the server and invoke both tools via a minimal LLM client
-        script (pre-provided) that asks "What is the spectral type of Betelgeuse and what are
-        the 3 most recent arXiv papers about it?" Verify that the LLM correctly chains both
-        tool calls and returns a coherent answer.
+        Step 4 (10 min): Students build a flat FAISS index (faiss.IndexFlatIP after L2-normalizing
+        embeddings), add the embeddings, and complete retrieve() to return the top-3 abstracts
+        for a given query string. They print the titles and cosine similarities for one test query.
 
-        Debrief (5 min): Each student shares one unexpected error they encountered and how
-        they resolved it. Instructor notes which errors were protocol-level vs. API-level vs.
-        physical-plausibility issues.
+        Step 5 (5 min): Students wire retrieve() into answer_with_rag(): the retrieved abstract
+        text is prepended as context in the LLM system prompt. They run one physics question with
+        and without RAG and observe whether the grounded answer cites a real paper.
+
+        Debrief (5 min): Each student or pair shares one result — did RAG change the answer? Was
+        the retrieved abstract actually relevant? Instructor collects observations on the whiteboard.
       facilitation_notes: |
-        Pre-test the skeleton in the exact environment students will use — astroquery SIMBAD
-        queries can fail silently if the TAP service is unavailable; have a cached fallback
-        JSON response ready. Set a concrete, checkable goal visible on the projector: "Your
-        server should return spectral type 'M1-2Ia-Iab' for Betelgeuse." Circulate and resist
-        solving problems directly — ask "What does the JSON-RPC error code tell you?" If
-        students finish early, extend: "Now add rate-limit handling — what happens if you call
-        search_arxiv 10 times in 5 seconds?" For pairs who struggle with the MCP SDK, direct
-        them to the mcp.types module to see the ToolResult and CallToolResult schemas.
+        Pre-test the skeleton notebook in the exact Python environment students will use; confirm
+        that pip install arxiv sentence-transformers faiss-cpu works without conflicts.
+        Have a fallback set of 30 pre-fetched abstracts as a JSON file in the repo in case the
+        arXiv API is slow or rate-limited during class.
+        If students finish Steps 1-4 early, extend: "Now query with a deliberately vague question
+        like 'what is energy?' and note which abstracts come back — is the retrieval still
+        sensible?"
+        For students whose subfield queries return fewer than 30 results, suggest broadening
+        the arXiv category filter (e.g., cs.LG AND physics.ins-det).
+        Do not debug for students — ask "what does the shape of your embedding matrix print out?"
+        to guide them to the source of shape mismatches.
       estimated_duration: "45 minutes"
-      materials_needed: "Skeleton repository with requirements.txt (mcp, astroquery, arxiv, anthropic or openai SDK); pre-tested MCP client script; projector showing expected output for Betelgeuse query; backup cached API responses for network failures"
+      materials_needed: "Course GitHub repository with skeleton notebook week04_rag_skeleton.ipynb;
+        pre-fetched fallback corpus week04_fallback_corpus.json; Python environment with arxiv,
+        sentence-transformers, faiss-cpu, and either openai or anthropic installed;
+        projector for instructor to display one working solution during debrief"
 
   - meeting: 2
-    title: "Agentic Workflows: Multi-Step Reasoning, Tool Chaining, and Failure Recovery"
+    title: "Evaluating Retrieval Quality for Scientific Queries"
     student_introduction:
       assigned_to: "one student (rotating schedule)"
       topic_prompt: |
-        Explain how LLMs execute multi-step agentic workflows using iterative tool-call loops:
-        the model receives a user query, emits a tool_use block, receives a tool_result, and
-        decides whether to call another tool or synthesize a final answer. Discuss two prompt
-        engineering patterns for reliable tool use: (1) the ReAct (Reason + Act) pattern
-        (Yao et al., arXiv:2210.03629) where the model interleaves reasoning steps with tool
-        calls, and (2) structured output constraints that prevent the model from fabricating
-        tool arguments. Address the failure modes that arise in agentic loops: infinite
-        looping when tool calls do not converge, cascading errors when an upstream tool
-        returns bad data, and safety issues from unbounded API calls. Your presentation must
-        address: (1) What terminates an agentic loop — when does the model decide it has
-        enough information? (2) How do you bound the number of tool calls to prevent runaway
-        API costs? (3) What is the tradeoff between giving the model autonomy to choose tools
-        versus prescribing the exact tool-call sequence?
-        This sets up the collaborative architecture design session that follows.
+        Present the standard information-retrieval metrics — precision@k, recall@k, and
+        Mean Reciprocal Rank (MRR) — and explain why they must be adapted for scientific queries
+        where relevance is not binary. Specifically, discuss how TREC-style relevance judgments
+        work and why a physics abstract may be "partially relevant" to a query. Reference the
+        BEIR benchmark paper (Thakur et al., 2021, arXiv:2104.08663), which evaluates retrieval
+        models on domain-specific corpora including scientific text, and note which embedding
+        models perform best on biomedical and scientific subsets. Connect this to today's
+        objective: measuring whether your Week 4 RAG pipeline retrieves the right abstracts
+        for known physics questions, and identifying the failure modes — keyword mismatch,
+        concept drift, and embedding space collapse — that degrade scientific retrieval.
       format: "10-minute slide presentation (max 6 slides)"
       guiding_questions:
-        - "In a ReAct-style agentic loop, what information must be preserved across tool-call iterations so the model maintains coherent reasoning?"
-        - "If a tool returns an error or an implausible value (e.g., a negative stellar mass), should the agentic loop retry, skip, or halt — and who decides?"
-        - "How would you design a rate-limit safeguard for an agentic workflow that might call the arXiv API dozens of times for a single user query?"
+        - "If your RAG pipeline returns the top-3 abstracts for a question about 'Cooper pair
+          condensation' but none of them use that exact phrase, how would you decide whether
+          the retrieval succeeded or failed?"
+        - "The BEIR benchmark shows that BM25 (a sparse keyword method) outperforms dense
+          embeddings on some scientific datasets. What property of physics literature might
+          explain this counter-intuitive result?"
+        - "When would high precision@3 but low recall be acceptable for a physics research
+          assistant, and when would it be dangerous?"
 
     active_engagement:
-      format: "Collaborative Whiteboard"
+      format: "Socratic seminar"
       description: |
-        Students collectively design an end-to-end agentic pipeline architecture for a
-        concrete physics task on the whiteboard.
+        The seminar addresses the question: "Is retrieval-augmented generation reliable enough
+        to trust as a literature source in a physics methods section?"
 
-        Step 1 (3 min): Instructor writes the central node on the whiteboard: "Agentic Pipeline:
-        'Characterize a newly observed transient source.'" and asks "What does this pipeline
-        need?" Students call out components; instructor writes them as nodes without organizing.
+        Step 1 (3 min): Instructor writes the central question on the whiteboard. Students
+        spend 2 minutes writing a one-sentence position statement (yes/no/it depends, with
+        a one-line justification) on a notecard — these are collected and read aloud anonymously
+        to reveal the distribution of initial views without anchoring discussion.
 
-        Step 2 (12 min): Students take turns at the whiteboard adding directional edges between
-        nodes. Required nodes to surface (instructor prompts if missing): user query parser,
-        LLM reasoning loop, SIMBAD tool, arXiv tool, error handler, rate limiter, output
-        formatter, physical plausibility checker. Students must label each edge with the data
-        type flowing across it (e.g., "object_name: str", "tool_result: JSON", "final_report: str").
+        Step 2 (15 min) — First round: Instructor cold-calls each student once to give their
+        initial response to the question. Students may not repeat a point already made; they
+        must either extend, qualify, or counter what has been said. Instructor tracks key claims
+        on the whiteboard without editorializing.
 
-        Step 3 (10 min): Instructor poses three stress-test scenarios and asks students to
-        trace the failure path on the diagram: (a) SIMBAD returns no match for the source
-        name; (b) the LLM calls search_arxiv with an empty keyword string; (c) the pipeline
-        has been running for 60 seconds and has made 20 tool calls without producing a final
-        answer. Students draw recovery edges or add new nodes to handle each case.
+        Step 3 (15 min) — Second round (peer responses): Students now respond directly to each
+        other's claims, not to the instructor. Instructor intervenes only with probes:
+        (a) "Can you give a concrete physics example where that claim would break down?"
+        (b) "What would a skeptical referee say about using RAG-retrieved citations in a paper?"
+        (c) "If you had to specify a retrieval precision threshold before trusting an RAG answer,
+            what number would you choose and why?"
 
-        Step 4 (10 min): Students negotiate and reorganize the diagram — "Does this arrow make
-        sense? Should the rate limiter be before or after the LLM reasoning loop?" Instructor
-        prompts quiet students directly: "Where would you add a sanity check on the output?"
+        Step 4 (7 min) — Evidence round: Students are now allowed to open laptops and pull up
+        one piece of evidence (from their Week 4 notebook results, the BEIR paper, or the arXiv
+        API documentation) that supports or refutes the most contested claim on the whiteboard.
+        Each student who found evidence has 60 seconds to present it.
 
-        Step 5 (5 min): Instructor photographs the final whiteboard, assigns one student to
-        post it to the course repository before next class, and highlights two design decisions
-        the class will revisit when evaluating their Week 4 homework pipelines.
-
-        Debrief (5 min): Each student names one node or edge they would change if the pipeline
-        needed to run unsupervised overnight versus interactively with a human in the loop.
+        Debrief (5 min): Instructor summarizes the 2-3 core disagreements that were not resolved
+        — e.g., whether semantic embedding beats keyword search for niche subfields, or whether
+        the risk of hallucinated citations outweighs the benefit of grounding. These become
+        optional discussion prompts in the Week 4 homework.
       facilitation_notes: |
-        Resist organizing the whiteboard yourself for the first 15 minutes — let it be messy.
-        The act of students reorganizing it is where the learning happens. Keep a mental list
-        of nodes that must appear (rate limiter, error handler, physical plausibility checker)
-        and surface them with questions rather than additions: "What happens when this tool
-        gets called 50 times? Is there a node for that?" For 10 students, ensure every student
-        adds at least one node or edge — cold-call quieter students with "Can you draw the
-        connection between the rate limiter and the LLM loop?" The stress-test scenarios in
-        Step 3 reliably generate productive disagreement; let disagreements run for 2 minutes
-        before asking the room to vote on a resolution.
+        Prepare three follow-up probes in case discussion stalls: (1) "Name a physics question
+        where you are confident RAG would retrieve the right abstract every time — what makes
+        that query easy?" (2) "Name a physics question where you are confident RAG would fail —
+        what makes it hard?" (3) "If the LLM answer is correct but the retrieved abstracts are
+        wrong, is that a success or a failure of RAG?"
+        Cold-call students in an order that pairs confident and quiet students alternately so the
+        seminar does not become dominated by two or three voices.
+        The anonymous notecard step is important: it prevents anchoring and gives the instructor
+        a quantitative read on the room's priors before discussion begins.
+        Do not express a personal view during the seminar. During the debrief, the instructor
+        may share what the literature says, but should frame it as evidence rather than verdict.
       estimated_duration: "45 minutes"
-      materials_needed: "Whiteboard with multiple colors of markers; camera or phone for photographing final diagram; projector showing the three stress-test scenarios during Step 3; course repository access to post the diagram photograph"
+      materials_needed: "Whiteboard and markers; one notecard per student for anonymous position
+        statements; student laptops with Week 4 RAG notebooks accessible; printed or digital
+        copy of BEIR benchmark paper (arXiv:2104.08663) for the evidence round"
 
 homework:
   week: 4
-  title: "Building a Tool-Augmented Physics Agent with MCP"
+  title: "Building and Evaluating a RAG Pipeline over Physics Abstracts"
   phase: "Phase 1: The Common Baseline"
   assessment_category: "Standard Curriculum Mini-Assignments"
   background: |
-    The Model Context Protocol enables LLMs to call external tools reliably by standardizing
-    how tool schemas, inputs, and results are communicated between a language model client and
-    a server exposing domain-specific capabilities. In this assignment you will build a minimal
-    MCP server that exposes two physics database queries as LLM-callable tools, then wire it
-    into a short agentic loop that uses both tools to answer a compound physics question.
-    The goal is not just a working pipeline but a documented understanding of where and how
-    it fails — reliability analysis is as important as functionality in production AI systems.
+    Retrieval-augmented generation (RAG) grounds LLM answers in a retrieved document corpus,
+    reducing hallucination and making claims traceable to specific sources. For physics research,
+    this means an LLM can in principle cite real papers rather than fabricate citations. However,
+    retrieval quality depends heavily on the embedding model, the chunking strategy, and the
+    specificity of the physics query — failures are common and often silent. In this assignment
+    you build a minimal but complete RAG pipeline over a set of arXiv abstracts from your
+    subfield, measure its retrieval precision on questions with known correct sources, and compare
+    LLM answer quality with and without RAG context.
   instructions:
     - step: 1
-      text: "Install the required libraries (mcp, astroquery, arxiv, and either anthropic or openai) and create a Python module named mcp_server_week04_<lastname>.py. Implement two MCP tools using the @server.tool() decorator: (1) query_simbad(object_name: str) -> dict, which queries the SIMBAD TAP service via astroquery.simbad and returns at minimum the object type, spectral type, parallax, and radial velocity for the named object; and (2) search_arxiv(keyword: str, max_results: int) -> list, which returns a list of dicts with title, authors, abstract, and arXiv ID for the most recent papers matching the keyword. Each tool's JSON Schema (description, parameter types, required fields) must be complete enough that an LLM can invoke it correctly without additional guidance. Include a requirements.txt and load all API keys from a .env file."
+      text: "Fetch abstracts: Use the arxiv Python library to retrieve between 30 and 50 abstracts
+        for a physics query relevant to your research subfield (e.g., 'quantum computing error
+        correction', 'dark matter direct detection', 'gravitational wave parameter estimation',
+        or 'lattice QCD thermodynamics'). Store each abstract as a dictionary with keys: id,
+        title, authors, abstract, url. Save the corpus to a JSON file named corpus.json so it
+        can be reloaded without re-fetching. Print the number of results retrieved and the title
+        of the first abstract to confirm the fetch succeeded."
     - step: 2
-      text: "Write a Jupyter notebook named week04_<lastname>.ipynb that starts the MCP server as a subprocess and connects to it with an LLM client (Anthropic or OpenAI SDK). Send the following compound query to the LLM: 'What is the spectral type and parallax of Betelgeuse, and what are the 3 most recent arXiv papers whose abstracts mention Betelgeuse? Summarize what the papers suggest about its current evolutionary status.' Log every tool call the LLM makes (tool name, input arguments, and returned result) so the full reasoning chain is visible in the notebook output."
+      text: "Embed and index: Embed each abstract text using SentenceTransformer('all-MiniLM-L6-v2').
+        L2-normalize the resulting embedding matrix, then build a FAISS IndexFlatIP index and
+        add all embeddings. Save the index to disk as corpus.faiss using faiss.write_index().
+        Report the embedding matrix shape and confirm that the cosine similarity between two
+        abstracts you judge to be thematically related is greater than 0.6. Set a random seed
+        (numpy.random.seed(42)) before any stochastic operations."
     - step: 3
-      text: "Run the same agentic query for a second astronomical object of your choice (a star, galaxy, or nebula) and verify the SIMBAD output against the SIMBAD web interface manually. Document whether the LLM's summary of the arXiv papers is consistent with the abstracts it received — flag any factual discrepancies between the summary and the raw abstracts. This is your physical plausibility check."
+      text: "Design your evaluation set: Write exactly 5 physics questions whose correct answers
+        can be verified from the retrieved corpus. For at least 3 of these questions, identify
+        in advance which specific abstract(s) from your corpus contain the answer (record the
+        arXiv ID). These are your 'gold' retrievals. For the remaining questions, you will
+        assess relevance qualitatively. Store the questions and gold IDs in a structured list
+        in your notebook."
     - step: 4
-      text: "Deliberately trigger at least two distinct failure modes in your pipeline and document them in a markdown file named week04_failures_<lastname>.md. Suggested failure modes to attempt: (a) pass an invalid or misspelled object name to query_simbad and observe whether the LLM recovers or halts; (b) call search_arxiv with max_results=0 or a nonsensical keyword; (c) introduce a deliberate rate-limit scenario by calling your server in a tight loop. For each failure mode, record: the input that triggered it, the error or incorrect output produced, whether the agentic loop recovered or required manual intervention, and one sentence describing how you would fix it in a production system."
+      text: "Query and evaluate retrieval: For each of the 5 questions, embed the question,
+        query the FAISS index for the top-3 abstracts, and record the retrieved arXiv IDs and
+        cosine similarity scores. For the 3 questions with gold IDs, compute precision@3
+        (fraction of the top-3 retrievals that match a gold ID). For all 5 questions, write a
+        one-sentence qualitative judgment of whether the retrieval was relevant. Report the
+        mean precision@3 across the 3 gold questions."
     - step: 5
-      text: "Add a README.md to your submission repository with one paragraph explaining how to reproduce your results from scratch (including starting the MCP server), the Python version and key library versions used, and a note on which LLM model you used and any relevant model-version caveats (e.g., tool-calling behavior differs between model versions). Ensure all API keys are loaded from a .env file and that your .env file is listed in .gitignore. Submit a GitHub repository link (or zip file) containing all of the above."
+      text: "Compare RAG vs. no-RAG answers: For each of the 5 questions, call an LLM (OpenAI
+        GPT-4o-mini or Anthropic Claude Haiku) twice: once with no additional context (baseline),
+        and once with the top-3 retrieved abstract texts prepended to the system prompt as
+        context (RAG). Record both answers. For the 3 gold questions, judge each answer pair as:
+        'RAG better', 'Baseline better', or 'Equivalent', and write a one-sentence justification.
+        Discuss in a Markdown cell: under what conditions did RAG improve accuracy, and when did
+        it fail or make no difference? Load your API key from a .env file using python-dotenv —
+        do not hardcode it."
   deliverables:
-    - "A Python module named mcp_server_week04_<lastname>.py containing a working MCP server with two tools (query_simbad and search_arxiv) with complete JSON Schema declarations."
-    - "A Jupyter notebook named week04_<lastname>.ipynb demonstrating the full agentic loop for Betelgeuse and a second object of your choice, with all tool calls and results logged and a physical plausibility check documented."
-    - "A markdown file named week04_failures_<lastname>.md documenting at least two failure modes: the triggering input, the erroneous output, the recovery behavior, and a proposed fix for each."
+    - "A Jupyter notebook named week04_<lastname>.ipynb containing all five steps above, with
+      Markdown cells explaining each step and a final summary cell discussing retrieval quality
+      and RAG improvement for your subfield query."
+    - "A corpus.json file containing the fetched abstracts (committed to the repository or
+      included in the zip submission)."
+    - "A requirements.txt or environment.yml listing all dependencies with pinned versions,
+      and a README.md with a single paragraph explaining how to reproduce the results from
+      a fresh clone (including how to supply the API key via a .env file)."
+    - "A .env.example file (not .env) showing the required environment variable names with
+      placeholder values (e.g., OPENAI_API_KEY=your-key-here)."
   grading_criteria:
     - criterion: "Methodology correctness"
       weight: "30%"
-      description: "The MCP server correctly implements the JSON-RPC protocol using the mcp SDK; both tools have complete JSON Schema declarations (description, parameter types, required fields) such that the LLM can invoke them without additional prompting; the agentic loop correctly chains both tool calls and produces a coherent synthesized answer. Minor issues (e.g., a redundant tool call or an overly verbose schema description) do not penalize; fundamental errors (e.g., a tool the LLM cannot invoke, or a server that never returns a result) do."
+      description: "The RAG pipeline follows the correct sequence: fetch → embed → index →
+        retrieve → generate. FAISS index is built from L2-normalized embeddings using
+        IndexFlatIP (inner product = cosine similarity). Precision@3 is computed correctly
+        for the gold questions. LLM calls use retrieved context in the system prompt for the
+        RAG condition and no retrieval context for the baseline. API key is loaded from
+        environment variables, not hardcoded."
     - criterion: "Reproducibility"
       weight: "25%"
-      description: "Any graduate student can reproduce the full pipeline from a fresh clone using only the README instructions; requirements.txt or environment.yml is present; all API keys are loaded from a .env file (not hardcoded); the MCP server starts without manual path edits; the notebook runs top-to-bottom without errors on the first attempt in the described environment."
+      description: "Any graduate student can re-run the notebook from scratch using only the
+        README instructions: corpus.json is present so no re-fetching is required, the FAISS
+        index is rebuilt deterministically from the corpus, a random seed is set, all
+        dependencies are listed in requirements.txt or environment.yml with pinned versions,
+        and the API key is loaded from a .env file whose required variable names are documented
+        in .env.example."
     - criterion: "Physical plausibility"
       weight: "25%"
-      description: "The SIMBAD output for at least one object is cross-checked against the SIMBAD web interface and the comparison is documented in the notebook; the LLM's summary of arXiv papers is compared against the raw abstracts and any factual discrepancies are flagged; at least one sanity check on a physical quantity (spectral type, parallax order of magnitude, or paper publication date) is explicitly stated."
+      description: "The student explicitly checks that retrieved abstracts are physically
+        relevant to the posed questions — not just lexically similar. For at least 2 of the 5
+        questions, the student compares the RAG-grounded LLM answer against a known result
+        (a textbook value, a known experimental bound, or a claim in one of the retrieved
+        abstracts) and notes whether the LLM answer is consistent with that ground truth.
+        The discussion cell identifies at least one failure mode observed in the pipeline."
     - criterion: "Code clarity"
       weight: "20%"
-      description: "The MCP server module has docstrings for each tool function explaining what it queries, what it returns, and what errors it may raise; the notebook is organized with Markdown cells separating each logical step (server startup, tool test, agentic query, plausibility check, failure analysis); variable names are descriptive; the failure modes markdown is structured with clear headings for each failure case."
-  estimated_time: "4-6 hours"
+      description: "The notebook reads as a coherent scientific document: each of the five
+        steps is introduced with a Markdown cell stating its purpose, functions are named
+        descriptively (e.g., fetch_abstracts, embed_corpus, build_faiss_index), code cells
+        have a single clear purpose, and the final summary cell synthesizes the precision@3
+        results and RAG vs. baseline comparison in plain prose that a physicist unfamiliar with
+        RAG could follow."
+  estimated_time: "4-5 hours"
   due: "Before the first class meeting of Week 5"
   tools_and_resources:
-    - "mcp Python SDK (pip install mcp)"
-    - "astroquery for SIMBAD access (pip install astroquery)"
-    - "arxiv Python library (pip install arxiv)"
-    - "anthropic or openai Python SDK for the LLM client"
-    - "python-dotenv for .env file loading (pip install python-dotenv)"
-    - "MCP specification: https://modelcontextprotocol.io"
-    - "Anthropic blog post: 'Introducing the Model Context Protocol' (November 2024)"
-    - "ReAct paper: Yao et al., arXiv:2210.03629"
-    - "SIMBAD web interface for manual cross-checking: https://simbad.cds.unistra.fr/simbad/"
-    - "arXiv API documentation: https://info.arxiv.org/help/api/index.html"
+    - "arxiv (Python library): https://pypi.org/project/arxiv/ — for fetching abstracts"
+    - "sentence-transformers (PyPI): SentenceTransformer('all-MiniLM-L6-v2') for embedding"
+    - "faiss-cpu (PyPI): faiss.IndexFlatIP for vector indexing and retrieval"
+    - "python-dotenv (PyPI): for loading API keys from a .env file"
+    - "OpenAI Python SDK or Anthropic Python SDK: for LLM answer generation"
+    - "langchain or llama-index (optional): may be used to wire retrieval and generation,
+      but the notebook must also show the raw FAISS retrieval step explicitly"
+    - "BEIR benchmark paper (Thakur et al., 2021, arXiv:2104.08663): for context on
+      evaluating retrieval models on scientific corpora"
+    - "Course repository skeleton notebook week04_rag_skeleton.ipynb as a starting point"
