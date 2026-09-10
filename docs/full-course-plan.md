@@ -1,7 +1,7 @@
 # Full Course Plan: Generative AI in Physics Research
 ## Generative AI & Knowledge Platforms — 13-Week Graduate Seminar
 
-This revised graduate physics seminar now begins with an instructor-led orientation in Week 1 and then runs a 12-content-week main curriculum across Weeks 2–13. Meeting twice per week in sessions of 45–55 minutes each, the course is organized into three phases: **Phase 1: The Common Baseline** (Weeks 2–6) builds shared competency in LLM APIs, vibe-coding pitfalls, retrieval-augmented generation, tool-augmented agents, and the proposal process; **Phase 2: Project Ideation & Deep Dives** (Weeks 7–8) shifts focus to constructing and evaluating project-specific MCP servers; and **Phase 3: Project Execution & Polish** (Weeks 9–13) supports students through pipeline implementation, peer review, ethics, scientific writing, and a public departmental showcase. Assessment is weighted as follows: Standard Curriculum Mini-Assignments 20%, Project Proposal & Pitch 15%, Peer Review & Participation 15%, Final Project Codebase & Paper 25%, and Departmental Showcase Presentation 25%. Class enrolment is capped at ten graduate students to preserve the seminar format (current enrolment: 7).
+This revised graduate physics seminar now begins with an instructor-led orientation in Week 1 and then runs a 12-content-week main curriculum across Weeks 2–13. Meeting twice per week in sessions of 45–55 minutes each, the course is organized into three phases: **Phase 1: The Common Baseline** (Weeks 2–6) builds shared competency in LLM APIs, vibe-coding pitfalls, retrieval-augmented generation, tool-augmented agents, and the proposal process; **Phase 2: Project Ideation & Deep Dives** (Weeks 7–8) shifts focus to constructing and evaluating project-specific MCP servers; and **Phase 3: Project Execution & Polish** (Weeks 9–13) supports students through pipeline implementation, peer review, ethics, scientific writing, and a public departmental showcase. Assessment is weighted as follows: Standard Curriculum Mini-Assignments 20%, Project Proposal & Pitch 15%, Peer Review & Participation 15%, Final Project Codebase & Paper 25%, and Departmental Showcase Presentation 25%. Class enrolment is capped at ten graduate students to preserve the seminar format (current enrolment: 8).
 
 
 **Note:** Week 1 is a partial course orientation week handled separately by the instructor and is not covered in the weekly plan below; the main curriculum runs in Weeks 2–13.
@@ -12,7 +12,7 @@ This revised graduate physics seminar now begins with an instructor-led orientat
 
 **Week structure.** Each week entry below contains three components. First, two meeting records — each giving the student introduction assignment (format, full topic prompt, and guiding questions), the active-engagement activity (full description, facilitation notes, and materials list), and the estimated duration. Second, a single homework assignment with background context, numbered instructions, a deliverables list, a grading-criteria table, time estimate, due date, and a tools-and-resources list. The three active-engagement archetypes used most frequently are: *live coding exercise* (students implement code in real time with the instructor circulating), *collaborative whiteboard* (students co-construct a diagram or map at the board), and *structured debate* or *Socratic seminar* (argument-driven discussion with structured roles and cold-calling). Facilitation notes are written for the instructor; they describe common failure modes, extension tasks for early finishers, and techniques for equitable participation.
 
-**Student introduction rotation.** Each non-showcase meeting opens with a student introduction: a short prepared presentation in one of six formats (chalk talk, live demo, slide presentation, paper presentation, paper discussion, or mixed). The rotation table below assigns each of the seven enrolled students (AAAM, BA, IS, NACV, NRN, TK, TL) to two or three introduction slots spread across the 12 content weeks covered here. Formats vary by slot so that each student experiences multiple presentation styles. Week 6 Meeting 2 (the proposal pitch session) and Week 13 Meeting 2 (the departmental showcase) are whole-class events. Week 12 Meeting 1 now compresses the reading-group sequence into one extended session with multiple named facilitators, and Week 13 Meeting 1 compresses the paper-writing and practice-presentation slots into one pre-showcase meeting. The instructor should distribute the rotation table to the class during the Week 1 orientation so students have sufficient preparation time, especially for the Week 12 reading-group roles and Week 13 showcase-prep roles.
+**Student introduction rotation.** Each non-showcase meeting opens with a student introduction: a short prepared presentation in one of six formats (chalk talk, live demo, slide presentation, paper presentation, paper discussion, or mixed). The rotation table below assigns each of the eight enrolled students (AAAM, BA, IS, NACV, NRN, TK, TL, ZA) to two or three introduction slots spread across the 12 content weeks covered here. Formats vary by slot so that each student experiences multiple presentation styles. Week 6 Meeting 2 (the proposal pitch session) and Week 13 Meeting 2 (the departmental showcase) are whole-class events. Week 12 Meeting 1 now compresses the reading-group sequence into one extended session with multiple named facilitators, and Week 13 Meeting 1 compresses the paper-writing and practice-presentation slots into one pre-showcase meeting. The instructor should distribute the rotation table to the class during the Week 1 orientation so students have sufficient preparation time, especially for the Week 12 reading-group roles and Week 13 showcase-prep roles.
 
 ---
 
@@ -23,7 +23,7 @@ This revised graduate physics seminar now begins with an instructor-led orientat
 | 2  | 1 | BA  | 8-minute chalk talk |
 | 2  | 2 | TK  | 10-minute live demo |
 | 3  | 1 | TL  | 10-minute live demo |
-| 3  | 2 | NACV  | 8-minute chalk talk |
+| 3  | 2 | ZA  | 8-minute chalk talk |
 | 4  | 1 | IS  | 8-minute chalk talk |
 | 4  | 2 | AAAM  | 10-minute slide presentation (max 6 slides) |
 | 5  | 1 | NRN  | 10-minute live demo |
@@ -32,12 +32,12 @@ This revised graduate physics seminar now begins with an instructor-led orientat
 | 6  | 2 | ALL | 5-minute pitch presentation (max 5 slides) per student |
 | 7  | 1 | TK  | 10-minute slide presentation (max 6 slides) |
 | 7  | 2 | IS  | 10-minute live demo |
-| 8  | 1 | TL  | 8-minute paper presentation |
+| 8  | 1 | ZA  | 8-minute paper presentation |
 | 8  | 2 | NRN | 10-minute slide presentation (max 6 slides) |
 | 9  | 1 | NACV  | 10-minute slide presentation (max 6 slides) |
 | 9  | 2 | BA  | 10-minute live demo |
 | 10 | 1 | IS  | 10-minute live demo |
-| 10 | 2 | TK  | 8-minute paper presentation |
+| 10 | 2 | ZA  | 8-minute paper presentation |
 | 11 | 1 | BA  | 10-minute slide presentation (max 6 slides) |
 | 11 | 2 | AAAM  | 8-minute chalk talk |
 | 12 | 1 | TK & NRN (co-facilitate), TL & NACV (cross-cutting discussion) | Extended 15-minute paper discussions + synthesis |
@@ -50,12 +50,13 @@ This revised graduate physics seminar now begins with an instructor-led orientat
 | Student | Slots | Weeks |
 |---------|-------|-------|
 | BA   | 4 | 2M1 (chalk talk), 6M1 (paper presentation), 11M1 (slide presentation), 9M2 (live demo) |
-| TK   | 4 | 2M2 (live demo), 7M1 (slide presentation), 12M1 (paper discussion co-facilitator), 10M2 (paper presentation) |
-| TL   | 4 | 3M1 (live demo), 8M1 (paper presentation), 12M1 (cross-cutting discussion), 5M2 (slide presentation) |
-| NACV | 4 | 3M2 (chalk talk), 9M1 (slide presentation), 12M1 (cross-cutting discussion), 12M2 (live demo / README audit opener) |
+| TK   | 3 | 2M2 (live demo), 7M1 (slide presentation), 12M1 (paper discussion co-facilitator) |
+| TL   | 3 | 3M1 (live demo), 5M2 (slide presentation), 12M1 (cross-cutting discussion) |
+| NACV | 3 | 9M1 (slide presentation), 12M1 (cross-cutting discussion), 12M2 (live demo / README audit opener) |
 | IS   | 4 | 4M1 (chalk talk), 10M1 (live demo), 13M1 (paper-writing opener), 7M2 (live demo) |
 | AAAM | 3 | 4M2 (slide presentation), 11M2 (chalk talk), 13M2 (showcase-week opener) |
 | NRN  | 4 | 5M1 (live demo), 12M1 (paper discussion co-facilitator), 13M1 (practice-talk co-presenter), 8M2 (slide presentation) |
+| ZA   | 3 | 3M2 (chalk talk), 8M1 (paper presentation), 10M2 (paper presentation) |
 
 ---
 
