@@ -56,6 +56,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Syllabus: syllabus.md
+  - AI Use Policy: ai-policy.md
   - Full Course Plan: full-course-plan.md
   - Instructor Resources:
     - Pedagogy Guide: pedagogy-style-guide.md

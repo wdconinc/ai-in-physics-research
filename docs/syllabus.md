@@ -11,6 +11,14 @@ The course is divided into three phases: **The Common Baseline** (Weeks 1–5),
 **Project Ideation & Deep Dives** (Weeks 6–7), and **Project Execution & Polish** (Weeks 8–14).
 The experience culminates in a departmental showcase presentation.
 
+## AI Use Policy
+
+This course overrides the university's default AI policy. Generative AI use is broadly
+encouraged; intellectual ownership and the ability to defend your work are required.
+See the full **[AI Use Policy](ai-policy.md)** for details.
+
+---
+
 ## Course Information
 
 | Item | Details |
