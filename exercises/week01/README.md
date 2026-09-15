@@ -8,7 +8,7 @@
 
 ### Requirements
 ```bash
-pip install tiktoken openai
+pip install anthropic
 ```
 
-If OpenAI is unavailable, use a fallback provider (for example via `litellm`) as discussed in class.
+Set the `ANTHROPIC_API_KEY` environment variable before running the notebook.
