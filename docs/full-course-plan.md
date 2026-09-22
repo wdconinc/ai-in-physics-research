@@ -216,11 +216,16 @@ Before class: the instructor prepares a Python script `docs/exercises/week03/bug
 
 📥 **[Download `buggy_harmonic_oscillator.py`](exercises/week03/buggy_harmonic_oscillator.py)**
 
+<details>
+<summary>🐛 Spoiler: planted bugs (expand only after the debugging session)</summary>
+
 - **Bug 1 (easy — syntax/logic):** The loop computing energy levels uses `E_n = hbar * omega * n` instead of `E_n = hbar * omega * (n + 0.5)`, omitting the zero-point energy term.
 - **Bug 2 (easy — off-by-one):** The wavefunction array is indexed as `psi[1:N]` instead of `psi[0:N]`, causing the ground state wavefunction to be silently dropped from the plot.
 - **Bug 3 (medium — hallucinated API):** The script calls `scipy.special.hermite_poly(n, x)`, which does not exist; the correct call is `scipy.special.hermite(n)(x)` (using the polynomial object returned by `scipy.special.hermite`).
 - **Bug 4 (medium — wrong normalization):** The Hermite–Gaussian wavefunction is normalized by dividing by `np.sqrt(n!)` instead of `np.sqrt(2**n * math.factorial(n) * np.sqrt(np.pi))`, producing amplitudes that are not unit-normalized.
 - **Bug 5 (hard — plausible-but-wrong physics):** The script plots probability density as `psi` instead of `np.abs(psi)**2`, so the y-axis shows the (signed) wavefunction rather than the probability density, which looks visually plausible but is physically incorrect.
+
+</details>
 
 Step 1 (2 min): Instructor assigns pairs alphabetically by last name (five pairs for ten students). Each pair clones the repository and opens `docs/exercises/week03/buggy_harmonic_oscillator.py`.
 
