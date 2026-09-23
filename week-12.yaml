@@ -68,7 +68,7 @@ meetings:
   - meeting: 2
     title: "In-Class Peer Code Review — Reproducibility Audit"
     student_introduction:
-      assigned_to: "NACV (live demo)"
+      assigned_to: "ZA (chalk talk)"
       topic_prompt: |
         Topic: what a complete, publication-ready README looks like for an AI-assisted physics project. Study the following resources before class:
           • "Art of README" (https://github.com/hackergrrl/art-of-readme) — read the full document.
