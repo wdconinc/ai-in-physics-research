@@ -23,7 +23,7 @@ This revised graduate physics seminar now begins with an instructor-led orientat
 | 2  | 1 | BA  | 8-minute chalk talk |
 | 2  | 2 | TK  | 10-minute live demo |
 | 3  | 1 | TL  | 10-minute live demo |
-| 3  | 2 | ZA  | 8-minute chalk talk |
+| 3  | 2 | NACV  | 8-minute chalk talk |
 | 4  | 1 | IS  | 8-minute chalk talk |
 | 4  | 2 | AAAM  | 10-minute slide presentation (max 6 slides) |
 | 5  | 1 | NRN  | 10-minute live demo |
@@ -32,12 +32,12 @@ This revised graduate physics seminar now begins with an instructor-led orientat
 | 6  | 2 | ALL | 5-minute pitch presentation (max 5 slides) per student |
 | 7  | 1 | TK  | 10-minute slide presentation (max 6 slides) |
 | 7  | 2 | IS  | 10-minute live demo |
-| 8  | 1 | ZA  | 8-minute paper presentation |
+| 8  | 1 | TL  | 8-minute paper presentation |
 | 8  | 2 | NRN | 10-minute slide presentation (max 6 slides) |
 | 9  | 1 | NACV  | 10-minute slide presentation (max 6 slides) |
 | 9  | 2 | BA  | 10-minute live demo |
 | 10 | 1 | IS  | 10-minute live demo |
-| 10 | 2 | ZA  | 8-minute paper presentation |
+| 10 | 2 | TK  | 8-minute paper presentation |
 | 11 | 1 | BA  | 10-minute slide presentation (max 6 slides) |
 | 11 | 2 | AAAM  | 8-minute chalk talk |
 | 12 | 1 | TK & NRN (co-facilitate), TL & NACV (cross-cutting discussion) | Extended 15-minute paper discussions + synthesis |
@@ -50,13 +50,12 @@ This revised graduate physics seminar now begins with an instructor-led orientat
 | Student | Slots | Weeks |
 |---------|-------|-------|
 | BA   | 4 | 2M1 (chalk talk), 6M1 (paper presentation), 11M1 (slide presentation), 9M2 (live demo) |
-| TK   | 3 | 2M2 (live demo), 7M1 (slide presentation), 12M1 (paper discussion co-facilitator) |
-| TL   | 3 | 3M1 (live demo), 5M2 (slide presentation), 12M1 (cross-cutting discussion) |
-| NACV | 3 | 9M1 (slide presentation), 12M1 (cross-cutting discussion), 12M2 (live demo / README audit opener) |
+| TK   | 4 | 2M2 (live demo), 7M1 (slide presentation), 10M2 (paper presentation), 12M1 (paper discussion co-facilitator) |
+| TL   | 4 | 3M1 (live demo), 5M2 (slide presentation), 8M1 (paper presentation), 12M1 (cross-cutting discussion) |
+| NACV | 4 | 3M2 (chalk talk), 9M1 (slide presentation), 12M1 (cross-cutting discussion), 12M2 (chalk talk) |
 | IS   | 4 | 4M1 (chalk talk), 10M1 (live demo), 13M1 (paper-writing opener), 7M2 (live demo) |
 | AAAM | 3 | 4M2 (slide presentation), 11M2 (chalk talk), 13M2 (showcase-week opener) |
 | NRN  | 4 | 5M1 (live demo), 12M1 (paper discussion co-facilitator), 13M1 (practice-talk co-presenter), 8M2 (slide presentation) |
-| ZA   | 3 | 3M2 (chalk talk), 8M1 (paper presentation), 10M2 (paper presentation) |
 
 ---
 
