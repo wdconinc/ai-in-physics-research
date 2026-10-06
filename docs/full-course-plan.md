@@ -466,7 +466,7 @@ Debrief (5 min): Each student shares one unexpected error they encountered and h
 
 *Materials needed:* Skeleton repository with requirements.txt (mcp, astroquery, arxiv, anthropic or openai SDK); pre-tested MCP client script; projector showing expected output for Betelgeuse query; backup cached API responses for network failures
 
-📥 **[Download `mcp_skeleton.ipynb`](exercises/week05/mcp_skeleton.ipynb)**
+📥 **[Download `mcp_skeleton.py`](exercises/week05/mcp_skeleton.py)** · **[Download `llm_client.py`](exercises/week05/llm_client.py)**
 
 ---
 
