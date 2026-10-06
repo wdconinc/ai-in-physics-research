@@ -466,6 +466,8 @@ Debrief (5 min): Each student shares one unexpected error they encountered and h
 
 *Materials needed:* Skeleton repository with requirements.txt (mcp, astroquery, arxiv, anthropic or openai SDK); pre-tested MCP client script; projector showing expected output for Betelgeuse query; backup cached API responses for network failures
 
+📥 **[Download `mcp_skeleton.ipynb`](exercises/week05/mcp_skeleton.ipynb)**
+
 ---
 
 #### Meeting 2 — Agentic Workflows: Multi-Step Reasoning, Tool Chaining, and Failure Recovery
