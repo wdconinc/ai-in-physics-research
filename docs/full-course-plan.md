@@ -546,7 +546,7 @@ Debrief (5 min): Each student names one node or edge they would change if the pi
 
 ---
 
-### Week 6: GenAI in Theoretical Physics & Project Proposals [EDIT: extended week title to reflect that both meetings focus on proposal development, not only GenAI in theoretical physics; the symbolic regression student intro is one component of a week whose primary purpose is proposal writing and pitching]
+### Week 6: GenAI in Theoretical Physics & Project Proposals
 
 #### Meeting 1 — What Makes a Strong GenAI Research Proposal in Physics?
 
