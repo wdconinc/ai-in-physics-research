@@ -1,0 +1,49 @@
+{
+  "claim": "Replace with your project's one-sentence claim, e.g. 'My pipeline returns stellar parallaxes within 1% of SIMBAD for any named bright star.'",
+  "_notes": [
+    "Copy this file to ground_truth_<lastname>.json and replace the example items with 8-10 of your own.",
+    "Every reference value must come from the cited source, never from an LLM. Re-check the examples below against SIMBAD before relying on them.",
+    "kind: 'numeric' (compared in physical units via pint) or 'exact' (string match, case-insensitive).",
+    "tolerance: one of {'abs': <value in the item's unit>}, {'rel': <fraction>}, {'sigma': <multiple of the reference uncertainty>}.",
+    "regime: 'typical' or 'edge'. Include at least 2 edge items where you expect the pipeline to struggle.",
+    "tool / arguments / field are optional; they are only used by --mode tool to score your MCP tool without the LLM in the loop."
+  ],
+  "items": [
+    {
+      "id": "sirius-parallax",
+      "question": "What is the parallax of Sirius in milliarcseconds?",
+      "kind": "numeric",
+      "value": 379.21,
+      "unit": "mas",
+      "sigma": 1.58,
+      "tolerance": {"sigma": 3},
+      "regime": "typical",
+      "source": "SIMBAD, Sirius (alf CMa), parallax from van Leeuwen 2007, A&A 474, 653",
+      "tool": "query_simbad",
+      "arguments": {"object_name": "Sirius"},
+      "field": "parallax_mas"
+    },
+    {
+      "id": "betelgeuse-sptype",
+      "question": "What is the spectral type of Betelgeuse?",
+      "kind": "exact",
+      "value": "M1-2Ia-Iab",
+      "regime": "typical",
+      "source": "SIMBAD, Betelgeuse (alf Ori), spectral type",
+      "tool": "query_simbad",
+      "arguments": {"object_name": "Betelgeuse"},
+      "field": "spectral_type"
+    },
+    {
+      "id": "proxima-distance-ly",
+      "question": "How far away is Proxima Centauri, in light years, based on its measured parallax?",
+      "kind": "numeric",
+      "value": 4.2465,
+      "unit": "ly",
+      "sigma": 0.0003,
+      "tolerance": {"rel": 0.001},
+      "regime": "edge",
+      "source": "Derived from Gaia DR3 parallax 768.0665 +/- 0.0499 mas (Gaia Collaboration 2023, A&A 674, A1)"
+    }
+  ]
+}
