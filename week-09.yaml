@@ -86,7 +86,7 @@ meetings:
     active_engagement:
       format: "Pair debugging"
       description: |
-        The instructor provides a pre-written Python script (multi_api_pipeline_broken.py,
+        The instructor provides a pre-written Python script (docs/exercises/week09/multi_api_pipeline_broken.py,
         committed to the course repository before class) that fetches data from SIMBAD and
         the Materials Project, normalizes units, and writes a provenance JSON file. The script
         contains exactly 3 planted failures:

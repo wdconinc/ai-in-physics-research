@@ -913,19 +913,23 @@ The instructor facilitates by prompting with "What is missing from this diagram?
 
 **Active Engagement** — Pair debugging (45 minutes)
 
-The instructor provides a pre-written Python script (`multi_api_pipeline_broken.py`, committed to the course repository before class) that fetches data from SIMBAD and the Materials Project, normalizes units, and writes a provenance JSON file. The script contains exactly 3 planted failures:
+The instructor provides a pre-written Python script (`docs/exercises/week09/multi_api_pipeline_broken.py`, committed to the course repository before class) that fetches data from SIMBAD and the Materials Project, normalizes units, and writes a provenance JSON file. The script contains exactly 3 planted failures:
 
 - **(a)** A rate-limit exception from astroquery that is caught by a bare `except` clause and silently swallowed instead of being retried — the pipeline appears to succeed but returns stale cached data from a previous run.
 - **(b)** A unit mismatch: luminosity values from SIMBAD are in solar luminosities but are added directly to a column labeled "L_SI" without conversion, producing values that are off by a factor of ~3.8×10²⁶.
 - **(c)** A missing null check: the Materials Project response occasionally omits the "band_gap" field for metallic compounds; the script accesses `response["band_gap"]` without a `.get()` guard and raises a `KeyError` on those entries.
 
+By default the script runs offline against built-in stand-ins for SIMBAD (including its rate limit and last week's cache) and the Materials Project, so every pair sees the same failures with no network or API key; `--live` switches to the real APIs.
+
+📥 **[Download `multi_api_pipeline_broken.py`](exercises/week09/multi_api_pipeline_broken.py)**
+
 Students are assigned to pairs (rotating alphabetically from the Week 8 pairing). Pairs have 30 minutes to find and fix all three bugs and document each fix with a one-sentence explanation in a comment above the corrected line. After 30 minutes, the instructor calls time regardless of progress.
 
 Debrief (10 minutes): each pair shares the bug they found last — typically the unit mismatch, since it requires physical reasoning rather than Python knowledge to detect. The instructor asks: "How would a provenance record have made bug (b) detectable without running the pipeline?" to connect the exercise directly to Learning Objective 3.
 
-*Facilitation notes:* Plant the bugs at different depths of difficulty: the null-check bug (c) is typically found first because it raises an obvious exception; the silent-swallow bug (a) is found second because it requires reading the error-handling code carefully; the unit mismatch (b) is found last because it requires checking whether the numerical values are physically plausible. If a pair finishes all three bugs early, ask them to write a fourth test case that would catch bug (b) automatically without human inspection. Assign pairs by rotating alphabetically through the class roster so each student works with a new partner each week. Commit the broken script and a separate solution script to the course repository at least 24 hours before class.
+*Facilitation notes:* Plant the bugs at different depths of difficulty: the null-check bug (c) is typically found first because it raises an obvious exception; the silent-swallow bug (a) is found second because it requires reading the error-handling code carefully; the unit mismatch (b) is found last because it requires checking whether the numerical values are physically plausible. If a pair finishes all three bugs early, ask them to write a fourth test case that would catch bug (b) automatically without human inspection. Assign pairs by rotating alphabetically through the class roster so each student works with a new partner each week. Commit the broken script and a separate solution script to the course repository at least 24 hours before class. The solution lives in `instructor/solutions/week09/multi_api_pipeline_solution.py`, outside the published site, and includes a pytest check for bug (b) as a reference for the early-finisher extension.
 
-*Materials needed:* Laptops with Python environment (tenacity, astroquery, mp-api, diskcache installed), course repository access, broken pipeline script pre-committed to repo
+*Materials needed:* Laptops with Python environment (tenacity, astroquery, mp-api, diskcache installed), course repository access, [`docs/exercises/week09/multi_api_pipeline_broken.py`](exercises/week09/multi_api_pipeline_broken.py) pre-committed to repo
 
 ---
 
