@@ -24,7 +24,7 @@ Status key: `TODO` (default), `IN PROGRESS`, `DONE`, `BLOCKED`.
 | OP-14 | W5 M2 | Prepare instructor pitch evaluation sheet | Instructor | Day 0 (T-7d) | `instructor/forms/week05_pitch_evaluation_sheet.md` | TODO |
 | OP-15 | W6 M1 | Create `skeleton_mcp_server.py` | Course Staff | Day 0 (T-14d) | Week 6 server spec | TODO |
 | OP-16 | W6 M1 | Pre-test `skeleton_mcp_server.py` (`mcp`, `pint`) in student env | TA | Day 0 (T-7d) | OP-15 | TODO |
-| OP-17 | W8 M2 | Create `multi_api_pipeline_broken.py` (3 planted bugs) | Course Staff | Day 0 (T-14d) | Week 8 debugging lab spec | TODO |
+| OP-17 | W8 M2 | Create `docs/exercises/week09/multi_api_pipeline_broken.py` (3 planted bugs) + `instructor/solutions/week09/multi_api_pipeline_solution.py` | Course Staff | Day 0 (T-14d) | Week 8 debugging lab spec | DONE |
 | OP-18 | W9 M1 | Create `agentic_bug_hunt.py` (3 planted failures) | Course Staff | Day 0 (T-14d) | Week 9 debugging lab spec | TODO |
 | OP-19 | W10 M1 | Prepare debate brief FOR caption-level disclosure | Instructor | Day 0 (T-7d) | `instructor/debate-briefs/week10_ethics_debate_brief_for.md` | TODO |
 | OP-20 | W10 M1 | Prepare debate brief AGAINST caption-level disclosure | Instructor | Day 0 (T-7d) | `instructor/debate-briefs/week10_ethics_debate_brief_against.md` | TODO |
