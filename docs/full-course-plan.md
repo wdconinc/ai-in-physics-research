@@ -987,16 +987,18 @@ Debrief (10 minutes): each pair shares the bug they found last — typically the
 
 **Active Engagement** — Pair debugging (45 minutes)
 
-Instructor pre-loads a broken 60-line agentic pipeline script (`agentic_bug_hunt.py`, shared via the course repo) with three planted failures:
+Instructor pre-loads a broken 60-line agentic pipeline script (`docs/exercises/week10/agentic_bug_hunt.py`, shared via the course repo) with three planted failures:
 1. A tool call that silently returns an empty list instead of raising an error when the API returns 0 results.
 2. A prompt that accumulates context across iterations causing a token limit overflow on iteration 4.
 3. A missing random seed causing non-reproducible results between runs.
+
+📥 **[Download `agentic_bug_hunt.py`](exercises/week10/agentic_bug_hunt.py)**
 
 Pairs have 30 minutes to find all three bugs using only the script and its logs. They must write a `bug_report.md` naming the line number, the failure mode category (from the week's taxonomy), and the fix applied. Last 10 minutes: each pair shares their most interesting bug; class votes on best fix.
 
 *Facilitation notes:* Run the script yourself before class to confirm all three bugs trigger reliably. Share the script 10 minutes before class starts so pairs can read it cold. If pairs finish early, give them a bonus challenge: add structured JSON logging to the fixed script. Debrief by revealing the bugs one at a time, asking each pair whether they found it and what threw them off.
 
-*Materials needed:* `agentic_bug_hunt.py` pre-loaded in course GitHub repo; pairs need laptops with Python environment
+*Materials needed:* [`docs/exercises/week10/agentic_bug_hunt.py`](exercises/week10/agentic_bug_hunt.py) pre-loaded in course GitHub repo; pairs need laptops with Python environment
 
 ---
 
