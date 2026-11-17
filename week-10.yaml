@@ -17,7 +17,7 @@ meetings:
     active_engagement:
       format: "Pair debugging"
       description: |
-        Instructor pre-loads a broken 60-line agentic pipeline script (agentic_bug_hunt.py, shared via the course repo) with three planted failures:
+        Instructor pre-loads a broken 60-line agentic pipeline script (docs/exercises/week10/agentic_bug_hunt.py, shared via the course repo) with three planted failures:
         (1) a tool call that silently returns an empty list instead of raising an error when the API returns 0 results,
         (2) a prompt that accumulates context across iterations causing a token limit overflow on iteration 4,
         (3) a missing random seed causing non-reproducible results between runs.
@@ -26,7 +26,7 @@ meetings:
       facilitation_notes: |
         Run the script yourself before class to confirm all three bugs trigger reliably. Share the script 10 minutes before class starts so pairs can read it cold. If pairs finish early, give them a bonus challenge: add structured JSON logging to the fixed script. Debrief by revealing the bugs one at a time, asking each pair whether they found it and what threw them off.
       estimated_duration: "45 minutes"
-      materials_needed: "agentic_bug_hunt.py pre-loaded in course GitHub repo; pairs need laptops with Python environment"
+      materials_needed: "docs/exercises/week10/agentic_bug_hunt.py pre-loaded in course GitHub repo; pairs need laptops with Python environment"
 
   - meeting: 2
     title: "Reproducibility in Agentic Workflows"
