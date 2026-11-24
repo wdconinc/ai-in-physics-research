@@ -1100,7 +1100,9 @@ Vote and debrief (6 min): Anonymous re-vote; reveal whether opinions shifted; in
 
 *Facilitation notes:* Prepare a one-page "briefing document" for each side before class (can be AI-generated, which is itself a teaching moment). If debate stalls, inject: "What if the figure looks identical to what a human would draw — does that change your answer?" Debrief by noting that the field is actively unsettled and students should default to over-disclosure for now.
 
-*Materials needed:* One-page briefing documents for each side; timer; APS and Nature policy pages bookmarked
+📄 **Briefing documents:** [FOR the motion](exercises/week11/debate_brief_for.md) · [AGAINST the motion](exercises/week11/debate_brief_against.md)
+
+*Materials needed:* One-page briefing documents for each side ([FOR](exercises/week11/debate_brief_for.md), [AGAINST](exercises/week11/debate_brief_against.md)); timer; APS and Nature policy pages bookmarked
 
 ---
 
