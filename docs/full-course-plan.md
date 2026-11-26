@@ -1120,7 +1120,7 @@ Vote and debrief (6 min): Anonymous re-vote; reveal whether opinions shifted; in
 
 **Active Engagement** — Peer code review (45 minutes)
 
-Pre-class setup: Assign review pairs before class (student A reviews student B's repo; student B reviews student A's repo). Share the review rubric (below) 48 hours before class so students can prepare.
+Pre-class setup: Assign review pairs before class (student A reviews student B's repo; student B reviews student A's repo). Share the [review rubric](exercises/week11/peer_review_rubric.md) 48 hours before class so students can prepare.
 
 In-class (45 min):
 - Minutes 0-30: Each student opens their assigned partner's GitHub repository and writes inline comments directly in a GitHub PR or as a structured markdown review document. The rubric has four sections: (1) Can I reproduce the main result from the README alone? (2) Are all random seeds and API keys handled correctly? (3) Is every quantitative claim in the code traceable to a specific output? (4) Is AI tool use documented?
@@ -1129,7 +1129,9 @@ In-class (45 min):
 
 *Facilitation notes:* Circulate during the review period — ask each student "What's the most confusing thing you've encountered so far?" to surface common issues across projects. If a student finishes early, have them write a second pass focusing only on the provenance.json file. Remind students that the goal is to help their partner, not to score points. After class, collect all review documents and grade them for depth and constructiveness.
 
-*Materials needed:* GitHub access for all students; review rubric printed or shared digitally; laptops required
+📄 **Review rubric:** [Peer Code Review Rubric](exercises/week11/peer_review_rubric.md)
+
+*Materials needed:* GitHub access for all students; [review rubric](exercises/week11/peer_review_rubric.md) printed or shared digitally; laptops required
 
 ---
 
@@ -1158,6 +1160,7 @@ In-class (45 min):
 | Ethics statement quality | 30% | The statement names specific AI tools with versions, describes their use with enough detail for a reader to assess impact on the results, and acknowledges at least one genuine limitation. |
 
 **Tools and resources:**
+- [Peer Code Review Rubric](exercises/week11/peer_review_rubric.md) — the four rubric categories, severity labels, and summary template
 - GitHub Pull Request review interface for inline comments
 - APS Statement on the Use of AI in Physics Research (https://www.aps.org/policy/statements)
 - Nature portfolio AI use policy (https://www.nature.com/articles/d41586-023-00191-1)
